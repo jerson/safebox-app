@@ -1,4 +1,4 @@
-package com.safebox;
+package dev.jerson.safebox;
 
 import com.facebook.react.ReactActivity;
 

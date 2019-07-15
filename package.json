@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "test": "jest",
-    "lint": "eslint ."
+    "build:android:release": "cd android && ./gradlew assembleRelease",
+    "prettier": "prettier --write --single-quote '*.js'"
   },
   "dependencies": {
     "react": "16.8.6",
