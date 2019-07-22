@@ -1,16 +1,25 @@
 package dev.jerson.safebox;
 
 import android.app.Application;
-import android.util.Log;
 
-import com.facebook.react.PackageList;
-import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
-import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import dev.jerson.RNFastOpenPGPPackage;
+import io.realm.react.RealmReactPackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.swmansion.rnscreens.RNScreensPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
+import com.reactnativecommunity.viewpager.RNCViewPagerPackage;
+import com.reactnativecommunity.slider.ReactSliderPackage;
+import com.reactnativecommunity.netinfo.NetInfoPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -23,12 +32,20 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      @SuppressWarnings("UnnecessaryLocalVariable")
-      List<ReactPackage> packages = new PackageList(this).getPackages();
-      // Packages that cannot be autolinked yet can be added manually here, for
-      // example:
-      // packages.add(new MyReactNativePackage());
-      return packages;
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new RNFastOpenPGPPackage(),
+            new RealmReactPackage(),
+            new RNCWebViewPackage(),
+            new VectorIconsPackage(),
+            new RNScreensPackage(),
+            new RNGestureHandlerPackage(),
+            new LottiePackage(),
+            new RNCViewPagerPackage(),
+            new ReactSliderPackage(),
+            new NetInfoPackage(),
+            new AsyncStoragePackage()
+      );
     }
 
     @Override
