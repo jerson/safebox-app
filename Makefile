@@ -13,16 +13,3 @@ test:
 
 format:
 	yarn run prettier
-
-stop:
-	docker-compose stop
-
-dev:
-	docker-compose build
-	docker-compose up -d
-	clear
-	@echo ""
-	@echo "starting command line:"
-	@echo "** when finish exist and run: make stop**"
-	@echo ""
-	docker-compose exec app sh
