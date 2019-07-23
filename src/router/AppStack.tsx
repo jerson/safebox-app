@@ -3,12 +3,12 @@ import { Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import BottomTabBar from '../components/navigation/BottomTabBar';
 import Colors from '../modules/constants/Colors';
-import LoginScreen from '../scenes/auth/LoginScreen';
 import { L } from '../modules/locale';
+import AccountsScreen from '../scenes/app/AccountsScreen';
 
 export default createBottomTabNavigator(
   {
-    Sample: LoginScreen
+    Sample: AccountsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => {

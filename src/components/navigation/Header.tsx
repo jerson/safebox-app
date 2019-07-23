@@ -1,16 +1,10 @@
-import * as React from 'react';
-import {
-  View,
-  Text,
-  Platform,
-  StyleSheet,
-  ViewStyle,
-  TextStyle
-} from 'react-native';
+import React from 'react';
+import { View, Platform, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { HeaderProps } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 import Size from '../../modules/dimensions/Size';
+import Text from '../ui/Text';
 
 const paddingTop = Platform.OS === 'ios' ? Size.getStatusBarHeight() : 0;
 const height = Size.getActionBarHeight() + paddingTop;
@@ -37,7 +31,7 @@ const styles = StyleSheet.create({
     overflow: 'visible'
   } as ViewStyle,
   title: {
-    ...Font({ weight: 'SemiBold' }),
+    ...Font({ weight: 'Bold' }),
     textAlign: 'center',
     color: Colors.grey6,
     fontSize: 18,

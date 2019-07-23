@@ -1,7 +1,8 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import { NavigationScreenComponent } from 'react-navigation';
+import Text from '../../components/ui/Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,13 +15,16 @@ const LoginScreen: React.FC & NavigationScreenComponent<any> = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text>sample</Text>
+        <Text weight={'Bold'} size={30}>
+          sample
+        </Text>
       </View>
     </SafeAreaView>
   );
 };
 
 LoginScreen.navigationOptions = {
+  headerLeft: null,
   title: 'Inicia sesión'
 };
 

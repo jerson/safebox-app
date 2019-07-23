@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-const RegisterScreen: React.FC & NavigationScreenComponent<any> = () => {
+const AccountsScreen: React.FC & NavigationScreenComponent<any> = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -21,8 +21,8 @@ const RegisterScreen: React.FC & NavigationScreenComponent<any> = () => {
   );
 };
 
-RegisterScreen.navigationOptions = {
-  title: 'Create una cuenta ahora'
+AccountsScreen.navigationOptions = {
+  title: 'Tus cuentas'
 };
 
-export default RegisterScreen;
+export default AccountsScreen;

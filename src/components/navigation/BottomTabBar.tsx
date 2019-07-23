@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   Animated,
   StyleSheet,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     color: Colors.grey6
   } as TextStyle,
   labelFocused: {
-    ...Font({ weight: 'SemiBold' })
+    ...Font({ weight: 'Bold' })
   } as TextStyle
 });
 export interface BottomTabBarProps {

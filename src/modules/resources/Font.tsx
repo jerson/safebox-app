@@ -1,28 +1,17 @@
 import { Platform } from 'react-native';
 
 const font: any = {
-  Brevia: {
+  Lato: {
     weights: {
-      ExtraBlack: '900',
       Black: '800',
       Bold: '700',
-      SemiBold: '600',
-      Medium: '500',
       Regular: '400',
-      Light: '300'
+      Light: '300',
+      Thin: '300'
     },
     styles: {
       Italic: 'italic'
     }
-  },
-  Roboto: {
-    weights: {
-      Black: '900',
-      Bold: '700',
-      Medium: '500',
-      Regular: '400'
-    },
-    styles: {}
   }
 };
 
@@ -32,16 +21,10 @@ export interface FontStyle {
   fontStyle?: string;
 }
 
-type FontWeight =
-  | 'ExtraBlack'
-  | 'Black'
-  | 'Bold'
-  | 'SemiBold'
-  | 'Medium'
-  | 'Light';
+export type FontWeight = 'Regular' | 'Black' | 'Bold' | 'Light' | 'Thin';
 
-type FontFamily = 'Roboto';
-type FontTypeStyle = 'Italic';
+export type FontFamily = 'Lato';
+export type FontTypeStyle = 'Italic';
 
 export interface FontProps {
   /**
@@ -53,7 +36,7 @@ export interface FontProps {
    */
   style?: FontTypeStyle | '';
   /**
-   * `Roboto` no está aquí porque es el valor por defecto
+   * `Lato` no está aquí porque es el valor por defecto
    */
   family?: FontFamily;
 }
@@ -61,7 +44,7 @@ export interface FontProps {
 export default (options: FontProps = {}): FontStyle => {
   const finalOptions = {
     weight: 'Regular',
-    family: 'Brevia',
+    family: 'Lato',
     ...options
   };
   const { family } = finalOptions;
