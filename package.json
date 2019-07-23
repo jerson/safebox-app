@@ -19,7 +19,7 @@
     "@react-native-community/viewpager": "1.1.7",
     "crypto-js": "3.1.9-1",
     "google-protobuf": "3.9.0",
-    "lottie-ios": "3.0.3",
+    "lottie-ios": "2.5.0",
     "lottie-react-native": "2.6.1",
     "moment": "2.24.0",
     "react": "16.8.3",
