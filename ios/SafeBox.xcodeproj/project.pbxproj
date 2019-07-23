@@ -54,6 +54,7 @@
 		7927A5728F314E49B8A342B7 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 853296A1065C48DDAE17C072 /* libRealmReact.a */; };
 		80D546B7CD3F4E47BE04F344 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBD1C05CF84DE9989BC5BD /* libRNGestureHandler-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8422451222E6B3D000904C7B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422449522E6AF8E00904C7B /* libLottie.a */; };
 		95183F4885B44352A1CC08F6 /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4495ACEAFD444EB89CF208 /* libRNCNetInfo-tvOS.a */; };
 		95F081F158484DB4AF88BEBD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB3129EAA8F74AA6A3ED0D66 /* Foundation.ttf */; };
 		A5ADE8BEDDE1426198D7CE2B /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D149E8284C4AE5B290D791 /* libRNScreens.a */; };
@@ -62,10 +63,8 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B06C6CBDF1A74281B880D1FF /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F85FEA1CAB244018A8238D67 /* Octicons.ttf */; };
 		B250DA44DFF246549DD6526D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE362C29F0F341059ED79E55 /* SimpleLineIcons.ttf */; };
-		B9CD3133EA75485383D5D6BC /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F78E9AB96844C498F3D6E5F /* Lottie.framework */; };
 		C0ADFA2B833641C9A5F74364 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2E8D8B9DC6A4102A888D158 /* FontAwesome.ttf */; };
 		C568EFADA14841281A82B862 /* Pods_SafeBox_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE1C11E03BC896C5426213E /* Pods_SafeBox_tvOS.framework */; };
-		C923674064E74889BD8895C0 /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC52CFC1AAFE4BE9ACBE2F14 /* libLottie.a */; };
 		CA7FCD7F4FA24B43A9F7E5D0 /* libRNFastOpenpgp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A762D9DBEF784E3D9504200F /* libRNFastOpenpgp.a */; };
 		CDE9DD876F5479E5E9097F2C /* Pods_SafeBox_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5306929987F025F279EE7AEF /* Pods_SafeBox_tvOSTests.framework */; };
 		D9A3D56E141E405B8300C4A6 /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E1E2246A44B9BA7842E2B /* libLottieReactNative.a */; };
@@ -592,6 +591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -619,8 +619,6 @@
 				3DFDE15CE5044ED1A6182238 /* libz.tbd in Frameworks */,
 				CA7FCD7F4FA24B43A9F7E5D0 /* libRNFastOpenpgp.a in Frameworks */,
 				600C6BF8E9ED0C6FFAD6ECAE /* Pods_SafeBox.framework in Frameworks */,
-				B9CD3133EA75485383D5D6BC /* Lottie.framework in Frameworks */,
-				C923674064E74889BD8895C0 /* libLottie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
