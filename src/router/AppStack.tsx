@@ -1,19 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { Image } from 'react-native';
-import {
-  createBottomTabNavigator,
-  NavigationRoute,
-  NavigationScreenProp
-} from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 import BottomTabBar from '../components/navigation/BottomTabBar';
 import Colors from '../modules/constants/Colors';
 import LoginScreen from '../scenes/auth/LoginScreen';
 import { L } from '../modules/locale';
-
-interface BottomNavigationOptions {
-  navigation: NavigationScreenProp<NavigationRoute>;
-  defaultHandler: () => void;
-}
 
 export default createBottomTabNavigator(
   {
@@ -28,10 +19,6 @@ export default createBottomTabNavigator(
         case 'Sample':
           tabBarLabel = L.app_name;
           break;
-
-        case 'More':
-          tabBarLabel = L.app_name;
-          break;
         default:
           tabBarLabel = routeName;
           break;
@@ -41,7 +28,7 @@ export default createBottomTabNavigator(
         tabBarIcon: () => {
           let imageSource = require('../assets/images/back-icon.png');
           const iconStyleTab = { width: 22, height: 22 };
-          if (routeName === 'Agenda') {
+          if (routeName === 'Sample') {
             imageSource = require('../assets/images/back-icon.png');
           }
           return (

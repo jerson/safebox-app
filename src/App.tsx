@@ -1,13 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
-
-const styles = StyleSheet.create({});
+import React, { Fragment } from 'react';
+import { StatusBar } from 'react-native';
+import MainNavigator from './router';
 
 const App: React.FC = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView />
+      <MainNavigator />
     </Fragment>
   );
 };
