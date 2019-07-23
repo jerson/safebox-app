@@ -8,7 +8,7 @@
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "test": "jest",
     "lint": "tsc && tslint -p .",
-    "prettier": "prettier --write --single-quote 'src/**/*.tsx'",
+    "format": "prettier --write --single-quote 'src/**/*.tsx'",
     "docs": "typedoc --excludeExternals --out docs --exclude '**/*/*.test.tsx' --mode file ./src "
   },
   "dependencies": {

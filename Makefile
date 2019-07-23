@@ -17,7 +17,7 @@ lint:
 	yarn run lint
 
 format:
-	yarn run prettier
+	yarn run format
 
 proto:
 	protoc -I=proto services.proto \
