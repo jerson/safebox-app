@@ -30,26 +30,16 @@ export interface BackIconProps {
   style?: StyleProp<ImageStyle>;
 }
 
-export interface BackIconState {}
+const BackIcon: React.FC<BackIconProps> = ({ style, onPress, ...props }) => {
+  return (
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Image
+        style={[styles.back, style]}
+        source={require('../../assets/images/back-icon.png')}
+        {...props}
+      />
+    </TouchableOpacity>
+  );
+};
 
-export default class BackIcon extends React.Component<
-  BackIconProps,
-  BackIconState
-> {
-  render() {
-    const { style, onPress, ...props } = this.props;
-    return (
-      <TouchableOpacity
-        accessibilityLabel={'backicon'}
-        style={styles.container}
-        onPress={onPress}
-      >
-        <Image
-          style={[styles.back, style]}
-          source={require('../../assets/images/back-icon.png')}
-          {...props}
-        />
-      </TouchableOpacity>
-    );
-  }
-}
+export default BackIcon;

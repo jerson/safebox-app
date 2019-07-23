@@ -2,7 +2,6 @@
 
 exports[`render just views 1`] = `
 <View
-  accessibilityLabel="backicon"
   accessible={true}
   isTVSelectable={true}
   onResponderGrant={[Function]}

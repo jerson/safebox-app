@@ -67,3 +67,4 @@ buck-out/
 .idea
 *.hprof
 Config.tsx
+coverage

@@ -57,9 +57,6 @@
     "typedoc": "0.14.2",
     "typescript": "3.5.3"
   },
-  "jest": {
-    "preset": "react-native"
-  },
   "lint-staged": {
     "*.js": [
       "prettier --write --single-quote",

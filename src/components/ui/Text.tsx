@@ -1,19 +1,23 @@
 import React from 'react';
-import { Text as TextBase, TextProps, TextStyle } from 'react-native';
+import {
+  Text as TextBase,
+  TextProps as TextBaseProps,
+  TextStyle
+} from 'react-native';
 import Font, {
   FontWeight,
   FontTypeStyle,
   FontFamily
 } from '../../modules/resources/Font';
 
-interface Props extends TextProps {
+export interface TextProps extends TextBaseProps {
   weight?: FontWeight;
   textStyle?: FontTypeStyle;
   family?: FontFamily;
   size?: number;
 }
 
-const Text: React.FC<Props> = ({
+const Text: React.FC<TextProps> = ({
   style,
   weight,
   textStyle,

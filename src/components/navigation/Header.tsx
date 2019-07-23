@@ -49,41 +49,26 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-export interface HeaderState {}
-
-export default class Header extends React.Component<HeaderProps, HeaderState> {
-  state: HeaderState = {};
-
-  render() {
-    const { options } = this.props.scene.descriptor;
-    const isEmpty =
-      !options.headerLeft && !options.headerRight && !options.title;
-    if (isEmpty) {
-      return null;
-    }
-
-    return (
-      <View
-        accessibilityLabel={'header_container'}
-        style={styles.globalContainer}
-      >
-        <View
-          accessibilityLabel={'header'}
-          style={[styles.container, options.headerStyle, styles.shadow]}
-        >
-          <View style={styles.leftContainer}>{options.headerLeft}</View>
-          <View style={styles.centerContainer}>
-            <Text
-              allowFontScaling={false}
-              accessibilityLabel={'header_title'}
-              style={styles.title}
-            >
-              {options.title}
-            </Text>
-          </View>
-          <View style={styles.rightContainer}>{options.headerRight}</View>
-        </View>
-      </View>
-    );
+const Header: React.FC<HeaderProps> = props => {
+  const { options } = props.scene.descriptor;
+  const isEmpty = !options.headerLeft && !options.headerRight && !options.title;
+  if (isEmpty) {
+    return null;
   }
-}
+
+  return (
+    <View style={styles.globalContainer}>
+      <View style={[styles.container, options.headerStyle, styles.shadow]}>
+        <View style={styles.leftContainer}>{options.headerLeft}</View>
+        <View style={styles.centerContainer}>
+          <Text allowFontScaling={false} style={styles.title}>
+            {options.title}
+          </Text>
+        </View>
+        <View style={styles.rightContainer}>{options.headerRight}</View>
+      </View>
+    </View>
+  );
+};
+
+export default Header;
