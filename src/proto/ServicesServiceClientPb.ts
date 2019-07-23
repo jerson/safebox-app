@@ -10,12 +10,12 @@
 import * as grpcWeb from 'grpc-web';
 
 import {
-  AccountAddRequest,
-  AccountAddResponse,
   AccountRequest,
   AccountResponse,
   AccountsRequest,
   AccountsResponse,
+  AddAccountRequest,
+  AddAccountResponse,
   BuyProductRequest,
   BuyProductResponse,
   LoginRequest,
@@ -111,18 +111,18 @@ export class ServicesClient {
   }
 
   methodInfoAddAccount = new grpcWeb.AbstractClientBase.MethodInfo(
-    AccountAddResponse,
-    (request: AccountAddRequest) => {
+    AddAccountResponse,
+    (request: AddAccountRequest) => {
       return request.serializeBinary();
     },
-    AccountAddResponse.deserializeBinary
+    AddAccountResponse.deserializeBinary
   );
 
   addAccount(
-    request: AccountAddRequest,
+    request: AddAccountRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: AccountAddResponse) => void) {
+               response: AddAccountResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/AddAccount',
