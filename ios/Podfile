@@ -1,0 +1,51 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SafeBox' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SafeBox
+  pod 'Firebase/Core', '~> 5.3.0'
+  pod 'Firebase/Messaging', '~> 5.3.0'
+  pod 'Firebase/RemoteConfig', '~> 5.3.0'
+  pod 'Fabric', '~> 1.9.0'
+  pod 'Crashlytics', '~> 3.12.0'
+  
+  target 'SafeBoxTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'SafeBox-tvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SafeBox-tvOS
+
+  target 'SafeBox-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+              if config.name == 'QA' || config.name == 'DEV'
+                  config.build_settings['CONFIGURATION_TEMP_DIR'] = '$(PROJECT_TEMP_DIR)/Release$(EFFECTIVE_PLATFORM_NAME)'
+                  config.build_settings['CONFIGURATION_BUILD_DIR'] = '$(BUILD_DIR)/Release$(EFFECTIVE_PLATFORM_NAME)'
+              end
+  end
+  installer.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+              if config.name == 'QA' || config.name == 'DEV'
+                  config.build_settings['CONFIGURATION_TEMP_DIR'] = '$(PROJECT_TEMP_DIR)/Release$(EFFECTIVE_PLATFORM_NAME)'
+                  config.build_settings['PODS_CONFIGURATION_BUILD_DIR'] = '${PODS_BUILD_DIR}/Release$(EFFECTIVE_PLATFORM_NAME)'
+              end
+          end
+  end
+end
