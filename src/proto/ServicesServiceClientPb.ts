@@ -10,11 +10,20 @@
 import * as grpcWeb from 'grpc-web';
 
 import {
-  HelloReply,
+  AccountAddRequest,
+  AccountAddResponse,
+  AccountRequest,
+  AccountResponse,
+  AccountsRequest,
+  AccountsResponse,
+  BuyProductRequest,
+  BuyProductResponse,
   LoginRequest,
-  PingReply,
+  LoginResponse,
   PingRequest,
-  RegisterRequest} from './services_pb';
+  PingResponse,
+  RegisterRequest,
+  RegisterResponse} from './services_pb';
 
 export class ServicesClient {
   client_: grpcWeb.AbstractClientBase;
@@ -36,18 +45,18 @@ export class ServicesClient {
   }
 
   methodInfoPing = new grpcWeb.AbstractClientBase.MethodInfo(
-    PingReply,
+    PingResponse,
     (request: PingRequest) => {
       return request.serializeBinary();
     },
-    PingReply.deserializeBinary
+    PingResponse.deserializeBinary
   );
 
   ping(
     request: PingRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: PingReply) => void) {
+               response: PingResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/Ping',
@@ -58,18 +67,18 @@ export class ServicesClient {
   }
 
   methodInfoLogin = new grpcWeb.AbstractClientBase.MethodInfo(
-    HelloReply,
+    LoginResponse,
     (request: LoginRequest) => {
       return request.serializeBinary();
     },
-    HelloReply.deserializeBinary
+    LoginResponse.deserializeBinary
   );
 
   login(
     request: LoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: HelloReply) => void) {
+               response: LoginResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/Login',
@@ -80,24 +89,112 @@ export class ServicesClient {
   }
 
   methodInfoRegister = new grpcWeb.AbstractClientBase.MethodInfo(
-    HelloReply,
+    RegisterResponse,
     (request: RegisterRequest) => {
       return request.serializeBinary();
     },
-    HelloReply.deserializeBinary
+    RegisterResponse.deserializeBinary
   );
 
   register(
     request: RegisterRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: HelloReply) => void) {
+               response: RegisterResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/Register',
       request,
       metadata || {},
       this.methodInfoRegister,
+      callback);
+  }
+
+  methodInfoAddAccount = new grpcWeb.AbstractClientBase.MethodInfo(
+    AccountAddResponse,
+    (request: AccountAddRequest) => {
+      return request.serializeBinary();
+    },
+    AccountAddResponse.deserializeBinary
+  );
+
+  addAccount(
+    request: AccountAddRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AccountAddResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/AddAccount',
+      request,
+      metadata || {},
+      this.methodInfoAddAccount,
+      callback);
+  }
+
+  methodInfoGetAccounts = new grpcWeb.AbstractClientBase.MethodInfo(
+    AccountsResponse,
+    (request: AccountsRequest) => {
+      return request.serializeBinary();
+    },
+    AccountsResponse.deserializeBinary
+  );
+
+  getAccounts(
+    request: AccountsRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AccountsResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/GetAccounts',
+      request,
+      metadata || {},
+      this.methodInfoGetAccounts,
+      callback);
+  }
+
+  methodInfoGetAccount = new grpcWeb.AbstractClientBase.MethodInfo(
+    AccountResponse,
+    (request: AccountRequest) => {
+      return request.serializeBinary();
+    },
+    AccountResponse.deserializeBinary
+  );
+
+  getAccount(
+    request: AccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AccountResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/GetAccount',
+      request,
+      metadata || {},
+      this.methodInfoGetAccount,
+      callback);
+  }
+
+  methodInfoBuyProduct = new grpcWeb.AbstractClientBase.MethodInfo(
+    BuyProductResponse,
+    (request: BuyProductRequest) => {
+      return request.serializeBinary();
+    },
+    BuyProductResponse.deserializeBinary
+  );
+
+  buyProduct(
+    request: BuyProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: BuyProductResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/BuyProduct',
+      request,
+      metadata || {},
+      this.methodInfoBuyProduct,
       callback);
   }
 
