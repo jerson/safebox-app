@@ -24,7 +24,7 @@ lint:
   stage: test
   script:
   - make deps
-  - make test
+  - make lint
   when: always
 
 release:

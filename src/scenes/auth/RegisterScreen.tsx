@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 
 const styles = StyleSheet.create({});
 
-const App: React.FC = () => {
+const RegisterScreen: React.FC = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
@@ -12,4 +12,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default RegisterScreen;
