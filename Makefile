@@ -17,6 +17,11 @@ format:
 	yarn run prettier
 
 proto:
+	protoc -I=proto services.proto \
+    --js_out=import_style=commonjs:src/proto \
+    --grpc-web_out=import_style=typescript,mode=grpcwebtext:src/proto
+
+proto-gents:
 	protoc \
     --plugin="protoc-gen-ts=./node_modules/.bin/protoc-gen-ts" \
     --js_out="import_style=commonjs,binary:src" \
