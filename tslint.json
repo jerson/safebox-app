@@ -44,5 +44,11 @@
         ],
         "quotemark": false
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "src/proto/*.js",
+            "src/proto/*.ts"
+        ]
+    }
 }
