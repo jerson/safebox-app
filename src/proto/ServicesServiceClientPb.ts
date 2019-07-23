@@ -20,6 +20,8 @@ import {
   BuyProductResponse,
   LoginRequest,
   LoginResponse,
+  LogoutRequest,
+  LogoutResponse,
   PingRequest,
   PingResponse,
   RegisterRequest,
@@ -63,6 +65,28 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoPing,
+      callback);
+  }
+
+  methodInfoLogout = new grpcWeb.AbstractClientBase.MethodInfo(
+    LogoutResponse,
+    (request: LogoutRequest) => {
+      return request.serializeBinary();
+    },
+    LogoutResponse.deserializeBinary
+  );
+
+  logout(
+    request: LogoutRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: LogoutResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/Logout',
+      request,
+      metadata || {},
+      this.methodInfoLogout,
       callback);
   }
 

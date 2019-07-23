@@ -32,6 +32,38 @@ export namespace PingResponse {
   }
 }
 
+export class LogoutRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutRequest): LogoutRequest.AsObject;
+  static serializeBinaryToWriter(message: LogoutRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutRequest;
+  static deserializeBinaryFromReader(message: LogoutRequest, reader: jspb.BinaryReader): LogoutRequest;
+}
+
+export namespace LogoutRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class LogoutResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutResponse): LogoutResponse.AsObject;
+  static serializeBinaryToWriter(message: LogoutResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutResponse;
+  static deserializeBinaryFromReader(message: LogoutResponse, reader: jspb.BinaryReader): LogoutResponse;
+}
+
+export namespace LogoutResponse {
+  export type AsObject = {
+  }
+}
+
 export class LoginRequest extends jspb.Message {
   getUsername(): string;
   setUsername(value: string): void;

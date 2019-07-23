@@ -12,7 +12,9 @@ import {
   LoginRequest,
   LoginResponse,
   RegisterRequest,
-  RegisterResponse
+  RegisterResponse,
+  LogoutRequest,
+  LogoutResponse
 } from '../proto/services_pb';
 
 export default class Client {
@@ -20,6 +22,17 @@ export default class Client {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       client.login(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static logout(request: LogoutRequest): Promise<LogoutResponse> {
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.logout(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
