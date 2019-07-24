@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "paddingHorizontal": 20,
+      },
+      false,
+      Object {
+        "flex": 1,
+        "paddingTop": 20,
+      },
+      Object {},
+    ]
+  }
+/>
+`;

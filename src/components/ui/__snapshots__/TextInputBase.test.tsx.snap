@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<TextInput
+  allowFontScaling={true}
+  onBlur={[Function]}
+  onChangeText={[Function]}
+  onFocus={[Function]}
+  placeholderTextColor="#65748b"
+  rejectResponderTermination={true}
+  underlineColorAndroid="transparent"
+  value=""
+/>
+`;
