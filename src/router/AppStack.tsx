@@ -1,13 +1,16 @@
-import React from 'react';
-import { Image } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
-import BottomTabBar from '../components/navigation/BottomTabBar';
-import Colors from '../modules/constants/Colors';
-import AccountsScreen from '../scenes/app/AccountsScreen';
+import React from "react";
+import { Image } from "react-native";
+import { createBottomTabNavigator } from "react-navigation";
+import BottomTabBar from "../components/navigation/BottomTabBar";
+import Colors from "../modules/constants/Colors";
+import AccountsScreen from "../scenes/app/AccountsScreen";
 
 export default createBottomTabNavigator(
   {
-    Sample: AccountsScreen
+    Accounts: AccountsScreen,
+    Accounts2: AccountsScreen,
+    Accounts3: AccountsScreen,
+    Accounts4: AccountsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
@@ -15,8 +18,8 @@ export default createBottomTabNavigator(
       let tabBarLabel;
 
       switch (routeName) {
-        case 'Sample':
-          tabBarLabel = 'Sample';
+        case "Sample":
+          tabBarLabel = "Sample";
           break;
         default:
           tabBarLabel = routeName;
@@ -25,14 +28,14 @@ export default createBottomTabNavigator(
       return {
         tabBarLabel,
         tabBarIcon: () => {
-          let imageSource = require('../assets/images/back-icon.png');
+          let imageSource = require("../assets/images/back-icon.png");
           const iconStyleTab = { width: 22, height: 22 };
-          if (routeName === 'Sample') {
-            imageSource = require('../assets/images/back-icon.png');
+          if (routeName === "Sample") {
+            imageSource = require("../assets/images/back-icon.png");
           }
           return (
             <Image
-              resizeMode={'contain'}
+              resizeMode={"contain"}
               source={imageSource}
               style={[iconStyleTab, { tintColor: Colors.grey6 }]}
             />

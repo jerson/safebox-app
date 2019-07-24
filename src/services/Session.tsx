@@ -5,5 +5,8 @@ export default class Session {
   static logout() {
     this.token = undefined;
   }
-  private static token? = '';
+  static getAccessToken() {
+    return this.token || "";
+  }
+  private static token? = "";
 }

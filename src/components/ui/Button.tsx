@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -10,11 +10,11 @@ import {
   TextStyle,
   View,
   ViewStyle
-} from 'react-native';
-import Touchable, { TouchableProps } from './Touchable';
-import Colors from '../../modules/constants/Colors';
-import Font from '../../modules/resources/Font';
-import Loading from './Loading';
+} from "react-native";
+import Touchable, { TouchableProps } from "./Touchable";
+import Colors from "../../modules/constants/Colors";
+import Font from "../../modules/resources/Font";
+import Loading from "./Loading";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     margin: 0,
     zIndex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     borderWidth: 1
   } as ViewStyle,
   containerDisabled: {
@@ -34,29 +34,29 @@ const styles = StyleSheet.create({
     marginRight: 4
   } as ViewStyle,
   icon: {
-    ...Font({ weight: 'Regular' }),
+    ...Font({ weight: "Regular" }),
     fontSize: 14,
     color: Colors.white,
     marginRight: 4
   } as ImageStyle,
   title: {
-    ...Font({ weight: 'SemiBold' }),
-    textAlign: 'center',
+    ...Font({ weight: "SemiBold" }),
+    textAlign: "center",
     color: Colors.white,
     fontSize: 14
   } as TextStyle,
   containerLoading: {
-    position: 'absolute',
+    position: "absolute",
     left: 10,
     top: 0,
     bottom: 0,
-    justifyContent: 'center'
+    justifyContent: "center"
   } as ViewStyle,
   containerLoadingSmall: {
     left: 4
   } as ViewStyle,
   containerLoadingCenter: {
-    position: 'relative',
+    position: "relative",
     left: 0
   } as ViewStyle,
   light: {
@@ -96,12 +96,12 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   center: {
     minHeight: 30,
-    justifyContent: 'center'
+    justifyContent: "center"
   } as ViewStyle
 });
 
 export interface ButtonProps extends TouchableProps {
-  loading?: boolean;
+  isLoading?: boolean;
   disabled?: boolean;
   allowOnPress?: boolean;
   /**
@@ -114,26 +114,26 @@ export interface ButtonProps extends TouchableProps {
   light?: boolean;
   small?: boolean;
   typeColor?:
-    | 'primaryLight'
-    | 'primary'
-    | 'secondary'
-    | 'accentDark'
-    | 'accent'
-    | 'danger';
+    | "primaryLight"
+    | "primary"
+    | "secondary"
+    | "accentDark"
+    | "accent"
+    | "danger";
 }
 
 export interface ButtonState {}
 
 export default class Button extends React.Component<ButtonProps, ButtonState> {
   static defaultProps = {
-    typeColor: 'primary'
+    typeColor: "primary"
   };
   onPress = (event: GestureResponderEvent) => {
-    const { onPress, loading, disabled, allowOnPress } = this.props;
+    const { onPress, isLoading: loading, disabled, allowOnPress } = this.props;
     if ((disabled && !allowOnPress) || loading) {
       return;
     }
-    if (typeof onPress === 'function') {
+    if (typeof onPress === "function") {
       onPress(event);
     }
   };
@@ -146,7 +146,7 @@ export default class Button extends React.Component<ButtonProps, ButtonState> {
       textStyle,
       imageSource,
       imageStyle,
-      loading,
+      isLoading: loading,
       onPress,
       light,
       typeColor,
@@ -157,27 +157,27 @@ export default class Button extends React.Component<ButtonProps, ButtonState> {
     let color;
 
     switch (typeColor) {
-      case 'primaryLight':
+      case "primaryLight":
         stylesButton.push(styles.primaryLight);
         color = Colors.primaryLight;
         break;
-      case 'primary':
+      case "primary":
         stylesButton.push(styles.primary);
         color = Colors.primary;
         break;
-      case 'secondary':
+      case "secondary":
         stylesButton.push(styles.secondary);
         color = Colors.secondary;
         break;
-      case 'accentDark':
+      case "accentDark":
         stylesButton.push(styles.accentDark);
         color = Colors.accentDark;
         break;
-      case 'accent':
+      case "accent":
         stylesButton.push(styles.accent);
         color = Colors.accent;
         break;
-      case 'danger':
+      case "danger":
         stylesButton.push(styles.danger);
         color = Colors.danger;
         break;
@@ -220,7 +220,7 @@ export default class Button extends React.Component<ButtonProps, ButtonState> {
           >
             <Loading
               style={styles.loading}
-              size={'small'}
+              size={"small"}
               color={light ? color : Colors.white}
             />
           </View>

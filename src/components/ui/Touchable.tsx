@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import {
   GestureResponderEvent,
   TouchableOpacity,
   TouchableOpacityProps,
   View
-} from 'react-native';
+} from "react-native";
 
 export interface TouchableProps extends TouchableOpacityProps {
   forwardedRef?: any;
@@ -18,14 +18,14 @@ export class TouchableContainer extends React.Component<
   TouchableState
 > {
   onPress = (event: GestureResponderEvent) => {
-    const { onPress, accessibilityLabel } = this.props;
-    if (typeof onPress === 'function') {
+    const { onPress } = this.props;
+    if (typeof onPress === "function") {
       onPress(event);
     }
   };
   onLongPress = (event: GestureResponderEvent) => {
-    const { onLongPress, accessibilityLabel } = this.props;
-    if (typeof onLongPress === 'function') {
+    const { onLongPress } = this.props;
+    if (typeof onLongPress === "function") {
       onLongPress(event);
     }
   };
@@ -33,7 +33,7 @@ export class TouchableContainer extends React.Component<
   render() {
     const { forwardedRef, onPress, onLongPress, ...props } = this.props;
     const hasAction =
-      typeof onPress === 'function' || typeof onLongPress === 'function';
+      typeof onPress === "function" || typeof onLongPress === "function";
     if (!hasAction) {
       return <View ref={forwardedRef} {...props} />;
     }
