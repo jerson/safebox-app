@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "#e91e63",
+        "fontFamily": "Nunito",
+        "fontSize": 13,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+      },
+      false,
+      undefined,
+    ]
+  }
+>
+  test
+  .
+</Text>
+`;

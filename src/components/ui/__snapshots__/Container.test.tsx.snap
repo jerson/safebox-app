@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+        "flex": 1,
+      },
+      Object {},
+    ]
+  }
+/>
+`;

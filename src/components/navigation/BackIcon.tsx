@@ -4,10 +4,10 @@ import {
   ImageStyle,
   StyleProp,
   StyleSheet,
-  TouchableOpacity,
   ViewStyle
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
+import Touchable from '../ui/Touchable';
 
 const styles = StyleSheet.create({
   back: {
@@ -32,13 +32,13 @@ export interface BackIconProps {
 
 const BackIcon: React.FC<BackIconProps> = ({ style, onPress, ...props }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <Touchable style={styles.container} onPress={onPress}>
       <Image
         style={[styles.back, style]}
         source={require('../../assets/images/back-icon.png')}
         {...props}
       />
-    </TouchableOpacity>
+    </Touchable>
   );
 };
 

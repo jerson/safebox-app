@@ -3,7 +3,6 @@ import { Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import BottomTabBar from '../components/navigation/BottomTabBar';
 import Colors from '../modules/constants/Colors';
-import { L } from '../modules/locale';
 import AccountsScreen from '../scenes/app/AccountsScreen';
 
 export default createBottomTabNavigator(
@@ -17,7 +16,7 @@ export default createBottomTabNavigator(
 
       switch (routeName) {
         case 'Sample':
-          tabBarLabel = L.app_name;
+          tabBarLabel = 'Sample';
           break;
         default:
           tabBarLabel = routeName;
