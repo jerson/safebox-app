@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,26 +6,26 @@ import {
   ScrollView,
   StatusBar,
   Alert
-} from "react-native";
+} from 'react-native';
 import {
   SafeAreaView,
   NavigationScreenComponent,
   NavigationScreenProp
-} from "react-navigation";
-import Colors from "../../modules/constants/Colors";
-import HeaderLanding from "../../components/ui/HeaderLanding";
-import TextInput from "../../components/ui/TextInput";
-import Button from "../../components/ui/Button";
-import Container from "../../components/ui/Container";
-import Content from "../../components/ui/Content";
-import Size from "../../modules/dimensions/Size";
-import useTextInput from "../../components/hooks/useTextInput";
-import Client from "../../services/Client";
-import { RegisterRequest } from "../../proto/services_pb";
-import OpenPGP, { KeyOptions } from "react-native-fast-openpgp";
-import Config from "../../Config";
-import Session from "../../services/Session";
-import Strings from "../../modules/format/Strings";
+} from 'react-navigation';
+import Colors from '../../modules/constants/Colors';
+import HeaderLanding from '../../components/ui/HeaderLanding';
+import TextInput from '../../components/ui/TextInput';
+import Button from '../../components/ui/Button';
+import Container from '../../components/ui/Container';
+import Content from '../../components/ui/Content';
+import Size from '../../modules/dimensions/Size';
+import useTextInput from '../../components/hooks/useTextInput';
+import Client from '../../services/Client';
+import { RegisterRequest } from '../../proto/services_pb';
+import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
+import Config from '../../Config';
+import Session from '../../services/Session';
+import Strings from '../../modules/format/Strings';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   form: {
     width: 280,
     marginBottom: 60,
-    alignSelf: "center"
+    alignSelf: 'center'
   } as ViewStyle,
   button: {
     marginTop: 20
@@ -69,9 +69,9 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
   const passwordRef = useRef(null);
   const repeatPasswordRef = useRef(null);
 
-  const [username, usernameProps] = useTextInput("");
-  const [password, passwordProps] = useTextInput("");
-  const [repeatPassword, repeatPasswordProps] = useTextInput("");
+  const [username, usernameProps] = useTextInput('');
+  const [password, passwordProps] = useTextInput('');
+  const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const isValid = () => {
     return [!!username, !!password, password === repeatPassword].every(
@@ -99,10 +99,10 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       const response = await Client.register(request);
 
       Session.login(response.getAccesstoken());
-      navigation.navigate("Accounts");
+      navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
-      Alert.alert("Something happen", message);
+      Alert.alert('Something happen', message);
     }
   };
   const tryToSubmit = () => {
@@ -121,7 +121,7 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
     <Container style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.grey2} />
       <ScrollView
-        keyboardShouldPersistTaps={"handled"}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
           minHeight: Size.getVisibleHeight()
         }}
@@ -136,46 +136,46 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
             />
             <View style={styles.form}>
               <TextInput
-                placeholder={"Username"}
-                keyboardType={"default"}
-                autoCapitalize={"none"}
+                placeholder={'Username'}
+                keyboardType={'default'}
+                autoCapitalize={'none'}
                 autoFocus
                 autoCorrect={false}
-                autoCompleteType={"username"}
-                returnKeyType={"next"}
+                autoCompleteType={'username'}
+                returnKeyType={'next'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={usernameRef}
                 onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
+                  passwordRef.current && (passwordRef.current as any).focus();
                 }}
                 {...usernameProps}
               />
               <TextInput
-                placeholder={"Password"}
+                placeholder={'Password'}
                 secureTextEntry
-                keyboardType={"default"}
-                autoCapitalize={"none"}
+                keyboardType={'default'}
+                autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={"password"}
-                returnKeyType={"next"}
+                autoCompleteType={'password'}
+                returnKeyType={'next'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={passwordRef}
                 onSubmitEditing={() => {
                   repeatPasswordRef.current &&
-                    repeatPasswordRef.current.focus();
+                    (repeatPasswordRef.current as any).focus();
                 }}
                 {...passwordProps}
               />
               <TextInput
-                placeholder={"Repeat password"}
+                placeholder={'Repeat password'}
                 secureTextEntry
-                keyboardType={"default"}
-                autoCapitalize={"none"}
+                keyboardType={'default'}
+                autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={"password"}
-                returnKeyType={"done"}
+                autoCompleteType={'password'}
+                returnKeyType={'done'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={repeatPasswordRef}
@@ -186,8 +186,8 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
               <Button
                 isLoading={isLoading}
                 style={styles.button}
-                typeColor={"primaryLight"}
-                title={"Create account"}
+                typeColor={'primaryLight'}
+                title={'Create account'}
                 onPress={tryToSubmit}
               />
             </View>
