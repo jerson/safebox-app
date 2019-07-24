@@ -1,4 +1,6 @@
 module.exports = {
   preset: 'react-native',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-}
+  collectCoverage: true,
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+};

@@ -1,0 +1,14 @@
+export default {
+  server:{
+    url: 'https://safebox.jerson.dev'
+  },
+  settings: {
+    keyOptions: {
+      RSABits: 4096,
+      cipher: "aes256",
+      compression: "zlib",
+      compressionLevel: 9,
+      hash: "sha512"
+    }
+  }
+}

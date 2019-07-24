@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "flexDirection": "column",
+        "marginBottom": 20,
+        "marginTop": 10,
+        "position": "relative",
+      },
+      undefined,
+    ]
+  }
+>
+  <_class
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingBottom": 4,
+        },
+        undefined,
+      ]
+    }
+  />
+  <_class
+    style={
+      Array [
+        Object {
+          "position": "relative",
+        },
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      editable={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onEmptyState={[Function]}
+      onError={[Function]}
+      onFocus={[Function]}
+      placeholderTextColor="#65748b"
+      rejectResponderTermination={true}
+      selectionColor="#65748b"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#f2f4f9",
+            "borderRadius": 10,
+            "borderWidth": 1,
+            "color": "#38414e",
+            "fontFamily": "Nunito",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 18,
+            "paddingBottom": 10,
+            "paddingLeft": 10,
+            "paddingRight": 8,
+            "paddingTop": 10,
+            "textDecorationLine": "none",
+          },
+          false,
+          false,
+          false,
+          Object {
+            "paddingRight": 40,
+          },
+          undefined,
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <_class
+      style={
+        Array [
+          Object {
+            "position": "absolute",
+            "right": -40,
+          },
+          undefined,
+        ]
+      }
+    />
+  </_class>
+</_class>
+`;

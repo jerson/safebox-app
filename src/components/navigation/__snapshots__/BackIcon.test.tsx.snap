@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "height": 50,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingLeft": 20,
+      "width": 50,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/back-icon.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 21,
+          "tintColor": "#d2def1",
+          "width": 21,
+        },
+        undefined,
+      ]
+    }
+  />
+</_class>
+`;

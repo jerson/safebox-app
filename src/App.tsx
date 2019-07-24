@@ -1,24 +1,17 @@
-import React, { Fragment, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
-import { ServicesClient } from './proto/ServicesServiceClientPb';
-import { PingRequest } from './proto/services_pb';
+import React, { Fragment } from 'react';
+import { StatusBar } from 'react-native';
+import MainNavigator from './router';
+import Colors from './modules/constants/Colors';
+const tinyColor = require('tinycolor2');
 
-const client = new ServicesClient('https://safebox.jerson.dev');
 const App: React.FC = () => {
-  useEffect(() => {
-    client.ping(new PingRequest(), null, (err, response) => {
-      console.log(err);
-      console.log(response.toObject());
-    });
-  }, []);
+  const statusBarColor = tinyColor(Colors.primary).darken(5);
   return (
     <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView></SafeAreaView>
+      <StatusBar barStyle="light-content" backgroundColor={statusBarColor} />
+      <MainNavigator />
     </Fragment>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;

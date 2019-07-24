@@ -2,6 +2,7 @@ image: jerson/react-native:android-28
 
 before_script:
   - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+  - cp -f src/Config.tsx-dist src/Config.tsx
   - cp -f android/gradle.properties-dist android/gradle.properties
   - sed -i "s/YOUR_STORE_PASSWORD/${APP_STORE_PASSWORD}/g" android/gradle.properties
   - sed -i "s/YOUR_KEY_PASSWORD/${APP_KEY_PASSWORD}/g" android/gradle.properties
@@ -23,7 +24,7 @@ lint:
   stage: test
   script:
   - make deps
-  - make test
+  - make lint
   when: always
 
 release:
