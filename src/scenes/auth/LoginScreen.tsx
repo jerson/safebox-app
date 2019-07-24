@@ -48,7 +48,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-const LoginScreen: React.FC & NavigationScreenComponent<any> = () => {
+const LoginScreen: React.FC<any> & NavigationScreenComponent<any> = ({
+  navigation
+}) => {
   const statusBarColor = tinyColor(Colors.primary).darken(5);
   return (
     <Container style={styles.container}>
@@ -80,6 +82,7 @@ const LoginScreen: React.FC & NavigationScreenComponent<any> = () => {
               />
 
               <Button
+                loading
                 style={styles.button}
                 typeColor={'primaryLight'}
                 title={'Iniciar sesión'}
@@ -88,7 +91,10 @@ const LoginScreen: React.FC & NavigationScreenComponent<any> = () => {
               <Button
                 style={styles.button}
                 typeColor={'accentDark'}
-                title={'Crear cuenta '}
+                title={'Crear cuenta'}
+                onPress={() => {
+                  navigation.navigate('Register');
+                }}
               />
             </View>
           </Content>
