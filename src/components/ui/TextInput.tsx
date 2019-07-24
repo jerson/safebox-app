@@ -17,7 +17,7 @@ import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 
 const Sizes = {
-  ClearButtonWidth: 30,
+  ClearButtonWidth: 40,
   Icon: 20
 };
 const styles = StyleSheet.create({
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     color: Colors.grey6,
     borderColor: Colors.grey2,
     borderWidth: 1,
-    backgroundColor: Colors.grey1,
+    backgroundColor: Colors.white,
     borderRadius: 10,
     paddingBottom: 10,
     paddingLeft: 10,

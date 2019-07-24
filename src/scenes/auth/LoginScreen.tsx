@@ -6,7 +6,12 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView, NavigationScreenComponent } from 'react-navigation';
+import {
+  SafeAreaView,
+  NavigationScreenComponent,
+  NavigationInjectedProps,
+  NavigationScreenProp
+} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput from '../../components/ui/TextInput';
@@ -15,7 +20,6 @@ import SplitText from '../../components/ui/SplitText';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
-const tinyColor = require('tinycolor2');
 
 const styles = StyleSheet.create({
   container: {
@@ -45,16 +49,22 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   button: {
     marginTop: 20
+  } as ViewStyle,
+  splitText: {
+    marginTop: 20
   } as ViewStyle
 });
 
-const LoginScreen: React.FC<any> & NavigationScreenComponent<any> = ({
+interface Props {
+  navigation: NavigationScreenProp<any>;
+}
+interface Params {}
+
+const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
   navigation
 }) => {
-  const statusBarColor = tinyColor(Colors.primary).darken(5);
   return (
     <Container style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={statusBarColor} />
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
@@ -64,10 +74,7 @@ const LoginScreen: React.FC<any> & NavigationScreenComponent<any> = ({
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding
-              style={styles.headerLanding}
-              title={'Iniciar sesión'}
-            />
+            <HeaderLanding style={styles.headerLanding} />
             <View style={styles.form}>
               <TextInput
                 placeholder={'Usuario'}
@@ -87,7 +94,7 @@ const LoginScreen: React.FC<any> & NavigationScreenComponent<any> = ({
                 typeColor={'primaryLight'}
                 title={'Iniciar sesión'}
               />
-              <SplitText style={{ marginTop: 20 }} title={'o'} />
+              <SplitText style={styles.splitText} title={'o'} />
               <Button
                 style={styles.button}
                 typeColor={'accentDark'}

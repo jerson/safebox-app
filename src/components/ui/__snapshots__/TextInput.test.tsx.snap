@@ -50,7 +50,7 @@ exports[`render just views 1`] = `
       style={
         Array [
           Object {
-            "backgroundColor": "#fafdff",
+            "backgroundColor": "#FFFFFF",
             "borderColor": "#f2f4f9",
             "borderRadius": 10,
             "borderWidth": 1,
@@ -70,7 +70,7 @@ exports[`render just views 1`] = `
           false,
           false,
           Object {
-            "paddingRight": 30,
+            "paddingRight": 40,
           },
           undefined,
         ]
@@ -83,7 +83,7 @@ exports[`render just views 1`] = `
         Array [
           Object {
             "position": "absolute",
-            "right": -30,
+            "right": -40,
           },
           undefined,
         ]

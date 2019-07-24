@@ -20,15 +20,16 @@ const styles = StyleSheet.create({
   } as ImageStyle,
   logoContent: {
     backgroundColor: Colors.grey6,
-    borderRadius: 24,
-    elevation: 3,
-    alignSelf: 'center'
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: Colors.accent,
+    alignSelf: 'center',
+    overflow: 'hidden'
   } as ViewStyle,
   logoContainer: {} as ViewStyle,
   header: {
     overflow: 'visible',
     alignItems: 'center',
-    backgroundColor: Colors.primary,
     justifyContent: 'center'
   } as ViewStyle,
   shadow: {
@@ -49,16 +50,18 @@ const styles = StyleSheet.create({
 });
 
 export interface HeaderLandingProps {
-  title?: string;
   subtitle?: string;
   shadow?: boolean;
   style?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
+  subtitleStyle?: StyleProp<TextStyle>;
 }
 const HeaderLanding: React.FC<HeaderLandingProps> = ({
   style,
   subtitle,
-  shadow,
-  title
+  titleStyle,
+  subtitleStyle,
+  shadow
 }) => {
   return (
     <View style={[styles.header, shadow && styles.shadow, style]}>
@@ -67,16 +70,17 @@ const HeaderLanding: React.FC<HeaderLandingProps> = ({
           <Image
             style={styles.logo}
             resizeMode={'center'}
+            resizeMethod={'scale'}
             source={require('../../assets/images/logo.png')}
           />
         </View>
       </View>
 
-      <Text style={styles.name}>
+      <Text style={[styles.name, titleStyle]}>
         Safe
         <Text weight={'Bold'}>Box</Text>
       </Text>
-      <Text weight={'Light'} style={styles.subtitle}>
+      <Text weight={'Light'} style={[styles.subtitle, subtitleStyle]}>
         {subtitle}
       </Text>
     </View>
