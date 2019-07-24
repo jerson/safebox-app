@@ -31,7 +31,7 @@ exports[`render just views 1`] = `
       Array [
         Object {
           "height": 21,
-          "tintColor": "#AAB2BD",
+          "tintColor": "#d2def1",
           "width": 21,
         },
         undefined,

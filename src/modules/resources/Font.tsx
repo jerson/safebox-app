@@ -1,13 +1,15 @@
 import { Platform } from 'react-native';
 
 const font: any = {
-  Lato: {
+  Nunito: {
     weights: {
+      ExtraBold: '900',
       Black: '800',
       Bold: '700',
       Regular: '400',
+      SemiBold: '600',
       Light: '300',
-      Thin: '300'
+      ExtraLight: '200'
     },
     styles: {
       Italic: 'italic'
@@ -21,9 +23,16 @@ export interface FontStyle {
   fontStyle?: string;
 }
 
-export type FontWeight = 'Regular' | 'Black' | 'Bold' | 'Light' | 'Thin';
+export type FontWeight =
+  | 'Regular'
+  | 'ExtraBold'
+  | 'SemiBold'
+  | 'Black'
+  | 'Bold'
+  | 'Light'
+  | 'ExtraLight';
 
-export type FontFamily = 'Lato';
+export type FontFamily = 'Nunito';
 export type FontTypeStyle = 'Italic';
 
 export interface FontProps {
@@ -36,19 +45,14 @@ export interface FontProps {
    */
   style?: FontTypeStyle | '';
   /**
-   * `Lato` no está aquí porque es el valor por defecto
+   * `Nunito` no está aquí porque es el valor por defecto
    */
   family?: FontFamily;
 }
 
 export default (options: FontProps = {}): FontStyle => {
-  const finalOptions = {
-    weight: 'Regular',
-    family: 'Lato',
-    ...options
-  };
-  const { family } = finalOptions;
-  let { weight, style } = finalOptions;
+  const { family = 'Nunito' } = options;
+  let { weight = 'Regular', style } = options;
 
   if (!family || !font[family]) {
     return {};
