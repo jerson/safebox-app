@@ -88,7 +88,7 @@ const HeaderLanding: React.FC<HeaderLandingProps> = ({
 };
 
 HeaderLanding.defaultProps = {
-  subtitle: 'Tus datos siempre seguros',
+  subtitle: 'passwords always safe',
   shadow: false
 };
 

@@ -24,6 +24,7 @@ import Log from '../../modules/log/Log';
 import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
 import Config from '../../Config';
 import Session from '../../services/Session';
+import Strings from '../../modules/format/Strings';
 
 const styles = StyleSheet.create({
   container: {
@@ -89,7 +90,8 @@ const RegisterScreen: React.FC & NavigationScreenComponent<any> = () => {
       Session.login(response.getAccesstoken());
       Log.info(TAG, 'submit', response.getAccesstoken());
     } catch (e) {
-      Alert.alert('Ha ocurrido un error', e.message);
+      const message = Strings.getError(e);
+      Alert.alert('Something happen', message);
     }
   };
   const tryToSubmit = () => {
@@ -123,20 +125,20 @@ const RegisterScreen: React.FC & NavigationScreenComponent<any> = () => {
             />
             <View style={styles.form}>
               <TextInput
-                placeholder={'Usuario'}
+                placeholder={'Username'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 {...usernameProps}
               />
               <TextInput
-                placeholder={'Contraseña'}
+                placeholder={'Password'}
                 secureTextEntry
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 {...passwordProps}
               />
               <TextInput
-                placeholder={'Repite tu contraseña'}
+                placeholder={'Repeat password'}
                 secureTextEntry
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -147,7 +149,7 @@ const RegisterScreen: React.FC & NavigationScreenComponent<any> = () => {
                 loading={isLoading}
                 style={styles.button}
                 typeColor={'primaryLight'}
-                title={'Registrate'}
+                title={'Create account'}
                 onPress={tryToSubmit}
               />
             </View>

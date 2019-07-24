@@ -77,12 +77,12 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
             <HeaderLanding style={styles.headerLanding} />
             <View style={styles.form}>
               <TextInput
-                placeholder={'Usuario'}
+                placeholder={'Username'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
               />
               <TextInput
-                placeholder={'Contraseña'}
+                placeholder={'Password'}
                 secureTextEntry
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -92,13 +92,13 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
                 loading
                 style={styles.button}
                 typeColor={'primaryLight'}
-                title={'Iniciar sesión'}
+                title={'Sign In'}
               />
-              <SplitText style={styles.splitText} title={'o'} />
+              <SplitText style={styles.splitText} title={'or'} />
               <Button
                 style={styles.button}
                 typeColor={'accentDark'}
-                title={'Crear cuenta'}
+                title={'Create account'}
                 onPress={() => {
                   navigation.navigate('Register');
                 }}
