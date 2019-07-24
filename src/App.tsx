@@ -4,7 +4,7 @@ import MainNavigator from './router';
 import Colors from './modules/constants/Colors';
 const tinyColor = require('tinycolor2');
 
-const App: React.FC = () => {
+function App() {
   const statusBarColor = tinyColor(Colors.primary).darken(5);
   return (
     <Fragment>
@@ -12,6 +12,6 @@ const App: React.FC = () => {
       <MainNavigator />
     </Fragment>
   );
-};
+}
 
 export default App;

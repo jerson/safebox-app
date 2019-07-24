@@ -20,16 +20,10 @@ export interface TextProps extends TextBaseProps {
   textStyle?: FontTypeStyle;
   family?: FontFamily;
   size?: number;
+  children: string | React.ReactNode;
 }
 
-const Text: React.FC<TextProps> = ({
-  style,
-  weight,
-  textStyle,
-  family,
-  size,
-  ...props
-}) => {
+function Text({ style, weight, textStyle, family, size, ...props }: TextProps) {
   const customStyle = {
     fontSize: size,
     ...Font({
@@ -39,6 +33,6 @@ const Text: React.FC<TextProps> = ({
     })
   } as TextStyle;
   return <TextBase style={[customStyle, styles.text, style]} {...props} />;
-};
+}
 
 export default Text;

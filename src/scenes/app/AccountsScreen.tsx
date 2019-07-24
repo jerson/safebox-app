@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
 import Colors from '../../modules/constants/Colors';
-import { NavigationScreenComponent } from 'react-navigation';
 import Text from '../../components/ui/Text';
 
 const styles = StyleSheet.create({
@@ -11,7 +10,7 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-const AccountsScreen: React.FC & NavigationScreenComponent<any> = () => {
+function AccountsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -19,7 +18,7 @@ const AccountsScreen: React.FC & NavigationScreenComponent<any> = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 AccountsScreen.navigationOptions = {
   title: 'Tus cuentas'

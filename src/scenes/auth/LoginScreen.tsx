@@ -1,10 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { StyleSheet, View, ViewStyle, ScrollView, Alert } from 'react-native';
-import {
-  SafeAreaView,
-  NavigationScreenComponent,
-  NavigationScreenProp
-} from 'react-navigation';
+import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput from '../../components/ui/TextInput';
@@ -53,14 +49,12 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Props {
-  navigation: NavigationScreenProp<any>;
-}
 interface Params {}
+interface Props {
+  navigation: NavigationScreenProp<Params>;
+}
 
-const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
-  navigation
-}) => {
+function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
 
   const usernameRef = useRef(null);
@@ -168,7 +162,7 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       </ScrollView>
     </Container>
   );
-};
+}
 
 LoginScreen.navigationOptions = {
   headerLeft: null,

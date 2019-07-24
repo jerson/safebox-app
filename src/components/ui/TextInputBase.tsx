@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   InteractionManager,
   MeasureLayoutOnSuccessCallback,
@@ -6,18 +6,18 @@ import {
   TextInput,
   TextInputFocusEventData,
   TextInputProps as BaseTextInputProps
-} from "react-native";
+} from 'react-native';
 
-import Colors from "../../modules/constants/Colors";
-import Log from "../../modules/log/Log";
+import Colors from '../../modules/constants/Colors';
+import Log from '../../modules/log/Log';
 
-const TAG = "[TextInputBase]";
+const TAG = '[TextInputBase]';
 
 export interface TextInputBaseProps extends BaseTextInputProps {
   onError?: (error: string) => void;
   onEmptyState?: (isEmpty: boolean) => void;
   onFormatValue?: (value: string) => string;
-  focusMode?: "none" | "top" | "bottom" | "center";
+  focusMode?: 'none' | 'top' | 'bottom' | 'center';
   focusOffset?: number;
 }
 
@@ -32,7 +32,7 @@ export default class TextInputBase extends React.Component<
   static defaultProps = {};
 
   state: TextInputBaseState = {
-    value: ""
+    value: ''
   };
   private interaction: any;
   private input!: TextInput | null;
@@ -46,18 +46,18 @@ export default class TextInputBase extends React.Component<
       return;
     }
 
-    Log.silent(TAG, "onChangeText", value);
+    Log.silent(TAG, 'onChangeText', value);
     const { onError, onChangeText, onEmptyState, onFormatValue } = this.props;
     const isEmpty = !value;
-    const error = "";
+    const error = '';
 
-    if (typeof onFormatValue === "function") {
+    if (typeof onFormatValue === 'function') {
       value = onFormatValue(value);
     }
 
-    typeof onEmptyState === "function" && onEmptyState(isEmpty);
-    typeof onChangeText === "function" && onChangeText(value);
-    typeof onError === "function" && onError(error);
+    typeof onEmptyState === 'function' && onEmptyState(isEmpty);
+    typeof onChangeText === 'function' && onChangeText(value);
+    typeof onError === 'function' && onError(error);
 
     this.setState(() => ({ value }));
   };
@@ -77,20 +77,20 @@ export default class TextInputBase extends React.Component<
     if (!editable) {
       return;
     }
-    Log.debug(TAG, "focus", "ok");
+    Log.debug(TAG, 'focus', 'ok');
     this.interaction && this.interaction.cancel();
     this.interaction = InteractionManager.runAfterInteractions(() => {
       this.input && this.input.focus();
     });
   };
   getFocusMode = (): string => {
-    return this.props.focusMode || "";
+    return this.props.focusMode || '';
   };
   getFocusOffset = (): number => {
     return this.props.focusOffset || 0;
   };
   blur = () => {
-    Log.debug(TAG, "blur", "ok");
+    Log.debug(TAG, 'blur', 'ok');
     this.input && this.input.blur();
   };
   measureLayout = (
@@ -102,7 +102,7 @@ export default class TextInputBase extends React.Component<
       this.input.measureLayout(
         relativeToNativeNode,
         onSuccess,
-        typeof onFail === "function"
+        typeof onFail === 'function'
           ? onFail
           : () => {
               return;
@@ -112,16 +112,16 @@ export default class TextInputBase extends React.Component<
   onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     const { onFocus } = this.props;
 
-    Log.debug(TAG, "onFocus", "ok");
+    Log.debug(TAG, 'onFocus', 'ok');
 
-    typeof onFocus === "function" && onFocus(e);
+    typeof onFocus === 'function' && onFocus(e);
   };
   onBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     const { onBlur } = this.props;
 
-    Log.debug(TAG, "onBlur", "ok");
+    Log.debug(TAG, 'onBlur', 'ok');
 
-    typeof onBlur === "function" && onBlur(e);
+    typeof onBlur === 'function' && onBlur(e);
   };
 
   componentDidMount() {
@@ -144,7 +144,7 @@ export default class TextInputBase extends React.Component<
     const { value } = this.state;
     return (
       <TextInput
-        underlineColorAndroid={"transparent"}
+        underlineColorAndroid={'transparent'}
         placeholderTextColor={Colors.grey5}
         value={value}
         {...props}
@@ -157,4 +157,16 @@ export default class TextInputBase extends React.Component<
       />
     );
   }
-}
+} /*
+
+const TextInputBase: React.FC<TextInputBaseProps> = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text>sample</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default TextInputBase*/
