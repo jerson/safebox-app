@@ -32,11 +32,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.grey6,
     fontSize: 18,
-    lineHeight: 20,
-    marginTop: 4
+    marginBottom: 2
   } as TextStyle,
   centerContainer: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center'
   } as ViewStyle,
   leftContainer: {
     width: 60

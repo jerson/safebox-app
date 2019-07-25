@@ -33,9 +33,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.grey6,
     fontSize: 18,
-    lineHeight: 20,
-    marginTop: 4,
-    marginLeft: 10
+    marginLeft: 10,
+    marginBottom: 2
   } as TextStyle,
   centerContainer: {
     flex: 1,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,6 +17,7 @@ import { useNavigationParam } from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
 import Header from '../../components/account/Header';
 import useIconTintLabel from '../../components/hooks/useIconTintLabel';
+import Session from '../../services/Session';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
 
 function AccountScreen() {
   const account = useNavigationParam('account') as AccountSingle;
+  const [hasPassword] = useState(!!Session.getPassword());
 
   return (
     <Container style={styles.container}>
@@ -54,9 +56,16 @@ function AccountScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <View style={styles.form}>
-              <Text>{account.getId()}</Text>
-            </View>
+            {hasPassword && (
+              <View style={styles.form}>
+                <Text>{account.getId()}dd</Text>
+              </View>
+            )}
+            {!hasPassword && (
+              <View style={styles.form}>
+                <Text>insert admin pass</Text>
+              </View>
+            )}
           </Content>
         </SafeAreaView>
       </ScrollView>
