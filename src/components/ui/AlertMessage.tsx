@@ -44,7 +44,7 @@ function AlertMessage(props: AlertMessageProps) {
       onPress={onPress}
       {...extraProps}
     >
-      <Icon style={styles.icon} name={'alert-octagon'} />
+      <Icon style={styles.icon} name={'alert-circle'} />
       <View style={styles.content}>
         <Text style={styles.text}>{message}</Text>
       </View>

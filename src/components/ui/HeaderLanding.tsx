@@ -86,7 +86,7 @@ function HeaderLanding({
 }
 
 HeaderLanding.defaultProps = {
-  subtitle: 'passwords always safe',
+  subtitle: 'secrets always safe',
   shadow: false
 };
 

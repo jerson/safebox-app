@@ -20,14 +20,27 @@ exports[`render just views 1`] = `
     }
   }
 >
-  <Image
-    source={5}
+  <Text
+    allowFontScaling={false}
     style={
-      Object {
-        "height": 20,
-        "width": 20,
-      }
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 12,
+        },
+        Object {
+          "fontSize": 20,
+        },
+        Object {
+          "fontFamily": "Feather",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
     }
-  />
+  >
+    ?
+  </Text>
 </_class>
 `;

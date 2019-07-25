@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import {
-  ImageStyle,
   StyleProp,
   StyleSheet,
   TextStyle,
@@ -8,7 +7,6 @@ import {
   ViewStyle,
   TextInput as TextInputOriginal
 } from 'react-native';
-import ButtonImage from './ButtonImage';
 import TextError from './TextError';
 import TextInputBase, {
   TextInputBaseProps,
@@ -18,6 +16,7 @@ import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 import Text from './Text';
 import Icon from 'react-native-vector-icons/Feather';
+import ButtonIcon from './ButtonIcon';
 
 const Sizes = {
   ClearButtonWidth: 40,
@@ -114,10 +113,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   } as ViewStyle,
   clearButtonIcon: {
-    width: 18,
-    height: 18,
-    tintColor: Colors.accentDark
-  } as ImageStyle
+    fontSize: 22,
+    color: Colors.accentDark
+  } as TextStyle
 });
 
 export interface TextInputProps extends TextInputBaseProps {
@@ -286,10 +284,10 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
           </View>
         )}
         {showClearButton && !isEmpty && (
-          <ButtonImage
+          <ButtonIcon
             onPress={onClearAll}
-            imageSource={require('../../assets/images/clear-input-icon.png')}
-            imageStyle={styles.clearButtonIcon}
+            name={'x'}
+            iconStyle={styles.clearButtonIcon}
             style={styles.clearButton}
           />
         )}

@@ -148,7 +148,7 @@ function LoginScreen({ navigation }: Props) {
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={passwordRef}
-                onSubmitEditing={tryToSubmit}
+                blurOnSubmit
                 {...passwordProps}
               />
 

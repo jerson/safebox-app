@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
@@ -22,9 +21,8 @@ import Config from '../../Config';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
-import ButtonLink from '../../components/ui/ButtonLink';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
-import HeaderIcon from '../../components/navigation/HeaderIcon';
+import SplitText from '../../components/ui/SplitText';
 
 const styles = StyleSheet.create({
   container: {
@@ -52,8 +50,8 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20
   } as ViewStyle,
-  buttonLink: {
-    marginTop: 40
+  splitView: {
+    marginTop: 20
   } as ViewStyle
 });
 
@@ -62,7 +60,7 @@ interface Props {
   navigation: NavigationScreenProp<Params>;
 }
 
-function AccountsScreen({ navigation }: Props) {
+function AddAccountScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -127,10 +125,6 @@ function AccountsScreen({ navigation }: Props) {
     });
   };
 
-  const goToLogin = () => {
-    navigation.goBack();
-  };
-
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -147,13 +141,24 @@ function AccountsScreen({ navigation }: Props) {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
             <View style={styles.form}>
               {!!error && <AlertMessage message={error} />}
+              <TextInput
+                icon={'tag'}
+                placeholder={'Label'}
+                keyboardType={'default'}
+                autoCapitalize={'none'}
+                autoCorrect={false}
+                autoCompleteType={'off'}
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={usernameRef}
+                onSubmitEditing={() => {
+                  passwordRef.current && passwordRef.current.focus();
+                }}
+                {...usernameProps}
+              />
               <TextInput
                 icon={'user'}
                 placeholder={'Username'}
@@ -169,6 +174,11 @@ function AccountsScreen({ navigation }: Props) {
                   passwordRef.current && passwordRef.current.focus();
                 }}
                 {...usernameProps}
+              />
+              <SplitText
+                type={'Default'}
+                style={styles.splitView}
+                title={'Secret account'}
               />
               <TextInput
                 icon={'lock'}
@@ -203,19 +213,29 @@ function AccountsScreen({ navigation }: Props) {
                 blurOnSubmit
                 {...repeatPasswordProps}
               />
+              <TextInput
+                icon={'feather'}
+                placeholder={'Hint'}
+                keyboardType={'default'}
+                autoCapitalize={'none'}
+                autoCorrect={false}
+                autoCompleteType={'off'}
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={usernameRef}
+                onSubmitEditing={() => {
+                  passwordRef.current && passwordRef.current.focus();
+                }}
+                {...usernameProps}
+              />
 
               <Button
                 isLoading={isLoading}
                 style={styles.button}
                 typeColor={'primaryLight'}
-                title={'Create account'}
+                title={'Add secret'}
                 onPress={tryToSubmit}
-              />
-
-              <ButtonLink
-                style={styles.buttonLink}
-                title={'Back to Sign In'}
-                onPress={goToLogin}
               />
             </View>
           </Content>
@@ -225,18 +245,8 @@ function AccountsScreen({ navigation }: Props) {
   );
 }
 
-AccountsScreen.navigationOptions = ({ navigation }: Props) => ({
-  title: 'SafeBox',
-  headerLeft: null,
-  headerRight: (
-    <HeaderIcon
-      name={'plus-circle'}
-      style={{ color: Colors.primaryLight }}
-      onPress={() => {
-        navigation.navigate('AddAccount');
-      }}
-    />
-  )
+AddAccountScreen.navigationOptions = () => ({
+  title: 'Add secret'
 });
 
-export default AccountsScreen;
+export default AddAccountScreen;

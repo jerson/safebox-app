@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     height,
     paddingTop,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.grey1,
     flexDirection: 'row',
     alignItems: 'center'
   } as ViewStyle,
@@ -25,9 +25,6 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowColor: Colors.black,
     shadowOffset: { height: 2, width: 0 },
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
-    elevation: 4,
     overflow: 'visible'
   } as ViewStyle,
   title: {

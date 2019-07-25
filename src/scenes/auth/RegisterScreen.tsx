@@ -199,7 +199,7 @@ function RegisterScreen({ navigation }: Props) {
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={repeatPasswordRef}
-                onSubmitEditing={tryToSubmit}
+                blurOnSubmit
                 {...repeatPasswordProps}
               />
 
