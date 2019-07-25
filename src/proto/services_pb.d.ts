@@ -32,6 +32,46 @@ export namespace PingResponse {
   }
 }
 
+export class RefreshTokenRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RefreshTokenRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RefreshTokenRequest): RefreshTokenRequest.AsObject;
+  static serializeBinaryToWriter(message: RefreshTokenRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RefreshTokenRequest;
+  static deserializeBinaryFromReader(message: RefreshTokenRequest, reader: jspb.BinaryReader): RefreshTokenRequest;
+}
+
+export namespace RefreshTokenRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class KeyPairResponse extends jspb.Message {
+  getPublickey(): string;
+  setPublickey(value: string): void;
+
+  getPrivatekey(): string;
+  setPrivatekey(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): KeyPairResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: KeyPairResponse): KeyPairResponse.AsObject;
+  static serializeBinaryToWriter(message: KeyPairResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): KeyPairResponse;
+  static deserializeBinaryFromReader(message: KeyPairResponse, reader: jspb.BinaryReader): KeyPairResponse;
+}
+
+export namespace KeyPairResponse {
+  export type AsObject = {
+    publickey: string,
+    privatekey: string,
+  }
+}
+
 export class LogoutRequest extends jspb.Message {
   getAccesstoken(): string;
   setAccesstoken(value: string): void;
@@ -64,6 +104,28 @@ export namespace LogoutResponse {
   }
 }
 
+export class LoginBiometricRequest extends jspb.Message {
+  getUsername(): string;
+  setUsername(value: string): void;
+
+  getBiometrickey(): string;
+  setBiometrickey(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LoginBiometricRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LoginBiometricRequest): LoginBiometricRequest.AsObject;
+  static serializeBinaryToWriter(message: LoginBiometricRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LoginBiometricRequest;
+  static deserializeBinaryFromReader(message: LoginBiometricRequest, reader: jspb.BinaryReader): LoginBiometricRequest;
+}
+
+export namespace LoginBiometricRequest {
+  export type AsObject = {
+    username: string,
+    biometrickey: string,
+  }
+}
+
 export class LoginRequest extends jspb.Message {
   getUsername(): string;
   setUsername(value: string): void;
@@ -83,24 +145,6 @@ export namespace LoginRequest {
   export type AsObject = {
     username: string,
     password: string,
-  }
-}
-
-export class LoginResponse extends jspb.Message {
-  getAccesstoken(): string;
-  setAccesstoken(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LoginResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: LoginResponse): LoginResponse.AsObject;
-  static serializeBinaryToWriter(message: LoginResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LoginResponse;
-  static deserializeBinaryFromReader(message: LoginResponse, reader: jspb.BinaryReader): LoginResponse;
-}
-
-export namespace LoginResponse {
-  export type AsObject = {
-    accesstoken: string,
   }
 }
 
@@ -130,25 +174,31 @@ export namespace RegisterRequest {
   }
 }
 
-export class RegisterResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
+export class AuthResponse extends jspb.Message {
   getAccesstoken(): string;
   setAccesstoken(value: string): void;
 
+  getDateexpire(): string;
+  setDateexpire(value: string): void;
+
+  getKeypair(): KeyPairResponse | undefined;
+  setKeypair(value?: KeyPairResponse): void;
+  hasKeypair(): boolean;
+  clearKeypair(): void;
+
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): RegisterResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: RegisterResponse): RegisterResponse.AsObject;
-  static serializeBinaryToWriter(message: RegisterResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): RegisterResponse;
-  static deserializeBinaryFromReader(message: RegisterResponse, reader: jspb.BinaryReader): RegisterResponse;
+  toObject(includeInstance?: boolean): AuthResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: AuthResponse): AuthResponse.AsObject;
+  static serializeBinaryToWriter(message: AuthResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AuthResponse;
+  static deserializeBinaryFromReader(message: AuthResponse, reader: jspb.BinaryReader): AuthResponse;
 }
 
-export namespace RegisterResponse {
+export namespace AuthResponse {
   export type AsObject = {
-    success: boolean,
     accesstoken: string,
+    dateexpire: string,
+    keypair?: KeyPairResponse.AsObject,
   }
 }
 

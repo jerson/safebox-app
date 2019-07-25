@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import Touchable, { TouchableProps } from './Touchable';
 import Colors from '../../modules/constants/Colors';
@@ -44,7 +44,7 @@ function AlertMessage(props: AlertMessageProps) {
       onPress={onPress}
       {...extraProps}
     >
-      <Icon style={styles.icon} name={'alert-octagon'} />
+      <Icon style={styles.icon} name={'alert-circle'} />
       <View style={styles.content}>
         <Text style={styles.text}>{message}</Text>
       </View>

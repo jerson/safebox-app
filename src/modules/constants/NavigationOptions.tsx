@@ -5,9 +5,9 @@ import {
   StackNavigatorConfig,
   HeaderProps
 } from 'react-navigation';
-import BackIcon from '../../components/navigation/BackIcon';
 import Header from '../../components/navigation/Header';
 import { View, Easing, Animated } from 'react-native';
+import HeaderIcon from '../../components/navigation/HeaderIcon';
 
 const transitionConfigSlide = () => {
   return {
@@ -60,14 +60,10 @@ const header: StackNavigatorConfig = {
   }: NavigationScreenProps<any>): NavigationStackScreenOptions => ({
     title: '',
     headerLeft: (
-      <BackIcon
+      <HeaderIcon
+        name={'arrow-left'}
         onPress={() => {
-          const prevScreen = navigation.getParam('prevScreen');
-          if (prevScreen) {
-            navigation.navigate(prevScreen);
-          } else {
-            navigation.goBack();
-          }
+          navigation.goBack();
         }}
       />
     ),

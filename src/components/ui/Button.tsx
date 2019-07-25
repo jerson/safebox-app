@@ -1,9 +1,6 @@
 import React from 'react';
 import {
   GestureResponderEvent,
-  Image,
-  ImageSourcePropType,
-  ImageStyle,
   StyleProp,
   StyleSheet,
   TextStyle,
@@ -14,6 +11,7 @@ import Touchable, { TouchableProps } from './Touchable';
 import Colors from '../../modules/constants/Colors';
 import Loading from './Loading';
 import Text from './Text';
+import Icon from 'react-native-vector-icons/Feather';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,9 +32,10 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   icon: {
     fontSize: 14,
+    top: 3,
     color: Colors.white,
     marginRight: 4
-  } as ImageStyle,
+  } as TextStyle,
   title: {
     textAlign: 'center',
     color: Colors.white,
@@ -106,8 +105,8 @@ export interface ButtonProps extends TouchableProps {
    */
   title?: string;
   textStyle?: StyleProp<TextStyle>;
-  imageSource?: ImageSourcePropType;
-  imageStyle?: StyleProp<ImageStyle>;
+  icon?: string;
+  iconStyle?: StyleProp<TextStyle>;
   light?: boolean;
   small?: boolean;
   typeColor?:
@@ -125,8 +124,8 @@ function Button(props: ButtonProps) {
     disabled,
     title,
     textStyle,
-    imageSource,
-    imageStyle,
+    icon,
+    iconStyle,
     isLoading,
     onPress,
     light,
@@ -199,8 +198,8 @@ function Button(props: ButtonProps) {
       {...extraProps}
       onPress={onPress ? onPressCallback : undefined}
     >
-      {imageSource && !isLoading && (
-        <Image style={[styles.icon, imageStyle]} source={imageSource} />
+      {!!icon && !isLoading && (
+        <Icon style={[styles.icon, iconStyle]} name={icon} />
       )}
       {isLoading && (
         <View

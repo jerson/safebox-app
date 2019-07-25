@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 
-const useTextInput = (initialValue: string) => {
+function useTextInput(
+  initialValue: string
+): [string, any, Dispatch<SetStateAction<string>>] {
   const [value, setValue] = useState(initialValue);
 
   const onChangeText = (text: string) => {
@@ -8,5 +10,5 @@ const useTextInput = (initialValue: string) => {
   };
 
   return [value, { onChangeText }, setValue];
-};
+}
 export default useTextInput;

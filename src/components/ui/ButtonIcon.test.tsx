@@ -1,25 +1,25 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import ButtonImage, { ButtonImageProps } from './ButtonImage';
+import ButtonIcon, { ButtonIconProps } from './ButtonIcon';
 
-const props: ButtonImageProps = {
-  imageStyle: { width: 20, height: 20 },
+const props: ButtonIconProps = {
+  iconStyle: { fontSize: 20 },
   style: {
     width: 30,
     height: 30,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  imageSource: 5,
+  name: 'plus-circle',
   onPress: jest.fn()
 };
 
 it('renders without crashing', () => {
-  const snapshot = renderer.create(<ButtonImage {...props} />).toJSON();
+  const snapshot = renderer.create(<ButtonIcon {...props} />).toJSON();
   expect(snapshot).toBeTruthy();
 });
 
 it('render just views', () => {
-  const snapshot = renderer.create(<ButtonImage {...props} />).toJSON();
+  const snapshot = renderer.create(<ButtonIcon {...props} />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });
