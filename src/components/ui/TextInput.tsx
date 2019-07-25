@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Image,
   ImageSourcePropType,
@@ -8,11 +8,15 @@ import {
   Text,
   TextStyle,
   View,
-  ViewStyle
+  ViewStyle,
+  TextInput as TextInputOriginal
 } from 'react-native';
 import ButtonImage from './ButtonImage';
 import TextError from './TextError';
-import TextInputBase, { TextInputBaseProps } from './TextInputBase';
+import TextInputBase, {
+  TextInputBaseProps,
+  TextInputBaseRef
+} from './TextInputBase';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 
@@ -133,181 +137,184 @@ export interface TextInputProps extends TextInputBaseProps {
   showClearButton?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
+  children?: React.ReactNode | React.ReactNode[];
 }
 
-export interface TextInputState {
-  isFocused: boolean;
-  isEmpty: boolean;
-  errorMessage?: string | React.ReactNode;
+export interface TextInputRef {
+  setValue: (value: string) => void;
+  getValue: () => string;
+  getFormatValue: () => string;
+  isValid: () => boolean;
+  setError: (errorMessage?: string | React.ReactNode) => void;
+  clearError: () => void;
+  getInputRef: () => React.RefObject<TextInputOriginal>;
+  focus: () => void;
+  blur: () => void;
 }
 
-export default class TextInput extends React.Component<
-  TextInputProps,
-  TextInputState
-> {
-  static defaultProps = {
-    editable: true,
-    showClearButton: true
-  };
-  state: TextInputState = {
-    isFocused: false,
-    isEmpty: true,
-    errorMessage: ''
-  };
-  input!: TextInputBase | null;
+function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
+  const {
+    style,
+    children,
+    help,
+    containerStyle,
+    containerInputStyle,
+    imageSource,
+    rightContainer,
+    rightContainerStyle,
+    showClearButton,
+    label,
+    labelContainer,
+    labelContainerStyle,
+    textErrorStyle,
+    onBlur,
+    onFocus,
+    ...extraProps
+  } = props;
 
-  setValue = (value: string) => {
-    this.input && this.input.setValue(value);
+  const inputRef = useRef<TextInputBaseRef>(null);
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [errorMessage, setErrorMessage] = useState<string | React.ReactNode>(
+    ''
+  );
+
+  React.useImperativeHandle(ref, () => ({
+    setValue: (value: string) => {
+      inputRef.current && inputRef.current.setValue(value);
+    },
+    getValue: () => {
+      if (!inputRef.current) {
+        return '';
+      }
+      return inputRef.current.getValue();
+    },
+    getFormatValue: () => {
+      if (!inputRef.current) {
+        return '';
+      }
+      return inputRef.current.getFormatValue();
+    },
+    isValid: () => {
+      if (!inputRef.current) {
+        return false;
+      }
+      return inputRef.current.isValid();
+    },
+    setError: (errorMessage?: string | React.ReactNode) => {
+      setErrorMessage(errorMessage);
+    },
+    clearError: () => {
+      setErrorMessage(undefined);
+    },
+    getInputRef: () => {
+      if (!inputRef.current) {
+        return { current: null };
+      }
+      return inputRef.current && inputRef.current.getInputRef();
+    },
+    focus,
+    blur
+  }));
+
+  const onClearAll = () => {
+    inputRef.current && inputRef.current.setValue('');
+    focus();
   };
 
-  onEmptyState = (isEmpty: boolean) => {
-    this.setState({ isEmpty });
+  const focus = () => {
+    inputRef.current && inputRef.current.focus();
   };
-  getFormatValue = () => {
-    if (!this.input) {
-      return;
-    }
-    return this.input.getFormatValue();
-  };
-  getValue = () => {
-    if (!this.input) {
-      return '';
-    }
-    return this.input.getValue();
-  };
-  isValid = () => {
-    if (!this.input) {
-      return false;
-    }
-    return this.input.isValid();
-  };
-  setError = (errorMessage?: string | React.ReactNode) => {
-    this.setState({ errorMessage });
-  };
-  clearError = () => {
-    this.setError(undefined);
+  const blur = () => {
+    inputRef.current && inputRef.current.blur();
   };
 
-  onClearAll = () => {
-    this.input && this.input.setValue('');
-    this.focus();
-  };
-
-  getInputRef = () => {
-    return this.input;
-  };
-  focus = () => {
-    this.input && this.input.focus();
-  };
-  blur = () => {
-    this.input && this.input.blur();
-  };
-  onFocus = () => {
-    const { onFocus } = this.props;
-    this.setState({ isFocused: true });
+  const onFocusCallback = () => {
+    setIsFocused(true);
     typeof onFocus === 'function' && onFocus();
   };
 
-  onBlur = () => {
-    const { onBlur } = this.props;
-    this.setState({ isFocused: false });
+  const onBlurCallback = () => {
+    setIsFocused(false);
     typeof onBlur === 'function' && onBlur();
   };
 
-  onError = (message?: string) => {
-    this.setError(message);
-  };
-
-  render() {
-    const { errorMessage, isEmpty, isFocused } = this.state;
-    const {
-      style,
-      children,
-      help,
-      containerStyle,
-      containerInputStyle,
-      imageSource,
-      rightContainer,
-      rightContainerStyle,
-      showClearButton,
-      label,
-      labelContainer,
-      labelContainerStyle,
-      textErrorStyle,
-      ...props
-    } = this.props;
-
-    const isInvalid = !!errorMessage;
-    return (
-      <View style={[styles.container, containerStyle]}>
-        <View style={[styles.labelContainer, labelContainerStyle]}>
-          {!!label && (
-            <Text
-              style={[
-                styles.labelText,
-                isInvalid && styles.labelErrorText,
-                isFocused && styles.labelFocusText
-              ]}
-            >
-              {label}
-            </Text>
-          )}
-          {labelContainer}
-        </View>
-        <View style={[styles.content, containerInputStyle]}>
-          <TextInputBase
-            selectionColor={Colors.secondary}
-            {...props}
+  const isInvalid = !!errorMessage;
+  return (
+    <View style={[styles.container, containerStyle]}>
+      <View style={[styles.labelContainer, labelContainerStyle]}>
+        {!!label && (
+          <Text
             style={[
-              styles.input,
-              !!imageSource && styles.inputImage,
-              isInvalid && styles.inputError,
-              isFocused && styles.inputFocus,
-              showClearButton && styles.inputClearButton,
-              style
+              styles.labelText,
+              isInvalid && styles.labelErrorText,
+              isFocused && styles.labelFocusText
             ]}
-            onEmptyState={this.onEmptyState}
-            onError={this.onError}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
-            ref={ref => {
-              this.input = ref;
-            }}
-          />
-
-          {imageSource && (
-            <View style={styles.imageContainer}>
-              <Image
-                style={[
-                  styles.image,
-                  isInvalid && styles.imageError,
-                  isFocused && styles.imageFocus
-                ]}
-                resizeMode={'contain'}
-                source={imageSource}
-              />
-            </View>
-          )}
-          {showClearButton && !isEmpty && (
-            <ButtonImage
-              onPress={this.onClearAll}
-              imageSource={require('../../assets/images/clear-input-icon.png')}
-              imageStyle={styles.clearButtonIcon}
-              style={styles.clearButton}
-            />
-          )}
-          <View style={[styles.rightContainer, rightContainerStyle]}>
-            {rightContainer}
-          </View>
-        </View>
-        {children}
-        {!isInvalid && help}
-        {isInvalid && (
-          <TextError style={[styles.textErrorContainer, textErrorStyle]}>
-            {errorMessage}
-          </TextError>
+          >
+            {label}
+          </Text>
         )}
+        {labelContainer}
       </View>
-    );
-  }
+      <View style={[styles.content, containerInputStyle]}>
+        <TextInputBase
+          selectionColor={Colors.secondary}
+          {...extraProps}
+          style={[
+            styles.input,
+            !!imageSource && styles.inputImage,
+            isInvalid && styles.inputError,
+            isFocused && styles.inputFocus,
+            showClearButton && styles.inputClearButton,
+            style
+          ]}
+          onEmptyState={setIsEmpty}
+          onError={setErrorMessage}
+          onBlur={onBlurCallback}
+          onFocus={onFocusCallback}
+          ref={inputRef}
+        />
+
+        {imageSource && (
+          <View style={styles.imageContainer}>
+            <Image
+              style={[
+                styles.image,
+                isInvalid && styles.imageError,
+                isFocused && styles.imageFocus
+              ]}
+              resizeMode={'contain'}
+              source={imageSource}
+            />
+          </View>
+        )}
+        {showClearButton && !isEmpty && (
+          <ButtonImage
+            onPress={onClearAll}
+            imageSource={require('../../assets/images/clear-input-icon.png')}
+            imageStyle={styles.clearButtonIcon}
+            style={styles.clearButton}
+          />
+        )}
+        <View style={[styles.rightContainer, rightContainerStyle]}>
+          {rightContainer}
+        </View>
+      </View>
+      {children}
+      {!isInvalid && help}
+      {isInvalid && (
+        <TextError style={[styles.textErrorContainer, textErrorStyle]}>
+          {errorMessage}
+        </TextError>
+      )}
+    </View>
+  );
 }
+
+const TextInput = React.forwardRef(TextInputWrapper);
+TextInput.defaultProps = {
+  editable: true,
+  showClearButton: true
+};
+export default TextInput;

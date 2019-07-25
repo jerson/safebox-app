@@ -21,28 +21,23 @@ export interface TextErrorProps extends TextProps {
   center?: boolean;
 }
 
-export interface TextErrorState {}
+function TextError(props: TextErrorProps) {
+  const { children, center, decoration, style, ...extraProps } = props;
 
-export default class TextError extends React.Component<
-  TextErrorProps,
-  TextErrorState
-> {
-  static defaultProps = {
-    decoration: true,
-    center: false
-  };
-
-  render() {
-    const { children, center, decoration, style, ...props } = this.props;
-
-    return (
-      <Text
-        style={[styles.text, center && styles.centerText, style]}
-        {...props}
-      >
-        {children}
-        {decoration && '.'}
-      </Text>
-    );
-  }
+  return (
+    <Text
+      style={[styles.text, center && styles.centerText, style]}
+      {...extraProps}
+    >
+      {children}
+      {decoration && '.'}
+    </Text>
+  );
 }
+
+TextError.defaultProps = {
+  decoration: true,
+  center: false
+};
+
+export default TextError;

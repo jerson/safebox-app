@@ -24,30 +24,25 @@ export interface LoadingProps extends ActivityIndicatorProps {
   margin?: 'small' | 'medium' | 'large';
 }
 
-export interface LoadingState {}
-
-export default class Loading extends React.Component<
-  LoadingProps,
-  LoadingState
-> {
-  static defaultProps = {
-    color: Colors.primary,
-    margin: 'none'
-  };
-
-  render() {
-    const { color, style, margin, size, ...props } = this.props;
-    return (
-      <View
-        style={[
-          margin === 'small' && styles.marginSmall,
-          margin === 'medium' && styles.marginMedium,
-          margin === 'large' && styles.marginLarge,
-          style
-        ]}
-      >
-        <ActivityIndicator color={color} size={size} {...props} />
-      </View>
-    );
-  }
+function Loading(props: LoadingProps) {
+  const { color, style, margin, size, ...extraProps } = props;
+  return (
+    <View
+      style={[
+        margin === 'small' && styles.marginSmall,
+        margin === 'medium' && styles.marginMedium,
+        margin === 'large' && styles.marginLarge,
+        style
+      ]}
+    >
+      <ActivityIndicator color={color} size={size} {...extraProps} />
+    </View>
+  );
 }
+
+Loading.defaultProps = {
+  color: Colors.primary,
+  margin: 'none'
+};
+
+export default Loading;

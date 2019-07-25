@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -17,20 +17,15 @@ const styles = StyleSheet.create({
 
 export interface ContainerProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
+  children: React.ReactNode | React.ReactNode[];
 }
 
-export interface ContainerState {}
-
-export default class Container extends React.Component<
-  ContainerProps,
-  ContainerState
-> {
-  render() {
-    const { style, children, ...props } = this.props;
-    return (
-      <View style={[styles.container, style]} {...props}>
-        {children}
-      </View>
-    );
-  }
+function Container(props: ContainerProps) {
+  const { style, children, ...extraProps } = props;
+  return (
+    <View style={[styles.container, style]} {...extraProps}>
+      {children}
+    </View>
+  );
 }
+export default Container;

@@ -2,41 +2,4 @@
 
 exports[`render just views !isLoading 1`] = `null`;
 
-exports[`render just views 1`] = `
-<_class
-  style={
-    Object {
-      "backgroundColor": "#fafdff",
-      "bottom": 0,
-      "flex": 1,
-      "justifyContent": "center",
-      "left": 0,
-      "opacity": 1,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
-      "zIndex": 1000,
-    }
-  }
->
-  <_class
-    style={
-      Array [
-        false,
-        false,
-        false,
-        undefined,
-      ]
-    }
-  >
-    <ActivityIndicator
-      animating={true}
-      color="#4531cd"
-      duration={100}
-      hidesWhenStopped={true}
-      isLoading={true}
-      size="large"
-    />
-  </_class>
-</_class>
-`;
+exports[`render just views 1`] = `null`;

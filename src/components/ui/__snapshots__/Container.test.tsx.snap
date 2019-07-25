@@ -11,5 +11,7 @@ exports[`render just views 1`] = `
       Object {},
     ]
   }
-/>
+>
+  <_class />
+</_class>
 `;

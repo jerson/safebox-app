@@ -10,7 +10,7 @@ import {
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
-import TextInput from '../../components/ui/TextInput';
+import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
@@ -59,9 +59,9 @@ interface Props {
 function RegisterScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  const repeatPasswordRef = useRef(null);
+  const usernameRef = useRef<TextInputRef>(null);
+  const passwordRef = useRef<TextInputRef>(null);
+  const repeatPasswordRef = useRef<TextInputRef>(null);
 
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
@@ -141,7 +141,7 @@ function RegisterScreen({ navigation }: Props) {
                 style={styles.textInput}
                 ref={usernameRef}
                 onSubmitEditing={() => {
-                  passwordRef.current && (passwordRef.current as any).focus();
+                  passwordRef.current && passwordRef.current.focus();
                 }}
                 {...usernameProps}
               />
@@ -158,7 +158,7 @@ function RegisterScreen({ navigation }: Props) {
                 ref={passwordRef}
                 onSubmitEditing={() => {
                   repeatPasswordRef.current &&
-                    (repeatPasswordRef.current as any).focus();
+                    repeatPasswordRef.current.focus();
                 }}
                 {...passwordProps}
               />

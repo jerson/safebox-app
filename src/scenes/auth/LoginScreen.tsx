@@ -3,7 +3,7 @@ import { StyleSheet, View, ViewStyle, ScrollView, Alert } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
-import TextInput from '../../components/ui/TextInput';
+import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import SplitText from '../../components/ui/SplitText';
 import Container from '../../components/ui/Container';
@@ -57,8 +57,8 @@ interface Props {
 function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<TextInputRef>(null);
+  const passwordRef = useRef<TextInputRef>(null);
 
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
@@ -123,7 +123,7 @@ function LoginScreen({ navigation }: Props) {
                 style={styles.textInput}
                 ref={usernameRef}
                 onSubmitEditing={() => {
-                  passwordRef.current && (passwordRef.current as any).focus();
+                  passwordRef.current && passwordRef.current.focus();
                 }}
                 {...usernameProps}
               />
