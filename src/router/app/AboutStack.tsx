@@ -7,7 +7,6 @@ export default createStackNavigator(
     About: AboutScreen
   },
   {
-    ...NavigationOptions.header,
-    transitionConfig: NavigationOptions.transitionConfigSlide
+    ...NavigationOptions.header
   }
 );

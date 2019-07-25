@@ -11,7 +11,6 @@ export default createStackNavigator(
     AddAccount: AddAccountScreen
   },
   {
-    ...NavigationOptions.header,
-    transitionConfig: NavigationOptions.transitionConfigSlide
+    ...NavigationOptions.header
   }
 );

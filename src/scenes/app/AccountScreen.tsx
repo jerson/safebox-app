@@ -6,7 +6,7 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView, HeaderProps } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 
 import Container from '../../components/ui/Container';
@@ -15,6 +15,8 @@ import Size from '../../modules/dimensions/Size';
 import { AccountSingle } from '../../proto/services_pb';
 import { useNavigationParam } from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
+import Header from '../../components/account/Header';
+import useIconTintLabel from '../../components/hooks/useIconTintLabel';
 
 const styles = StyleSheet.create({
   container: {
@@ -62,8 +64,19 @@ function AccountScreen() {
   );
 }
 
-AccountScreen.navigationOptions = () => ({
-  title: 'Sample'
+AccountScreen.navigationOptions = ({ navigation }: any) => ({
+  header: (props: HeaderProps) => {
+    const account = navigation.getParam('account');
+    const label = useIconTintLabel(account.getLabel());
+    return (
+      <Header
+        title={account.getLabel()}
+        tintColor={label.tintColor}
+        icon={label.icon}
+        {...props}
+      />
+    );
+  }
 });
 
 export default AccountScreen;

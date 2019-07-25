@@ -13,9 +13,9 @@ import Client from '../../services/Client';
 import Strings from '../../modules/format/Strings';
 import Loading from '../../components/ui/Loading';
 import AlertMessage from '../../components/ui/AlertMessage';
-import Text from '../../components/ui/Text';
 import EmptyAccounts from '../../components/help/EmptyAccounts';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
+import AccountItem from '../../components/account/AccountItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -94,10 +94,11 @@ function AccountsScreen({ navigation }: Props) {
           }
           style={styles.flatList}
           contentContainerStyle={{
-            minHeight: Size.getVisibleTabScreenHeight()
+            minHeight: Size.getVisibleTabScreenHeight(),
+            paddingTop: 20
           }}
           renderItem={({ item }) => {
-            return <Text>{item.getHint()}</Text>;
+            return <AccountItem item={item} />;
           }}
           data={accounts}
           keyExtractor={item => {
