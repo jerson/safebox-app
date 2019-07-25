@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
@@ -16,14 +15,19 @@ import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
 import useTextInput from '../../components/hooks/useTextInput';
 import Client from '../../services/Client';
-import { RegisterRequest } from '../../proto/services_pb';
-import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
-import Config from '../../Config';
+import {
+  AddAccountRequest,
+  Account,
+  AccountSingle
+} from '../../proto/services_pb';
+import OpenPGP from 'react-native-fast-openpgp';
+
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
-import ButtonLink from '../../components/ui/ButtonLink';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
+import SplitText from '../../components/ui/SplitText';
+import useIconLabel from '../../components/hooks/useIconLabel';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,10 +38,6 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   safeArea: {
     flex: 1
-  } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
   } as ViewStyle,
   textInput: {} as ViewStyle,
   textInputContainer: {
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20
   } as ViewStyle,
-  buttonLink: {
-    marginTop: 40
+  splitView: {
+    marginTop: 20
   } as ViewStyle
 });
 
@@ -61,20 +61,24 @@ interface Props {
   navigation: NavigationScreenProp<Params>;
 }
 
-function RegisterScreen({ navigation }: Props) {
+function AddAccountScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
+  const labelRef = useRef<TextInputRef>(null);
+  const hintRef = useRef<TextInputRef>(null);
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
   const repeatPasswordRef = useRef<TextInputRef>(null);
 
+  const [label, labelProps] = useTextInput('');
+  const [hint, hintProps] = useTextInput('');
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const isValid = () => {
-    const isValid = [!!username, !!password, !!repeatPassword].every(
+    const isValid = [!!label, !!username, !!password, !!repeatPassword].every(
       value => value
     );
     if (!isValid) {
@@ -88,29 +92,34 @@ function RegisterScreen({ navigation }: Props) {
     return isValid;
   };
 
-  const generateKeyPair = () => {
-    return OpenPGP.generate({
-      passphrase: password,
-      name: username,
-      keyOptions: Config.settings.keyOptions as KeyOptions
-    });
+  const encode = (input: string) => {
+    return OpenPGP.encrypt(input, Session.getPublicKey());
   };
 
   const submit = async () => {
     try {
-      const keyPair = await generateKeyPair();
+      const hintEncoded = await encode(hint);
+      const usernameEncoded = await encode(username);
+      const passwordEncoded = await encode(password);
 
-      const request = new RegisterRequest();
-      request.setUsername(username);
-      request.setPrivatekey(keyPair.privateKey);
-      request.setPublickey(keyPair.publicKey);
+      const account = new Account();
+      account.setHint(hintEncoded);
+      account.setUsername(usernameEncoded);
+      account.setPassword(passwordEncoded);
+      account.setLabel(label);
 
-      const response = await Client.register(request);
+      const request = new AddAccountRequest();
+      request.setAccount(account);
 
-      Session.login(response);
-      Session.setPassword(password);
+      const response = await Client.addAccount(request);
 
-      navigation.navigate('Accounts');
+      const accountSingle = new AccountSingle();
+      accountSingle.setId(response.getId());
+      accountSingle.setHint(hintEncoded);
+      accountSingle.setUsername(usernameEncoded);
+      accountSingle.setLabel(label);
+
+      navigation.replace('Account', { account: accountSingle });
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
@@ -128,10 +137,7 @@ function RegisterScreen({ navigation }: Props) {
     });
   };
 
-  const goToLogin = () => {
-    navigation.goBack();
-  };
-
+  const labelExtraProps = useIconLabel(label);
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -142,26 +148,56 @@ function RegisterScreen({ navigation }: Props) {
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleHeight()
+          minHeight: Size.getVisibleTabScreenHeight()
         }}
         style={styles.scrollView}
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
             <View style={styles.form}>
               {!!error && <AlertMessage message={error} />}
+              <TextInput
+                placeholder={'Label'}
+                keyboardType={'default'}
+                autoCapitalize={'sentences'}
+                autoCorrect
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={labelRef}
+                onSubmitEditing={() => {
+                  hintRef.current && hintRef.current.focus();
+                }}
+                {...labelProps}
+                {...labelExtraProps}
+              />
+              <TextInput
+                icon={'feather'}
+                placeholder={'Hint (optional)'}
+                keyboardType={'default'}
+                autoCapitalize={'sentences'}
+                autoCorrect
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={hintRef}
+                onSubmitEditing={() => {
+                  usernameRef.current && usernameRef.current.focus();
+                }}
+                {...hintProps}
+              />
+              <SplitText
+                type={'Default'}
+                style={styles.splitView}
+                title={'Sensitive credentials'}
+              />
               <TextInput
                 icon={'user'}
                 placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={'username'}
+                autoCompleteType={'off'}
                 returnKeyType={'next'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -178,7 +214,7 @@ function RegisterScreen({ navigation }: Props) {
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={'password'}
+                autoCompleteType={'off'}
                 returnKeyType={'next'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -196,7 +232,7 @@ function RegisterScreen({ navigation }: Props) {
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={'password'}
+                autoCompleteType={'off'}
                 returnKeyType={'done'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -209,14 +245,8 @@ function RegisterScreen({ navigation }: Props) {
                 isLoading={isLoading}
                 style={styles.button}
                 typeColor={'primaryLight'}
-                title={'Create account'}
+                title={'Add secret account'}
                 onPress={tryToSubmit}
-              />
-
-              <ButtonLink
-                style={styles.buttonLink}
-                title={'Back to Sign In'}
-                onPress={goToLogin}
               />
             </View>
           </Content>
@@ -226,10 +256,8 @@ function RegisterScreen({ navigation }: Props) {
   );
 }
 
-RegisterScreen.navigationOptions = {
-  headerLeft: null,
-  headerRight: null,
-  title: null
-};
+AddAccountScreen.navigationOptions = () => ({
+  title: 'Add secret account'
+});
 
-export default RegisterScreen;
+export default AddAccountScreen;

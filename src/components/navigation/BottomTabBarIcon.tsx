@@ -12,14 +12,14 @@ import Colors from '../../modules/constants/Colors';
 const styles = StyleSheet.create({
   background: {
     position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 2,
+    left: 10,
+    right: 10,
+    top: 5,
     bottom: -10,
 
-    borderTopLeftRadius: 35,
-    borderTopRightRadius: 35,
-    backgroundColor: Colors.shine,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    backgroundColor: Colors.primaryLight,
     zIndex: 0
   } as ViewStyle,
   content: {
@@ -71,7 +71,7 @@ export default class BottomTabBarIcon extends React.Component<
     this.animation && this.animation.stop();
     this.animation = Animated.spring(this.state.active, {
       toValue: 1,
-      friction: 7
+      friction: 4
     });
 
     this.animation.start();

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Client from '../../services/Client';
 import { LoginRequest } from '../../proto/services_pb';
 
-const useService = (_request: Promise<boolean>) => {
+function useService(_request: Promise<boolean>) {
   const [data, setData] = useState('');
 
   const [isLoading, setIsLoading] = useState(false);
@@ -27,5 +27,5 @@ const useService = (_request: Promise<boolean>) => {
   }, []);
 
   return [data, isLoading, isError];
-};
+}
 export default useService;

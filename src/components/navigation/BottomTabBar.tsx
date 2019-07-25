@@ -55,16 +55,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   } as ViewStyle,
   label: {
-    ...Font(),
+    ...Font({ weight: 'Bold' }),
     textAlign: 'center',
-    fontSize: 11,
+    fontSize: 12,
     marginTop: 4,
-    letterSpacing: -0.4,
     lineHeight: 15,
-    color: Colors.grey6
+    color: Colors.grey5
   } as TextStyle,
   labelFocused: {
-    ...Font({ weight: 'Bold' })
+    ...Font({ weight: 'Bold' }),
+    color: Colors.white
   } as TextStyle
 });
 export interface BottomTabBarProps {

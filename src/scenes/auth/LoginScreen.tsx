@@ -15,6 +15,7 @@ import Client from '../../services/Client';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
+import useAnimatedState from '../../components/hooks/useAnimatedState';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +58,7 @@ interface Props {
 
 function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useAnimatedState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
@@ -76,12 +77,13 @@ function LoginScreen({ navigation }: Props) {
   const submit = async () => {
     try {
       const request = new LoginRequest();
-      request.setUsername(username as string);
-      request.setPassword(password as string);
+      request.setUsername(username);
+      request.setPassword(password);
 
       const response = await Client.login(request);
 
-      Session.login(response.getAccesstoken());
+      Session.login(response);
+      Session.setPassword(password);
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
@@ -147,7 +149,7 @@ function LoginScreen({ navigation }: Props) {
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
                 ref={passwordRef}
-                onSubmitEditing={tryToSubmit}
+                blurOnSubmit
                 {...passwordProps}
               />
 

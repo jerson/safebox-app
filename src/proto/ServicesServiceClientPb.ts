@@ -16,16 +16,17 @@ import {
   AccountsResponse,
   AddAccountRequest,
   AddAccountResponse,
+  AuthResponse,
   BuyProductRequest,
   BuyProductResponse,
+  LoginBiometricRequest,
   LoginRequest,
-  LoginResponse,
   LogoutRequest,
   LogoutResponse,
   PingRequest,
   PingResponse,
-  RegisterRequest,
-  RegisterResponse} from './services_pb';
+  RefreshTokenRequest,
+  RegisterRequest} from './services_pb';
 
 export class ServicesClient {
   client_: grpcWeb.AbstractClientBase;
@@ -91,18 +92,18 @@ export class ServicesClient {
   }
 
   methodInfoLogin = new grpcWeb.AbstractClientBase.MethodInfo(
-    LoginResponse,
+    AuthResponse,
     (request: LoginRequest) => {
       return request.serializeBinary();
     },
-    LoginResponse.deserializeBinary
+    AuthResponse.deserializeBinary
   );
 
   login(
     request: LoginRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: LoginResponse) => void) {
+               response: AuthResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/Login',
@@ -112,19 +113,63 @@ export class ServicesClient {
       callback);
   }
 
+  methodInfoRefreshToken = new grpcWeb.AbstractClientBase.MethodInfo(
+    AuthResponse,
+    (request: RefreshTokenRequest) => {
+      return request.serializeBinary();
+    },
+    AuthResponse.deserializeBinary
+  );
+
+  refreshToken(
+    request: RefreshTokenRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AuthResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/RefreshToken',
+      request,
+      metadata || {},
+      this.methodInfoRefreshToken,
+      callback);
+  }
+
+  methodInfoLoginBiometric = new grpcWeb.AbstractClientBase.MethodInfo(
+    AuthResponse,
+    (request: LoginBiometricRequest) => {
+      return request.serializeBinary();
+    },
+    AuthResponse.deserializeBinary
+  );
+
+  loginBiometric(
+    request: LoginBiometricRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AuthResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/LoginBiometric',
+      request,
+      metadata || {},
+      this.methodInfoLoginBiometric,
+      callback);
+  }
+
   methodInfoRegister = new grpcWeb.AbstractClientBase.MethodInfo(
-    RegisterResponse,
+    AuthResponse,
     (request: RegisterRequest) => {
       return request.serializeBinary();
     },
-    RegisterResponse.deserializeBinary
+    AuthResponse.deserializeBinary
   );
 
   register(
     request: RegisterRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: RegisterResponse) => void) {
+               response: AuthResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
         '/Services/Register',

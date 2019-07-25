@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     overflow: 'hidden'
   } as ViewStyle,
-  logoContainer: {} as ViewStyle,
   header: {
     overflow: 'visible',
     alignItems: 'center',
@@ -63,15 +62,13 @@ function HeaderLanding({
 }: HeaderLandingProps) {
   return (
     <View style={[styles.header, shadow && styles.shadow, style]}>
-      <View style={styles.logoContainer}>
-        <View style={styles.logoContent}>
-          <Image
-            style={styles.logo}
-            resizeMode={'center'}
-            resizeMethod={'scale'}
-            source={require('../../assets/images/logo.png')}
-          />
-        </View>
+      <View style={styles.logoContent}>
+        <Image
+          style={styles.logo}
+          resizeMode={'center'}
+          resizeMethod={'scale'}
+          source={require('../../assets/images/logo.png')}
+        />
       </View>
 
       <Text style={[styles.name, titleStyle]}>
@@ -86,7 +83,7 @@ function HeaderLanding({
 }
 
 HeaderLanding.defaultProps = {
-  subtitle: 'passwords always safe',
+  subtitle: 'secrets always safe',
   shadow: false
 };
 
