@@ -131,7 +131,11 @@ function RegisterScreen({ navigation }: Props) {
 
   return (
     <Container style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.grey2} />
+      <StatusBar
+        animated
+        barStyle={'dark-content'}
+        backgroundColor={Colors.grey2}
+      />
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{

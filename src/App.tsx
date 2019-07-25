@@ -8,7 +8,11 @@ function App() {
   const statusBarColor = tinyColor(Colors.primary).darken(5);
   return (
     <Fragment>
-      <StatusBar barStyle="light-content" backgroundColor={statusBarColor} />
+      <StatusBar
+        animated
+        barStyle={'light-content'}
+        backgroundColor={statusBarColor}
+      />
       <MainNavigator />
     </Fragment>
   );
