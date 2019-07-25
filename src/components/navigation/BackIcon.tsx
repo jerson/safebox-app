@@ -30,7 +30,7 @@ export interface BackIconProps {
   style?: StyleProp<ImageStyle>;
 }
 
-const BackIcon: React.FC<BackIconProps> = ({ style, onPress, ...props }) => {
+function BackIcon({ style, onPress, ...props }: BackIconProps) {
   return (
     <Touchable style={styles.container} onPress={onPress}>
       <Image
@@ -40,6 +40,6 @@ const BackIcon: React.FC<BackIconProps> = ({ style, onPress, ...props }) => {
       />
     </Touchable>
   );
-};
+}
 
 export default BackIcon;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   GestureResponderEvent,
   Image,
@@ -6,15 +6,14 @@ import {
   ImageStyle,
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewStyle
-} from "react-native";
-import Touchable, { TouchableProps } from "./Touchable";
-import Colors from "../../modules/constants/Colors";
-import Font from "../../modules/resources/Font";
-import Loading from "./Loading";
+} from 'react-native';
+import Touchable, { TouchableProps } from './Touchable';
+import Colors from '../../modules/constants/Colors';
+import Loading from './Loading';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +21,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     margin: 0,
     zIndex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
     borderWidth: 1
   } as ViewStyle,
   containerDisabled: {
@@ -34,29 +33,27 @@ const styles = StyleSheet.create({
     marginRight: 4
   } as ViewStyle,
   icon: {
-    ...Font({ weight: "Regular" }),
     fontSize: 14,
     color: Colors.white,
     marginRight: 4
   } as ImageStyle,
   title: {
-    ...Font({ weight: "SemiBold" }),
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.white,
     fontSize: 14
   } as TextStyle,
   containerLoading: {
-    position: "absolute",
+    position: 'absolute',
     left: 10,
     top: 0,
     bottom: 0,
-    justifyContent: "center"
+    justifyContent: 'center'
   } as ViewStyle,
   containerLoadingSmall: {
     left: 4
   } as ViewStyle,
   containerLoadingCenter: {
-    position: "relative",
+    position: 'relative',
     left: 0
   } as ViewStyle,
   light: {
@@ -96,7 +93,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   center: {
     minHeight: 30,
-    justifyContent: "center"
+    justifyContent: 'center'
   } as ViewStyle
 });
 
@@ -114,123 +111,122 @@ export interface ButtonProps extends TouchableProps {
   light?: boolean;
   small?: boolean;
   typeColor?:
-    | "primaryLight"
-    | "primary"
-    | "secondary"
-    | "accentDark"
-    | "accent"
-    | "danger";
+    | 'primaryLight'
+    | 'primary'
+    | 'secondary'
+    | 'accentDark'
+    | 'accent'
+    | 'danger';
 }
 
-export interface ButtonState {}
+function Button(props: ButtonProps) {
+  const {
+    style,
+    disabled,
+    title,
+    textStyle,
+    imageSource,
+    imageStyle,
+    isLoading,
+    onPress,
+    light,
+    typeColor,
+    small,
+    allowOnPress,
+    ...extraProps
+  } = props;
 
-export default class Button extends React.Component<ButtonProps, ButtonState> {
-  static defaultProps = {
-    typeColor: "primary"
-  };
-  onPress = (event: GestureResponderEvent) => {
-    const { onPress, isLoading: loading, disabled, allowOnPress } = this.props;
-    if ((disabled && !allowOnPress) || loading) {
+  const onPressCallback = (event: GestureResponderEvent) => {
+    if ((disabled && !allowOnPress) || isLoading) {
       return;
     }
-    if (typeof onPress === "function") {
+    if (typeof onPress === 'function') {
       onPress(event);
     }
   };
 
-  render() {
-    const {
-      style,
-      disabled,
-      title,
-      textStyle,
-      imageSource,
-      imageStyle,
-      isLoading: loading,
-      onPress,
-      light,
-      typeColor,
-      small,
-      ...props
-    } = this.props;
-    const stylesButton = [];
-    let color;
+  const stylesButton = [];
+  let color;
 
-    switch (typeColor) {
-      case "primaryLight":
-        stylesButton.push(styles.primaryLight);
-        color = Colors.primaryLight;
-        break;
-      case "primary":
-        stylesButton.push(styles.primary);
-        color = Colors.primary;
-        break;
-      case "secondary":
-        stylesButton.push(styles.secondary);
-        color = Colors.secondary;
-        break;
-      case "accentDark":
-        stylesButton.push(styles.accentDark);
-        color = Colors.accentDark;
-        break;
-      case "accent":
-        stylesButton.push(styles.accent);
-        color = Colors.accent;
-        break;
-      case "danger":
-        stylesButton.push(styles.danger);
-        color = Colors.danger;
-        break;
-      default:
-        break;
-    }
-
-    if (disabled) {
-      stylesButton.push(styles.disabled);
-      color = Colors.grey3;
-    }
-    if (small) {
-      stylesButton.push(styles.small);
-    }
-
-    return (
-      <Touchable
-        activeOpacity={disabled ? 1 : 0.2}
-        style={[
-          styles.container,
-          stylesButton,
-          disabled && styles.containerDisabled,
-          light && styles.light,
-          style,
-          !title && styles.center
-        ]}
-        {...props}
-        onPress={onPress ? this.onPress : undefined}
-      >
-        {imageSource && !loading && (
-          <Image style={[styles.icon, imageStyle]} source={imageSource} />
-        )}
-        {loading && (
-          <View
-            style={[
-              styles.containerLoading,
-              small && styles.containerLoadingSmall,
-              !title && styles.containerLoadingCenter
-            ]}
-          >
-            <Loading
-              style={styles.loading}
-              size={"small"}
-              color={light ? color : Colors.white}
-            />
-          </View>
-        )}
-        {!!title && (
-          <Text style={[styles.title, light && { color }, textStyle]}>
-            {title}
-          </Text>
-        )}
-      </Touchable>
-    );
+  switch (typeColor) {
+    case 'primaryLight':
+      stylesButton.push(styles.primaryLight);
+      color = Colors.primaryLight;
+      break;
+    case 'primary':
+      stylesButton.push(styles.primary);
+      color = Colors.primary;
+      break;
+    case 'secondary':
+      stylesButton.push(styles.secondary);
+      color = Colors.secondary;
+      break;
+    case 'accentDark':
+      stylesButton.push(styles.accentDark);
+      color = Colors.accentDark;
+      break;
+    case 'accent':
+      stylesButton.push(styles.accent);
+      color = Colors.accent;
+      break;
+    case 'danger':
+      stylesButton.push(styles.danger);
+      color = Colors.danger;
+      break;
+    default:
+      break;
   }
+
+  if (disabled) {
+    stylesButton.push(styles.disabled);
+    color = Colors.grey3;
+  }
+  if (small) {
+    stylesButton.push(styles.small);
+  }
+
+  return (
+    <Touchable
+      activeOpacity={disabled ? 1 : 0.2}
+      style={[
+        styles.container,
+        stylesButton,
+        disabled && styles.containerDisabled,
+        light && styles.light,
+        style,
+        !title && styles.center
+      ]}
+      {...extraProps}
+      onPress={onPress ? onPressCallback : undefined}
+    >
+      {imageSource && !isLoading && (
+        <Image style={[styles.icon, imageStyle]} source={imageSource} />
+      )}
+      {isLoading && (
+        <View
+          style={[
+            styles.containerLoading,
+            small && styles.containerLoadingSmall,
+            !title && styles.containerLoadingCenter
+          ]}
+        >
+          <Loading
+            style={styles.loading}
+            size={'small'}
+            color={light ? color : Colors.white}
+          />
+        </View>
+      )}
+      {!!title && (
+        <Text style={[styles.title, light && { color }, textStyle]}>
+          {title}
+        </Text>
+      )}
+    </Touchable>
+  );
 }
+
+Button.defaultProps = {
+  typeColor: 'primary'
+};
+export default Button;

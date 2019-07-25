@@ -8,5 +8,8 @@ export default createStackNavigator(
     Login: LoginScreen,
     Register: RegisterScreen
   },
-  NavigationOptions.header
+  {
+    ...NavigationOptions.header,
+    transitionConfig: NavigationOptions.transitionConfigFade
+  }
 );

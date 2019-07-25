@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Animated, StyleSheet, ViewStyle } from 'react-native';
 import Loading, { LoadingProps } from './Loading';
 import Colors from '../../modules/constants/Colors';
@@ -22,67 +22,49 @@ export interface LoadingOverlayProps extends LoadingProps {
   duration?: number;
 }
 
-export interface LoadingOverlayState {
-  isVisible: boolean;
-}
+function LoadingOverlay(props: LoadingOverlayProps) {
+  const { style, isLoading, duration, ...extraProps } = props;
 
-export default class LoadingOverlay extends React.Component<
-  LoadingOverlayProps,
-  LoadingOverlayState
-> {
-  static defaultProps = {
-    size: 'large',
-    color: Colors.primary,
-    isLoading: false,
-    duration: 100
-  };
+  const [isVisible, setIsVisible] = useState(false);
+  const [fadeAnim] = useState(new Animated.Value(0));
 
-  state: LoadingOverlayState = {
-    isVisible: false
-  };
+  let animation: Animated.CompositeAnimation;
 
-  fadeAnim = new Animated.Value(0);
-  private animation?: Animated.CompositeAnimation;
+  useEffect(() => {
+    isLoading && animatedFade();
+  }, []);
 
-  componentDidMount() {
-    const { isLoading } = this.props;
-    isLoading && this.animatedFade();
-  }
+  useEffect(() => {
+    animatedFade();
+  }, [isLoading]);
 
-  componentDidUpdate(prevProps: LoadingOverlayProps) {
-    if (prevProps.isLoading !== this.props.isLoading) {
-      this.animatedFade();
-    }
-  }
+  const animatedFade = () => {
+    setIsVisible(true);
 
-  animatedFade = () => {
-    const { isLoading, duration } = this.props;
-    this.setState({ isVisible: true });
-
-    this.animation && this.animation.stop();
-    this.animation = Animated.timing(this.fadeAnim, {
+    animation && animation.stop();
+    animation = Animated.timing(fadeAnim, {
       toValue: isLoading ? 1 : 0,
       duration
     });
 
-    this.animation.start(() => {
-      this.setState({ isVisible: isLoading });
+    animation.start(() => {
+      setIsVisible(isLoading);
     });
   };
 
-  render() {
-    const { style, ...props } = this.props;
-    const { isVisible } = this.state;
-
-    if (!isVisible) {
-      return null;
-    }
-    return (
-      <Animated.View
-        style={[styles.container, { opacity: this.fadeAnim }, style]}
-      >
-        <Loading {...props} />
-      </Animated.View>
-    );
+  if (!isVisible) {
+    return null;
   }
+  return (
+    <Animated.View style={[styles.container, { opacity: fadeAnim }, style]}>
+      <Loading {...extraProps} />
+    </Animated.View>
+  );
 }
+LoadingOverlay.defaultProps = {
+  size: 'large',
+  color: Colors.primary,
+  isLoading: false,
+  duration: 100
+};
+export default LoadingOverlay;

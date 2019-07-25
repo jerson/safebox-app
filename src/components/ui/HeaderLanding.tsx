@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,9 @@ import {
   ImageStyle,
   TextStyle,
   StyleProp
-} from "react-native";
-import Colors from "../../modules/constants/Colors";
-import Text from "./Text";
+} from 'react-native';
+import Colors from '../../modules/constants/Colors';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   logo: {
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     borderWidth: 1,
     borderColor: Colors.accent,
-    alignSelf: "center",
-    overflow: "hidden"
+    alignSelf: 'center',
+    overflow: 'hidden'
   } as ViewStyle,
   logoContainer: {} as ViewStyle,
   header: {
-    overflow: "visible",
-    alignItems: "center",
-    justifyContent: "center"
+    overflow: 'visible',
+    alignItems: 'center',
+    justifyContent: 'center'
   } as ViewStyle,
   shadow: {
     shadowOpacity: 0.1,
@@ -54,39 +54,39 @@ export interface HeaderLandingProps {
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
 }
-const HeaderLanding: React.FC<HeaderLandingProps> = ({
+function HeaderLanding({
   style,
   subtitle,
   titleStyle,
   subtitleStyle,
   shadow
-}) => {
+}: HeaderLandingProps) {
   return (
     <View style={[styles.header, shadow && styles.shadow, style]}>
       <View style={styles.logoContainer}>
         <View style={styles.logoContent}>
           <Image
             style={styles.logo}
-            resizeMode={"center"}
-            resizeMethod={"scale"}
-            source={require("../../assets/images/logo.png")}
+            resizeMode={'center'}
+            resizeMethod={'scale'}
+            source={require('../../assets/images/logo.png')}
           />
         </View>
       </View>
 
       <Text style={[styles.name, titleStyle]}>
         Safe
-        <Text weight={"Bold"}>Box</Text>
+        <Text weight={'Bold'}>Box</Text>
       </Text>
-      <Text weight={"Light"} style={[styles.subtitle, subtitleStyle]}>
+      <Text weight={'Light'} style={[styles.subtitle, subtitleStyle]}>
         {subtitle}
       </Text>
     </View>
   );
-};
+}
 
 HeaderLanding.defaultProps = {
-  subtitle: "passwords always safe",
+  subtitle: 'passwords always safe',
   shadow: false
 };
 

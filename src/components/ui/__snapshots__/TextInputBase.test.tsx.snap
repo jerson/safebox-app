@@ -3,9 +3,8 @@
 exports[`render just views 1`] = `
 <TextInput
   allowFontScaling={true}
-  onBlur={[Function]}
+  editable={true}
   onChangeText={[Function]}
-  onFocus={[Function]}
   placeholderTextColor="#65748b"
   rejectResponderTermination={true}
   underlineColorAndroid="transparent"

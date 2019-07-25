@@ -1,13 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, View, ViewStyle, ScrollView, Alert } from 'react-native';
-import {
-  SafeAreaView,
-  NavigationScreenComponent,
-  NavigationScreenProp
-} from 'react-navigation';
+import { StyleSheet, View, ViewStyle, ScrollView } from 'react-native';
+import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
-import TextInput from '../../components/ui/TextInput';
+import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import SplitText from '../../components/ui/SplitText';
 import Container from '../../components/ui/Container';
@@ -18,6 +14,7 @@ import { LoginRequest } from '../../proto/services_pb';
 import Client from '../../services/Client';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,24 +50,27 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Props {
-  navigation: NavigationScreenProp<any>;
-}
 interface Params {}
+interface Props {
+  navigation: NavigationScreenProp<Params>;
+}
 
-const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
-  navigation
-}) => {
+function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<TextInputRef>(null);
+  const passwordRef = useRef<TextInputRef>(null);
 
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
 
   const isValid = () => {
-    return [!!username, !!password].every(value => value);
+    const isValid = [!!username, !!password].every(value => value);
+    if (!isValid) {
+      setError('Complete missing fields');
+    }
+    return isValid;
   };
 
   const submit = async () => {
@@ -85,7 +85,7 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
-      Alert.alert('Something happen', message);
+      setError(message);
     }
   };
   const tryToSubmit = () => {
@@ -93,6 +93,7 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       return;
     }
 
+    setError('');
     setIsLoading(true);
     requestAnimationFrame(async () => {
       await submit();
@@ -117,11 +118,12 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
           <Content center>
             <HeaderLanding style={styles.headerLanding} />
             <View style={styles.form}>
+              {!!error && <AlertMessage message={error} />}
               <TextInput
+                icon={'user'}
                 placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
-                autoFocus
                 autoCorrect={false}
                 autoCompleteType={'username'}
                 returnKeyType={'next'}
@@ -129,11 +131,12 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
                 style={styles.textInput}
                 ref={usernameRef}
                 onSubmitEditing={() => {
-                  passwordRef.current && (passwordRef.current as any).focus();
+                  passwordRef.current && passwordRef.current.focus();
                 }}
                 {...usernameProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Password'}
                 secureTextEntry
                 keyboardType={'default'}
@@ -168,7 +171,7 @@ const LoginScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       </ScrollView>
     </Container>
   );
-};
+}
 
 LoginScreen.navigationOptions = {
   headerLeft: null,

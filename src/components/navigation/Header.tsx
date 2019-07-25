@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-const Header: React.FC<HeaderProps> = props => {
+function Header(props: HeaderProps) {
   const { options } = props.scene.descriptor;
   const isEmpty = !options.headerLeft && !options.headerRight && !options.title;
   if (isEmpty) {
@@ -69,6 +69,6 @@ const Header: React.FC<HeaderProps> = props => {
       </View>
     </View>
   );
-};
+}
 
 export default Header;

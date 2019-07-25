@@ -4,17 +4,12 @@ import {
   View,
   ViewStyle,
   ScrollView,
-  StatusBar,
-  Alert
+  StatusBar
 } from 'react-native';
-import {
-  SafeAreaView,
-  NavigationScreenComponent,
-  NavigationScreenProp
-} from 'react-navigation';
+import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
-import TextInput from '../../components/ui/TextInput';
+import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
@@ -26,6 +21,8 @@ import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
 import Config from '../../Config';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
+import ButtonLink from '../../components/ui/ButtonLink';
 
 const styles = StyleSheet.create({
   container: {
@@ -52,31 +49,42 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   button: {
     marginTop: 20
+  } as ViewStyle,
+  buttonLink: {
+    marginTop: 40
   } as ViewStyle
 });
 
-interface Props {
-  navigation: NavigationScreenProp<any>;
-}
 interface Params {}
+interface Props {
+  navigation: NavigationScreenProp<Params>;
+}
 
-const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
-  navigation
-}) => {
+function RegisterScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  const repeatPasswordRef = useRef(null);
+  const usernameRef = useRef<TextInputRef>(null);
+  const passwordRef = useRef<TextInputRef>(null);
+  const repeatPasswordRef = useRef<TextInputRef>(null);
 
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const isValid = () => {
-    return [!!username, !!password, password === repeatPassword].every(
+    const isValid = [!!username, !!password, !!repeatPassword].every(
       value => value
     );
+    if (!isValid) {
+      setError('Complete missing fields');
+      return false;
+    }
+    if (password !== repeatPassword) {
+      setError('Passwords must match');
+      return false;
+    }
+    return isValid;
   };
 
   const generateKeyPair = () => {
@@ -102,7 +110,7 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
-      Alert.alert('Something happen', message);
+      setError(message);
     }
   };
   const tryToSubmit = () => {
@@ -117,9 +125,17 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
     });
   };
 
+  const goToLogin = () => {
+    navigation.goBack();
+  };
+
   return (
     <Container style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.grey2} />
+      <StatusBar
+        animated
+        barStyle={'dark-content'}
+        backgroundColor={Colors.grey2}
+      />
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
@@ -135,11 +151,12 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
               style={styles.headerLanding}
             />
             <View style={styles.form}>
+              {!!error && <AlertMessage message={error} />}
               <TextInput
+                icon={'user'}
                 placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
-                autoFocus
                 autoCorrect={false}
                 autoCompleteType={'username'}
                 returnKeyType={'next'}
@@ -147,11 +164,12 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
                 style={styles.textInput}
                 ref={usernameRef}
                 onSubmitEditing={() => {
-                  passwordRef.current && (passwordRef.current as any).focus();
+                  passwordRef.current && passwordRef.current.focus();
                 }}
                 {...usernameProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Password'}
                 secureTextEntry
                 keyboardType={'default'}
@@ -164,11 +182,12 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
                 ref={passwordRef}
                 onSubmitEditing={() => {
                   repeatPasswordRef.current &&
-                    (repeatPasswordRef.current as any).focus();
+                    repeatPasswordRef.current.focus();
                 }}
                 {...passwordProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Repeat password'}
                 secureTextEntry
                 keyboardType={'default'}
@@ -190,13 +209,19 @@ const RegisterScreen: React.FC<Props> & NavigationScreenComponent<Params> = ({
                 title={'Create account'}
                 onPress={tryToSubmit}
               />
+
+              <ButtonLink
+                style={styles.buttonLink}
+                title={'Back to Sign In'}
+                onPress={goToLogin}
+              />
             </View>
           </Content>
         </SafeAreaView>
       </ScrollView>
     </Container>
   );
-};
+}
 
 RegisterScreen.navigationOptions = {
   headerLeft: null,

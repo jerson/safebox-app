@@ -1,56 +1,27 @@
-import React from "react";
-import {
-  GestureResponderEvent,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View
-} from "react-native";
+import React from 'react';
+import { TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 
 export interface TouchableProps extends TouchableOpacityProps {
   forwardedRef?: any;
   children?: React.ReactNode[] | React.ReactChild;
 }
 
-export interface TouchableState {}
+function Touchable(props: TouchableProps, ref: React.Ref<TouchableOpacity>) {
+  const { onPress, onLongPress, ...extraProps } = props;
 
-export class TouchableContainer extends React.Component<
-  TouchableProps,
-  TouchableState
-> {
-  onPress = (event: GestureResponderEvent) => {
-    const { onPress } = this.props;
-    if (typeof onPress === "function") {
-      onPress(event);
-    }
-  };
-  onLongPress = (event: GestureResponderEvent) => {
-    const { onLongPress } = this.props;
-    if (typeof onLongPress === "function") {
-      onLongPress(event);
-    }
-  };
-
-  render() {
-    const { forwardedRef, onPress, onLongPress, ...props } = this.props;
-    const hasAction =
-      typeof onPress === "function" || typeof onLongPress === "function";
-    if (!hasAction) {
-      return <View ref={forwardedRef} {...props} />;
-    }
-    return (
-      <TouchableOpacity
-        ref={forwardedRef}
-        {...props}
-        onPress={onPress ? this.onPress : undefined}
-        onLongPress={onLongPress ? this.onLongPress : undefined}
-      />
-    );
+  const hasAction =
+    typeof onPress === 'function' || typeof onLongPress === 'function';
+  if (!hasAction) {
+    return <View ref={ref} {...extraProps} />;
   }
+  return (
+    <TouchableOpacity
+      ref={ref}
+      {...extraProps}
+      onPress={onPress}
+      onLongPress={onLongPress}
+    />
+  );
 }
 
-const Touchable = React.forwardRef<TouchableOpacity, TouchableProps>(
-  (props, ref) => {
-    return <TouchableContainer {...props} forwardedRef={ref} />;
-  }
-);
-export default Touchable;
+export default React.forwardRef(Touchable);
