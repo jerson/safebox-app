@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, TextProps, TextStyle } from 'react-native';
-import Font from '../../modules/resources/Font';
+import { StyleSheet, TextProps, TextStyle } from 'react-native';
 import Colors from '../../modules/constants/Colors';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   text: {
-    ...Font(),
     color: Colors.danger,
     fontSize: 13
   } as TextStyle,

@@ -6,15 +6,14 @@ import {
   ImageStyle,
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewStyle
 } from 'react-native';
 import Touchable, { TouchableProps } from './Touchable';
 import Colors from '../../modules/constants/Colors';
-import Font from '../../modules/resources/Font';
 import Loading from './Loading';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,13 +33,11 @@ const styles = StyleSheet.create({
     marginRight: 4
   } as ViewStyle,
   icon: {
-    ...Font({ weight: 'Regular' }),
     fontSize: 14,
     color: Colors.white,
     marginRight: 4
   } as ImageStyle,
   title: {
-    ...Font({ weight: 'SemiBold' }),
     textAlign: 'center',
     color: Colors.white,
     fontSize: 14

@@ -31,15 +31,21 @@ exports[`render just views 1`] = `
     style={
       Array [
         Object {
-          "color": "#FFFFFF",
           "fontFamily": "Nunito",
-          "fontSize": 14,
+          "fontSize": undefined,
           "fontStyle": "normal",
-          "fontWeight": "600",
-          "textAlign": "center",
+          "fontWeight": "400",
         },
-        undefined,
-        undefined,
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          undefined,
+          undefined,
+        ],
       ]
     }
   >

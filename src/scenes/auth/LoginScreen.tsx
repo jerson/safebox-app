@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, View, ViewStyle, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, ViewStyle, ScrollView } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
@@ -14,6 +14,7 @@ import { LoginRequest } from '../../proto/services_pb';
 import Client from '../../services/Client';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +57,7 @@ interface Props {
 
 function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
@@ -64,7 +66,11 @@ function LoginScreen({ navigation }: Props) {
   const [password, passwordProps] = useTextInput('');
 
   const isValid = () => {
-    return [!!username, !!password].every(value => value);
+    const isValid = [!!username, !!password].every(value => value);
+    if (!isValid) {
+      setError('Complete missing fields');
+    }
+    return isValid;
   };
 
   const submit = async () => {
@@ -79,7 +85,7 @@ function LoginScreen({ navigation }: Props) {
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
-      Alert.alert('Something happen', message);
+      setError(message);
     }
   };
   const tryToSubmit = () => {
@@ -87,6 +93,7 @@ function LoginScreen({ navigation }: Props) {
       return;
     }
 
+    setError('');
     setIsLoading(true);
     requestAnimationFrame(async () => {
       await submit();
@@ -111,11 +118,12 @@ function LoginScreen({ navigation }: Props) {
           <Content center>
             <HeaderLanding style={styles.headerLanding} />
             <View style={styles.form}>
+              {!!error && <AlertMessage message={error} />}
               <TextInput
+                icon={'user'}
                 placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
-                autoFocus
                 autoCorrect={false}
                 autoCompleteType={'username'}
                 returnKeyType={'next'}
@@ -128,6 +136,7 @@ function LoginScreen({ navigation }: Props) {
                 {...usernameProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Password'}
                 secureTextEntry
                 keyboardType={'default'}

@@ -1,11 +1,8 @@
 import React, { useState, useRef } from 'react';
 import {
-  Image,
-  ImageSourcePropType,
   ImageStyle,
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewStyle,
@@ -19,6 +16,8 @@ import TextInputBase, {
 } from './TextInputBase';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
+import Text from './Text';
+import Icon from 'react-native-vector-icons/Feather';
 
 const Sizes = {
   ClearButtonWidth: 40,
@@ -34,10 +33,10 @@ const styles = StyleSheet.create({
   content: {
     position: 'relative'
   } as ViewStyle,
-  imageContainer: {
+  iconContainer: {
     position: 'absolute',
     top: 0,
-    left: 10,
+    left: 12,
     bottom: 1,
     justifyContent: 'center'
   } as ViewStyle,
@@ -47,17 +46,16 @@ const styles = StyleSheet.create({
   textErrorContainer: {
     marginTop: 10
   } as ViewStyle,
-  image: {
-    width: Sizes.Icon,
-    height: Sizes.Icon,
-    tintColor: Colors.grey4
-  } as ImageStyle,
-  imageError: {
-    tintColor: Colors.danger
-  } as ImageStyle,
-  imageFocus: {
-    tintColor: Colors.secondary
-  } as ImageStyle,
+  icon: {
+    fontSize: Sizes.Icon,
+    color: Colors.grey5
+  } as TextStyle,
+  iconError: {
+    color: Colors.danger
+  } as TextStyle,
+  iconFocus: {
+    color: Colors.secondary
+  } as TextStyle,
   input: {
     ...Font(),
     color: Colors.grey6,
@@ -74,7 +72,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'none'
   } as TextStyle,
   labelText: {
-    ...Font(),
     lineHeight: 16,
     fontSize: 14,
     color: Colors.grey5
@@ -128,7 +125,7 @@ export interface TextInputProps extends TextInputBaseProps {
   label?: string | React.ReactNode;
   containerStyle?: StyleProp<ViewStyle>;
   containerInputStyle?: StyleProp<ViewStyle>;
-  imageSource?: ImageSourcePropType;
+  icon?: string;
   rightContainer?: React.ReactNode[] | React.ReactNode;
   rightContainerStyle?: StyleProp<ViewStyle>;
   labelContainer?: React.ReactNode[] | React.ReactNode;
@@ -159,7 +156,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
     help,
     containerStyle,
     containerInputStyle,
-    imageSource,
+    icon,
     rightContainer,
     rightContainerStyle,
     showClearButton,
@@ -263,7 +260,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
           {...extraProps}
           style={[
             styles.input,
-            !!imageSource && styles.inputImage,
+            !!icon && styles.inputImage,
             isInvalid && styles.inputError,
             isFocused && styles.inputFocus,
             showClearButton && styles.inputClearButton,
@@ -276,16 +273,15 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
           ref={inputRef}
         />
 
-        {imageSource && (
-          <View style={styles.imageContainer}>
-            <Image
+        {!!icon && (
+          <View style={styles.iconContainer}>
+            <Icon
               style={[
-                styles.image,
-                isInvalid && styles.imageError,
-                isFocused && styles.imageFocus
+                styles.icon,
+                isInvalid && styles.iconError,
+                isFocused && styles.iconFocus
               ]}
-              resizeMode={'contain'}
-              source={imageSource}
+              name={icon}
             />
           </View>
         )}

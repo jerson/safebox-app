@@ -4,8 +4,7 @@ import {
   View,
   ViewStyle,
   ScrollView,
-  StatusBar,
-  Alert
+  StatusBar
 } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -22,6 +21,8 @@ import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
 import Config from '../../Config';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
+import ButtonLink from '../../components/ui/ButtonLink';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +49,9 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   button: {
     marginTop: 20
+  } as ViewStyle,
+  buttonLink: {
+    marginTop: 40
   } as ViewStyle
 });
 
@@ -58,6 +62,7 @@ interface Props {
 
 function RegisterScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
@@ -68,9 +73,18 @@ function RegisterScreen({ navigation }: Props) {
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const isValid = () => {
-    return [!!username, !!password, password === repeatPassword].every(
+    const isValid = [!!username, !!password, !!repeatPassword].every(
       value => value
     );
+    if (!isValid) {
+      setError('Complete missing fields');
+      return false;
+    }
+    if (password !== repeatPassword) {
+      setError('Passwords must match');
+      return false;
+    }
+    return isValid;
   };
 
   const generateKeyPair = () => {
@@ -96,7 +110,7 @@ function RegisterScreen({ navigation }: Props) {
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
-      Alert.alert('Something happen', message);
+      setError(message);
     }
   };
   const tryToSubmit = () => {
@@ -109,6 +123,10 @@ function RegisterScreen({ navigation }: Props) {
       await submit();
       setIsLoading(false);
     });
+  };
+
+  const goToLogin = () => {
+    navigation.goBack();
   };
 
   return (
@@ -129,11 +147,12 @@ function RegisterScreen({ navigation }: Props) {
               style={styles.headerLanding}
             />
             <View style={styles.form}>
+              {!!error && <AlertMessage message={error} />}
               <TextInput
+                icon={'user'}
                 placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
-                autoFocus
                 autoCorrect={false}
                 autoCompleteType={'username'}
                 returnKeyType={'next'}
@@ -146,6 +165,7 @@ function RegisterScreen({ navigation }: Props) {
                 {...usernameProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Password'}
                 secureTextEntry
                 keyboardType={'default'}
@@ -163,6 +183,7 @@ function RegisterScreen({ navigation }: Props) {
                 {...passwordProps}
               />
               <TextInput
+                icon={'lock'}
                 placeholder={'Repeat password'}
                 secureTextEntry
                 keyboardType={'default'}
@@ -183,6 +204,12 @@ function RegisterScreen({ navigation }: Props) {
                 typeColor={'primaryLight'}
                 title={'Create account'}
                 onPress={tryToSubmit}
+              />
+
+              <ButtonLink
+                style={styles.buttonLink}
+                title={'Back to Sign In'}
+                onPress={goToLogin}
               />
             </View>
           </Content>
