@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -33,33 +33,29 @@ export interface ContentProps extends ViewProps {
    * @default true
    */
   vertical?: boolean;
+  children: React.ReactNode | React.ReactNode[];
 }
 
-export interface ContentState {}
-
-export default class Content extends React.Component<
-  ContentProps,
-  ContentState
-> {
-  static defaultProps = {
-    center: false,
-    vertical: true
-  };
-
-  render() {
-    const { style, center, vertical, children, ...props } = this.props;
-    return (
-      <View
-        style={[
-          styles.content,
-          center && styles.center,
-          vertical && styles.vertical,
-          style
-        ]}
-        {...props}
-      >
-        {children}
-      </View>
-    );
-  }
+function Content(props: ContentProps) {
+  const { style, center, vertical, children, ...extraProps } = props;
+  return (
+    <View
+      style={[
+        styles.content,
+        center && styles.center,
+        vertical && styles.vertical,
+        style
+      ]}
+      {...extraProps}
+    >
+      {children}
+    </View>
+  );
 }
+
+Content.defaultProps = {
+  center: false,
+  vertical: true
+};
+
+export default Content;

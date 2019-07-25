@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   StyleSheet,
   ViewStyle,
   TextStyle,
   StyleProp
-} from "react-native";
-import Colors from "../../modules/constants/Colors";
-import Text from "./Text";
+} from 'react-native';
+import Colors from '../../modules/constants/Colors';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center"
+    alignItems: 'center'
   } as ViewStyle,
   split: {
     height: 1,
     backgroundColor: Colors.primaryLight,
     opacity: 0.5,
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     right: 0,
     top: 10
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     paddingTop: 4,
     paddingBottom: 4,
     minWidth: 20,
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.white,
     backgroundColor: Colors.primary,
     lineHeight: 14,
@@ -41,13 +41,13 @@ export interface SplitTextProps {
   style?: StyleProp<ViewStyle>;
 }
 
-const SplitText: React.FC<SplitTextProps> = ({ title, style }) => {
+function SplitText({ title, style }: SplitTextProps) {
   return (
     <View style={[styles.container, style]}>
       <View style={styles.split} />
       <Text style={styles.label}>{title}</Text>
     </View>
   );
-};
+}
 
 export default SplitText;

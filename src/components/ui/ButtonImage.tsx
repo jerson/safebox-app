@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Image,
   ImageSourcePropType,
   ImageStyle,
-  StyleProp,
-  TouchableOpacity
+  StyleProp
 } from 'react-native';
 import Touchable, { TouchableProps } from './Touchable';
 
@@ -13,30 +12,14 @@ export interface ButtonImageProps extends TouchableProps {
   imageStyle?: StyleProp<ImageStyle>;
 }
 
-export interface ButtonImageState {}
+function ButtonImage(props: ButtonImageProps) {
+  const touchableRef = useRef(null);
 
-export default class ButtonImage extends React.Component<
-  ButtonImageProps,
-  ButtonImageState
-> {
-  buttonRef!: TouchableOpacity | null;
-
-  getButtonRef() {
-    return this.buttonRef;
-  }
-
-  render() {
-    const { imageSource, imageStyle, onPress, ...props } = this.props;
-    return (
-      <Touchable
-        ref={ref => {
-          this.buttonRef = ref;
-        }}
-        {...props}
-        onPress={onPress}
-      >
-        {imageSource && <Image style={imageStyle} source={imageSource} />}
-      </Touchable>
-    );
-  }
+  const { imageSource, imageStyle, onPress, ...extraProps } = props;
+  return (
+    <Touchable ref={touchableRef} {...extraProps} onPress={onPress}>
+      {imageSource && <Image style={imageStyle} source={imageSource} />}
+    </Touchable>
+  );
 }
+export default ButtonImage;
