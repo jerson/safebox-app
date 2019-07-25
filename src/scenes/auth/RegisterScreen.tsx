@@ -23,6 +23,7 @@ import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
 import ButtonLink from '../../components/ui/ButtonLink';
+import useAnimatedState from '../../components/hooks/useAnimatedState';
 
 const styles = StyleSheet.create({
   container: {
@@ -62,7 +63,7 @@ interface Props {
 
 function RegisterScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useAnimatedState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
@@ -89,8 +90,8 @@ function RegisterScreen({ navigation }: Props) {
 
   const generateKeyPair = () => {
     return OpenPGP.generate({
-      passphrase: password as string,
-      name: username as string,
+      passphrase: password,
+      name: username,
       keyOptions: Config.settings.keyOptions as KeyOptions
     });
   };
@@ -100,7 +101,7 @@ function RegisterScreen({ navigation }: Props) {
       const keyPair = await generateKeyPair();
 
       const request = new RegisterRequest();
-      request.setUsername(username as string);
+      request.setUsername(username);
       request.setPrivatekey(keyPair.privateKey);
       request.setPublickey(keyPair.publicKey);
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import Touchable, { TouchableProps } from './Touchable';
 import Colors from '../../modules/constants/Colors';

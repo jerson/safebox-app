@@ -15,6 +15,7 @@ import Client from '../../services/Client';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
+import useAnimatedState from '../../components/hooks/useAnimatedState';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +58,7 @@ interface Props {
 
 function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useAnimatedState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
