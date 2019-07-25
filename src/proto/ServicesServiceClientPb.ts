@@ -16,10 +16,18 @@ import {
   AccountsResponse,
   AddAccountRequest,
   AddAccountResponse,
+  AddDeviceRequest,
+  AddDeviceResponse,
   AuthResponse,
   BuyProductRequest,
   BuyProductResponse,
-  LoginBiometricRequest,
+  DeleteAccountRequest,
+  DeleteAccountResponse,
+  DeleteDeviceRequest,
+  DeleteDeviceResponse,
+  DevicesRequest,
+  DevicesResponse,
+  LoginDeviceRequest,
   LoginRequest,
   LogoutRequest,
   LogoutResponse,
@@ -69,25 +77,69 @@ export class ServicesClient {
       callback);
   }
 
-  methodInfoLogout = new grpcWeb.AbstractClientBase.MethodInfo(
-    LogoutResponse,
-    (request: LogoutRequest) => {
+  methodInfoAddDevice = new grpcWeb.AbstractClientBase.MethodInfo(
+    AddDeviceResponse,
+    (request: AddDeviceRequest) => {
       return request.serializeBinary();
     },
-    LogoutResponse.deserializeBinary
+    AddDeviceResponse.deserializeBinary
   );
 
-  logout(
-    request: LogoutRequest,
+  addDevice(
+    request: AddDeviceRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.Error,
-               response: LogoutResponse) => void) {
+               response: AddDeviceResponse) => void) {
     return this.client_.rpcCall(
       this.hostname_ +
-        '/Services/Logout',
+        '/Services/AddDevice',
       request,
       metadata || {},
-      this.methodInfoLogout,
+      this.methodInfoAddDevice,
+      callback);
+  }
+
+  methodInfoDeleteDevice = new grpcWeb.AbstractClientBase.MethodInfo(
+    DeleteDeviceResponse,
+    (request: DeleteDeviceRequest) => {
+      return request.serializeBinary();
+    },
+    DeleteDeviceResponse.deserializeBinary
+  );
+
+  deleteDevice(
+    request: DeleteDeviceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: DeleteDeviceResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/DeleteDevice',
+      request,
+      metadata || {},
+      this.methodInfoDeleteDevice,
+      callback);
+  }
+
+  methodInfoGetDevices = new grpcWeb.AbstractClientBase.MethodInfo(
+    DevicesResponse,
+    (request: DevicesRequest) => {
+      return request.serializeBinary();
+    },
+    DevicesResponse.deserializeBinary
+  );
+
+  getDevices(
+    request: DevicesRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: DevicesResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/GetDevices',
+      request,
+      metadata || {},
+      this.methodInfoGetDevices,
       callback);
   }
 
@@ -113,6 +165,50 @@ export class ServicesClient {
       callback);
   }
 
+  methodInfoLoginWithDevice = new grpcWeb.AbstractClientBase.MethodInfo(
+    AuthResponse,
+    (request: LoginDeviceRequest) => {
+      return request.serializeBinary();
+    },
+    AuthResponse.deserializeBinary
+  );
+
+  loginWithDevice(
+    request: LoginDeviceRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: AuthResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/LoginWithDevice',
+      request,
+      metadata || {},
+      this.methodInfoLoginWithDevice,
+      callback);
+  }
+
+  methodInfoLogout = new grpcWeb.AbstractClientBase.MethodInfo(
+    LogoutResponse,
+    (request: LogoutRequest) => {
+      return request.serializeBinary();
+    },
+    LogoutResponse.deserializeBinary
+  );
+
+  logout(
+    request: LogoutRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: LogoutResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/Logout',
+      request,
+      metadata || {},
+      this.methodInfoLogout,
+      callback);
+  }
+
   methodInfoRefreshToken = new grpcWeb.AbstractClientBase.MethodInfo(
     AuthResponse,
     (request: RefreshTokenRequest) => {
@@ -132,28 +228,6 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoRefreshToken,
-      callback);
-  }
-
-  methodInfoLoginBiometric = new grpcWeb.AbstractClientBase.MethodInfo(
-    AuthResponse,
-    (request: LoginBiometricRequest) => {
-      return request.serializeBinary();
-    },
-    AuthResponse.deserializeBinary
-  );
-
-  loginBiometric(
-    request: LoginBiometricRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.Error,
-               response: AuthResponse) => void) {
-    return this.client_.rpcCall(
-      this.hostname_ +
-        '/Services/LoginBiometric',
-      request,
-      metadata || {},
-      this.methodInfoLoginBiometric,
       callback);
   }
 
@@ -198,6 +272,28 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoAddAccount,
+      callback);
+  }
+
+  methodInfoDeleteAccount = new grpcWeb.AbstractClientBase.MethodInfo(
+    DeleteAccountResponse,
+    (request: DeleteAccountRequest) => {
+      return request.serializeBinary();
+    },
+    DeleteAccountResponse.deserializeBinary
+  );
+
+  deleteAccount(
+    request: DeleteAccountRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: DeleteAccountResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/DeleteAccount',
+      request,
+      metadata || {},
+      this.methodInfoDeleteAccount,
       callback);
   }
 

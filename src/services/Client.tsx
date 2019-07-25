@@ -14,7 +14,15 @@ import {
   LogoutRequest,
   LogoutResponse,
   AuthResponse,
-  RefreshTokenRequest
+  RefreshTokenRequest,
+  DeleteAccountRequest,
+  DeleteAccountResponse,
+  DeleteDeviceRequest,
+  DeleteDeviceResponse,
+  DevicesRequest,
+  DevicesResponse,
+  AddDeviceRequest,
+  AddDeviceResponse
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -87,6 +95,22 @@ export default class Client {
     });
   }
 
+  static deleteAccount(
+    request: DeleteAccountRequest
+  ): Promise<DeleteAccountResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.deleteAccount(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+
   static getAccount(request: AccountRequest): Promise<AccountResponse> {
     request.setAccesstoken(Session.getAccessToken());
 
@@ -116,6 +140,49 @@ export default class Client {
     });
   }
 
+  static addDevice(request: AddDeviceRequest): Promise<AddDeviceResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.addDevice(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static deleteDevice(
+    request: DeleteDeviceRequest
+  ): Promise<DeleteDeviceResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.deleteDevice(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+
+  static getDevices(): Promise<DevicesResponse> {
+    const request = new DevicesRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.getDevices(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
   static buyProduct(request: BuyProductRequest): Promise<BuyProductResponse> {
     request.setAccesstoken(Session.getAccessToken());
 

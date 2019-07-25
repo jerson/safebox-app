@@ -32,6 +32,194 @@ export namespace PingResponse {
   }
 }
 
+export class AddDeviceRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getName(): string;
+  setName(value: string): void;
+
+  getPublickey(): string;
+  setPublickey(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AddDeviceRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: AddDeviceRequest): AddDeviceRequest.AsObject;
+  static serializeBinaryToWriter(message: AddDeviceRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AddDeviceRequest;
+  static deserializeBinaryFromReader(message: AddDeviceRequest, reader: jspb.BinaryReader): AddDeviceRequest;
+}
+
+export namespace AddDeviceRequest {
+  export type AsObject = {
+    accesstoken: string,
+    name: string,
+    publickey: string,
+  }
+}
+
+export class AddDeviceResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AddDeviceResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: AddDeviceResponse): AddDeviceResponse.AsObject;
+  static serializeBinaryToWriter(message: AddDeviceResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AddDeviceResponse;
+  static deserializeBinaryFromReader(message: AddDeviceResponse, reader: jspb.BinaryReader): AddDeviceResponse;
+}
+
+export namespace AddDeviceResponse {
+  export type AsObject = {
+    id: number,
+  }
+}
+
+export class DeleteDeviceRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getId(): number;
+  setId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteDeviceRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteDeviceRequest): DeleteDeviceRequest.AsObject;
+  static serializeBinaryToWriter(message: DeleteDeviceRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteDeviceRequest;
+  static deserializeBinaryFromReader(message: DeleteDeviceRequest, reader: jspb.BinaryReader): DeleteDeviceRequest;
+}
+
+export namespace DeleteDeviceRequest {
+  export type AsObject = {
+    accesstoken: string,
+    id: number,
+  }
+}
+
+export class DeleteDeviceResponse extends jspb.Message {
+  getSuccess(): boolean;
+  setSuccess(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteDeviceResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteDeviceResponse): DeleteDeviceResponse.AsObject;
+  static serializeBinaryToWriter(message: DeleteDeviceResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteDeviceResponse;
+  static deserializeBinaryFromReader(message: DeleteDeviceResponse, reader: jspb.BinaryReader): DeleteDeviceResponse;
+}
+
+export namespace DeleteDeviceResponse {
+  export type AsObject = {
+    success: boolean,
+  }
+}
+
+export class Device extends jspb.Message {
+  getId(): number;
+  setId(value: number): void;
+
+  getName(): string;
+  setName(value: string): void;
+
+  getDatecreated(): string;
+  setDatecreated(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Device.AsObject;
+  static toObject(includeInstance: boolean, msg: Device): Device.AsObject;
+  static serializeBinaryToWriter(message: Device, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Device;
+  static deserializeBinaryFromReader(message: Device, reader: jspb.BinaryReader): Device;
+}
+
+export namespace Device {
+  export type AsObject = {
+    id: number,
+    name: string,
+    datecreated: string,
+  }
+}
+
+export class DevicesRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DevicesRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DevicesRequest): DevicesRequest.AsObject;
+  static serializeBinaryToWriter(message: DevicesRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DevicesRequest;
+  static deserializeBinaryFromReader(message: DevicesRequest, reader: jspb.BinaryReader): DevicesRequest;
+}
+
+export namespace DevicesRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class DevicesResponse extends jspb.Message {
+  getDevicesList(): Array<Device>;
+  setDevicesList(value: Array<Device>): void;
+  clearDevicesList(): void;
+  addDevices(value?: Device, index?: number): Device;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DevicesResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DevicesResponse): DevicesResponse.AsObject;
+  static serializeBinaryToWriter(message: DevicesResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DevicesResponse;
+  static deserializeBinaryFromReader(message: DevicesResponse, reader: jspb.BinaryReader): DevicesResponse;
+}
+
+export namespace DevicesResponse {
+  export type AsObject = {
+    devicesList: Array<Device.AsObject>,
+  }
+}
+
+export class DeleteAccountRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getId(): number;
+  setId(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteAccountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteAccountRequest): DeleteAccountRequest.AsObject;
+  static serializeBinaryToWriter(message: DeleteAccountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteAccountRequest;
+  static deserializeBinaryFromReader(message: DeleteAccountRequest, reader: jspb.BinaryReader): DeleteAccountRequest;
+}
+
+export namespace DeleteAccountRequest {
+  export type AsObject = {
+    accesstoken: string,
+    id: number,
+  }
+}
+
+export class DeleteAccountResponse extends jspb.Message {
+  getSuccess(): boolean;
+  setSuccess(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteAccountResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteAccountResponse): DeleteAccountResponse.AsObject;
+  static serializeBinaryToWriter(message: DeleteAccountResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteAccountResponse;
+  static deserializeBinaryFromReader(message: DeleteAccountResponse, reader: jspb.BinaryReader): DeleteAccountResponse;
+}
+
+export namespace DeleteAccountResponse {
+  export type AsObject = {
+    success: boolean,
+  }
+}
+
 export class RefreshTokenRequest extends jspb.Message {
   getAccesstoken(): string;
   setAccesstoken(value: string): void;
@@ -104,25 +292,21 @@ export namespace LogoutResponse {
   }
 }
 
-export class LoginBiometricRequest extends jspb.Message {
-  getUsername(): string;
-  setUsername(value: string): void;
-
-  getBiometrickey(): string;
-  setBiometrickey(value: string): void;
+export class LoginDeviceRequest extends jspb.Message {
+  getPublickey(): string;
+  setPublickey(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): LoginBiometricRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: LoginBiometricRequest): LoginBiometricRequest.AsObject;
-  static serializeBinaryToWriter(message: LoginBiometricRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): LoginBiometricRequest;
-  static deserializeBinaryFromReader(message: LoginBiometricRequest, reader: jspb.BinaryReader): LoginBiometricRequest;
+  toObject(includeInstance?: boolean): LoginDeviceRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LoginDeviceRequest): LoginDeviceRequest.AsObject;
+  static serializeBinaryToWriter(message: LoginDeviceRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LoginDeviceRequest;
+  static deserializeBinaryFromReader(message: LoginDeviceRequest, reader: jspb.BinaryReader): LoginDeviceRequest;
 }
 
-export namespace LoginBiometricRequest {
+export namespace LoginDeviceRequest {
   export type AsObject = {
-    username: string,
-    biometrickey: string,
+    publickey: string,
   }
 }
 
