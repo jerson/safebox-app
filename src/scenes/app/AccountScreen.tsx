@@ -6,13 +6,15 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
 import { AccountSingle } from '../../proto/services_pb';
+import { useNavigationParam } from 'react-navigation-hooks';
+import Text from '../../components/ui/Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,14 +33,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {
-  account: AccountSingle;
-}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
+function AccountScreen() {
+  const account = useNavigationParam('account') as AccountSingle;
 
-function AccountScreen(_props: Props) {
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -55,7 +52,9 @@ function AccountScreen(_props: Props) {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <View style={styles.form} />
+            <View style={styles.form}>
+              <Text>{account.getId()}</Text>
+            </View>
           </Content>
         </SafeAreaView>
       </ScrollView>

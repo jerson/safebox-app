@@ -6,7 +6,7 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
@@ -28,6 +28,8 @@ import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import SplitText from '../../components/ui/SplitText';
 import useIconLabel from '../../components/hooks/useIconLabel';
+
+import { useNavigation } from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,12 +58,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
+function AddAccountScreen() {
+  const { replace } = useNavigation();
 
-function AddAccountScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -119,11 +118,13 @@ function AddAccountScreen({ navigation }: Props) {
       accountSingle.setUsername(usernameEncoded);
       accountSingle.setLabel(label);
 
-      navigation.replace('Account', { account: accountSingle });
+      replace('Account', { account: accountSingle });
+      return;
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
     }
+    setIsLoading(false);
   };
   const tryToSubmit = () => {
     if (!isValid()) {
@@ -133,7 +134,6 @@ function AddAccountScreen({ navigation }: Props) {
     setIsLoading(true);
     requestAnimationFrame(async () => {
       await submit();
-      setIsLoading(false);
     });
   };
 
