@@ -77,12 +77,13 @@ function LoginScreen({ navigation }: Props) {
   const submit = async () => {
     try {
       const request = new LoginRequest();
-      request.setUsername(username as string);
-      request.setPassword(password as string);
+      request.setUsername(username);
+      request.setPassword(password);
 
       const response = await Client.login(request);
 
-      Session.login(response.getAccesstoken());
+      Session.login(response);
+      Session.setPassword(password);
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);

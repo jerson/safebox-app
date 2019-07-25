@@ -1,5 +1,5 @@
-import { ServicesClient } from "../proto/ServicesServiceClientPb";
-import Config from "../Config";
+import { ServicesClient } from '../proto/ServicesServiceClientPb';
+import Config from '../Config';
 import {
   AccountRequest,
   AccountResponse,
@@ -10,16 +10,31 @@ import {
   BuyProductRequest,
   BuyProductResponse,
   LoginRequest,
-  LoginResponse,
   RegisterRequest,
-  RegisterResponse,
   LogoutRequest,
-  LogoutResponse
-} from "../proto/services_pb";
-import Session from "./Session";
+  LogoutResponse,
+  AuthResponse,
+  RefreshTokenRequest
+} from '../proto/services_pb';
+import Session from './Session';
 
 export default class Client {
-  static login(request: LoginRequest): Promise<LoginResponse> {
+  static refreshToken(): Promise<AuthResponse> {
+    const request = new RefreshTokenRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.refreshToken(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+
+  static login(request: LoginRequest): Promise<AuthResponse> {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       client.login(request, null, (err, response) => {
@@ -31,7 +46,7 @@ export default class Client {
     });
   }
 
-  static register(request: RegisterRequest): Promise<RegisterResponse> {
+  static register(request: RegisterRequest): Promise<AuthResponse> {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       client.register(request, null, (err, response) => {

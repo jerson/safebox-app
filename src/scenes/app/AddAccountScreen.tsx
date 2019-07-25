@@ -15,14 +15,19 @@ import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
 import useTextInput from '../../components/hooks/useTextInput';
 import Client from '../../services/Client';
-import { RegisterRequest } from '../../proto/services_pb';
-import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
-import Config from '../../Config';
+import {
+  AddAccountRequest,
+  Account,
+  AccountSingle
+} from '../../proto/services_pb';
+import OpenPGP from 'react-native-fast-openpgp';
+
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import SplitText from '../../components/ui/SplitText';
+import useIconLabel from '../../components/hooks/useIconLabel';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,10 +38,6 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   safeArea: {
     flex: 1
-  } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
   } as ViewStyle,
   textInput: {} as ViewStyle,
   textInputContainer: {
@@ -64,16 +65,20 @@ function AddAccountScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
+  const labelRef = useRef<TextInputRef>(null);
+  const hintRef = useRef<TextInputRef>(null);
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
   const repeatPasswordRef = useRef<TextInputRef>(null);
 
+  const [label, labelProps] = useTextInput('');
+  const [hint, hintProps] = useTextInput('');
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const isValid = () => {
-    const isValid = [!!username, !!password, !!repeatPassword].every(
+    const isValid = [!!label, !!username, !!password, !!repeatPassword].every(
       value => value
     );
     if (!isValid) {
@@ -87,27 +92,34 @@ function AddAccountScreen({ navigation }: Props) {
     return isValid;
   };
 
-  const generateKeyPair = () => {
-    return OpenPGP.generate({
-      passphrase: password,
-      name: username,
-      keyOptions: Config.settings.keyOptions as KeyOptions
-    });
+  const encode = (input: string) => {
+    return OpenPGP.encrypt(input, Session.getPublicKey());
   };
 
   const submit = async () => {
     try {
-      const keyPair = await generateKeyPair();
+      const hintEncoded = await encode(hint);
+      const usernameEncoded = await encode(username);
+      const passwordEncoded = await encode(password);
 
-      const request = new RegisterRequest();
-      request.setUsername(username);
-      request.setPrivatekey(keyPair.privateKey);
-      request.setPublickey(keyPair.publicKey);
+      const account = new Account();
+      account.setHint(hintEncoded);
+      account.setUsername(usernameEncoded);
+      account.setPassword(passwordEncoded);
+      account.setLabel(label);
 
-      const response = await Client.register(request);
+      const request = new AddAccountRequest();
+      request.setAccount(account);
 
-      Session.login(response.getAccesstoken());
-      navigation.navigate('Accounts');
+      const response = await Client.addAccount(request);
+
+      const accountSingle = new AccountSingle();
+      accountSingle.setId(response.getId());
+      accountSingle.setHint(hintEncoded);
+      accountSingle.setUsername(usernameEncoded);
+      accountSingle.setLabel(label);
+
+      navigation.replace('Account', { account: accountSingle });
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
@@ -125,6 +137,7 @@ function AddAccountScreen({ navigation }: Props) {
     });
   };
 
+  const labelExtraProps = useIconLabel(label);
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -144,8 +157,43 @@ function AddAccountScreen({ navigation }: Props) {
             <View style={styles.form}>
               {!!error && <AlertMessage message={error} />}
               <TextInput
-                icon={'tag'}
                 placeholder={'Label'}
+                keyboardType={'default'}
+                autoCapitalize={'sentences'}
+                autoCorrect
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={labelRef}
+                onSubmitEditing={() => {
+                  hintRef.current && hintRef.current.focus();
+                }}
+                {...labelProps}
+                {...labelExtraProps}
+              />
+              <TextInput
+                icon={'feather'}
+                placeholder={'Hint (optional)'}
+                keyboardType={'default'}
+                autoCapitalize={'sentences'}
+                autoCorrect
+                returnKeyType={'next'}
+                containerStyle={styles.textInputContainer}
+                style={styles.textInput}
+                ref={hintRef}
+                onSubmitEditing={() => {
+                  usernameRef.current && usernameRef.current.focus();
+                }}
+                {...hintProps}
+              />
+              <SplitText
+                type={'Default'}
+                style={styles.splitView}
+                title={'Sensitive credentials'}
+              />
+              <TextInput
+                icon={'user'}
+                placeholder={'Username'}
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
@@ -160,34 +208,13 @@ function AddAccountScreen({ navigation }: Props) {
                 {...usernameProps}
               />
               <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'username'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
-              />
-              <SplitText
-                type={'Default'}
-                style={styles.splitView}
-                title={'Secret account'}
-              />
-              <TextInput
                 icon={'lock'}
                 placeholder={'Password'}
                 secureTextEntry
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={'password'}
+                autoCompleteType={'off'}
                 returnKeyType={'next'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -205,7 +232,7 @@ function AddAccountScreen({ navigation }: Props) {
                 keyboardType={'default'}
                 autoCapitalize={'none'}
                 autoCorrect={false}
-                autoCompleteType={'password'}
+                autoCompleteType={'off'}
                 returnKeyType={'done'}
                 containerStyle={styles.textInputContainer}
                 style={styles.textInput}
@@ -213,28 +240,12 @@ function AddAccountScreen({ navigation }: Props) {
                 blurOnSubmit
                 {...repeatPasswordProps}
               />
-              <TextInput
-                icon={'feather'}
-                placeholder={'Hint'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'off'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
-              />
 
               <Button
                 isLoading={isLoading}
                 style={styles.button}
                 typeColor={'primaryLight'}
-                title={'Add secret'}
+                title={'Add secret account'}
                 onPress={tryToSubmit}
               />
             </View>
@@ -246,7 +257,7 @@ function AddAccountScreen({ navigation }: Props) {
 }
 
 AddAccountScreen.navigationOptions = () => ({
-  title: 'Add secret'
+  title: 'Add secret account'
 });
 
 export default AddAccountScreen;

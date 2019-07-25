@@ -129,6 +129,7 @@ export interface TextInputProps extends TextInputBaseProps {
   labelContainer?: React.ReactNode[] | React.ReactNode;
   labelContainerStyle?: StyleProp<ViewStyle>;
   textErrorStyle?: StyleProp<TextStyle>;
+  iconStyle?: StyleProp<TextStyle>;
   showClearButton?: boolean;
   onBlur?: () => void;
   onFocus?: () => void;
@@ -164,6 +165,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
     textErrorStyle,
     onBlur,
     onFocus,
+    iconStyle,
     ...extraProps
   } = props;
 
@@ -277,7 +279,8 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
               style={[
                 styles.icon,
                 isInvalid && styles.iconError,
-                isFocused && styles.iconFocus
+                isFocused && styles.iconFocus,
+                iconStyle
               ]}
               name={icon}
             />

@@ -10,7 +10,7 @@ const props: ButtonIconProps = {
     alignItems: 'center',
     justifyContent: 'center'
   },
-  name: 'sample',
+  name: 'plus-circle',
   onPress: jest.fn()
 };
 

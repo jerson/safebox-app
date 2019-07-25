@@ -1,30 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
-  View,
   ViewStyle,
   ScrollView,
-  StatusBar
+  StatusBar,
+  View
 } from 'react-native';
 import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
-import TextInput, { TextInputRef } from '../../components/ui/TextInput';
-import Button from '../../components/ui/Button';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
-import useTextInput from '../../components/hooks/useTextInput';
-import Client from '../../services/Client';
-import { RegisterRequest } from '../../proto/services_pb';
-import OpenPGP, { KeyOptions } from 'react-native-fast-openpgp';
-import Config from '../../Config';
-import Session from '../../services/Session';
-import Strings from '../../modules/format/Strings';
-import AlertMessage from '../../components/ui/AlertMessage';
-import ButtonLink from '../../components/ui/ButtonLink';
+import { AccountSingle } from '../../proto/services_pb';
+
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import HeaderIcon from '../../components/navigation/HeaderIcon';
+import Client from '../../services/Client';
+import Strings from '../../modules/format/Strings';
+import Loading from '../../components/ui/Loading';
+import AlertMessage from '../../components/ui/AlertMessage';
+import Text from '../../components/ui/Text';
+import EmptyAccounts from '../../components/help/EmptyAccounts';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,24 +32,10 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
-  } as ViewStyle,
-  textInput: {} as ViewStyle,
-  textInputContainer: {
-    marginBottom: 0
-  } as ViewStyle,
   form: {
     width: 280,
     marginBottom: 60,
     alignSelf: 'center'
-  } as ViewStyle,
-  button: {
-    marginTop: 20
-  } as ViewStyle,
-  buttonLink: {
-    marginTop: 40
   } as ViewStyle
 });
 
@@ -65,72 +47,26 @@ interface Props {
 function AccountsScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
+  const [accounts, setAccounts] = useState<AccountSingle[]>([]);
 
-  const usernameRef = useRef<TextInputRef>(null);
-  const passwordRef = useRef<TextInputRef>(null);
-  const repeatPasswordRef = useRef<TextInputRef>(null);
-
-  const [username, usernameProps] = useTextInput('');
-  const [password, passwordProps] = useTextInput('');
-  const [repeatPassword, repeatPasswordProps] = useTextInput('');
-
-  const isValid = () => {
-    const isValid = [!!username, !!password, !!repeatPassword].every(
-      value => value
-    );
-    if (!isValid) {
-      setError('Complete missing fields');
-      return false;
-    }
-    if (password !== repeatPassword) {
-      setError('Passwords must match');
-      return false;
-    }
-    return isValid;
-  };
-
-  const generateKeyPair = () => {
-    return OpenPGP.generate({
-      passphrase: password,
-      name: username,
-      keyOptions: Config.settings.keyOptions as KeyOptions
-    });
-  };
-
-  const submit = async () => {
+  const load = async () => {
     try {
-      const keyPair = await generateKeyPair();
-
-      const request = new RegisterRequest();
-      request.setUsername(username);
-      request.setPrivatekey(keyPair.privateKey);
-      request.setPublickey(keyPair.publicKey);
-
-      const response = await Client.register(request);
-
-      Session.login(response.getAccesstoken());
-      navigation.navigate('Accounts');
+      const response = await Client.getAccounts();
+      setAccounts(response.getAccountsList());
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
     }
+    setIsLoading(false);
   };
-  const tryToSubmit = () => {
-    if (!isValid()) {
-      return;
-    }
 
+  useEffect(() => {
     setIsLoading(true);
-    requestAnimationFrame(async () => {
-      await submit();
-      setIsLoading(false);
-    });
-  };
+    load();
+  }, []);
 
-  const goToLogin = () => {
-    navigation.goBack();
-  };
-
+  // const hasAccounts = accounts.length >1
+  const hasAccounts = false;
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -146,78 +82,23 @@ function AccountsScreen({ navigation }: Props) {
         style={styles.scrollView}
       >
         <SafeAreaView style={styles.safeArea}>
-          <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
-            <View style={styles.form}>
-              {!!error && <AlertMessage message={error} />}
-              <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'username'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={passwordRef}
-                onSubmitEditing={() => {
-                  repeatPasswordRef.current &&
-                    repeatPasswordRef.current.focus();
-                }}
-                {...passwordProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Repeat password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'done'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={repeatPasswordRef}
-                blurOnSubmit
-                {...repeatPasswordProps}
-              />
-
-              <Button
-                isLoading={isLoading}
-                style={styles.button}
-                typeColor={'primaryLight'}
-                title={'Create account'}
-                onPress={tryToSubmit}
-              />
-
-              <ButtonLink
-                style={styles.buttonLink}
-                title={'Back to Sign In'}
-                onPress={goToLogin}
-              />
-            </View>
+          <Content center={!hasAccounts}>
+            {isLoading && <Loading margin={'large'} />}
+            {!isLoading && (
+              <View style={styles.form}>
+                {!!error && <AlertMessage message={error} />}
+                {hasAccounts && (
+                  <View>
+                    {accounts.map(account => {
+                      return (
+                        <Text key={account.getId()}>{account.getHint()}</Text>
+                      );
+                    })}
+                  </View>
+                )}
+                {!hasAccounts && <EmptyAccounts navigation={navigation} />}
+              </View>
+            )}
           </Content>
         </SafeAreaView>
       </ScrollView>

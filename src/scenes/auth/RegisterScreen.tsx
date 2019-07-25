@@ -107,7 +107,9 @@ function RegisterScreen({ navigation }: Props) {
 
       const response = await Client.register(request);
 
-      Session.login(response.getAccesstoken());
+      Session.login(response);
+      Session.setPassword(password);
+
       navigation.navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
