@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   alertMessage: {
     marginHorizontal: 20,
-    marginTop: 20
+    marginBottom: 20
   } as ViewStyle,
   timeout: {
     position: 'absolute',
@@ -85,13 +85,18 @@ function AccountsScreen({ navigation }: Props) {
         backgroundColor={Colors.grey2}
       />
 
-      {!isLoading && !!error && (
-        <AlertMessage style={styles.alertMessage} message={error} />
-      )}
       <Timeout style={styles.timeout} />
       {isLoading && <Loading margin={'large'} />}
       {!isLoading && (
         <FlatList
+          ListHeaderComponent={() => {
+            if (isLoading || !error) {
+              return null;
+            }
+
+            return <AlertMessage style={styles.alertMessage} message={error} />;
+          }}
+          extraData={{ isLoading, error }}
           refreshControl={
             <RefreshControl
               colors={[Colors.primary]}
