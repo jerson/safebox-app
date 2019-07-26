@@ -6,7 +6,7 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
@@ -24,6 +24,7 @@ import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
 import ButtonLink from '../../components/ui/ButtonLink';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
+import { useNavigation } from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,12 +57,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
+function RegisterScreen() {
+  const { navigate, goBack } = useNavigation();
 
-function RegisterScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -110,7 +108,7 @@ function RegisterScreen({ navigation }: Props) {
       Session.login(response);
       Session.setPassword(password);
 
-      navigation.navigate('Accounts');
+      navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
@@ -126,10 +124,6 @@ function RegisterScreen({ navigation }: Props) {
       await submit();
       setIsLoading(false);
     });
-  };
-
-  const goToLogin = () => {
-    navigation.goBack();
   };
 
   return (
@@ -216,7 +210,7 @@ function RegisterScreen({ navigation }: Props) {
               <ButtonLink
                 style={styles.buttonLink}
                 title={'Back to Sign In'}
-                onPress={goToLogin}
+                onPress={goBack}
               />
             </View>
           </Content>

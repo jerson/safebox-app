@@ -5,7 +5,7 @@ export default class Session {
     this.password = password;
   }
   static getPassword() {
-    return this.password;
+    return this.password || '';
   }
   static login(response: AuthResponse) {
     this.response = response;

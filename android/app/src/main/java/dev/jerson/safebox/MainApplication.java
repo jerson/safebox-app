@@ -3,6 +3,8 @@ package dev.jerson.safebox;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.rnbiometrics.ReactNativeBiometricsPackage;
 import dev.jerson.RNFastOpenPGPPackage;
 import io.realm.react.RealmReactPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -34,6 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNDeviceInfo(),
+            new ReactNativeBiometricsPackage(),
             new RNFastOpenPGPPackage(),
             new RealmReactPackage(),
             new RNCWebViewPackage(),

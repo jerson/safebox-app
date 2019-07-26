@@ -172,6 +172,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-device-info')
+    implementation project(':react-native-biometrics')
     implementation project(':react-native-fast-openpgp')
     implementation project(':realm')
     implementation project(':react-native-webview')

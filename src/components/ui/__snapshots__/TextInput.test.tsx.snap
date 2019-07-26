@@ -81,7 +81,7 @@ exports[`render just views 1`] = `
         Array [
           Object {
             "position": "absolute",
-            "right": -40,
+            "right": -60,
           },
           undefined,
         ]
