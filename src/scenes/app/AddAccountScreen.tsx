@@ -97,13 +97,11 @@ function AddAccountScreen() {
 
   const submit = async () => {
     try {
-      const hintEncoded = await encode(hint);
-      const usernameEncoded = await encode(username);
       const passwordEncoded = await encode(password);
 
       const account = new Account();
-      account.setHint(hintEncoded);
-      account.setUsername(usernameEncoded);
+      account.setHint(hint);
+      account.setUsername(username);
       account.setPassword(passwordEncoded);
       account.setLabel(label);
 
@@ -114,8 +112,8 @@ function AddAccountScreen() {
 
       const accountSingle = new AccountSingle();
       accountSingle.setId(response.getId());
-      accountSingle.setHint(hintEncoded);
-      accountSingle.setUsername(usernameEncoded);
+      accountSingle.setHint(hint);
+      accountSingle.setUsername(username);
       accountSingle.setLabel(label);
 
       replace('Account', { account: accountSingle });

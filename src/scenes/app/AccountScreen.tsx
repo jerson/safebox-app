@@ -13,7 +13,12 @@ import Colors from '../../modules/constants/Colors';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
-import { AccountSingle, DeleteAccountRequest } from '../../proto/services_pb';
+import {
+  AccountSingle,
+  DeleteAccountRequest,
+  AccountRequest,
+  Account
+} from '../../proto/services_pb';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
 import Header from '../../components/account/Header';
@@ -25,6 +30,8 @@ import Client from '../../services/Client';
 import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import Strings from '../../modules/format/Strings';
+import Locked from '../../components/account/Locked';
+import OpenPGP from 'react-native-fast-openpgp';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +57,51 @@ function AccountScreen() {
 
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useAnimatedState('');
+  const [locked, setLocked] = useState(!Session.getPassword());
+
+  const [accountDecoded, setAccountDecoded] = useState<Account>();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onUnlock = (password: string) => {
+    setError('');
+    Session.setPassword(password);
+    setLocked(false);
+  };
+
+  const decode = (input: string) => {
+    return OpenPGP.decrypt(
+      input,
+      Session.getPrivateKey(),
+      Session.getPassword()
+    );
+  };
+
+  useEffect(() => {
+    if (locked) {
+      return;
+    }
+    loadPassword();
+  }, [locked]);
+
+  const loadPassword = async () => {
+    setIsLoading(true);
+    try {
+      const request = new AccountRequest();
+      request.setId(account.getId());
+      const response = await Client.getAccount(request);
+      const responseAccount = response.getAccount();
+      if (responseAccount) {
+        const accountDecoded = new Account();
+        accountDecoded.setPassword(await decode(responseAccount.getPassword()));
+        setAccountDecoded(accountDecoded);
+      }
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+      setLocked(true);
+    }
+    setIsLoading(false);
+  };
 
   const deleteAccount = async () => {
     setIsDeleting(true);
@@ -92,11 +144,9 @@ function AccountScreen() {
     );
   }, [showDelete]);
 
-  const [hasPassword] = useState(!!Session.getPassword());
-
   return (
     <Container style={styles.container}>
-      <LoadingOverlay isLoading={isDeleting} />
+      <LoadingOverlay isLoading={isDeleting || isLoading} />
       <StatusBar
         animated
         barStyle={'dark-content'}
@@ -112,16 +162,15 @@ function AccountScreen() {
         <SafeAreaView style={styles.safeArea}>
           <Content center>
             {!!error && <AlertMessage message={error} />}
-            {hasPassword && (
+            {!locked && accountDecoded && (
               <View style={styles.form}>
-                <Text>{account.getId()}dd</Text>
+                <Text>
+                  {account.getHint()}
+                  {accountDecoded.getPassword()}
+                </Text>
               </View>
             )}
-            {!hasPassword && (
-              <View style={styles.form}>
-                <Text>insert admin pass</Text>
-              </View>
-            )}
+            {locked && <Locked onUnlock={onUnlock} />}
           </Content>
         </SafeAreaView>
       </ScrollView>
