@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
+const encode = (input: string) => {
+  return OpenPGP.encrypt(input, Session.getPublicKey());
+};
+
 function AddAccountScreen() {
   const { replace } = useNavigation();
 
@@ -89,10 +93,6 @@ function AddAccountScreen() {
       return false;
     }
     return isValid;
-  };
-
-  const encode = (input: string) => {
-    return OpenPGP.encrypt(input, Session.getPublicKey());
   };
 
   const submit = async () => {

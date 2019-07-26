@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   } as TextStyle,
   rightContainer: {
     position: 'absolute',
-    right: -Sizes.ClearButtonWidth
+    right: -60
   } as ViewStyle,
   clearButton: {
     position: 'absolute',

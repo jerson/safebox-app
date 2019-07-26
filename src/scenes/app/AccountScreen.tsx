@@ -5,7 +5,9 @@ import {
   ViewStyle,
   ScrollView,
   StatusBar,
-  Alert
+  Alert,
+  TextStyle,
+  Clipboard
 } from 'react-native';
 import { SafeAreaView, HeaderProps } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -32,6 +34,9 @@ import useAnimatedState from '../../components/hooks/useAnimatedState';
 import Strings from '../../modules/format/Strings';
 import Locked from '../../components/account/Locked';
 import OpenPGP from 'react-native-fast-openpgp';
+import TextInput from '../../components/ui/TextInput';
+import Icon from 'react-native-vector-icons/Feather';
+import Button from '../../components/ui/Button';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,12 +48,69 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   } as ViewStyle,
-  form: {
-    width: 280,
+  textInput: {} as ViewStyle,
+  textInputContainer: {
+    flex: 1,
+    marginBottom: 0,
+    marginRight: 60
+  } as ViewStyle,
+  icon: {
+    fontSize: 40,
+    alignSelf: 'center',
+    marginBottom: 10,
+    color: Colors.primaryLight
+  } as ViewStyle,
+  shadow: {
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
+    shadowColor: Colors.grey6,
+    shadowOffset: { height: 4, width: 0 },
+    elevation: 4
+  } as ViewStyle,
+  content: {
+    padding: 20,
+    margin: 20,
     marginBottom: 60,
-    alignSelf: 'center'
-  } as ViewStyle
+    maxWidth: 280,
+    backgroundColor: Colors.white,
+    borderRadius: 12,
+    overflow: 'visible'
+  } as ViewStyle,
+  help: {
+    marginTop: 5,
+    fontSize: 13,
+    color: Colors.grey6
+  } as TextStyle,
+  helpHint: {
+    color: Colors.grey5
+  } as TextStyle,
+  item: {
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  } as ViewStyle,
+  buttonCopy: {
+    height: 50,
+    width: 50,
+    paddingTop: 14,
+    paddingLeft: 15,
+    borderRadius: 25
+  } as ViewStyle,
+  description: {
+    fontSize: 13,
+    color: Colors.grey5,
+    marginBottom: 10,
+    textAlign: 'center'
+  } as TextStyle,
+  iconCopy: {
+    color: Colors.primaryLight,
+    fontSize: 15,
+    marginHorizontal: 2
+  }
 });
+
+const decode = (input: string) => {
+  return OpenPGP.decrypt(input, Session.getPrivateKey(), Session.getPassword());
+};
 
 function AccountScreen() {
   const { setParams, goBack } = useNavigation();
@@ -57,6 +119,7 @@ function AccountScreen() {
 
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useAnimatedState('');
+  const [toast, setToast] = useAnimatedState('');
   const [locked, setLocked] = useState(!Session.getPassword());
 
   const [accountDecoded, setAccountDecoded] = useState<Account>();
@@ -66,14 +129,6 @@ function AccountScreen() {
     setError('');
     Session.setPassword(password);
     setLocked(false);
-  };
-
-  const decode = (input: string) => {
-    return OpenPGP.decrypt(
-      input,
-      Session.getPrivateKey(),
-      Session.getPassword()
-    );
   };
 
   useEffect(() => {
@@ -163,11 +218,74 @@ function AccountScreen() {
           <Content center>
             {!!error && <AlertMessage message={error} />}
             {!locked && accountDecoded && (
-              <View style={styles.form}>
-                <Text>
-                  {account.getHint()}
-                  {accountDecoded.getPassword()}
+              <View style={[styles.content, styles.shadow]}>
+                <Icon name={'unlock'} style={styles.icon} />
+                <Text style={styles.description}>
+                  Use <Icon style={styles.iconCopy} name={'copy'} /> for copy to
+                  clipboard
                 </Text>
+                {!!toast && (
+                  <AlertMessage
+                    color={Colors.accentDark}
+                    timeout={2000}
+                    icon={'copy'}
+                    onTimeout={() => setToast('')}
+                    message={toast}
+                  />
+                )}
+                <View style={styles.item}>
+                  <TextInput
+                    label={'Username'}
+                    icon={'user'}
+                    editable={false}
+                    multiline
+                    value={account.getUsername()}
+                    containerStyle={styles.textInputContainer}
+                    style={styles.textInput}
+                    rightContainer={
+                      <Button
+                        typeColor={'primaryLight'}
+                        onPress={() => {
+                          Clipboard.setString(account.getUsername());
+                          setToast('Username copied to clipboard');
+                        }}
+                        style={styles.buttonCopy}
+                        icon={'copy'}
+                      />
+                    }
+                  />
+                </View>
+                <View style={styles.item}>
+                  <TextInput
+                    label={'Password'}
+                    icon={'lock'}
+                    editable={false}
+                    secureTextEntry
+                    multiline
+                    value={accountDecoded.getPassword()}
+                    containerStyle={styles.textInputContainer}
+                    style={styles.textInput}
+                    help={
+                      !!account.getHint() && (
+                        <Text style={styles.help}>
+                          <Text style={styles.helpHint}>Hint:</Text>{' '}
+                          {account.getHint()}
+                        </Text>
+                      )
+                    }
+                    rightContainer={
+                      <Button
+                        typeColor={'primaryLight'}
+                        onPress={() => {
+                          Clipboard.setString(accountDecoded.getPassword());
+                          setToast('Password copied to clipboard');
+                        }}
+                        style={styles.buttonCopy}
+                        icon={'copy'}
+                      />
+                    }
+                  />
+                </View>
               </View>
             )}
             {locked && <Locked onUnlock={onUnlock} />}
