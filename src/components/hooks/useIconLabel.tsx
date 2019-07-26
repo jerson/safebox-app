@@ -5,7 +5,6 @@ function useIconLabel(value: string) {
   return {
     icon: result.icon,
     iconStyle: { color: result.tintColor }
-    // style: { borderColor: result.tintColor }
   };
 }
 export default useIconLabel;

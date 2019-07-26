@@ -5908,6 +5908,16 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-biometrics@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-biometrics/-/react-native-biometrics-1.6.0.tgz#03935ebc2117e32e6e957f269f8425b4931e5e91"
+  integrity sha512-2oDBxggcQQiNWKowAHKtu+FNRIWmoRaMxV/v+/C5UCS4t4+IpqskOXh0LKgrM0jMEhr+TAhJy05UxFA69RvG4A==
+
+react-native-device-info@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.0.tgz#7b2a8baf8453324bd8d120ce46e5e2bb0181ccd4"
+  integrity sha512-ISEChH2zg4bRX8PL1cYoNWffJ7wmgYosKyJbkWyTxs8g+rpeGkmMf9Wo4COriAt1AJ2jC78IGhJYFzbIc+Przw==
+
 react-native-fast-openpgp@0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-native-fast-openpgp/-/react-native-fast-openpgp-0.4.2.tgz#dc931164e1baa39c8d70defd4efc93e63ab77fd7"
@@ -6034,6 +6044,11 @@ react-navigation-drawer@~1.2.1:
   integrity sha512-T2kaBjY2c4/3I6noWFnaf/c18ntNH5DsST38i+pdc2NPxn5Yi5lkK+ZZTeKuHSFD4a7G0jWY9OGf1iRkHWLMAQ==
   dependencies:
     react-native-tab-view "^1.2.0"
+
+react-navigation-hooks@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-navigation-hooks/-/react-navigation-hooks-1.0.1.tgz#f8bc2061c31026b14162943650946df715a9ae57"
+  integrity sha512-CUnnzrDlLB+OLYQwlY90T4/Bnlq5EbVnSdenrC+29JUgR5cys50ZL+ixQjArVSv5aiuyyQ68Fo4tF0ru3sFt8Q==
 
 react-navigation-stack@~1.4.0:
   version "1.4.0"

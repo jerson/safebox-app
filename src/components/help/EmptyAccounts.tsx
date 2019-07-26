@@ -8,8 +8,7 @@ import {
   Image
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
-
-import { NavigationScreenProp } from 'react-navigation';
+import { useNavigation } from 'react-navigation-hooks';
 import Button from '../ui/Button';
 import Text from '../ui/Text';
 
@@ -41,13 +40,10 @@ const styles = StyleSheet.create({
   } as TextStyle
 });
 
-export interface HeaderIconProps {
-  navigation: NavigationScreenProp<any>;
-}
-
-function EmptyAccounts({ navigation }: HeaderIconProps) {
+function EmptyAccounts() {
+  const { navigate } = useNavigation();
   const goToAdd = () => {
-    navigation.navigate('AddAccount');
+    navigate('AddAccount');
   };
   return (
     <View style={styles.container}>

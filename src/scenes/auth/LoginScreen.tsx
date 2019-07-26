@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { StyleSheet, View, ViewStyle, ScrollView } from 'react-native';
-import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
@@ -16,6 +16,7 @@ import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
+import { useNavigation } from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -51,12 +52,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
+function LoginScreen() {
+  const { navigate } = useNavigation();
 
-function LoginScreen({ navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -84,11 +82,13 @@ function LoginScreen({ navigation }: Props) {
 
       Session.login(response);
       Session.setPassword(password);
-      navigation.navigate('Accounts');
+      navigate('Accounts');
+      return;
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
     }
+    setIsLoading(false);
   };
   const tryToSubmit = () => {
     if (!isValid()) {
@@ -99,12 +99,11 @@ function LoginScreen({ navigation }: Props) {
     setIsLoading(true);
     requestAnimationFrame(async () => {
       await submit();
-      setIsLoading(false);
     });
   };
 
   const goToRegister = () => {
-    navigation.navigate('Register');
+    navigate('Register');
   };
 
   return (

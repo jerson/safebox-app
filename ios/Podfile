@@ -14,6 +14,10 @@ target 'SafeBox' do
   pod 'FastOpenpgp', :path => '../node_modules/react-native-fast-openpgp/ios/native'
 
 
+  pod 'react-native-biometrics', :path => '../node_modules/react-native-biometrics'
+
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   target 'SafeBoxTests' do
     inherit! :search_paths
     # Pods for testing

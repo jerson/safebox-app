@@ -6,7 +6,7 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native';
-import { SafeAreaView, NavigationScreenProp } from 'react-navigation';
+import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import TextInput, { TextInputRef } from '../../components/ui/TextInput';
 import Button from '../../components/ui/Button';
@@ -28,6 +28,8 @@ import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import SplitText from '../../components/ui/SplitText';
 import useIconLabel from '../../components/hooks/useIconLabel';
+
+import { useNavigation } from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,12 +58,13 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
+const encode = (input: string) => {
+  return OpenPGP.encrypt(input, Session.getPublicKey());
+};
 
-function AddAccountScreen({ navigation }: Props) {
+function AddAccountScreen() {
+  const { replace } = useNavigation();
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -92,19 +95,13 @@ function AddAccountScreen({ navigation }: Props) {
     return isValid;
   };
 
-  const encode = (input: string) => {
-    return OpenPGP.encrypt(input, Session.getPublicKey());
-  };
-
   const submit = async () => {
     try {
-      const hintEncoded = await encode(hint);
-      const usernameEncoded = await encode(username);
       const passwordEncoded = await encode(password);
 
       const account = new Account();
-      account.setHint(hintEncoded);
-      account.setUsername(usernameEncoded);
+      account.setHint(hint);
+      account.setUsername(username);
       account.setPassword(passwordEncoded);
       account.setLabel(label);
 
@@ -115,15 +112,17 @@ function AddAccountScreen({ navigation }: Props) {
 
       const accountSingle = new AccountSingle();
       accountSingle.setId(response.getId());
-      accountSingle.setHint(hintEncoded);
-      accountSingle.setUsername(usernameEncoded);
+      accountSingle.setHint(hint);
+      accountSingle.setUsername(username);
       accountSingle.setLabel(label);
 
-      navigation.replace('Account', { account: accountSingle });
+      replace('Account', { account: accountSingle });
+      return;
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
     }
+    setIsLoading(false);
   };
   const tryToSubmit = () => {
     if (!isValid()) {
@@ -133,7 +132,6 @@ function AddAccountScreen({ navigation }: Props) {
     setIsLoading(true);
     requestAnimationFrame(async () => {
       await submit();
-      setIsLoading(false);
     });
   };
 
