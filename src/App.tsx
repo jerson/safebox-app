@@ -11,6 +11,7 @@ if (Platform.OS === 'android') {
 
 function App() {
   const statusBarColor = tinyColor(Colors.primary).darken(5);
+
   return (
     <Fragment>
       <StatusBar

@@ -365,6 +365,9 @@ export class AuthResponse extends jspb.Message {
   getDateexpire(): string;
   setDateexpire(value: string): void;
 
+  getDate(): string;
+  setDate(value: string): void;
+
   getKeypair(): KeyPairResponse | undefined;
   setKeypair(value?: KeyPairResponse): void;
   hasKeypair(): boolean;
@@ -382,6 +385,7 @@ export namespace AuthResponse {
   export type AsObject = {
     accesstoken: string,
     dateexpire: string,
+    date: string,
     keypair?: KeyPairResponse.AsObject,
   }
 }

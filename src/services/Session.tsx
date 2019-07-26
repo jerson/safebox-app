@@ -1,4 +1,5 @@
 import { AuthResponse } from '../proto/services_pb';
+const moment = require('moment');
 
 export default class Session {
   static setPassword(password: string) {
@@ -18,6 +19,14 @@ export default class Session {
       return '';
     }
     return this.response.getAccesstoken();
+  }
+  static getDateExpire() {
+    if (!this.response) {
+      return moment()
+        .add(300, 'second')
+        .toDate();
+    }
+    return moment(this.response.getDateexpire()).toDate();
   }
   static getPublicKey() {
     if (!this.response) {

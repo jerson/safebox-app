@@ -195,7 +195,7 @@ function AccountScreen() {
           style: 'cancel'
         }
       ],
-      { cancelable: false }
+      { cancelable: true }
     );
   }, [showDelete]);
 

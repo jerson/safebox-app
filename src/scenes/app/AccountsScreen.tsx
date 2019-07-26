@@ -16,6 +16,7 @@ import AlertMessage from '../../components/ui/AlertMessage';
 import EmptyAccounts from '../../components/help/EmptyAccounts';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 import AccountItem from '../../components/account/AccountItem';
+import Timeout from '../../components/session/Timeout';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,12 @@ const styles = StyleSheet.create({
   alertMessage: {
     marginHorizontal: 20,
     marginTop: 20
+  } as ViewStyle,
+  timeout: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0
   } as ViewStyle
 });
 
@@ -81,6 +88,7 @@ function AccountsScreen({ navigation }: Props) {
       {!isLoading && !!error && (
         <AlertMessage style={styles.alertMessage} message={error} />
       )}
+      <Timeout style={styles.timeout} />
       {isLoading && <Loading margin={'large'} />}
       {!isLoading && (
         <FlatList
@@ -95,7 +103,7 @@ function AccountsScreen({ navigation }: Props) {
           style={styles.flatList}
           contentContainerStyle={{
             minHeight: Size.getVisibleTabScreenHeight(),
-            paddingTop: 20
+            paddingTop: 80
           }}
           renderItem={({ item }) => {
             return <AccountItem item={item} />;

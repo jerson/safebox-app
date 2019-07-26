@@ -3,6 +3,7 @@ package dev.jerson.safebox;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.rnbiometrics.ReactNativeBiometricsPackage;
 import dev.jerson.RNFastOpenPGPPackage;
@@ -36,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LinearGradientPackage(),
             new RNDeviceInfo(),
             new ReactNativeBiometricsPackage(),
             new RNFastOpenPGPPackage(),
