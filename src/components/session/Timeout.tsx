@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 6,
     borderRadius: 6,
-    backgroundColor: Colors.secondary
+    backgroundColor: Colors.accent
   } as ViewStyle
 });
 
@@ -66,21 +66,12 @@ const colorsGradient = [
     .toRgbString()
 ];
 const colorsProgress = [
-  tinyColor(Colors.danger)
-    .setAlpha(0.99)
-    .toRgbString(),
-  tinyColor(Colors.danger)
-    .setAlpha(0.99)
-    .toRgbString(),
-  tinyColor(Colors.primary)
-    .setAlpha(0.99)
-    .toRgbString(),
-  tinyColor(Colors.primaryLight)
-    .setAlpha(0.99)
-    .toRgbString(),
-  tinyColor(Colors.secondary)
-    .setAlpha(0.99)
-    .toRgbString()
+  tinyColor(Colors.danger).toRgbString(),
+  tinyColor(Colors.danger).toRgbString(),
+  tinyColor(Colors.primary).toRgbString(),
+  tinyColor(Colors.primaryLight).toRgbString(),
+  tinyColor(Colors.secondary).toRgbString(),
+  tinyColor(Colors.accent).toRgbString()
 ];
 
 export interface TimeoutProps {
@@ -181,7 +172,7 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
   const percentValue = getPercent();
 
   const color = percentAnimation.interpolate({
-    inputRange: [0, 5, 10, 30, 100],
+    inputRange: [0, 5, 10, 30, 80, 100],
     outputRange: colorsProgress
   });
   const percentString = percentAnimation.interpolate({
