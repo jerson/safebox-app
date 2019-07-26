@@ -221,7 +221,7 @@ function AccountScreen() {
               <View style={[styles.content, styles.shadow]}>
                 <Icon name={'unlock'} style={styles.icon} />
                 <Text style={styles.description}>
-                  Use <Icon style={styles.iconCopy} name={'copy'} /> for copy to
+                  Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
                   clipboard
                 </Text>
                 {!!toast && (
