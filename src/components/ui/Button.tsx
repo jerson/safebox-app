@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
     margin: 0,
     zIndex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
-    borderWidth: 1
+    justifyContent: 'center'
   } as ViewStyle,
   containerDisabled: {
     backgroundColor: Colors.grey3,

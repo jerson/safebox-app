@@ -69,9 +69,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   content: {
     padding: 20,
-    margin: 20,
     marginBottom: 60,
-    maxWidth: 280,
     backgroundColor: Colors.white,
     borderRadius: 12,
     overflow: 'visible'
@@ -195,7 +193,12 @@ function AccountScreen() {
           style: 'cancel'
         }
       ],
-      { cancelable: true }
+      {
+        cancelable: true,
+        onDismiss: () => {
+          setParams({ showDelete: false });
+        }
+      }
     );
   }, [showDelete]);
 
