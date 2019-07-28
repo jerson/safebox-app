@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 });
 
 function RegisterScreen() {
-  const { navigate, goBack } = useNavigation();
+  const { navigate } = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
@@ -70,6 +70,10 @@ function RegisterScreen() {
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
+
+  const goToLogin = () => {
+    navigate('Login');
+  };
 
   const isValid = () => {
     const isValid = [!!username, !!password, !!repeatPassword].every(
@@ -210,7 +214,7 @@ function RegisterScreen() {
               <ButtonLink
                 style={styles.buttonLink}
                 title={'Back to Sign In'}
-                onPress={goBack}
+                onPress={goToLogin}
               />
             </View>
           </Content>

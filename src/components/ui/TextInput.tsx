@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     paddingTop: 10,
     fontSize: 15,
-    lineHeight: 18,
     textDecorationLine: 'none'
   } as TextStyle,
   labelText: {

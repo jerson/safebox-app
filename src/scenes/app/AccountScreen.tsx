@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   content: {
     padding: 20,
+    maxWidth: 360,
     marginBottom: 60,
     backgroundColor: Colors.white,
     borderRadius: 12,

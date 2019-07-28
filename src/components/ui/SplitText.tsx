@@ -26,19 +26,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.accent
   } as ViewStyle,
   label: {
+    minWidth: 20,
+    textAlign: 'center',
+    color: Colors.white,
+    lineHeight: 14,
+    fontSize: 13
+  } as TextStyle,
+  labelContainer: {
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 6,
     paddingBottom: 4,
-    minWidth: 20,
-    textAlign: 'center',
-    color: Colors.white,
-    backgroundColor: Colors.primary,
-    lineHeight: 14,
-    fontSize: 13,
-    borderRadius: 10
+    borderRadius: 10,
+    backgroundColor: Colors.primary
   } as TextStyle,
-  labelDefault: {
+  labelContainerDefault: {
     backgroundColor: Colors.accentDark
   } as TextStyle
 });
@@ -52,9 +54,14 @@ function SplitText({ title, type, style }: SplitTextProps) {
   return (
     <View style={[styles.container, style]}>
       <View style={[styles.split, type === 'Default' && styles.splitDefault]} />
-      <Text style={[styles.label, type === 'Default' && styles.labelDefault]}>
-        {title}
-      </Text>
+      <View
+        style={[
+          styles.labelContainer,
+          type === 'Default' && styles.labelContainerDefault
+        ]}
+      >
+        <Text style={styles.label}>{title}</Text>
+      </View>
     </View>
   );
 }
