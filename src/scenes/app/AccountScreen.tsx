@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     backgroundColor: Colors.white,
     borderRadius: 12,
-    overflow: 'visible'
+    overflow: 'visible',
+    alignSelf: 'center'
   } as ViewStyle,
   help: {
     marginTop: 5,
@@ -85,6 +86,7 @@ const styles = StyleSheet.create({
   } as TextStyle,
   item: {
     flexDirection: 'row',
+    width: '100%',
     alignItems: 'flex-start'
   } as ViewStyle,
   buttonCopy: {
