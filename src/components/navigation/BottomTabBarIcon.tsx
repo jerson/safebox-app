@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     top: 5,
     bottom: -10,
 
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
     backgroundColor: Colors.primaryLight,
     zIndex: 0
   } as ViewStyle,
