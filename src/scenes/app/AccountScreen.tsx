@@ -268,7 +268,7 @@ function AccountScreen() {
                     editable={false}
                     secureTextEntry
                     multiline
-                    value={accountDecoded.getPassword()}
+                    value={'********'}
                     containerStyle={styles.textInputContainer}
                     style={styles.textInput}
                     help={
