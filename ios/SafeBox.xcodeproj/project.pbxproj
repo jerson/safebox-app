@@ -66,6 +66,9 @@
 		80D546B7CD3F4E47BE04F344 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BBD1C05CF84DE9989BC5BD /* libRNGestureHandler-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8422451222E6B3D000904C7B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422449522E6AF8E00904C7B /* libLottie.a */; };
+		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
+		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
+		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
 		8FAA6C32723F4D1AB2C24A07 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCF69C7136F0487D9B4C9560 /* Nunito-ExtraLightItalic.ttf */; };
 		95183F4885B44352A1CC08F6 /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4495ACEAFD444EB89CF208 /* libRNCNetInfo-tvOS.a */; };
 		95F081F158484DB4AF88BEBD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB3129EAA8F74AA6A3ED0D66 /* Foundation.ttf */; };
@@ -599,6 +602,9 @@
 		833B9BA1D7424808B95523FF /* RNScreens.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNScreens.xcodeproj; path = "../node_modules/react-native-screens/ios/RNScreens.xcodeproj"; sourceTree = "<group>"; };
 		8357A57C3A0ABD1616BA9EE5 /* Pods-SafeBox-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOS/Pods-SafeBox-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@1x.png"; path = "SafeBox/iTunesArtwork@1x.png"; sourceTree = "<group>"; };
 		853296A1065C48DDAE17C072 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		8B54DC9B3581489E9FCC5A2E /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		8C6888CB6957B5651C268F91 /* Pods-SafeBox-tvOS.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOS.beta.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOS/Pods-SafeBox-tvOS.beta.xcconfig"; sourceTree = "<group>"; };
@@ -821,6 +827,9 @@
 		13B07FAE1A68108700A75B9A /* SafeBox */ = {
 			isa = PBXGroup;
 			children = (
+				8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */,
+				8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */,
+				8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1870,6 +1879,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E3671C0CC09C446C827B162F /* AntDesign.ttf in Resources */,
 				F7C1E6BB11BA47389AF6059B /* Entypo.ttf in Resources */,
+				8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */,
 				6A595D1FA7204442AF8D524F /* EvilIcons.ttf in Resources */,
 				1DF5704542A44345A184A71C /* Feather.ttf in Resources */,
 				C0ADFA2B833641C9A5F74364 /* FontAwesome.ttf in Resources */,
@@ -1882,9 +1892,11 @@
 				528AC22F41BB44A59005DE60 /* MaterialIcons.ttf in Resources */,
 				B06C6CBDF1A74281B880D1FF /* Octicons.ttf in Resources */,
 				B250DA44DFF246549DD6526D /* SimpleLineIcons.ttf in Resources */,
+				8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */,
 				2A57EBBC9EE34976AC16D884 /* Zocial.ttf in Resources */,
 				713D321A9E754FEA87ECE4BC /* Nunito-Black.ttf in Resources */,
 				64D72897BA1440E1AA2E888D /* Nunito-BlackItalic.ttf in Resources */,
+				8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */,
 				4C45624C2ACA44A0938BCF09 /* Nunito-Bold.ttf in Resources */,
 				AA67C2BBD6724BFBA04C9234 /* Nunito-BoldItalic.ttf in Resources */,
 				E40659A7D65B4EED9AEE9016 /* Nunito-ExtraBold.ttf in Resources */,
@@ -2288,6 +2300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox.debug;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox Debug";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2330,6 +2343,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = SafeBox;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -2790,6 +2804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox.beta;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox AdHoc";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Beta;
