@@ -5,7 +5,8 @@ import {
   View,
   ViewStyle,
   ScrollView,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -147,7 +148,10 @@ function RegisterScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <KeyboardAvoidingView>
+            <KeyboardAvoidingView
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}
+            >
               <HeaderLanding
                 titleStyle={{ color: Colors.primary }}
                 subtitleStyle={{ color: Colors.primary }}

@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -123,7 +124,10 @@ function LoginScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <KeyboardAvoidingView>
+            <KeyboardAvoidingView
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}
+            >
               <HeaderLanding style={styles.headerLanding} />
               <View style={styles.form}>
                 {!!error && <AlertMessage message={error} />}
