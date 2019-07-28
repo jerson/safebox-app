@@ -5,7 +5,8 @@ import {
   View,
   ViewStyle,
   StyleProp,
-  Animated
+  Animated,
+  Platform
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     left: 10,
     right: 10,
     top: 5,
-    bottom: -10,
+    bottom: Platform.OS === 'android' ? -10 : -60,
 
     borderTopLeftRadius: 100,
     borderTopRightRadius: 100,
