@@ -1,5 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, View, ViewStyle, ScrollView } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  View,
+  ViewStyle,
+  ScrollView
+} from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import HeaderLanding from '../../components/ui/HeaderLanding';
@@ -117,56 +123,58 @@ function LoginScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding style={styles.headerLanding} />
-            <View style={styles.form}>
-              {!!error && <AlertMessage message={error} />}
-              <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'username'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'done'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={passwordRef}
-                blurOnSubmit
-                {...passwordProps}
-              />
+            <KeyboardAvoidingView>
+              <HeaderLanding style={styles.headerLanding} />
+              <View style={styles.form}>
+                {!!error && <AlertMessage message={error} />}
+                <TextInput
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'username'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current && passwordRef.current.focus();
+                  }}
+                  {...usernameProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'password'}
+                  returnKeyType={'done'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={passwordRef}
+                  blurOnSubmit
+                  {...passwordProps}
+                />
 
-              <Button
-                isLoading={isLoading}
-                style={styles.button}
-                typeColor={'primaryLight'}
-                title={'Sign In'}
-                onPress={tryToSubmit}
-              />
-              <SplitText style={styles.splitText} title={'or'} />
-              <Button
-                style={styles.button}
-                typeColor={'accentDark'}
-                title={'Create account'}
-                onPress={goToRegister}
-              />
-            </View>
+                <Button
+                  isLoading={isLoading}
+                  style={styles.button}
+                  typeColor={'primaryLight'}
+                  title={'Sign In'}
+                  onPress={tryToSubmit}
+                />
+                <SplitText style={styles.splitText} title={'or'} />
+                <Button
+                  style={styles.button}
+                  typeColor={'accentDark'}
+                  title={'Create account'}
+                  onPress={goToRegister}
+                />
+              </View>
+            </KeyboardAvoidingView>
           </Content>
         </SafeAreaView>
       </ScrollView>

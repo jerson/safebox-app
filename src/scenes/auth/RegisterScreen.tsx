@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   View,
   ViewStyle,
@@ -146,77 +147,79 @@ function RegisterScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
-            <View style={styles.form}>
-              {!!error && <AlertMessage message={error} />}
-              <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'username'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
+            <KeyboardAvoidingView>
+              <HeaderLanding
+                titleStyle={{ color: Colors.primary }}
+                subtitleStyle={{ color: Colors.primary }}
+                style={styles.headerLanding}
               />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={passwordRef}
-                onSubmitEditing={() => {
-                  repeatPasswordRef.current &&
-                    repeatPasswordRef.current.focus();
-                }}
-                {...passwordProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Repeat password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'done'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={repeatPasswordRef}
-                blurOnSubmit
-                {...repeatPasswordProps}
-              />
+              <View style={styles.form}>
+                {!!error && <AlertMessage message={error} />}
+                <TextInput
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'username'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current && passwordRef.current.focus();
+                  }}
+                  {...usernameProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'password'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={passwordRef}
+                  onSubmitEditing={() => {
+                    repeatPasswordRef.current &&
+                      repeatPasswordRef.current.focus();
+                  }}
+                  {...passwordProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Repeat password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'password'}
+                  returnKeyType={'done'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={repeatPasswordRef}
+                  blurOnSubmit
+                  {...repeatPasswordProps}
+                />
 
-              <Button
-                isLoading={isLoading}
-                style={styles.button}
-                typeColor={'primaryLight'}
-                title={'Create account'}
-                onPress={tryToSubmit}
-              />
+                <Button
+                  isLoading={isLoading}
+                  style={styles.button}
+                  typeColor={'primaryLight'}
+                  title={'Create account'}
+                  onPress={tryToSubmit}
+                />
 
-              <ButtonLink
-                style={styles.buttonLink}
-                title={'Back to Sign In'}
-                onPress={goToLogin}
-              />
-            </View>
+                <ButtonLink
+                  style={styles.buttonLink}
+                  title={'Back to Sign In'}
+                  onPress={goToLogin}
+                />
+              </View>
+            </KeyboardAvoidingView>
           </Content>
         </SafeAreaView>
       </ScrollView>
