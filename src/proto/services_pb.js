@@ -2098,6 +2098,1222 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
    *     http://goto/soy-param-migration
    * @return {!Object}
    */
+  proto.AddDeviceRequest.prototype.toObject = function(opt_includeInstance) {
+    return proto.AddDeviceRequest.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.AddDeviceRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.AddDeviceRequest.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        name: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        publickey: jspb.Message.getFieldWithDefault(msg, 3, '')
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.AddDeviceRequest}
+ */
+proto.AddDeviceRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.AddDeviceRequest();
+  return proto.AddDeviceRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.AddDeviceRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.AddDeviceRequest}
+ */
+proto.AddDeviceRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setAccesstoken(value);
+        break;
+      case 2:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setName(value);
+        break;
+      case 3:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setPublickey(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.AddDeviceRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.AddDeviceRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.AddDeviceRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AddDeviceRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAccesstoken();
+  if (f.length > 0) {
+    writer.writeString(1, f);
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(2, f);
+  }
+  f = message.getPublickey();
+  if (f.length > 0) {
+    writer.writeString(3, f);
+  }
+};
+
+/**
+ * optional string accessToken = 1;
+ * @return {string}
+ */
+proto.AddDeviceRequest.prototype.getAccesstoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''));
+};
+
+/** @param {string} value */
+proto.AddDeviceRequest.prototype.setAccesstoken = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.AddDeviceRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''));
+};
+
+/** @param {string} value */
+proto.AddDeviceRequest.prototype.setName = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
+};
+
+/**
+ * optional string publicKey = 3;
+ * @return {string}
+ */
+proto.AddDeviceRequest.prototype.getPublickey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''));
+};
+
+/** @param {string} value */
+proto.AddDeviceRequest.prototype.setPublickey = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.AddDeviceResponse.prototype.toObject = function(opt_includeInstance) {
+    return proto.AddDeviceResponse.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.AddDeviceResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.AddDeviceResponse.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        id: jspb.Message.getFieldWithDefault(msg, 1, 0)
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.AddDeviceResponse}
+ */
+proto.AddDeviceResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.AddDeviceResponse();
+  return proto.AddDeviceResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.AddDeviceResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.AddDeviceResponse}
+ */
+proto.AddDeviceResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {number} */ (reader.readInt64());
+        msg.setId(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.AddDeviceResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.AddDeviceResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.AddDeviceResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.AddDeviceResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt64(1, f);
+  }
+};
+
+/**
+ * optional int64 id = 1;
+ * @return {number}
+ */
+proto.AddDeviceResponse.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+/** @param {number} value */
+proto.AddDeviceResponse.prototype.setId = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DeleteDeviceRequest.prototype.toObject = function(opt_includeInstance) {
+    return proto.DeleteDeviceRequest.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DeleteDeviceRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DeleteDeviceRequest.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        id: jspb.Message.getFieldWithDefault(msg, 2, 0)
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DeleteDeviceRequest}
+ */
+proto.DeleteDeviceRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DeleteDeviceRequest();
+  return proto.DeleteDeviceRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DeleteDeviceRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DeleteDeviceRequest}
+ */
+proto.DeleteDeviceRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setAccesstoken(value);
+        break;
+      case 2:
+        var value = /** @type {number} */ (reader.readInt64());
+        msg.setId(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DeleteDeviceRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DeleteDeviceRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DeleteDeviceRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DeleteDeviceRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAccesstoken();
+  if (f.length > 0) {
+    writer.writeString(1, f);
+  }
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt64(2, f);
+  }
+};
+
+/**
+ * optional string accessToken = 1;
+ * @return {string}
+ */
+proto.DeleteDeviceRequest.prototype.getAccesstoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''));
+};
+
+/** @param {string} value */
+proto.DeleteDeviceRequest.prototype.setAccesstoken = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+/**
+ * optional int64 id = 2;
+ * @return {number}
+ */
+proto.DeleteDeviceRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+/** @param {number} value */
+proto.DeleteDeviceRequest.prototype.setId = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DeleteDeviceResponse.prototype.toObject = function(
+    opt_includeInstance
+  ) {
+    return proto.DeleteDeviceResponse.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DeleteDeviceResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DeleteDeviceResponse.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DeleteDeviceResponse}
+ */
+proto.DeleteDeviceResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DeleteDeviceResponse();
+  return proto.DeleteDeviceResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DeleteDeviceResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DeleteDeviceResponse}
+ */
+proto.DeleteDeviceResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {boolean} */ (reader.readBool());
+        msg.setSuccess(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DeleteDeviceResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DeleteDeviceResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DeleteDeviceResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DeleteDeviceResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(1, f);
+  }
+};
+
+/**
+ * optional bool success = 1;
+ * @return {boolean}
+ */
+proto.DeleteDeviceResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(
+    this,
+    1,
+    false
+  ));
+};
+
+/** @param {boolean} value */
+proto.DeleteDeviceResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setProto3BooleanField(this, 1, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.Device.prototype.toObject = function(opt_includeInstance) {
+    return proto.Device.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.Device} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.Device.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        name: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        datecreated: jspb.Message.getFieldWithDefault(msg, 3, '')
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.Device}
+ */
+proto.Device.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.Device();
+  return proto.Device.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.Device} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.Device}
+ */
+proto.Device.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {number} */ (reader.readInt64());
+        msg.setId(value);
+        break;
+      case 2:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setName(value);
+        break;
+      case 3:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setDatecreated(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.Device.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.Device.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.Device} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.Device.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt64(1, f);
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(2, f);
+  }
+  f = message.getDatecreated();
+  if (f.length > 0) {
+    writer.writeString(3, f);
+  }
+};
+
+/**
+ * optional int64 id = 1;
+ * @return {number}
+ */
+proto.Device.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+/** @param {number} value */
+proto.Device.prototype.setId = function(value) {
+  jspb.Message.setProto3IntField(this, 1, value);
+};
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.Device.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ''));
+};
+
+/** @param {string} value */
+proto.Device.prototype.setName = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
+};
+
+/**
+ * optional string dateCreated = 3;
+ * @return {string}
+ */
+proto.Device.prototype.getDatecreated = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''));
+};
+
+/** @param {string} value */
+proto.Device.prototype.setDatecreated = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DevicesRequest.prototype.toObject = function(opt_includeInstance) {
+    return proto.DevicesRequest.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DevicesRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DevicesRequest.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        accesstoken: jspb.Message.getFieldWithDefault(msg, 1, '')
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DevicesRequest}
+ */
+proto.DevicesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DevicesRequest();
+  return proto.DevicesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DevicesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DevicesRequest}
+ */
+proto.DevicesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setAccesstoken(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DevicesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DevicesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DevicesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DevicesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAccesstoken();
+  if (f.length > 0) {
+    writer.writeString(1, f);
+  }
+};
+
+/**
+ * optional string accessToken = 1;
+ * @return {string}
+ */
+proto.DevicesRequest.prototype.getAccesstoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''));
+};
+
+/** @param {string} value */
+proto.DevicesRequest.prototype.setAccesstoken = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.DevicesResponse.repeatedFields_ = [1];
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DevicesResponse.prototype.toObject = function(opt_includeInstance) {
+    return proto.DevicesResponse.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DevicesResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DevicesResponse.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        devicesList: jspb.Message.toObjectList(
+          msg.getDevicesList(),
+          proto.Device.toObject,
+          includeInstance
+        )
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DevicesResponse}
+ */
+proto.DevicesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DevicesResponse();
+  return proto.DevicesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DevicesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DevicesResponse}
+ */
+proto.DevicesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = new proto.Device();
+        reader.readMessage(value, proto.Device.deserializeBinaryFromReader);
+        msg.addDevices(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DevicesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DevicesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DevicesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DevicesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDevicesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(1, f, proto.Device.serializeBinaryToWriter);
+  }
+};
+
+/**
+ * repeated Device devices = 1;
+ * @return {!Array<!proto.Device>}
+ */
+proto.DevicesResponse.prototype.getDevicesList = function() {
+  return /** @type{!Array<!proto.Device>} */ (jspb.Message.getRepeatedWrapperField(
+    this,
+    proto.Device,
+    1
+  ));
+};
+
+/** @param {!Array<!proto.Device>} value */
+proto.DevicesResponse.prototype.setDevicesList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+/**
+ * @param {!proto.Device=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.Device}
+ */
+proto.DevicesResponse.prototype.addDevices = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(
+    this,
+    1,
+    opt_value,
+    proto.Device,
+    opt_index
+  );
+};
+
+/**
+ * Clears the list making it empty but non-null.
+ */
+proto.DevicesResponse.prototype.clearDevicesList = function() {
+  this.setDevicesList([]);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DeleteAccountRequest.prototype.toObject = function(
+    opt_includeInstance
+  ) {
+    return proto.DeleteAccountRequest.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DeleteAccountRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DeleteAccountRequest.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
+        id: jspb.Message.getFieldWithDefault(msg, 2, 0)
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DeleteAccountRequest}
+ */
+proto.DeleteAccountRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DeleteAccountRequest();
+  return proto.DeleteAccountRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DeleteAccountRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DeleteAccountRequest}
+ */
+proto.DeleteAccountRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setAccesstoken(value);
+        break;
+      case 2:
+        var value = /** @type {number} */ (reader.readInt64());
+        msg.setId(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DeleteAccountRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DeleteAccountRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DeleteAccountRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DeleteAccountRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAccesstoken();
+  if (f.length > 0) {
+    writer.writeString(1, f);
+  }
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt64(2, f);
+  }
+};
+
+/**
+ * optional string accessToken = 1;
+ * @return {string}
+ */
+proto.DeleteAccountRequest.prototype.getAccesstoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''));
+};
+
+/** @param {string} value */
+proto.DeleteAccountRequest.prototype.setAccesstoken = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+/**
+ * optional int64 id = 2;
+ * @return {number}
+ */
+proto.DeleteAccountRequest.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+/** @param {number} value */
+proto.DeleteAccountRequest.prototype.setId = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.DeleteAccountResponse.prototype.toObject = function(
+    opt_includeInstance
+  ) {
+    return proto.DeleteAccountResponse.toObject(opt_includeInstance, this);
+  };
+
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.DeleteAccountResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.DeleteAccountResponse.toObject = function(includeInstance, msg) {
+    var f,
+      obj = {
+        success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+      };
+
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.DeleteAccountResponse}
+ */
+proto.DeleteAccountResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.DeleteAccountResponse();
+  return proto.DeleteAccountResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.DeleteAccountResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.DeleteAccountResponse}
+ */
+proto.DeleteAccountResponse.deserializeBinaryFromReader = function(
+  msg,
+  reader
+) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+      case 1:
+        var value = /** @type {boolean} */ (reader.readBool());
+        msg.setSuccess(value);
+        break;
+      default:
+        reader.skipField();
+        break;
+    }
+  }
+  return msg;
+};
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.DeleteAccountResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.DeleteAccountResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.DeleteAccountResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.DeleteAccountResponse.serializeBinaryToWriter = function(
+  message,
+  writer
+) {
+  var f = undefined;
+  f = message.getSuccess();
+  if (f) {
+    writer.writeBool(1, f);
+  }
+};
+
+/**
+ * optional bool success = 1;
+ * @return {boolean}
+ */
+proto.DeleteAccountResponse.prototype.getSuccess = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(
+    this,
+    1,
+    false
+  ));
+};
+
+/** @param {boolean} value */
+proto.DeleteAccountResponse.prototype.setSuccess = function(value) {
+  jspb.Message.setProto3BooleanField(this, 1, value);
+};
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
   proto.RefreshTokenRequest.prototype.toObject = function(opt_includeInstance) {
     return proto.RefreshTokenRequest.toObject(opt_includeInstance, this);
   };
