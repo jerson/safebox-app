@@ -204,6 +204,9 @@ android {
 }
 
 dependencies {
+    implementation project(':appcenter-crashes')
+    implementation project(':appcenter-analytics')
+    implementation project(':appcenter')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-device-info')
     implementation project(':react-native-biometrics')
