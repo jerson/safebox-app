@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "codepush:android:beta":"appcenter codepush release-react -a SafeBox/SafeBoxAndroid -d Beta",
+    "codepush:android:production":"appcenter codepush release-react -a SafeBox/SafeBoxAndroid -d Production",
+    "codepush:ios:beta":"appcenter codepush release-react -a SafeBox/SafeBoxIOS -d Beta",
+    "codepush:ios:production":"appcenter codepush release-react -a SafeBox/SafeBoxIOS -d Production",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
