@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   } as ViewStyle,
   shadow: {
-    shadowOpacity: 0.07,
-    shadowRadius: 6,
-    shadowColor: Colors.black,
-    shadowOffset: { height: 2, width: 0 },
     overflow: 'visible'
   } as ViewStyle,
   title: {
