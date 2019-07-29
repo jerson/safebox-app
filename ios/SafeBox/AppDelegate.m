@@ -6,6 +6,7 @@
  */
 
 #import "AppDelegate.h"
+#import <AppCenterReactNativePush/AppCenterReactNativePush.h>
 #import <AppCenterReactNativeCrashes/AppCenterReactNativeCrashes.h>
 #import <AppCenterReactNativeAnalytics/AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNative/AppCenterReactNative.h>
@@ -18,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [AppCenterReactNativePush register];  // Initialize AppCenter push
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];  // Initialize AppCenter crashes
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];  // Initialize AppCenter analytics
   [AppCenterReactNative register];  // Initialize AppCenter

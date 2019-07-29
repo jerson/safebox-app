@@ -69,6 +69,7 @@
 		8422451222E6B3D000904C7B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422449522E6AF8E00904C7B /* libLottie.a */; };
 		843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAE9A22EEA32B007E1B7D /* libAppCenterReactNativeAnalytics.a */; };
 		843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAEA022EEA33A007E1B7D /* libAppCenterReactNativeCrashes.a */; };
+		843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
 		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
@@ -518,6 +519,13 @@
 			remoteGlobalIDString = 5419C2701D824AA700DDF3A1;
 			remoteInfo = AppCenterReactNativeCrashes;
 		};
+		843DAECB22EEA7B5007E1B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BA189FAA1EEE74F100CAD13F;
+			remoteInfo = AppCenterReactNativePush;
+		};
 		8496AEB922EE13EB0013F32B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */;
@@ -630,6 +638,8 @@
 		8357A57C3A0ABD1616BA9EE5 /* Pods-SafeBox-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOS/Pods-SafeBox-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		843DAE9522EEA32B007E1B7D /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeAnalytics.xcodeproj; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; };
 		843DAE9B22EEA339007E1B7D /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
+		843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativePush.xcodeproj; path = "../node_modules/appcenter-push/ios/AppCenterReactNativePush.xcodeproj"; sourceTree = "<group>"; };
+		843DAF0A22EEA800007E1B7D /* SafeBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SafeBox.entitlements; path = SafeBox/SafeBox.entitlements; sourceTree = "<group>"; };
 		843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
@@ -707,6 +717,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */,
 				843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
 				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
@@ -860,6 +871,7 @@
 		13B07FAE1A68108700A75B9A /* SafeBox */ = {
 			isa = PBXGroup;
 			children = (
+				843DAF0A22EEA800007E1B7D /* SafeBox.entitlements */,
 				8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */,
 				8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */,
 				8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */,
@@ -953,6 +965,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */,
 				843DAE9B22EEA339007E1B7D /* AppCenterReactNativeCrashes.xcodeproj */,
 				843DAE9522EEA32B007E1B7D /* AppCenterReactNativeAnalytics.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -1180,6 +1193,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		843DAEC522EEA7B4007E1B7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8496AEB522EE13EA0013F32B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1291,7 +1312,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				F6D5433F67D6DAF5D8635CEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1358,6 +1378,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = EKR687JWFU;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1394,6 +1419,10 @@
 				{
 					ProductGroup = 843DAE9C22EEA339007E1B7D /* Products */;
 					ProjectRef = 843DAE9B22EEA339007E1B7D /* AppCenterReactNativeCrashes.xcodeproj */;
+				},
+				{
+					ProductGroup = 843DAEC522EEA7B4007E1B7D /* Products */;
+					ProjectRef = 843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */;
 				},
 				{
 					ProductGroup = 8496AEB522EE13EA0013F32B /* Products */;
@@ -1914,6 +1943,13 @@
 			remoteRef = 843DAE9F22EEA33A007E1B7D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAppCenterReactNativePush.a;
+			remoteRef = 843DAECB22EEA7B5007E1B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8496AEBA22EE13EB0013F32B /* libBVLinearGradient.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2142,28 +2178,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6D5433F67D6DAF5D8635CEB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SafeBox/Pods-SafeBox-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SafeBox/Pods-SafeBox-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2367,6 +2381,7 @@
 			baseConfigurationReference = 39D087DAB62EDE6438BC64F2 /* Pods-SafeBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -2411,6 +2426,7 @@
 			baseConfigurationReference = EFA4F840259789EB55794B91 /* Pods-SafeBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2883,6 +2899,7 @@
 			baseConfigurationReference = AF40822772281B8CE3F753F5 /* Pods-SafeBox.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
