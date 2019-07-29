@@ -133,7 +133,7 @@ function LoginScreen() {
                 {!!error && <AlertMessage message={error} />}
                 <TextInput
                   icon={'user'}
-                  placeholder={'Username'}
+                  placeholder={'Username test'}
                   keyboardType={'default'}
                   autoCapitalize={'none'}
                   autoCorrect={false}
