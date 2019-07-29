@@ -71,7 +71,9 @@ const colorsProgress = [
   tinyColor(Colors.primary).toRgbString(),
   tinyColor(Colors.primaryLight).toRgbString(),
   tinyColor(Colors.secondary).toRgbString(),
-  tinyColor(Colors.accent).toRgbString()
+  tinyColor(Colors.accent)
+    .darken(2)
+    .toRgbString()
 ];
 
 export interface TimeoutProps {
@@ -121,6 +123,7 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
     }
 
     if (diff < 1) {
+      Session.logout();
       navigate('Login');
     }
   };

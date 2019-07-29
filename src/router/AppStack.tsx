@@ -5,13 +5,13 @@ import Colors from '../modules/constants/Colors';
 import AccountsStack from './app/AccountsStack';
 import Icon from 'react-native-vector-icons/Feather';
 import SettingsStack from './app/SettingsStack';
-import AboutStack from './app/AboutStack';
+import PremiumStack from './app/PremiumStack';
 
 export default createBottomTabNavigator(
   {
     Accounts: AccountsStack,
-    Settings: SettingsStack,
-    About: AboutStack
+    Premium: PremiumStack,
+    Settings: SettingsStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
@@ -28,9 +28,9 @@ export default createBottomTabNavigator(
           tabBarLabel = 'Settings';
           iconName = 'settings';
           break;
-        case 'About':
-          tabBarLabel = 'About';
-          iconName = 'at-sign';
+        case 'Premium':
+          tabBarLabel = 'Premium';
+          iconName = 'star';
           break;
         default:
           tabBarLabel = routeName;

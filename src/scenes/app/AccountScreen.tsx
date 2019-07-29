@@ -136,11 +136,14 @@ function AccountScreen() {
     if (locked) {
       return;
     }
-    loadPassword();
+
+    setIsLoading(true);
+    requestAnimationFrame(() => {
+      loadPassword();
+    });
   }, [locked]);
 
   const loadPassword = async () => {
-    setIsLoading(true);
     try {
       const request = new AccountRequest();
       request.setId(account.getId());
