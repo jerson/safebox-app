@@ -70,6 +70,7 @@
 		843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAE9A22EEA32B007E1B7D /* libAppCenterReactNativeAnalytics.a */; };
 		843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAEA022EEA33A007E1B7D /* libAppCenterReactNativeCrashes.a */; };
 		843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */; };
+		843DAF7622EEADE3007E1B7D /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAF3922EEADD5007E1B7D /* libCodePush.a */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
 		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
@@ -526,6 +527,20 @@
 			remoteGlobalIDString = BA189FAA1EEE74F100CAD13F;
 			remoteInfo = AppCenterReactNativePush;
 		};
+		843DAF3822EEADD5007E1B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = CodePush;
+		};
+		843DAF3A22EEADD5007E1B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F886647B1F4ADB500036D01B;
+			remoteInfo = "CodePush-tvOS";
+		};
 		8496AEB922EE13EB0013F32B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */;
@@ -640,6 +655,7 @@
 		843DAE9B22EEA339007E1B7D /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
 		843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativePush.xcodeproj; path = "../node_modules/appcenter-push/ios/AppCenterReactNativePush.xcodeproj"; sourceTree = "<group>"; };
 		843DAF0A22EEA800007E1B7D /* SafeBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SafeBox.entitlements; path = SafeBox/SafeBox.entitlements; sourceTree = "<group>"; };
+		843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
@@ -717,6 +733,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843DAF7622EEADE3007E1B7D /* libCodePush.a in Frameworks */,
 				843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */,
 				843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
@@ -965,6 +982,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */,
 				843DAEC422EEA7B4007E1B7D /* AppCenterReactNativePush.xcodeproj */,
 				843DAE9B22EEA339007E1B7D /* AppCenterReactNativeCrashes.xcodeproj */,
 				843DAE9522EEA32B007E1B7D /* AppCenterReactNativeAnalytics.xcodeproj */,
@@ -1201,6 +1219,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		843DAF2E22EEADD5007E1B7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				843DAF3922EEADD5007E1B7D /* libCodePush.a */,
+				843DAF3B22EEADD5007E1B7D /* libCodePush.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8496AEB522EE13EA0013F32B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1427,6 +1454,10 @@
 				{
 					ProductGroup = 8496AEB522EE13EA0013F32B /* Products */;
 					ProjectRef = 843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */;
+				},
+				{
+					ProductGroup = 843DAF2E22EEADD5007E1B7D /* Products */;
+					ProjectRef = 843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */;
 				},
 				{
 					ProductGroup = 8422448722E6AF8E00904C7B /* Products */;
@@ -1948,6 +1979,20 @@
 			fileType = archive.ar;
 			path = libAppCenterReactNativePush.a;
 			remoteRef = 843DAECB22EEA7B5007E1B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		843DAF3922EEADD5007E1B7D /* libCodePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCodePush.a;
+			remoteRef = 843DAF3822EEADD5007E1B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		843DAF3B22EEADD5007E1B7D /* libCodePush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCodePush.a;
+			remoteRef = 843DAF3A22EEADD5007E1B7D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8496AEBA22EE13EB0013F32B /* libBVLinearGradient.a */ = {
