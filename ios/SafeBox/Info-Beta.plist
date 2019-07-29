@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location is used for send notifications customized</string>
+    <string>Location is used for send notifications customized for each user</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
