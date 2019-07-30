@@ -6,6 +6,7 @@ import Button from '../ui/Button';
 import Client from '../../services/Client';
 import Strings from '../../modules/format/Strings';
 import Colors from '../../modules/constants/Colors';
+import Biometrics from 'react-native-biometrics';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,10 +19,11 @@ const styles = StyleSheet.create({
 
 export interface ItemProps {
   item: Device;
+  isSame?: boolean;
   onDelete?: () => void;
 }
 
-function Item({ item, onDelete }: ItemProps) {
+function Item({ item, isSame, onDelete }: ItemProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const deleteDevice = async () => {
@@ -31,6 +33,9 @@ function Item({ item, onDelete }: ItemProps) {
       request.setId(item.getId());
       await Client.deleteDevice(request);
       typeof onDelete === 'function' && onDelete();
+      if (isSame) {
+        Biometrics.deleteKeys();
+      }
     } catch (e) {
       const message = Strings.getError(e);
       Alert.alert(message);

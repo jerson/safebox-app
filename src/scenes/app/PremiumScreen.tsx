@@ -1,11 +1,11 @@
-import React from "react";
-import { StyleSheet, ViewStyle, ScrollView, StatusBar } from "react-native";
-import { SafeAreaView } from "react-navigation";
-import Colors from "../../modules/constants/Colors";
-import HeaderLanding from "../../components/ui/HeaderLanding";
-import Container from "../../components/ui/Container";
-import Content from "../../components/ui/Content";
-import Size from "../../modules/dimensions/Size";
+import React from 'react';
+import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Colors from '../../modules/constants/Colors';
+import HeaderLanding from '../../components/ui/HeaderLanding';
+import Container from '../../components/ui/Container';
+import Content from '../../components/ui/Content';
+import Size from '../../modules/dimensions/Size';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,11 +28,11 @@ function PremiumScreen() {
     <Container style={styles.container}>
       <StatusBar
         animated
-        barStyle={"dark-content"}
+        barStyle={'dark-content'}
         backgroundColor={Colors.grey2}
       />
       <ScrollView
-        keyboardShouldPersistTaps={"handled"}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
           minHeight: Size.getVisibleTabScreenHeight()
         }}
@@ -53,7 +53,7 @@ function PremiumScreen() {
 }
 
 PremiumScreen.navigationOptions = {
-  title: "Premium",
+  title: 'Premium',
   headerLeft: null
 };
 

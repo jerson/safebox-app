@@ -55,7 +55,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
   );
   const listRef = useRef<ListRef>(null);
 
-  const deviceId = DeviceInfo.getUniqueID();
+  const deviceUid = DeviceInfo.getUniqueID();
 
   useEffect(() => {
     checkBiometricType();
@@ -63,7 +63,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
 
   const onLoadDevices = (devices: Device[]) => {
     const isAddedCurrentDevice = devices.some(device => {
-      return device.getUid() === deviceId;
+      return device.getUid() === deviceUid;
     });
     setIsAddedCurrentDevice(isAddedCurrentDevice);
   };
@@ -87,7 +87,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
     try {
       const request = new AddDeviceRequest();
       request.setName(DeviceInfo.getDeviceName() || '');
-      request.setUid(deviceId);
+      request.setUid(deviceUid);
       request.setPublickey(publicKey);
       await Client.addDevice(request);
       listRef.current && listRef.current.load();
@@ -103,7 +103,8 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
       const publicKey = await Biometrics.createKeys('Please confirm');
       await registerDevice(publicKey);
     } catch (e) {
-      Log.warn(TAG, 'addDevice', e);
+      const message = Strings.getError(e);
+      setError(message);
     }
   };
 
@@ -131,7 +132,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
           )}
         </View>
       )}
-      <List ref={listRef} onLoad={onLoadDevices} />
+      <List ref={listRef} currentDeviceUid={deviceUid} onLoad={onLoadDevices} />
     </View>
   );
 }

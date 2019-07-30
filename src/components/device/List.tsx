@@ -8,6 +8,8 @@ import AlertMessage from '../ui/AlertMessage';
 import Strings from '../../modules/format/Strings';
 import Client from '../../services/Client';
 import Loading from '../ui/Loading';
+import { useNavigation } from 'react-navigation-hooks';
+import useFocusedScreen from '../hooks/useFocusedScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,16 +19,21 @@ const styles = StyleSheet.create({
 
 export interface ListProps {
   onLoad?: (items: Device[]) => void;
+  currentDeviceUid?: string;
 }
 
 export interface ListRef {
   load: () => void;
 }
 
-function List({ onLoad }: ListProps, ref: React.Ref<ListRef>) {
+function List(
+  { onLoad, currentDeviceUid }: ListProps,
+  ref: React.Ref<ListRef>
+) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
-  const [devices, setDevices] = useAnimatedState<Device[]>([]);
+  const [devices, setDevices] = useState<Device[]>([]);
+  const navigation = useNavigation();
 
   React.useImperativeHandle(ref, () => ({
     load
@@ -36,6 +43,12 @@ function List({ onLoad }: ListProps, ref: React.Ref<ListRef>) {
     setIsLoading(true);
     load();
   }, []);
+
+  const [focused] = useFocusedScreen(navigation);
+
+  useEffect(() => {
+    load();
+  }, [focused]);
 
   const load = async () => {
     try {
@@ -67,6 +80,7 @@ function List({ onLoad }: ListProps, ref: React.Ref<ListRef>) {
             key={device.getId().toString()}
             item={device}
             onDelete={onDeleteDevice}
+            isSame={currentDeviceUid === device.getUid()}
           />
         );
       })}
