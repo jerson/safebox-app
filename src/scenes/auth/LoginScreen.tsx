@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   StyleSheet,
@@ -17,13 +17,20 @@ import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
 import useTextInput from '../../components/hooks/useTextInput';
-import { LoginRequest } from '../../proto/services_pb';
+import {
+  LoginRequest,
+  LoginDeviceRequest,
+  AuthResponse
+} from '../../proto/services_pb';
 import Client from '../../services/Client';
 import Session from '../../services/Session';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../../components/ui/AlertMessage';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import { useNavigation } from 'react-navigation-hooks';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
+import Log from '../../modules/log/Log';
+import Biometrics from 'react-native-biometrics';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,12 +63,24 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   splitText: {
     marginTop: 20
+  } as ViewStyle,
+  buttonLogin: {
+    flex: 1,
+    marginLeft: 10
+  } as ViewStyle,
+  buttonBiometric: {
+    paddingLeft: 15
+  } as ViewStyle,
+  buttonRow: {
+    flexDirection: 'row'
   } as ViewStyle
 });
 
+const TAG = '[LoginScreen]';
 function LoginScreen() {
   const { navigate } = useNavigation();
 
+  const [hasBiometric, setHasBiometric] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
@@ -71,12 +90,58 @@ function LoginScreen() {
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
 
+  const checkSettings = async () => {
+    try {
+      const settings = await SettingsStorage.getFirst();
+      const hasBiometric = !!settings.biometricPublicKey;
+      hasBiometric && startBiometric();
+      setHasBiometric(hasBiometric);
+    } catch (e) {
+      Log.warn(TAG, 'checkSettings', e);
+    }
+  };
+  useEffect(() => {
+    checkSettings();
+  }, []);
+
+  const startBiometric = async () => {
+    try {
+      const success = await Biometrics.simplePrompt('Login');
+      if (success) {
+        setError('');
+        setIsLoading(true);
+        requestAnimationFrame(() => {
+          submitWithDevice();
+        });
+      }
+    } catch (e) {
+      Log.warn(TAG, 'startBiometric', e);
+    }
+  };
+
   const isValid = () => {
     const isValid = [!!username, !!password].every(value => value);
     if (!isValid) {
       setError('Complete missing fields');
     }
     return isValid;
+  };
+
+  const submitWithDevice = async () => {
+    try {
+      const settings = await SettingsStorage.getFirst();
+
+      const request = new LoginDeviceRequest();
+      request.setPublickey(settings.biometricPublicKey);
+
+      const response = await Client.loginWithDevice(request);
+      processAuthReponse(response);
+      return;
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+    }
+    setIsLoading(false);
   };
 
   const submit = async () => {
@@ -86,16 +151,19 @@ function LoginScreen() {
       request.setPassword(password);
 
       const response = await Client.login(request);
-
-      Session.login(response);
-      Session.setPassword(password);
-      navigate('Accounts');
+      processAuthReponse(response);
       return;
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
     }
     setIsLoading(false);
+  };
+
+  const processAuthReponse = (response: AuthResponse) => {
+    Session.login(response);
+    Session.setPassword(password);
+    navigate('Accounts');
   };
   const tryToSubmit = () => {
     if (!isValid()) {
@@ -104,8 +172,8 @@ function LoginScreen() {
 
     setError('');
     setIsLoading(true);
-    requestAnimationFrame(async () => {
-      await submit();
+    requestAnimationFrame(() => {
+      submit();
     });
   };
 
@@ -163,13 +231,32 @@ function LoginScreen() {
                   {...passwordProps}
                 />
 
-                <Button
-                  isLoading={isLoading}
-                  style={styles.button}
-                  typeColor={'primaryLight'}
-                  title={'Sign In'}
-                  onPress={tryToSubmit}
-                />
+                {hasBiometric && (
+                  <View style={[styles.button, styles.buttonRow]}>
+                    <Button
+                      typeColor={'accentDark'}
+                      icon={'target'}
+                      style={styles.buttonBiometric}
+                      onPress={startBiometric}
+                    />
+                    <Button
+                      style={styles.buttonLogin}
+                      isLoading={isLoading}
+                      typeColor={'primaryLight'}
+                      title={'Sign In'}
+                      onPress={tryToSubmit}
+                    />
+                  </View>
+                )}
+                {!hasBiometric && (
+                  <Button
+                    style={styles.button}
+                    isLoading={isLoading}
+                    typeColor={'primaryLight'}
+                    title={'Sign In'}
+                    onPress={tryToSubmit}
+                  />
+                )}
                 <SplitText style={styles.splitText} title={'or'} />
                 <Button
                   style={styles.button}

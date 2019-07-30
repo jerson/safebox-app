@@ -7,6 +7,8 @@ import Client from '../../services/Client';
 import Strings from '../../modules/format/Strings';
 import Colors from '../../modules/constants/Colors';
 import Biometrics from 'react-native-biometrics';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
+import AppStorage from '../../modules/storage/AppStorage';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +28,13 @@ export interface ItemProps {
 function Item({ item, isSame, onDelete }: ItemProps) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const deletePublicKey = async () => {
+    const settings = await SettingsStorage.getFirst();
+    AppStorage.write(() => {
+      settings.biometricPublicKey = '';
+    });
+  };
+
   const deleteDevice = async () => {
     setIsLoading(true);
     try {
@@ -35,6 +44,7 @@ function Item({ item, isSame, onDelete }: ItemProps) {
       typeof onDelete === 'function' && onDelete();
       if (isSame) {
         Biometrics.deleteKeys();
+        deletePublicKey();
       }
     } catch (e) {
       const message = Strings.getError(e);

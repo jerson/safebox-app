@@ -21,6 +21,8 @@ import DeviceInfo from 'react-native-device-info';
 import Strings from '../../modules/format/Strings';
 import NotAvailableDevice from '../help/NotAvailableDevice';
 import List, { ListRef } from '../device/List';
+import AppStorage from '../../modules/storage/AppStorage';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
 
 const styles = StyleSheet.create({
   container: {
@@ -82,6 +84,13 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
     }
   };
 
+  const savePublicKey = async (publicKey: string) => {
+    const settings = await SettingsStorage.getFirst();
+    AppStorage.write(() => {
+      settings.biometricPublicKey = publicKey;
+    });
+  };
+
   const registerDevice = async (publicKey: string) => {
     setIsLoading(true);
     try {
@@ -90,6 +99,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
       request.setUid(deviceUid);
       request.setPublickey(publicKey);
       await Client.addDevice(request);
+      savePublicKey(publicKey);
       listRef.current && listRef.current.load();
     } catch (e) {
       const message = Strings.getError(e);
