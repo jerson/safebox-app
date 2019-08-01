@@ -208,6 +208,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-iap')
     implementation project(':react-native-code-push')
     implementation project(':appcenter-push')
     implementation project(':appcenter-crashes')

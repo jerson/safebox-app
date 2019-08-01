@@ -16,7 +16,6 @@ target 'SafeBox' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'FastOpenpgp', :path => '../node_modules/react-native-fast-openpgp/ios/native'
 
-
   target 'SafeBoxTests' do
     inherit! :search_paths
     # Pods for testing
