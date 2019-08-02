@@ -225,7 +225,14 @@ function AccountScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            {!!error && <AlertMessage message={error} />}
+            {!!error && (
+              <AlertMessage
+                onTimeout={() => {
+                  setError('');
+                }}
+                message={error}
+              />
+            )}
             {!locked && accountDecoded && (
               <View style={[styles.content, styles.shadow]}>
                 <Icon name={'unlock'} style={styles.icon} />

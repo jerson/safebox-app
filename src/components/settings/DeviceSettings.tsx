@@ -29,16 +29,24 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grey1
   } as ViewStyle,
   content: {
-    marginTop: 10,
+    marginTop: 5,
     alignItems: 'center'
   } as ViewStyle,
-  info: {} as ViewStyle,
+  info: {
+    marginBottom: 10
+  } as ViewStyle,
   description: {
     fontSize: 12,
     color: Colors.grey5
   } as TextStyle,
   options: {
     alignItems: 'center'
+  } as ViewStyle,
+  splitText: {
+    marginBottom: 5
+  } as ViewStyle,
+  button: {
+    minWidth: 160
   } as ViewStyle
 });
 
@@ -120,14 +128,25 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
 
   return (
     <View style={[styles.container, style]}>
-      <SplitText title={'Biometric settings'} type={'Default'} />
-      {!!error && <AlertMessage message={error} />}
+      <SplitText
+        style={styles.splitText}
+        title={'Biometric settings'}
+        type={'Default'}
+      />
+      {!!error && (
+        <AlertMessage
+          onTimeout={() => {
+            setError('');
+          }}
+          message={error}
+        />
+      )}
       {!isAddedCurrentDevice && (
         <View style={styles.content}>
           <View style={styles.info}>
             <Text style={styles.description}>
               you can add additional authentication methods such as fingerprint
-              or facial validation, depending on your device
+              or facial validation, depending on your device.
             </Text>
           </View>
           {!biometricType && <NotAvailableDevice />}
@@ -136,7 +155,10 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
               <Button
                 isLoading={isLoading}
                 onPress={addDevice}
+                style={styles.button}
                 title={`Add ${biometricType}`}
+                icon={'target'}
+                typeColor={'primaryLight'}
               />
             </View>
           )}

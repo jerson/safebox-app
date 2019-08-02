@@ -85,7 +85,7 @@ function AlertMessage(props: AlertMessageProps) {
   );
 }
 AlertMessage.defaultProps = {
-  timeout: 0,
+  timeout: 5000,
   icon: 'alert-circle',
   color: Colors.danger
 };

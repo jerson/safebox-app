@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.grey2
   } as ViewStyle,
   notFoundDescription: {
-    color: Colors.grey5,
+    color: Colors.grey6,
     fontSize: 13
   }
 });
@@ -19,7 +19,7 @@ function NotAvailableDevice() {
   return (
     <View style={styles.container}>
       <Text style={styles.notFoundDescription}>
-        your device does not have any supported method, try another device
+        your device does not have any supported method, try another device.
       </Text>
     </View>
   );

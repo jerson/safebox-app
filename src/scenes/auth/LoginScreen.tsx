@@ -198,7 +198,14 @@ function LoginScreen() {
             >
               <HeaderLanding style={styles.headerLanding} />
               <View style={styles.form}>
-                {!!error && <AlertMessage message={error} />}
+                {!!error && (
+                  <AlertMessage
+                    onTimeout={() => {
+                      setError('');
+                    }}
+                    message={error}
+                  />
+                )}
                 <TextInput
                   icon={'user'}
                   placeholder={'Username'}

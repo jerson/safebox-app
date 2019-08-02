@@ -185,7 +185,14 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
 
   return (
     <LinearGradient colors={colorsGradient} style={[styles.container, style]}>
-      {!!error && <AlertMessage message={error} />}
+      {!!error && (
+        <AlertMessage
+          onTimeout={() => {
+            setError('');
+          }}
+          message={error}
+        />
+      )}
       <View style={styles.content}>
         <Text style={styles.timeout}>Session expires in {format}</Text>
 

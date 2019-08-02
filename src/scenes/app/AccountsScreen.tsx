@@ -94,7 +94,15 @@ function AccountsScreen({ navigation }: Props) {
               return null;
             }
 
-            return <AlertMessage style={styles.alertMessage} message={error} />;
+            return (
+              <AlertMessage
+                onTimeout={() => {
+                  setError('');
+                }}
+                style={styles.alertMessage}
+                message={error}
+              />
+            );
           }}
           extraData={{ isLoading, error }}
           refreshControl={
