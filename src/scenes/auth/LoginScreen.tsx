@@ -106,7 +106,7 @@ function LoginScreen() {
 
   const startBiometric = async () => {
     try {
-      const success = await Biometrics.simplePrompt('Login');
+      const success = await Biometrics.simplePrompt('Sign In');
       if (success) {
         setError('');
         setIsLoading(true);
@@ -135,7 +135,7 @@ function LoginScreen() {
       request.setPublickey(settings.biometricPublicKey);
 
       const response = await Client.loginWithDevice(request);
-      processAuthReponse(response);
+      processAuthResponse(response);
       return;
     } catch (e) {
       const message = Strings.getError(e);
@@ -151,7 +151,7 @@ function LoginScreen() {
       request.setPassword(password);
 
       const response = await Client.login(request);
-      processAuthReponse(response);
+      processAuthResponse(response);
       return;
     } catch (e) {
       const message = Strings.getError(e);
@@ -160,7 +160,7 @@ function LoginScreen() {
     setIsLoading(false);
   };
 
-  const processAuthReponse = (response: AuthResponse) => {
+  const processAuthResponse = (response: AuthResponse) => {
     Session.login(response);
     Session.setPassword(password);
     navigate('Accounts');

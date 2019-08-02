@@ -39,6 +39,10 @@
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Location is used for send notifications customized for each user</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>If the user wishes, we can send him his location so he can see from where he has used the application</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>FaceID is used for authenticate user and unlock secure sections</string>
     <key>UIAppFonts</key>
     <array>
       <string>AntDesign.ttf</string>
