@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
+import DeviceSettings from '../../components/settings/DeviceSettings';
+import SessionSettings from '../../components/settings/SessionSettings';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,9 +18,8 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
+  block: {
+    marginBottom: 30
   } as ViewStyle
 });
 
@@ -39,12 +39,9 @@ function SettingsScreen() {
         style={styles.scrollView}
       >
         <SafeAreaView style={styles.safeArea}>
-          <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
+          <Content>
+            <DeviceSettings style={styles.block} />
+            <SessionSettings style={styles.block} />
           </Content>
         </SafeAreaView>
       </ScrollView>

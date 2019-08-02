@@ -900,7 +900,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
       obj = {
         accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
         name: jspb.Message.getFieldWithDefault(msg, 2, ''),
-        publickey: jspb.Message.getFieldWithDefault(msg, 3, '')
+        publickey: jspb.Message.getFieldWithDefault(msg, 3, ''),
+        uid: jspb.Message.getFieldWithDefault(msg, 4, '')
       };
 
     if (includeInstance) {
@@ -947,6 +948,10 @@ proto.AddDeviceRequest.deserializeBinaryFromReader = function(msg, reader) {
         var value = /** @type {string} */ (reader.readString());
         msg.setPublickey(value);
         break;
+      case 4:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setUid(value);
+        break;
       default:
         reader.skipField();
         break;
@@ -985,6 +990,10 @@ proto.AddDeviceRequest.serializeBinaryToWriter = function(message, writer) {
   f = message.getPublickey();
   if (f.length > 0) {
     writer.writeString(3, f);
+  }
+  f = message.getUid();
+  if (f.length > 0) {
+    writer.writeString(4, f);
   }
 };
 
@@ -1025,6 +1034,19 @@ proto.AddDeviceRequest.prototype.getPublickey = function() {
 /** @param {string} value */
 proto.AddDeviceRequest.prototype.setPublickey = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
+};
+
+/**
+ * optional string uid = 4;
+ * @return {string}
+ */
+proto.AddDeviceRequest.prototype.getUid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ''));
+};
+
+/** @param {string} value */
+proto.AddDeviceRequest.prototype.setUid = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1428,7 +1450,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
       obj = {
         id: jspb.Message.getFieldWithDefault(msg, 1, 0),
         name: jspb.Message.getFieldWithDefault(msg, 2, ''),
-        datecreated: jspb.Message.getFieldWithDefault(msg, 3, '')
+        datecreated: jspb.Message.getFieldWithDefault(msg, 3, ''),
+        uid: jspb.Message.getFieldWithDefault(msg, 4, '')
       };
 
     if (includeInstance) {
@@ -1475,6 +1498,10 @@ proto.Device.deserializeBinaryFromReader = function(msg, reader) {
         var value = /** @type {string} */ (reader.readString());
         msg.setDatecreated(value);
         break;
+      case 4:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setUid(value);
+        break;
       default:
         reader.skipField();
         break;
@@ -1513,6 +1540,10 @@ proto.Device.serializeBinaryToWriter = function(message, writer) {
   f = message.getDatecreated();
   if (f.length > 0) {
     writer.writeString(3, f);
+  }
+  f = message.getUid();
+  if (f.length > 0) {
+    writer.writeString(4, f);
   }
 };
 
@@ -1553,6 +1584,19 @@ proto.Device.prototype.getDatecreated = function() {
 /** @param {string} value */
 proto.Device.prototype.setDatecreated = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
+};
+
+/**
+ * optional string uid = 4;
+ * @return {string}
+ */
+proto.Device.prototype.getUid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ''));
+};
+
+/** @param {string} value */
+proto.Device.prototype.setUid = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2979,6 +3023,7 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
       obj = {
         accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
         dateexpire: jspb.Message.getFieldWithDefault(msg, 2, ''),
+        date: jspb.Message.getFieldWithDefault(msg, 3, ''),
         keypair:
           (f = msg.getKeypair()) &&
           proto.KeyPairResponse.toObject(includeInstance, f)
@@ -3025,6 +3070,10 @@ proto.AuthResponse.deserializeBinaryFromReader = function(msg, reader) {
         msg.setDateexpire(value);
         break;
       case 3:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setDate(value);
+        break;
+      case 4:
         var value = new proto.KeyPairResponse();
         reader.readMessage(
           value,
@@ -3067,9 +3116,13 @@ proto.AuthResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(2, f);
   }
+  f = message.getDate();
+  if (f.length > 0) {
+    writer.writeString(3, f);
+  }
   f = message.getKeypair();
   if (f != null) {
-    writer.writeMessage(3, f, proto.KeyPairResponse.serializeBinaryToWriter);
+    writer.writeMessage(4, f, proto.KeyPairResponse.serializeBinaryToWriter);
   }
 };
 
@@ -3100,20 +3153,33 @@ proto.AuthResponse.prototype.setDateexpire = function(value) {
 };
 
 /**
- * optional KeyPairResponse keyPair = 3;
+ * optional string date = 3;
+ * @return {string}
+ */
+proto.AuthResponse.prototype.getDate = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ''));
+};
+
+/** @param {string} value */
+proto.AuthResponse.prototype.setDate = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+/**
+ * optional KeyPairResponse keyPair = 4;
  * @return {?proto.KeyPairResponse}
  */
 proto.AuthResponse.prototype.getKeypair = function() {
   return /** @type{?proto.KeyPairResponse} */ (jspb.Message.getWrapperField(
     this,
     proto.KeyPairResponse,
-    3
+    4
   ));
 };
 
 /** @param {?proto.KeyPairResponse|undefined} value */
 proto.AuthResponse.prototype.setKeypair = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  jspb.Message.setWrapperField(this, 4, value);
 };
 
 /**
@@ -3128,7 +3194,7 @@ proto.AuthResponse.prototype.clearKeypair = function() {
  * @return {boolean}
  */
 proto.AuthResponse.prototype.hasKeypair = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {

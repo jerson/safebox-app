@@ -77,6 +77,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -96,6 +97,18 @@ def enableProguardInReleaseBuilds = false
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -105,8 +118,11 @@ android {
         applicationId "dev.jerson.safebox"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 2
         versionName "1.0.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
     }
     splits {
         abi {
@@ -125,6 +141,14 @@ android {
                 keyPassword RELEASE_KEY_PASSWORD
             }
         }
+        beta {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -135,14 +159,26 @@ android {
     buildTypes {
         release {
             resValue "string", "app_name", "Safebox"
+            resValue "string", "reactNativeCodePush_androidDeploymentKey", "mugO8EBKuVRDwDS3aUw5YXpBDNMYiz_TlvQnK"
             minifyEnabled enableProguardInReleaseBuilds
             shrinkResources enableProguardInReleaseBuilds
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+        releaseBeta {
+            applicationIdSuffix ".beta"
+            resValue "string", "app_name", "Safebox (Beta)"
+            resValue "string", "reactNativeCodePush_androidDeploymentKey", "HUBgL-WD53oZDHT1XXS1nd0shYjOQWoHvRskT"
+            minifyEnabled enableProguardInReleaseBuilds
+            shrinkResources enableProguardInReleaseBuilds
+            signingConfig signingConfigs.beta
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            matchingFallbacks = ['release']
+        }
         debug {
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "Safebox (Debug)"
+            resValue "string", "reactNativeCodePush_androidDeploymentKey", ""
             minifyEnabled false
             signingConfig signingConfigs.debug
         }
@@ -172,6 +208,13 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-iap')
+    implementation project(':react-native-code-push')
+    implementation project(':appcenter-push')
+    implementation project(':appcenter-crashes')
+    implementation project(':appcenter-analytics')
+    implementation project(':appcenter')
+    implementation project(':react-native-linear-gradient')
     implementation project(':react-native-device-info')
     implementation project(':react-native-biometrics')
     implementation project(':react-native-fast-openpgp')
@@ -196,3 +239,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'

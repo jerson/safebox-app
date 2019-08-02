@@ -22,7 +22,8 @@ import {
   DevicesRequest,
   DevicesResponse,
   AddDeviceRequest,
-  AddDeviceResponse
+  AddDeviceResponse,
+  LoginDeviceRequest
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -46,6 +47,18 @@ export default class Client {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       client.login(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+
+  static loginWithDevice(request: LoginDeviceRequest): Promise<AuthResponse> {
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      client.loginWithDevice(request, null, (err, response) => {
         if (err) {
           reject(err);
         }

@@ -65,8 +65,7 @@ function HeaderLanding({
       <View style={styles.logoContent}>
         <Image
           style={styles.logo}
-          resizeMode={'center'}
-          resizeMethod={'scale'}
+          resizeMode={'stretch'}
           source={require('../../assets/images/logo.png')}
         />
       </View>
