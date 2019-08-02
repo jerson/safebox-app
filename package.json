@@ -13,6 +13,8 @@
     "test": "jest",
     "lint": "tsc && tslint -p .",
     "format": "prettier --write --single-quote 'src/**/*.tsx'",
+    "build:android:release": "cd android && ./gradlew bundleRelease",
+    "build:android:demo": "cd android && ./gradlew bundleReleaseDemo",
     "docs": "typedoc --excludeExternals --out docs --exclude '**/*/*.test.tsx' --mode file ./src "
   },
   "dependencies": {
