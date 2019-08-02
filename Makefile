@@ -2,7 +2,10 @@
 
 default: build
 
-build: build-android
+build: build-android-release
+
+build-android-beta: format
+	yarn run build:android:beta
 
 build-android-release: format
 	yarn run build:android:release
