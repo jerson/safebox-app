@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-function AboutScreen() {
+function PremiumScreen() {
   return (
     <Container style={styles.container}>
       <StatusBar
@@ -52,9 +52,9 @@ function AboutScreen() {
   );
 }
 
-AboutScreen.navigationOptions = {
-  title: 'About',
+PremiumScreen.navigationOptions = {
+  title: 'Premium',
   headerLeft: null
 };
 
-export default AboutScreen;
+export default PremiumScreen;

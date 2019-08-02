@@ -42,6 +42,9 @@ export class AddDeviceRequest extends jspb.Message {
   getPublickey(): string;
   setPublickey(value: string): void;
 
+  getUid(): string;
+  setUid(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AddDeviceRequest.AsObject;
   static toObject(includeInstance: boolean, msg: AddDeviceRequest): AddDeviceRequest.AsObject;
@@ -55,6 +58,7 @@ export namespace AddDeviceRequest {
     accesstoken: string,
     name: string,
     publickey: string,
+    uid: string,
   }
 }
 
@@ -126,6 +130,9 @@ export class Device extends jspb.Message {
   getDatecreated(): string;
   setDatecreated(value: string): void;
 
+  getUid(): string;
+  setUid(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Device.AsObject;
   static toObject(includeInstance: boolean, msg: Device): Device.AsObject;
@@ -139,6 +146,7 @@ export namespace Device {
     id: number,
     name: string,
     datecreated: string,
+    uid: string,
   }
 }
 
@@ -365,6 +373,9 @@ export class AuthResponse extends jspb.Message {
   getDateexpire(): string;
   setDateexpire(value: string): void;
 
+  getDate(): string;
+  setDate(value: string): void;
+
   getKeypair(): KeyPairResponse | undefined;
   setKeypair(value?: KeyPairResponse): void;
   hasKeypair(): boolean;
@@ -382,6 +393,7 @@ export namespace AuthResponse {
   export type AsObject = {
     accesstoken: string,
     dateexpire: string,
+    date: string,
     keypair?: KeyPairResponse.AsObject,
   }
 }

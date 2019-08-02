@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   View,
   ViewStyle,
   ScrollView,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -152,101 +154,106 @@ function AddAccountScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <View style={styles.form}>
-              {!!error && <AlertMessage message={error} />}
-              <TextInput
-                placeholder={'Label'}
-                keyboardType={'default'}
-                autoCapitalize={'sentences'}
-                autoCorrect
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={labelRef}
-                onSubmitEditing={() => {
-                  hintRef.current && hintRef.current.focus();
-                }}
-                {...labelProps}
-                {...labelExtraProps}
-              />
-              <TextInput
-                icon={'feather'}
-                placeholder={'Hint (optional)'}
-                keyboardType={'default'}
-                autoCapitalize={'sentences'}
-                autoCorrect
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={hintRef}
-                onSubmitEditing={() => {
-                  usernameRef.current && usernameRef.current.focus();
-                }}
-                {...hintProps}
-              />
-              <SplitText
-                type={'Default'}
-                style={styles.splitView}
-                title={'Sensitive credentials'}
-              />
-              <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'off'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'off'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={passwordRef}
-                onSubmitEditing={() => {
-                  repeatPasswordRef.current &&
-                    repeatPasswordRef.current.focus();
-                }}
-                {...passwordProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Repeat password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'off'}
-                returnKeyType={'done'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={repeatPasswordRef}
-                blurOnSubmit
-                {...repeatPasswordProps}
-              />
+            <KeyboardAvoidingView
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}
+            >
+              <View style={styles.form}>
+                {!!error && <AlertMessage message={error} />}
+                <TextInput
+                  placeholder={'Label'}
+                  keyboardType={'default'}
+                  autoCapitalize={'sentences'}
+                  autoCorrect
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={labelRef}
+                  onSubmitEditing={() => {
+                    hintRef.current && hintRef.current.focus();
+                  }}
+                  {...labelProps}
+                  {...labelExtraProps}
+                />
+                <TextInput
+                  icon={'feather'}
+                  placeholder={'Hint (optional)'}
+                  keyboardType={'default'}
+                  autoCapitalize={'sentences'}
+                  autoCorrect
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={hintRef}
+                  onSubmitEditing={() => {
+                    usernameRef.current && usernameRef.current.focus();
+                  }}
+                  {...hintProps}
+                />
+                <SplitText
+                  type={'Default'}
+                  style={styles.splitView}
+                  title={'Sensitive credentials'}
+                />
+                <TextInput
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'off'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current && passwordRef.current.focus();
+                  }}
+                  {...usernameProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'off'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={passwordRef}
+                  onSubmitEditing={() => {
+                    repeatPasswordRef.current &&
+                      repeatPasswordRef.current.focus();
+                  }}
+                  {...passwordProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Repeat password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'off'}
+                  returnKeyType={'done'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={repeatPasswordRef}
+                  blurOnSubmit
+                  {...repeatPasswordProps}
+                />
 
-              <Button
-                isLoading={isLoading}
-                style={styles.button}
-                typeColor={'primaryLight'}
-                title={'Add secret account'}
-                onPress={tryToSubmit}
-              />
-            </View>
+                <Button
+                  isLoading={isLoading}
+                  style={styles.button}
+                  typeColor={'primaryLight'}
+                  title={'Add secret account'}
+                  onPress={tryToSubmit}
+                />
+              </View>
+            </KeyboardAvoidingView>
           </Content>
         </SafeAreaView>
       </ScrollView>

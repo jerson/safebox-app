@@ -68,3 +68,4 @@ buck-out/
 *.hprof
 Config.tsx
 coverage
+docs

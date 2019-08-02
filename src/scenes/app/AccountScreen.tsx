@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   content: {
     padding: 20,
-    margin: 20,
+    maxWidth: 360,
     marginBottom: 60,
-    maxWidth: 280,
     backgroundColor: Colors.white,
     borderRadius: 12,
-    overflow: 'visible'
+    overflow: 'visible',
+    alignSelf: 'center'
   } as ViewStyle,
   help: {
     marginTop: 5,
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   } as TextStyle,
   item: {
     flexDirection: 'row',
+    width: '100%',
     alignItems: 'flex-start'
   } as ViewStyle,
   buttonCopy: {
@@ -135,11 +136,14 @@ function AccountScreen() {
     if (locked) {
       return;
     }
-    loadPassword();
+
+    setIsLoading(true);
+    requestAnimationFrame(() => {
+      loadPassword();
+    });
   }, [locked]);
 
   const loadPassword = async () => {
-    setIsLoading(true);
     try {
       const request = new AccountRequest();
       request.setId(account.getId());
@@ -195,7 +199,12 @@ function AccountScreen() {
           style: 'cancel'
         }
       ],
-      { cancelable: false }
+      {
+        cancelable: true,
+        onDismiss: () => {
+          setParams({ showDelete: false });
+        }
+      }
     );
   }, [showDelete]);
 
@@ -216,12 +225,19 @@ function AccountScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            {!!error && <AlertMessage message={error} />}
+            {!!error && (
+              <AlertMessage
+                onTimeout={() => {
+                  setError('');
+                }}
+                message={error}
+              />
+            )}
             {!locked && accountDecoded && (
               <View style={[styles.content, styles.shadow]}>
                 <Icon name={'unlock'} style={styles.icon} />
                 <Text style={styles.description}>
-                  Use <Icon style={styles.iconCopy} name={'copy'} /> for copy to
+                  Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
                   clipboard
                 </Text>
                 {!!toast && (
@@ -262,7 +278,7 @@ function AccountScreen() {
                     editable={false}
                     secureTextEntry
                     multiline
-                    value={accountDecoded.getPassword()}
+                    value={'********'}
                     containerStyle={styles.textInputContainer}
                     style={styles.textInput}
                     help={

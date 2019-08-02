@@ -55,6 +55,9 @@ function AlertMessage(props: AlertMessageProps) {
   const [visible, setVisible] = useAnimatedState(true);
 
   useEffect(() => {
+    if ((timeout || 0) < 1) {
+      return;
+    }
     const listener = setTimeout(() => {
       setVisible(false);
       typeof onTimeout === 'function' && onTimeout();

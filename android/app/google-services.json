@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "685558608495",
+    "firebase_url": "https://safebox-app.firebaseio.com",
+    "project_id": "safebox-app",
+    "storage_bucket": "safebox-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685558608495:android:8d2f3912ed72965a",
+        "android_client_info": {
+          "package_name": "dev.jerson.safebox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQpJNkhQqSJuFCkqAkM6vswpnwRpih6AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "685558608495-2hqm3ckqklm6a5mtddg25fte8c1bfcbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.jerson.safebox.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685558608495:android:f832d5914e1e5968",
+        "android_client_info": {
+          "package_name": "dev.jerson.safebox.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQpJNkhQqSJuFCkqAkM6vswpnwRpih6AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "685558608495-2hqm3ckqklm6a5mtddg25fte8c1bfcbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.jerson.safebox.debug"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685558608495:android:4ef2077017b1c7ca",
+        "android_client_info": {
+          "package_name": "dev.jerson.safebox.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQpJNkhQqSJuFCkqAkM6vswpnwRpih6AE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685558608495-37glcrb67tqett0611bui63u98dqlloc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "685558608495-2hqm3ckqklm6a5mtddg25fte8c1bfcbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.jerson.safebox.debug"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

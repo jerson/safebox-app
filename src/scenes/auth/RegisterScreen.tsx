@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   View,
   ViewStyle,
   ScrollView,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
 });
 
 function RegisterScreen() {
-  const { navigate, goBack } = useNavigation();
+  const { navigate } = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
@@ -70,6 +72,10 @@ function RegisterScreen() {
   const [username, usernameProps] = useTextInput('');
   const [password, passwordProps] = useTextInput('');
   const [repeatPassword, repeatPasswordProps] = useTextInput('');
+
+  const goToLogin = () => {
+    navigate('Login');
+  };
 
   const isValid = () => {
     const isValid = [!!username, !!password, !!repeatPassword].every(
@@ -142,77 +148,89 @@ function RegisterScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
-            <View style={styles.form}>
-              {!!error && <AlertMessage message={error} />}
-              <TextInput
-                icon={'user'}
-                placeholder={'Username'}
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'username'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={usernameRef}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
-                {...usernameProps}
+            <KeyboardAvoidingView
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}
+            >
+              <HeaderLanding
+                titleStyle={{ color: Colors.primary }}
+                subtitleStyle={{ color: Colors.primary }}
+                style={styles.headerLanding}
               />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'next'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={passwordRef}
-                onSubmitEditing={() => {
-                  repeatPasswordRef.current &&
-                    repeatPasswordRef.current.focus();
-                }}
-                {...passwordProps}
-              />
-              <TextInput
-                icon={'lock'}
-                placeholder={'Repeat password'}
-                secureTextEntry
-                keyboardType={'default'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-                autoCompleteType={'password'}
-                returnKeyType={'done'}
-                containerStyle={styles.textInputContainer}
-                style={styles.textInput}
-                ref={repeatPasswordRef}
-                blurOnSubmit
-                {...repeatPasswordProps}
-              />
+              <View style={styles.form}>
+                {!!error && (
+                  <AlertMessage
+                    onTimeout={() => {
+                      setError('');
+                    }}
+                    message={error}
+                  />
+                )}
+                <TextInput
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'username'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={usernameRef}
+                  onSubmitEditing={() => {
+                    passwordRef.current && passwordRef.current.focus();
+                  }}
+                  {...usernameProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'password'}
+                  returnKeyType={'next'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={passwordRef}
+                  onSubmitEditing={() => {
+                    repeatPasswordRef.current &&
+                      repeatPasswordRef.current.focus();
+                  }}
+                  {...passwordProps}
+                />
+                <TextInput
+                  icon={'lock'}
+                  placeholder={'Repeat password'}
+                  secureTextEntry
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
+                  autoCorrect={false}
+                  autoCompleteType={'password'}
+                  returnKeyType={'done'}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  ref={repeatPasswordRef}
+                  blurOnSubmit
+                  {...repeatPasswordProps}
+                />
 
-              <Button
-                isLoading={isLoading}
-                style={styles.button}
-                typeColor={'primaryLight'}
-                title={'Create account'}
-                onPress={tryToSubmit}
-              />
+                <Button
+                  isLoading={isLoading}
+                  style={styles.button}
+                  typeColor={'primaryLight'}
+                  title={'Create account'}
+                  onPress={tryToSubmit}
+                />
 
-              <ButtonLink
-                style={styles.buttonLink}
-                title={'Back to Sign In'}
-                onPress={goBack}
-              />
-            </View>
+                <ButtonLink
+                  style={styles.buttonLink}
+                  title={'Back to Sign In'}
+                  onPress={goToLogin}
+                />
+              </View>
+            </KeyboardAvoidingView>
           </Content>
         </SafeAreaView>
       </ScrollView>
