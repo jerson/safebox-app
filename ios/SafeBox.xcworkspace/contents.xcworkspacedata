@@ -5,6 +5,9 @@
       location = "group:SafeBox.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:watch/watch.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
