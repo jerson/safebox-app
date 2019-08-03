@@ -6274,10 +6274,10 @@ react-native-device-info@^2.3.0:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.3.0.tgz#7b2a8baf8453324bd8d120ce46e5e2bb0181ccd4"
   integrity sha512-ISEChH2zg4bRX8PL1cYoNWffJ7wmgYosKyJbkWyTxs8g+rpeGkmMf9Wo4COriAt1AJ2jC78IGhJYFzbIc+Przw==
 
-react-native-fast-openpgp@0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/react-native-fast-openpgp/-/react-native-fast-openpgp-0.4.3.tgz#8548a3528fc9c88024f77ce9242037f87f5e908e"
-  integrity sha512-vFPycVOIn2ipArOZnJgIYNr1/Ix53oc7a+GboyTt5rP4nXfVut4ikWIvLDuf+n/FEFy76BZFl26yiZqzK4RbRg==
+react-native-fast-openpgp@0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-native-fast-openpgp/-/react-native-fast-openpgp-0.4.4.tgz#88ace24cbc86ed21d7bdfd7a4a0a6d2582973f93"
+  integrity sha512-k1U30TOMxD/bguGUPSYpkGj7cmrXyXA/IxjHk1629aP0rTbBuwcf6W5NDvVYxBoXvq9SOSX25zB+PthICG7g6g==
 
 react-native-gesture-handler@1.3.0:
   version "1.3.0"
