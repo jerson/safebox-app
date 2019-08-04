@@ -19,8 +19,6 @@ stages:
 test:
   stage: test
   script:
-  - which node
-  - node --version
   - make deps
   - make test
   - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
