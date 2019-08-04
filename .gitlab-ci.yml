@@ -25,18 +25,6 @@ test:
   - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
   - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   when: always
-
-pages:
-  stage: deploy
-  dependencies:
-    - test
-  script:
-    - mv coverage/lcov-report/ public/
-  artifacts:
-    paths:
-      - public
-    expire_in: 30 days
-  when: always
   
 lint:
   stage: test
