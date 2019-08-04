@@ -8,10 +8,6 @@ test('debug', () => {
   Log.debug('sample');
 });
 
-test('silent', () => {
-  Log.silent('sample');
-});
-
 test('log', () => {
   Log.log('sample');
 });

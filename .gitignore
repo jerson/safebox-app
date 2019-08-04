@@ -69,3 +69,4 @@ buck-out/
 Config.tsx
 coverage
 docs
+.scannerwork

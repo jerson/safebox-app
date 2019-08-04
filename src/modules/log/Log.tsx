@@ -33,13 +33,6 @@ export default class Log {
     }
   }
 
-  static silent(tag: string, method?: string, ...params: any[]) {
-    if (__DEV__) {
-      console.debug(tag, method, ...params);
-      return;
-    }
-  }
-
   static log(tag: string, method?: string, ...params: any[]) {
     if (__DEV__) {
       console.log(tag, method, ...params);

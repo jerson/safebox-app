@@ -54,16 +54,17 @@
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/runtime": "7.5.5",
+    "@testing-library/react-native": "4.0.7",
     "@types/google-protobuf": "3.7.1",
     "@types/jest": "24.0.15",
     "@types/react": "16.8.23",
     "@types/react-native": "0.60.2",
     "@types/react-native-vector-icons": "6.4.1",
-    "@testing-library/react-native": "4.0.7",
     "@types/react-test-renderer": "16.8.2",
     "babel-jest": "24.8.0",
     "husky": "3.0.1",
     "jest": "24.8.0",
+    "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "9.2.0",
     "metro-react-native-babel-preset": "0.55.0",
     "prettier": "1.18.2",
@@ -96,5 +97,9 @@
     "hooks": {
       "pre-commit": "yarn lint && yarn test --bail && lint-staged"
     }
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": "build/sonar"
   }
 }
