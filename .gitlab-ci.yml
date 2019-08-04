@@ -16,10 +16,10 @@ stages:
 test:
   stage: test
   script:
-  - make deps
-  - make test
   - apt install sonar-scanner -y
   - sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
+  - make deps
+  - make test
   when: always
 
 lint:
