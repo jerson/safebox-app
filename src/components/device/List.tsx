@@ -78,7 +78,7 @@ function List(
   };
 
   if (devices.length < 1) {
-    return null;
+    return <View />;
   }
 
   return (

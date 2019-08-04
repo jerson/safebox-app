@@ -7,12 +7,12 @@ const props: TouchableProps = {
   onLongPress: jest.fn()
 };
 
-it('renders without crashing', () => {
+test('renders without crashing', () => {
   const snapshot = renderer.create(<Touchable {...props} />).toJSON();
   expect(snapshot).toBeTruthy();
 });
 
-it('render just views', () => {
+test('render just views', () => {
   const snapshot = renderer.create(<Touchable {...props} />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });

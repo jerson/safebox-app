@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+        "flex": 1,
+      },
+      Object {
+        "backgroundColor": "#fafdff",
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "minHeight": 1220,
+      }
+    }
+    keyboardShouldPersistTaps="handled"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <_class>
+      <_class
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          Object {
+            "flex": 1,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 20,
+          }
+        }
+      >
+        <_class
+          style={
+            Array [
+              Object {
+                "paddingHorizontal": 20,
+              },
+              Object {
+                "justifyContent": "center",
+              },
+              Object {
+                "flex": 1,
+                "paddingTop": 20,
+              },
+              undefined,
+            ]
+          }
+        >
+          <_class
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "overflow": "visible",
+                },
+                false,
+                Object {
+                  "marginBottom": 20,
+                  "marginTop": 20,
+                },
+              ]
+            }
+          >
+            <_class
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#38414e",
+                  "borderColor": "#c2d0e7",
+                  "borderRadius": 22,
+                  "borderWidth": 1,
+                  "overflow": "hidden",
+                }
+              }
+            >
+              <Image
+                resizeMode="stretch"
+                source={
+                  Object {
+                    "testUri": "../../../src/assets/images/logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 90,
+                    "width": 90,
+                  }
+                }
+              />
+            </_class>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 35,
+                    },
+                    Object {
+                      "color": "#4531cd",
+                    },
+                  ],
+                ]
+              }
+            >
+              Safe
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontFamily": "Nunito",
+                      "fontSize": undefined,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                    },
+                    Object {},
+                    undefined,
+                  ]
+                }
+              >
+                Box
+              </Text>
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "300",
+                  },
+                  Object {},
+                  Array [
+                    Object {
+                      "color": "#f2f4f9",
+                      "fontSize": 14,
+                    },
+                    Object {
+                      "color": "#4531cd",
+                    },
+                  ],
+                ]
+              }
+            >
+              secrets always safe
+            </Text>
+          </_class>
+          <_class
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4531cd",
+                "borderColor": "#4531cd",
+                "borderRadius": 10,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "margin": 0,
+                "opacity": 1,
+                "padding": 12,
+                "zIndex": 1,
+              }
+            }
+            testID="button_touchable"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 14,
+                      "textAlign": "center",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              Reload
+            </Text>
+          </_class>
+        </_class>
+      </_class>
+    </_class>
+  </RCTScrollView>
+</_class>
+`;

@@ -194,6 +194,7 @@ function Button(props: ButtonProps) {
         style,
         !title && styles.center
       ]}
+      testID={'button_touchable'}
       {...extraProps}
       onPress={onPress ? onPressCallback : undefined}
     >

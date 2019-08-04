@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<BVLinearGradient
+  colors={
+    Array [
+      4294639103,
+      4294639103,
+      4294639103,
+      16449023,
+    ]
+  }
+  endPoint={
+    Object {
+      "x": 0.5,
+      "y": 1,
+    }
+  }
+  locations={null}
+  startPoint={
+    Object {
+      "x": 0.5,
+      "y": 0,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "justifyContent": "center",
+        "padding": 20,
+        "paddingTop": 5,
+        "zIndex": 100,
+      },
+      undefined,
+    ]
+  }
+>
+  <_class
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 30,
+        "marginBottom": 4,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontFamily": "Nunito",
+            "fontSize": undefined,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          Object {},
+          Object {
+            "color": "#65748b",
+            "flex": 1,
+            "fontSize": 13,
+          },
+        ]
+      }
+    >
+      Session expires in 
+      00
+    </Text>
+    <_class
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#6781a6",
+          "borderColor": "#6781a6",
+          "borderRadius": 10,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "margin": 0,
+          "minWidth": 100,
+          "opacity": 1,
+          "padding": 4,
+          "paddingHorizontal": 12,
+          "paddingTop": 1,
+          "zIndex": 1,
+        }
+      }
+      testID="button_touchable"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Array [
+              Object {
+                "color": "#FFFFFF",
+                "fontSize": 14,
+                "textAlign": "center",
+              },
+              undefined,
+              undefined,
+            ],
+          ]
+        }
+      >
+        Extend
+      </Text>
+    </_class>
+  </_class>
+  <_class
+    style={
+      Object {
+        "backgroundColor": "#c2d0e7",
+        "borderRadius": 6,
+        "height": 6,
+        "overflow": "hidden",
+        "width": "100%",
+      }
+    }
+  >
+    <_class
+      style={
+        Object {
+          "backgroundColor": "rgba(187, 202, 228, 1)",
+          "borderRadius": 6,
+          "height": 6,
+          "width": "100%",
+        }
+      }
+    />
+  </_class>
+</BVLinearGradient>
+`;

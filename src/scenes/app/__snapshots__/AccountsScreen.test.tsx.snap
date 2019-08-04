@@ -1,0 +1,396 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+        "flex": 1,
+      },
+      Object {
+        "backgroundColor": "#fafdff",
+      },
+    ]
+  }
+>
+  <BVLinearGradient
+    colors={
+      Array [
+        4294639103,
+        4294639103,
+        4294639103,
+        16449023,
+      ]
+    }
+    endPoint={
+      Object {
+        "x": 0.5,
+        "y": 1,
+      }
+    }
+    locations={null}
+    startPoint={
+      Object {
+        "x": 0.5,
+        "y": 0,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "justifyContent": "center",
+          "padding": 20,
+          "paddingTop": 5,
+          "zIndex": 100,
+        },
+        Object {
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <_class
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 30,
+          "marginBottom": 4,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#65748b",
+              "flex": 1,
+              "fontSize": 13,
+            },
+          ]
+        }
+      >
+        Session expires in 
+        00
+      </Text>
+      <_class
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#6781a6",
+            "borderColor": "#6781a6",
+            "borderRadius": 10,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "margin": 0,
+            "minWidth": 100,
+            "opacity": 1,
+            "padding": 4,
+            "paddingHorizontal": 12,
+            "paddingTop": 1,
+            "zIndex": 1,
+          }
+        }
+        testID="button_touchable"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "Nunito",
+                "fontSize": undefined,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+              },
+              Object {},
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 14,
+                  "textAlign": "center",
+                },
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Extend
+        </Text>
+      </_class>
+    </_class>
+    <_class
+      style={
+        Object {
+          "backgroundColor": "#c2d0e7",
+          "borderRadius": 6,
+          "height": 6,
+          "overflow": "hidden",
+          "width": "100%",
+        }
+      }
+    >
+      <_class
+        style={
+          Object {
+            "backgroundColor": "rgba(187, 202, 228, 1)",
+            "borderRadius": 6,
+            "height": 6,
+            "width": "100%",
+          }
+        }
+      />
+    </_class>
+  </BVLinearGradient>
+  <RCTScrollView
+    ListEmptyComponent={[Function]}
+    ListHeaderComponent={[Function]}
+    contentContainerStyle={
+      Object {
+        "minHeight": 1220,
+        "paddingTop": 80,
+      }
+    }
+    data={Array []}
+    disableVirtualization={false}
+    extraData={
+      Object {
+        "error": "",
+        "isLoading": false,
+      }
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        colors={
+          Array [
+            "#4531cd",
+          ]
+        }
+        onRefresh={[Function]}
+        refreshing={false}
+        tintColor="#4531cd"
+      />
+    }
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <RCTRefreshControl />
+    <_class>
+      <_class
+        onLayout={[Function]}
+      />
+      <_class
+        style={
+          Array [
+            Object {
+              "paddingHorizontal": 20,
+            },
+            Object {
+              "justifyContent": "center",
+            },
+            Object {
+              "flex": 1,
+              "paddingTop": 20,
+            },
+            undefined,
+          ]
+        }
+      >
+        <_class
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "padding": 30,
+            }
+          }
+        >
+          <_class
+            style={
+              Object {
+                "alignSelf": "center",
+                "backgroundColor": "#38414e",
+                "borderColor": "#c2d0e7",
+                "borderRadius": 22,
+                "borderWidth": 1,
+                "marginBottom": 10,
+                "overflow": "hidden",
+              }
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              source={
+                Object {
+                  "testUri": "../../../src/assets/images/logo.png",
+                }
+              }
+              style={
+                Object {
+                  "height": 90,
+                  "width": 90,
+                }
+              }
+            />
+          </_class>
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontFamily": "Nunito",
+                  "fontSize": undefined,
+                  "fontStyle": "normal",
+                  "fontWeight": "300",
+                },
+                Object {},
+                Object {
+                  "color": "#65748b",
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            The first thing you should do is add a 
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                  },
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              Secret account
+            </Text>
+          </Text>
+          <_class
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#9066f5",
+                "borderColor": "#9066f5",
+                "borderRadius": 10,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "margin": 0,
+                "marginTop": 20,
+                "opacity": 1,
+                "padding": 12,
+                "zIndex": 1,
+              }
+            }
+            testID="button_touchable"
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 14,
+                      "marginRight": 4,
+                      "top": 3,
+                    },
+                    undefined,
+                  ],
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 14,
+                      "textAlign": "center",
+                    },
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              Add first secret account
+            </Text>
+          </_class>
+        </_class>
+      </_class>
+    </_class>
+  </RCTScrollView>
+</_class>
+`;

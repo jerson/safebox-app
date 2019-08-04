@@ -15,5 +15,6 @@ exports[`render just views 1`] = `
       "opacity": 1,
     }
   }
+  testID="touchable"
 />
 `;

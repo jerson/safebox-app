@@ -4,7 +4,7 @@ export default {
   },
   settings: {
     keyOptions: {
-      RSABits: 4096,
+      RSABits: 2048,
       cipher: "aes256",
       compression: "zlib",
       compressionLevel: 9,

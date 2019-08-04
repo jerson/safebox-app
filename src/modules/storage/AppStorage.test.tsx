@@ -1,5 +1,5 @@
 import AppStorage from './AppStorage';
 
-it('AppStorage open', async () => {
+test('AppStorage open', async () => {
   await AppStorage.open();
 });
