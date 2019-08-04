@@ -1,5 +1,8 @@
 image: jerson/react-native:android-28
 
+variables:
+  SONAR_VERSION: "4.0.0.1744"
+
 before_script:
   - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
   - cp -f src/Config.tsx-dist src/Config.tsx
@@ -17,7 +20,10 @@ test:
   stage: test
   script:
   - apt-get update
-  - apt-get install sonar-scanner -y
+  - apt-get install unzip -y
+  - wget -q https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip
+  - unzip sonar-scanner-cli-$SONAR_VERSION-linux.zip
+  - sudo mv sonar-scanner-$SONAR_VERSION-linux /usr/local/bin
   - sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   - make deps
   - make test
