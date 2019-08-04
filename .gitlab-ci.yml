@@ -13,9 +13,9 @@ before_script:
   - base64 --decode $APP_KEY_STORE > android/app/app.keystore
 
 stages:
-- deploy
 - test
 - build
+- deploy
 
 test:
   stage: test
@@ -24,14 +24,14 @@ test:
   - make test
   - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
   - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
-  when: manual
+  when: always
 
 lint:
   stage: test
   script:
   - make deps
   - make lint
-  when: manual
+  when: always
 
 build_beta:
   stage: build
