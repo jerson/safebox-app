@@ -27,7 +27,7 @@ test:
   when: always
 
 pages:
-  stage: test
+  stage: deploy
   dependencies:
     - test
   script:
