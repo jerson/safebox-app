@@ -16,7 +16,8 @@ stages:
 test:
   stage: test
   script:
-  - apt install sonar-scanner -y
+  - apt-get update
+  - apt-get install sonar-scanner -y
   - sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   - make deps
   - make test
