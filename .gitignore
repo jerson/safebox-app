@@ -70,3 +70,5 @@ Config.tsx
 coverage
 docs
 .scannerwork
+google-play.json
+report.xml

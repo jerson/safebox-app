@@ -15,6 +15,7 @@ before_script:
 stages:
 - test
 - build
+- deploy
 
 test:
   stage: test
@@ -32,24 +33,29 @@ lint:
   - make lint
   when: always
 
-release:
-  stage: build
-  script:
-  - make deps
-  - make build-android-release
-  when: manual
-  artifacts:
-    paths:
-    - app/build/outputs/apk/release
-    expire_in: 1 week
-
 beta:
   stage: build
   script:
   - make deps
-  - make build-android-beta
+  - make android-build-beta
   when: manual
   artifacts:
     paths:
-    - app/build/outputs/apk/releaseBeta
+    - app/build/outputs/bundle/releaseBeta
     expire_in: 1 week
+
+release_beta:
+  stage: deploy
+  script:
+  - make deps
+  - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+  - make android-deploy-release-beta
+  when: manual
+
+release:
+  stage: deploy
+  script:
+  - make deps
+  - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+  - make android-deploy-release
+  when: manual

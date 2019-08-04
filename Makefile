@@ -2,13 +2,16 @@
 
 default: build
 
-build: build-android-release
+build: android-build-beta
 
-build-android-beta: format
-	yarn run build:android:beta
+android-build-beta: format
+	cd android && fastlane android build_beta
 
-build-android-release: format
-	yarn run build:android:release
+android-deploy-release-beta: 
+	cd android && fastlane android deploy_release_beta
+
+android-deploy-release: 
+	cd android && fastlane android deploy_release
 
 deps:
 	yarn install --pure-lockfile
@@ -26,6 +29,3 @@ proto:
 	protoc -I=proto services.proto \
     --js_out=import_style=commonjs:src/proto \
     --grpc-web_out=import_style=typescript,mode=grpcwebtext:src/proto
-
- 
-

@@ -118,7 +118,7 @@ android {
         applicationId "dev.jerson.safebox"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode 4
         versionName "1.0.0"
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
