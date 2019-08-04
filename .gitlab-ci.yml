@@ -14,6 +14,8 @@ before_script:
 
 stages:
 - deploy
+- test
+- build
 
 test:
   stage: test
@@ -22,14 +24,14 @@ test:
   - make test
   - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
   - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
-  when: always
+  when: manual
 
 lint:
   stage: test
   script:
   - make deps
   - make lint
-  when: always
+  when: manual
 
 build_beta:
   stage: build
