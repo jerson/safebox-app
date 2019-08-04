@@ -33,7 +33,7 @@ lint:
   - make lint
   when: always
 
-beta:
+build_beta:
   stage: build
   script:
   - make deps
@@ -41,21 +41,36 @@ beta:
   when: manual
   artifacts:
     paths:
-    - app/build/outputs/bundle/releaseBeta
+    - app/build/outputs/apk/releaseBeta
     expire_in: 1 week
 
-release_beta:
+build_release:
+  stage: build
+  script:
+  - make deps
+  - make android-build-release
+  when: manual
+  artifacts:
+    paths:
+    - app/build/outputs/apk/release
+    expire_in: 1 week
+
+deploy_release_beta:
   stage: deploy
   script:
   - make deps
+  - sudo apt-get update && sudo apt-get install ruby
+  - sudo gem install fastlane -NV
   - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
   - make android-deploy-release-beta
   when: manual
 
-release:
+deploy_release:
   stage: deploy
   script:
   - make deps
+  - sudo apt-get update && sudo apt-get install ruby
+  - sudo gem install fastlane -NV
   - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
   - make android-deploy-release
   when: manual

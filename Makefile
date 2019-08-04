@@ -4,8 +4,11 @@ default: build
 
 build: android-build-beta
 
-android-build-beta: format
+android-build-beta: 
 	cd android && fastlane android build_beta
+
+android-build-release: 
+	cd android && fastlane android build_release
 
 android-deploy-release-beta: 
 	cd android && fastlane android deploy_release_beta
