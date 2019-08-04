@@ -14,8 +14,8 @@ before_script:
 
 stages:
 - deploy
-- test
-- build
+#- test
+#- build
 
 test:
   stage: test
@@ -59,8 +59,8 @@ deploy_release_beta:
   stage: deploy
   script:
   - make deps
-  - sudo apt-get update && sudo apt-get install -y ruby
-  - sudo gem install fastlane -NV
+  - apt-get update && apt-get install -y ruby
+  - gem install fastlane -NV
   - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
   - make android-deploy-release-beta
   when: manual
@@ -69,8 +69,8 @@ deploy_release:
   stage: deploy
   script:
   - make deps
-  - sudo apt-get update && sudo apt-get install -y ruby
-  - sudo gem install fastlane -NV
+  - apt-get update && apt-get install -y ruby
+  - gem install fastlane -NV
   - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
   - make android-deploy-release
   when: manual
