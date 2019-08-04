@@ -32,6 +32,7 @@ import SplitText from '../../components/ui/SplitText';
 import useIconLabel from '../../components/hooks/useIconLabel';
 
 import { useNavigation } from 'react-navigation-hooks';
+import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
@@ -60,10 +61,16 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-const encode = (input: string) => {
-  return OpenPGP.encrypt(input, Session.getPublicKey());
+const encode = async (input: string) => {
+  try {
+    return await OpenPGP.encrypt(input, Session.getPublicKey());
+  } catch (e) {
+    Log.warn(TAG, 'encode', e);
+    throw new Error('error encrypting your information, try again later');
+  }
 };
 
+const TAG = '[AddAccountScreen]';
 function AddAccountScreen() {
   const { replace } = useNavigation();
 

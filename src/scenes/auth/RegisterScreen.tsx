@@ -27,6 +27,7 @@ import AlertMessage from '../../components/ui/AlertMessage';
 import ButtonLink from '../../components/ui/ButtonLink';
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import { useNavigation } from 'react-navigation-hooks';
+import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
+const TAG = '[RegisterScreen]';
 function RegisterScreen() {
   const { navigate } = useNavigation();
 
@@ -92,12 +94,17 @@ function RegisterScreen() {
     return isValid;
   };
 
-  const generateKeyPair = () => {
-    return OpenPGP.generate({
-      passphrase: password,
-      name: username,
-      keyOptions: Config.settings.keyOptions as KeyOptions
-    });
+  const generateKeyPair = async () => {
+    try {
+      return await OpenPGP.generate({
+        passphrase: password,
+        name: username,
+        keyOptions: Config.settings.keyOptions as KeyOptions
+      });
+    } catch (e) {
+      Log.warn(TAG, 'generateKeyPair', e);
+      throw new Error('error generating your credentials, try again later');
+    }
   };
 
   const submit = async () => {

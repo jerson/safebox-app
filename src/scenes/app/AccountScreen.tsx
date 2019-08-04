@@ -37,6 +37,7 @@ import OpenPGP from 'react-native-fast-openpgp';
 import TextInput from '../../components/ui/TextInput';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '../../components/ui/Button';
+import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
@@ -109,10 +110,20 @@ const styles = StyleSheet.create({
   }
 });
 
-const decode = (input: string) => {
-  return OpenPGP.decrypt(input, Session.getPrivateKey(), Session.getPassword());
+const decode = async (input: string) => {
+  try {
+    return await OpenPGP.decrypt(
+      input,
+      Session.getPrivateKey(),
+      Session.getPassword()
+    );
+  } catch (e) {
+    Log.warn(TAG, 'decode', e);
+    throw new Error('invalid password');
+  }
 };
 
+const TAG = '[AccountScreen]';
 function AccountScreen() {
   const { setParams, goBack } = useNavigation();
   const account = useNavigationParam('account') as AccountSingle;
