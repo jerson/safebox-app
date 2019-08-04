@@ -235,6 +235,7 @@ function LoginScreen() {
                   style={styles.textInput}
                   ref={passwordRef}
                   blurOnSubmit
+                  onSubmitEditing={tryToSubmit}
                   {...passwordProps}
                 />
 

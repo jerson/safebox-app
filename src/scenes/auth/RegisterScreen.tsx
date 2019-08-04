@@ -220,6 +220,7 @@ function RegisterScreen() {
                   style={styles.textInput}
                   ref={repeatPasswordRef}
                   blurOnSubmit
+                  onSubmitEditing={tryToSubmit}
                   {...repeatPasswordProps}
                 />
 

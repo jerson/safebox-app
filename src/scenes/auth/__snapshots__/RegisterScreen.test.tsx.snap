@@ -508,6 +508,7 @@ exports[`render just views 1`] = `
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
+                    onSubmitEditing={[Function]}
                     placeholder="Repeat password"
                     placeholderTextColor="#65748b"
                     rejectResponderTermination={true}

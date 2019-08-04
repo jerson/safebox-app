@@ -249,6 +249,7 @@ function AddAccountScreen() {
                   style={styles.textInput}
                   ref={repeatPasswordRef}
                   blurOnSubmit
+                  onSubmitEditing={tryToSubmit}
                   {...repeatPasswordProps}
                 />
 
