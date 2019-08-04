@@ -26,6 +26,18 @@ test:
   - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   when: always
 
+pages:
+  stage: test
+  dependencies:
+    - test
+  script:
+    - mv coverage/lcov-report/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  when: always
+  
 lint:
   stage: test
   script:
