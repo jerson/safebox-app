@@ -1,6 +1,7 @@
 image: jerson/react-native:android-28
 
 variables:
+  SONAR_DIR: "/srv/sonar"
   SONAR_VERSION: "4.0.0.1744"
 
 before_script:
@@ -19,12 +20,10 @@ stages:
 test:
   stage: test
   script:
-  - apt-get update
-  - apt-get install unzip -y
-  - wget -q https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip
-  - unzip sonar-scanner-cli-$SONAR_VERSION-linux.zip
-  - sudo mv sonar-scanner-$SONAR_VERSION-linux /usr/local/bin
-  - sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
+  - mkdir -p $SONAR_DIR
+  - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
+  - mv sonar-scanner-$SONAR_VERSION-linux sonar-scanner
+  - $SONAR_DIR/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   - make deps
   - make test
   when: always
