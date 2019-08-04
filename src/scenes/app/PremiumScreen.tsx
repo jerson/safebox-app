@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
-import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
-import Container from '../../components/ui/Container';
-import Content from '../../components/ui/Content';
-import Size from '../../modules/dimensions/Size';
-import * as RNIap from 'react-native-iap';
+import React, { useEffect } from "react";
+import { StyleSheet, ViewStyle, ScrollView, StatusBar } from "react-native";
+import { SafeAreaView } from "react-navigation";
+import Colors from "../../modules/constants/Colors";
+import HeaderLanding from "../../components/ui/HeaderLanding";
+import Container from "../../components/ui/Container";
+import Content from "../../components/ui/Content";
+import Size from "../../modules/dimensions/Size";
+import * as RNIap from "react-native-iap";
+import Button from "../../components/ui/Button";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,19 +27,20 @@ const styles = StyleSheet.create({
 
 function PremiumScreen() {
   const itemSkus = [
-    'dev.jerson.safebox.showpass',
-    'dev.jerson.safebox.trackphone',
-    'dev.jerson.safebox.wearableaccess',
-    'showpass',
-    'trackphone',
-    'wearableaccess'
+    "dev.jerson.safebox.beta.showpass",
+    "dev.jerson.safebox.beta.trackphone",
+    "dev.jerson.safebox.beta.wearableaccess",
+    "dev.jerson.safebox.showpass",
+    "dev.jerson.safebox.trackphone",
+    "dev.jerson.safebox.wearableaccess",
+    "showpass",
+    "trackphone",
+    "wearableaccess"
   ];
 
   const loadProducts = async () => {
     try {
-      const products: RNIap.Product<string>[] = await RNIap.getProducts(
-        itemSkus
-      );
+      const products: any = await RNIap.getProducts(itemSkus);
       console.log(products);
     } catch (err) {
       console.warn(err); // standardized err.code and err.message available
@@ -53,11 +55,11 @@ function PremiumScreen() {
     <Container style={styles.container}>
       <StatusBar
         animated
-        barStyle={'dark-content'}
+        barStyle={"dark-content"}
         backgroundColor={Colors.grey2}
       />
       <ScrollView
-        keyboardShouldPersistTaps={'handled'}
+        keyboardShouldPersistTaps={"handled"}
         contentContainerStyle={{
           minHeight: Size.getVisibleTabScreenHeight()
         }}
@@ -70,6 +72,7 @@ function PremiumScreen() {
               subtitleStyle={{ color: Colors.primary }}
               style={styles.headerLanding}
             />
+            <Button title={"Reload"} onPress={loadProducts} />
           </Content>
         </SafeAreaView>
       </ScrollView>
@@ -78,7 +81,7 @@ function PremiumScreen() {
 }
 
 PremiumScreen.navigationOptions = {
-  title: 'Premium',
+  title: "Premium",
   headerLeft: null
 };
 
