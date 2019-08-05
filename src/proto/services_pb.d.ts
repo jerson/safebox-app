@@ -1,5 +1,113 @@
 import * as jspb from "google-protobuf"
 
+export class DisableLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DisableLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DisableLocationRequest): DisableLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: DisableLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DisableLocationRequest;
+  static deserializeBinaryFromReader(message: DisableLocationRequest, reader: jspb.BinaryReader): DisableLocationRequest;
+}
+
+export namespace DisableLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class DisableLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DisableLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DisableLocationResponse): DisableLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: DisableLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DisableLocationResponse;
+  static deserializeBinaryFromReader(message: DisableLocationResponse, reader: jspb.BinaryReader): DisableLocationResponse;
+}
+
+export namespace DisableLocationResponse {
+  export type AsObject = {
+  }
+}
+
+export class EnableLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnableLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: EnableLocationRequest): EnableLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: EnableLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnableLocationRequest;
+  static deserializeBinaryFromReader(message: EnableLocationRequest, reader: jspb.BinaryReader): EnableLocationRequest;
+}
+
+export namespace EnableLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+    email: string,
+  }
+}
+
+export class EnableLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnableLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: EnableLocationResponse): EnableLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: EnableLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnableLocationResponse;
+  static deserializeBinaryFromReader(message: EnableLocationResponse, reader: jspb.BinaryReader): EnableLocationResponse;
+}
+
+export namespace EnableLocationResponse {
+  export type AsObject = {
+  }
+}
+
+export class SendLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getLatitude(): string;
+  setLatitude(value: string): void;
+
+  getLongitude(): string;
+  setLongitude(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SendLocationRequest): SendLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: SendLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendLocationRequest;
+  static deserializeBinaryFromReader(message: SendLocationRequest, reader: jspb.BinaryReader): SendLocationRequest;
+}
+
+export namespace SendLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+    latitude: string,
+    longitude: string,
+  }
+}
+
+export class SendLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SendLocationResponse): SendLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: SendLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendLocationResponse;
+  static deserializeBinaryFromReader(message: SendLocationResponse, reader: jspb.BinaryReader): SendLocationResponse;
+}
+
+export namespace SendLocationResponse {
+  export type AsObject = {
+  }
+}
+
 export class PingRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PingRequest.AsObject;
