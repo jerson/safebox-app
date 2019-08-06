@@ -31,6 +31,8 @@ import {
   DisableLocationResponse,
   EnableLocationRequest,
   EnableLocationResponse,
+  HasProductRequest,
+  HasProductResponse,
   LoginDeviceRequest,
   LoginRequest,
   LogoutRequest,
@@ -347,28 +349,6 @@ export class ServicesClient {
       callback);
   }
 
-  methodInfoBuyProduct = new grpcWeb.AbstractClientBase.MethodInfo(
-    BuyProductResponse,
-    (request: BuyProductRequest) => {
-      return request.serializeBinary();
-    },
-    BuyProductResponse.deserializeBinary
-  );
-
-  buyProduct(
-    request: BuyProductRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.Error,
-               response: BuyProductResponse) => void) {
-    return this.client_.rpcCall(
-      this.hostname_ +
-        '/Services/BuyProduct',
-      request,
-      metadata || {},
-      this.methodInfoBuyProduct,
-      callback);
-  }
-
   methodInfoSendLocation = new grpcWeb.AbstractClientBase.MethodInfo(
     SendLocationResponse,
     (request: SendLocationRequest) => {
@@ -432,6 +412,50 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoDisableLocation,
+      callback);
+  }
+
+  methodInfoBuyProduct = new grpcWeb.AbstractClientBase.MethodInfo(
+    BuyProductResponse,
+    (request: BuyProductRequest) => {
+      return request.serializeBinary();
+    },
+    BuyProductResponse.deserializeBinary
+  );
+
+  buyProduct(
+    request: BuyProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: BuyProductResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/BuyProduct',
+      request,
+      metadata || {},
+      this.methodInfoBuyProduct,
+      callback);
+  }
+
+  methodInfoHasProduct = new grpcWeb.AbstractClientBase.MethodInfo(
+    HasProductResponse,
+    (request: HasProductRequest) => {
+      return request.serializeBinary();
+    },
+    HasProductResponse.deserializeBinary
+  );
+
+  hasProduct(
+    request: HasProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: HasProductResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/HasProduct',
+      request,
+      metadata || {},
+      this.methodInfoHasProduct,
       callback);
   }
 

@@ -1,5 +1,101 @@
 import * as jspb from "google-protobuf"
 
+export class HasProductRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getSlug(): string;
+  setSlug(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HasProductRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: HasProductRequest): HasProductRequest.AsObject;
+  static serializeBinaryToWriter(message: HasProductRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HasProductRequest;
+  static deserializeBinaryFromReader(message: HasProductRequest, reader: jspb.BinaryReader): HasProductRequest;
+}
+
+export namespace HasProductRequest {
+  export type AsObject = {
+    accesstoken: string,
+    slug: string,
+  }
+}
+
+export class HasProductResponse extends jspb.Message {
+  getPurchased(): boolean;
+  setPurchased(value: boolean): void;
+
+  getDate(): string;
+  setDate(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HasProductResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: HasProductResponse): HasProductResponse.AsObject;
+  static serializeBinaryToWriter(message: HasProductResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HasProductResponse;
+  static deserializeBinaryFromReader(message: HasProductResponse, reader: jspb.BinaryReader): HasProductResponse;
+}
+
+export namespace HasProductResponse {
+  export type AsObject = {
+    purchased: boolean,
+    date: string,
+  }
+}
+
+export class BuyProductRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getSlug(): string;
+  setSlug(value: string): void;
+
+  getPayload(): string;
+  setPayload(value: string): void;
+
+  getType(): string;
+  setType(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BuyProductRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: BuyProductRequest): BuyProductRequest.AsObject;
+  static serializeBinaryToWriter(message: BuyProductRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BuyProductRequest;
+  static deserializeBinaryFromReader(message: BuyProductRequest, reader: jspb.BinaryReader): BuyProductRequest;
+}
+
+export namespace BuyProductRequest {
+  export type AsObject = {
+    accesstoken: string,
+    slug: string,
+    payload: string,
+    type: string,
+  }
+}
+
+export class BuyProductResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): void;
+
+  getDate(): string;
+  setDate(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BuyProductResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: BuyProductResponse): BuyProductResponse.AsObject;
+  static serializeBinaryToWriter(message: BuyProductResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BuyProductResponse;
+  static deserializeBinaryFromReader(message: BuyProductResponse, reader: jspb.BinaryReader): BuyProductResponse;
+}
+
+export namespace BuyProductResponse {
+  export type AsObject = {
+    id: number,
+    date: string,
+  }
+}
+
 export class DisableLocationRequest extends jspb.Message {
   getAccesstoken(): string;
   setAccesstoken(value: string): void;
@@ -211,9 +307,6 @@ export namespace DeleteDeviceRequest {
 }
 
 export class DeleteDeviceResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteDeviceResponse.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteDeviceResponse): DeleteDeviceResponse.AsObject;
@@ -224,7 +317,6 @@ export class DeleteDeviceResponse extends jspb.Message {
 
 export namespace DeleteDeviceResponse {
   export type AsObject = {
-    success: boolean,
   }
 }
 
@@ -319,9 +411,6 @@ export namespace DeleteAccountRequest {
 }
 
 export class DeleteAccountResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteAccountResponse.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteAccountResponse): DeleteAccountResponse.AsObject;
@@ -332,7 +421,6 @@ export class DeleteAccountResponse extends jspb.Message {
 
 export namespace DeleteAccountResponse {
   export type AsObject = {
-    success: boolean,
   }
 }
 
@@ -685,46 +773,6 @@ export class AccountResponse extends jspb.Message {
 export namespace AccountResponse {
   export type AsObject = {
     account?: Account.AsObject,
-  }
-}
-
-export class BuyProductRequest extends jspb.Message {
-  getAccesstoken(): string;
-  setAccesstoken(value: string): void;
-
-  getSlug(): string;
-  setSlug(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BuyProductRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: BuyProductRequest): BuyProductRequest.AsObject;
-  static serializeBinaryToWriter(message: BuyProductRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BuyProductRequest;
-  static deserializeBinaryFromReader(message: BuyProductRequest, reader: jspb.BinaryReader): BuyProductRequest;
-}
-
-export namespace BuyProductRequest {
-  export type AsObject = {
-    accesstoken: string,
-    slug: string,
-  }
-}
-
-export class BuyProductResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BuyProductResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: BuyProductResponse): BuyProductResponse.AsObject;
-  static serializeBinaryToWriter(message: BuyProductResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BuyProductResponse;
-  static deserializeBinaryFromReader(message: BuyProductResponse, reader: jspb.BinaryReader): BuyProductResponse;
-}
-
-export namespace BuyProductResponse {
-  export type AsObject = {
-    success: boolean,
   }
 }
 
