@@ -538,6 +538,7 @@ exports[`render just views 1`] = `
                         "top": 12,
                       },
                       false,
+                      false,
                     ]
                   }
                 />
@@ -552,6 +553,7 @@ exports[`render just views 1`] = `
                         "paddingRight": 8,
                         "paddingTop": 6,
                       },
+                      false,
                       false,
                     ]
                   }

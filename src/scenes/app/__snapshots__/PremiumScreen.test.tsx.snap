@@ -47,9 +47,7 @@ exports[`render just views 1`] = `
               Object {
                 "paddingHorizontal": 20,
               },
-              Object {
-                "justifyContent": "center",
-              },
+              false,
               Object {
                 "flex": 1,
                 "paddingTop": 20,
@@ -62,158 +60,481 @@ exports[`render just views 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "justifyContent": "center",
-                  "overflow": "visible",
+                  "backgroundColor": "#fafdff",
                 },
-                false,
                 Object {
-                  "marginBottom": 20,
-                  "marginTop": 20,
+                  "marginBottom": 40,
                 },
               ]
             }
           >
             <_class
               style={
-                Object {
-                  "alignSelf": "center",
-                  "backgroundColor": "#38414e",
-                  "borderColor": "#c2d0e7",
-                  "borderRadius": 22,
-                  "borderWidth": 1,
-                  "overflow": "hidden",
-                }
-              }
-            >
-              <Image
-                resizeMode="stretch"
-                source={
-                  Object {
-                    "testUri": "../../../src/assets/images/logo.png",
-                  }
-                }
-                style={
-                  Object {
-                    "height": 90,
-                    "width": 90,
-                  }
-                }
-              />
-            </_class>
-            <Text
-              style={
                 Array [
                   Object {
-                    "fontFamily": "Nunito",
-                    "fontSize": undefined,
-                    "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "alignItems": "center",
                   },
-                  Object {},
-                  Array [
-                    Object {
-                      "color": "#FFFFFF",
-                      "fontSize": 35,
-                    },
-                    Object {
-                      "color": "#4531cd",
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
-              Safe
-              <Text
+              <_class
                 style={
                   Array [
                     Object {
-                      "fontFamily": "Nunito",
-                      "fontSize": undefined,
-                      "fontStyle": "normal",
-                      "fontWeight": "700",
+                      "backgroundColor": "#9066f5",
+                      "height": 1,
+                      "left": 0,
+                      "opacity": 0.5,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 12,
                     },
-                    Object {},
-                    undefined,
+                    false,
+                    Object {
+                      "backgroundColor": "#c2d0e7",
+                    },
+                  ]
+                }
+              />
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#4531cd",
+                      "borderRadius": 10,
+                      "paddingBottom": 4,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 6,
+                    },
+                    false,
+                    Object {
+                      "backgroundColor": "#9066f5",
+                    },
                   ]
                 }
               >
-                Box
-              </Text>
-            </Text>
-            <Text
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#FFFFFF",
+                        "fontSize": 13,
+                        "lineHeight": 14,
+                        "minWidth": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Show Password Premium
+                </Text>
+              </_class>
+            </_class>
+            <_class
               style={
-                Array [
-                  Object {
-                    "fontFamily": "Nunito",
-                    "fontSize": undefined,
-                    "fontStyle": "normal",
-                    "fontWeight": "300",
-                  },
-                  Object {},
-                  Array [
-                    Object {
-                      "color": "#f2f4f9",
-                      "fontSize": 14,
-                    },
-                    Object {
-                      "color": "#4531cd",
-                    },
-                  ],
-                ]
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginTop": 10,
+                }
               }
             >
-              secrets always safe
-            </Text>
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#65748b",
+                      "fontSize": 28,
+                      "marginLeft": 10,
+                      "marginRight": 15,
+                    },
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <_class
+                style={
+                  Object {
+                    "flex": 1,
+                    "paddingRight": 10,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 13,
+                      },
+                    ]
+                  }
+                >
+                  With this option add additional security to your account and enable the option to see the passwords your secret accounts.
+                </Text>
+              </_class>
+              <RCTSwitch
+                accessibilityRole="button"
+                onChange={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "height": 31,
+                    "width": 51,
+                  }
+                }
+                value={false}
+              />
+            </_class>
           </_class>
           <_class
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              Object {
-                "backgroundColor": "#4531cd",
-                "borderColor": "#4531cd",
-                "borderRadius": 10,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "margin": 0,
-                "opacity": 1,
-                "padding": 12,
-                "zIndex": 1,
-              }
+              Array [
+                Object {
+                  "backgroundColor": "#fafdff",
+                },
+                Object {
+                  "marginBottom": 40,
+                },
+              ]
             }
-            testID="button_touchable"
           >
-            <Text
+            <_class
               style={
                 Array [
                   Object {
-                    "fontFamily": "Nunito",
-                    "fontSize": undefined,
-                    "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "alignItems": "center",
                   },
-                  Object {},
-                  Array [
-                    Object {
-                      "color": "#FFFFFF",
-                      "fontSize": 14,
-                      "textAlign": "center",
-                    },
-                    undefined,
-                    undefined,
-                  ],
+                  undefined,
                 ]
               }
             >
-              Reload
-            </Text>
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#9066f5",
+                      "height": 1,
+                      "left": 0,
+                      "opacity": 0.5,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 12,
+                    },
+                    false,
+                    Object {
+                      "backgroundColor": "#c2d0e7",
+                    },
+                  ]
+                }
+              />
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#4531cd",
+                      "borderRadius": 10,
+                      "paddingBottom": 4,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 6,
+                    },
+                    false,
+                    Object {
+                      "backgroundColor": "#9066f5",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#FFFFFF",
+                        "fontSize": 13,
+                        "lineHeight": 14,
+                        "minWidth": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Track Phone Premium
+                </Text>
+              </_class>
+            </_class>
+            <_class
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginTop": 10,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#65748b",
+                      "fontSize": 28,
+                      "marginLeft": 10,
+                      "marginRight": 15,
+                    },
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <_class
+                style={
+                  Object {
+                    "flex": 1,
+                    "paddingRight": 10,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 13,
+                      },
+                    ]
+                  }
+                >
+                  If you enable this option we will send you an email daily with the last location you used to connect to the application.
+                </Text>
+              </_class>
+              <RCTSwitch
+                accessibilityRole="button"
+                onChange={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "height": 31,
+                    "width": 51,
+                  }
+                }
+                value={false}
+              />
+            </_class>
+          </_class>
+          <_class
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#fafdff",
+                },
+                Object {
+                  "marginBottom": 40,
+                },
+              ]
+            }
+          >
+            <_class
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#9066f5",
+                      "height": 1,
+                      "left": 0,
+                      "opacity": 0.5,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 12,
+                    },
+                    false,
+                    Object {
+                      "backgroundColor": "#c2d0e7",
+                    },
+                  ]
+                }
+              />
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#4531cd",
+                      "borderRadius": 10,
+                      "paddingBottom": 4,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 6,
+                    },
+                    false,
+                    Object {
+                      "backgroundColor": "#9066f5",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#FFFFFF",
+                        "fontSize": 13,
+                        "lineHeight": 14,
+                        "minWidth": 20,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Wearable Access Premium
+                </Text>
+              </_class>
+            </_class>
+            <_class
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "marginTop": 10,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#65748b",
+                      "fontSize": 28,
+                      "marginLeft": 10,
+                      "marginRight": 15,
+                    },
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+              <_class
+                style={
+                  Object {
+                    "flex": 1,
+                    "paddingRight": 10,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Nunito",
+                        "fontSize": undefined,
+                        "fontStyle": "normal",
+                        "fontWeight": "400",
+                      },
+                      Object {},
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 13,
+                      },
+                    ]
+                  }
+                >
+                  If you have a device with WatchOS you can use the application to see information about your secret accounts.
+                </Text>
+              </_class>
+              <RCTSwitch
+                accessibilityRole="button"
+                onChange={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "height": 31,
+                    "width": 51,
+                  }
+                }
+                value={true}
+              />
+            </_class>
           </_class>
         </_class>
       </_class>

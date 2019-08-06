@@ -378,6 +378,7 @@ exports[`render just views 1`] = `
                       Object {
                         "backgroundColor": "#c2d0e7",
                       },
+                      false,
                     ]
                   }
                 />
@@ -395,6 +396,7 @@ exports[`render just views 1`] = `
                       Object {
                         "backgroundColor": "#6781a6",
                       },
+                      false,
                     ]
                   }
                 >

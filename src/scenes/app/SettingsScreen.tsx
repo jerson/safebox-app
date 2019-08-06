@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     flex: 1
   } as ViewStyle,
   block: {
-    marginBottom: 30
+    marginBottom: 40
   } as ViewStyle
 });
 

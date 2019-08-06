@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
-import { StyleSheet, ViewStyle, ScrollView, StatusBar } from "react-native";
-import { SafeAreaView } from "react-navigation";
-import Colors from "../../modules/constants/Colors";
-import HeaderLanding from "../../components/ui/HeaderLanding";
-import Container from "../../components/ui/Container";
-import Content from "../../components/ui/Content";
-import Size from "../../modules/dimensions/Size";
-import * as RNIap from "react-native-iap";
-import Button from "../../components/ui/Button";
+import React, { useEffect } from 'react';
+import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Colors from '../../modules/constants/Colors';
+import Container from '../../components/ui/Container';
+import Content from '../../components/ui/Content';
+import Size from '../../modules/dimensions/Size';
+import * as RNIap from 'react-native-iap';
+import ShowPassPremium from '../../components/premium/ShowPassPremium';
+import TrackPhonePremium from '../../components/premium/TrackPhonePremium';
+import WearableAccessPremium from '../../components/premium/WearableAccessPremium';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,23 +20,22 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
+  block: {
+    marginBottom: 40
   } as ViewStyle
 });
 
 function PremiumScreen() {
   const itemSkus = [
-    "dev.jerson.safebox.beta.showpass",
-    "dev.jerson.safebox.beta.trackphone",
-    "dev.jerson.safebox.beta.wearableaccess",
-    "dev.jerson.safebox.showpass",
-    "dev.jerson.safebox.trackphone",
-    "dev.jerson.safebox.wearableaccess",
-    "showpass",
-    "trackphone",
-    "wearableaccess"
+    'dev.jerson.safebox.beta.showpass',
+    'dev.jerson.safebox.beta.trackphone',
+    'dev.jerson.safebox.beta.wearableaccess',
+    'dev.jerson.safebox.showpass',
+    'dev.jerson.safebox.trackphone',
+    'dev.jerson.safebox.wearableaccess',
+    'showpass',
+    'trackphone',
+    'wearableaccess'
   ];
 
   const loadProducts = async () => {
@@ -55,24 +55,21 @@ function PremiumScreen() {
     <Container style={styles.container}>
       <StatusBar
         animated
-        barStyle={"dark-content"}
+        barStyle={'dark-content'}
         backgroundColor={Colors.grey2}
       />
       <ScrollView
-        keyboardShouldPersistTaps={"handled"}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
           minHeight: Size.getVisibleTabScreenHeight()
         }}
         style={styles.scrollView}
       >
         <SafeAreaView style={styles.safeArea}>
-          <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
-            <Button title={"Reload"} onPress={loadProducts} />
+          <Content>
+            <ShowPassPremium style={styles.block} />
+            <TrackPhonePremium style={styles.block} />
+            <WearableAccessPremium style={styles.block} />
           </Content>
         </SafeAreaView>
       </ScrollView>
@@ -81,7 +78,7 @@ function PremiumScreen() {
 }
 
 PremiumScreen.navigationOptions = {
-  title: "Premium",
+  title: 'Premium',
   headerLeft: null
 };
 

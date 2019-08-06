@@ -17,9 +17,7 @@ exports[`render just views 1`] = `
         Object {
           "alignItems": "center",
         },
-        Object {
-          "marginBottom": 5,
-        },
+        undefined,
       ]
     }
   >
@@ -35,10 +33,10 @@ exports[`render just views 1`] = `
             "right": 0,
             "top": 12,
           },
+          false,
           Object {
             "backgroundColor": "#c2d0e7",
           },
-          false,
         ]
       }
     />
@@ -53,10 +51,10 @@ exports[`render just views 1`] = `
             "paddingRight": 8,
             "paddingTop": 6,
           },
-          Object {
-            "backgroundColor": "#6781a6",
-          },
           false,
+          Object {
+            "backgroundColor": "#9066f5",
+          },
         ]
       }
     >
@@ -80,7 +78,7 @@ exports[`render just views 1`] = `
           ]
         }
       >
-        Biometric settings
+        Track Phone Premium
       </Text>
     </_class>
   </_class>
@@ -88,14 +86,41 @@ exports[`render just views 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "marginTop": 5,
+        "flexDirection": "row",
+        "marginTop": 10,
       }
     }
   >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 12,
+          },
+          Object {
+            "color": "#65748b",
+            "fontSize": 28,
+            "marginLeft": 10,
+            "marginRight": 15,
+          },
+          Object {
+            "fontFamily": "Feather",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
     <_class
       style={
         Object {
-          "marginBottom": 10,
+          "flex": 1,
+          "paddingRight": 10,
         }
       }
     >
@@ -111,44 +136,27 @@ exports[`render just views 1`] = `
             Object {},
             Object {
               "color": "#65748b",
-              "fontSize": 12,
-            },
-          ]
-        }
-      >
-        you can add additional authentication methods such as fingerprint or facial validation, depending on your device.
-      </Text>
-    </_class>
-    <_class
-      style={
-        Object {
-          "backgroundColor": "#f2f4f9",
-          "borderRadius": 10,
-          "padding": 10,
-        }
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "fontFamily": "Nunito",
-              "fontSize": undefined,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-            },
-            Object {},
-            Object {
-              "color": "#38414e",
               "fontSize": 13,
             },
           ]
         }
       >
-        your device does not have any supported method, try another device.
+        If you enable this option we will send you an email daily with the last location you used to connect to the application.
       </Text>
     </_class>
+    <RCTSwitch
+      accessibilityRole="button"
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "height": 31,
+          "width": 51,
+        }
+      }
+      value={false}
+    />
   </_class>
-  <_class />
 </_class>
 `;
