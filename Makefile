@@ -1,8 +1,9 @@
-.PHONY: proto
+.PHONY: proto android build
 
 default: build
 
-build: android-build-beta
+build: 
+	cd android && fastlane android 
 
 android-build-beta: 
 	cd android && fastlane android build_beta
