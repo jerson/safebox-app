@@ -1,5 +1,41 @@
 import * as jspb from "google-protobuf"
 
+export class GetEmailRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetEmailRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetEmailRequest): GetEmailRequest.AsObject;
+  static serializeBinaryToWriter(message: GetEmailRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetEmailRequest;
+  static deserializeBinaryFromReader(message: GetEmailRequest, reader: jspb.BinaryReader): GetEmailRequest;
+}
+
+export namespace GetEmailRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class GetEmailResponse extends jspb.Message {
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetEmailResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetEmailResponse): GetEmailResponse.AsObject;
+  static serializeBinaryToWriter(message: GetEmailResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetEmailResponse;
+  static deserializeBinaryFromReader(message: GetEmailResponse, reader: jspb.BinaryReader): GetEmailResponse;
+}
+
+export namespace GetEmailResponse {
+  export type AsObject = {
+    email: string,
+  }
+}
+
 export class HasProductRequest extends jspb.Message {
   getAccesstoken(): string;
   setAccesstoken(value: string): void;

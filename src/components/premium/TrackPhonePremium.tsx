@@ -16,6 +16,9 @@ import { HasProductRequest, BuyProductRequest } from '../../proto/services_pb';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../ui/AlertMessage';
 import Button from '../ui/Button';
+import TextInput from '../ui/TextInput';
+import { useNavigation } from 'react-navigation-hooks';
+import useFocusedScreen from '../hooks/useFocusedScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +58,33 @@ const productId = 'trackphone';
 function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
   const [isPurchased, setIsPurchased] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+
+  const navigation = useNavigation();
+  const [focused] = useFocusedScreen(navigation);
+
+  useEffect(() => {
+    focused && check();
+  }, [focused]);
+
+  const loadEmail = async () => {
+    try {
+      const response = await Client.getEmail();
+      setEmail(response.getEmail());
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+    }
+  };
+
+  useEffect(() => {
+    if (!isPurchased) {
+      setEmail('');
+      return;
+    }
+    loadEmail();
+  }, [isPurchased]);
 
   const check = async () => {
     try {
@@ -131,6 +160,48 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
           />
         </View>
       </View>
+      {isPurchased && (
+        <View
+          style={{
+            marginTop: 0,
+            padding: 10,
+            flexDirection: 'row',
+            alignItems: 'flex-start'
+          }}
+        >
+          {!email && (
+            <>
+              <TextInput
+                icon={'at-sign'}
+                placeholder={'Insert you email'}
+                style={{ marginRight: 10 }}
+                defaultValue={email}
+              />
+              <Button
+                style={{
+                  marginTop: 15,
+                  height: 45,
+                  width: 50
+                }}
+                icon={'save'}
+              />
+            </>
+          )}
+          {!!email && (
+            <>
+              <Text>{email}</Text>
+              <Button
+                style={{
+                  marginTop: 15,
+                  height: 45,
+                  width: 50
+                }}
+                icon={'delete'}
+              />
+            </>
+          )}
+        </View>
+      )}
     </View>
   );
 }

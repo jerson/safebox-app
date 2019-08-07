@@ -74,9 +74,7 @@ function AccountsScreen() {
   }, []);
 
   useEffect(() => {
-    if (focused) {
-      load();
-    }
+    focused && load();
   }, [focused]);
 
   return (

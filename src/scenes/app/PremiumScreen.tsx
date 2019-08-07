@@ -67,8 +67,8 @@ function PremiumScreen() {
       >
         <SafeAreaView style={styles.safeArea}>
           <Content>
-            <ShowPassPremium style={styles.block} />
             <TrackPhonePremium style={styles.block} />
+            <ShowPassPremium style={styles.block} />
             <WearableAccessPremium style={styles.block} />
           </Content>
         </SafeAreaView>

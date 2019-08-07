@@ -31,6 +31,8 @@ import {
   DisableLocationResponse,
   EnableLocationRequest,
   EnableLocationResponse,
+  GetEmailRequest,
+  GetEmailResponse,
   HasProductRequest,
   HasProductResponse,
   LoginDeviceRequest,
@@ -412,6 +414,28 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoDisableLocation,
+      callback);
+  }
+
+  methodInfoGetEmail = new grpcWeb.AbstractClientBase.MethodInfo(
+    GetEmailResponse,
+    (request: GetEmailRequest) => {
+      return request.serializeBinary();
+    },
+    GetEmailResponse.deserializeBinary
+  );
+
+  getEmail(
+    request: GetEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: GetEmailResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/GetEmail',
+      request,
+      metadata || {},
+      this.methodInfoGetEmail,
       callback);
   }
 

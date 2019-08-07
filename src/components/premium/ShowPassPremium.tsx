@@ -16,6 +16,8 @@ import { HasProductRequest, BuyProductRequest } from '../../proto/services_pb';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../ui/AlertMessage';
 import Button from '../ui/Button';
+import { useNavigation } from 'react-navigation-hooks';
+import useFocusedScreen from '../hooks/useFocusedScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +58,13 @@ function ShowPassPremium({ style }: ShowPassPremiumProps) {
   const [isPurchased, setIsPurchased] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const navigation = useNavigation();
+  const [focused] = useFocusedScreen(navigation);
+
+  useEffect(() => {
+    focused && check();
+  }, [focused]);
 
   const check = async () => {
     try {

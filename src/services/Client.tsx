@@ -31,7 +31,9 @@ import {
   EnableLocationRequest,
   EnableLocationResponse,
   DisableLocationRequest,
-  DisableLocationResponse
+  DisableLocationResponse,
+  GetEmailRequest,
+  GetEmailResponse
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -267,6 +269,20 @@ export default class Client {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       /* NOSONAR */ client.disableLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static getEmail(): Promise<GetEmailResponse> {
+    const request = new GetEmailRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.getEmail(request, null, (err, response) => {
         if (err) {
           reject(err);
         }

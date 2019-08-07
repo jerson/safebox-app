@@ -57,7 +57,7 @@ function List(
   const [focused] = useFocusedScreen(navigation);
 
   useEffect(() => {
-    load();
+    focused && load();
   }, [focused]);
 
   const load = async () => {

@@ -137,7 +137,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                  Show Password - Premium
+                  Track Phone - Premium
                 </Text>
               </_class>
             </_class>
@@ -158,14 +158,12 @@ exports[`render just views 1`] = `
                       "color": undefined,
                       "fontSize": 12,
                     },
-                    Array [
-                      Object {
-                        "color": "#65748b",
-                        "fontSize": 28,
-                        "marginLeft": 10,
-                        "marginRight": 15,
-                      },
-                    ],
+                    Object {
+                      "color": "#65748b",
+                      "fontSize": 28,
+                      "marginLeft": 10,
+                      "marginRight": 15,
+                    },
                     Object {
                       "fontFamily": "Feather",
                       "fontStyle": "normal",
@@ -175,7 +173,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                
+                
               </Text>
               <_class
                 style={
@@ -203,7 +201,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                  With this option add additional security to your account and enable the option to see the passwords your secret accounts.
+                  If you enable this option we will send you an email daily with the last location you used to connect to the application.
                 </Text>
                 <_class
                   accessible={true}
@@ -371,7 +369,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                  Track Phone - Premium
+                  Show Password - Premium
                 </Text>
               </_class>
             </_class>
@@ -392,12 +390,14 @@ exports[`render just views 1`] = `
                       "color": undefined,
                       "fontSize": 12,
                     },
-                    Object {
-                      "color": "#65748b",
-                      "fontSize": 28,
-                      "marginLeft": 10,
-                      "marginRight": 15,
-                    },
+                    Array [
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 28,
+                        "marginLeft": 10,
+                        "marginRight": 15,
+                      },
+                    ],
                     Object {
                       "fontFamily": "Feather",
                       "fontStyle": "normal",
@@ -407,7 +407,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                
+                
               </Text>
               <_class
                 style={
@@ -435,7 +435,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                  If you enable this option we will send you an email daily with the last location you used to connect to the application.
+                  With this option add additional security to your account and enable the option to see the passwords your secret accounts.
                 </Text>
                 <_class
                   accessible={true}
