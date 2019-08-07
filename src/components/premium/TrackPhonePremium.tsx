@@ -106,7 +106,6 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
         title={'Track Phone - Premium'}
         type={'Default'}
       />
-
       {!!error && (
         <AlertMessage
           onTimeout={() => {
@@ -123,7 +122,7 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
             last location you used to connect to the application.
           </Text>
           <Button
-            icon={'star'}
+            icon={isPurchased ? undefined : 'star'}
             typeColor={'primaryLight'}
             onPress={purchase}
             disabled={isPurchased}

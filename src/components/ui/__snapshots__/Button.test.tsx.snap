@@ -41,7 +41,9 @@ exports[`allowOnPress 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -93,7 +95,9 @@ exports[`disabled 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#65748b",
+          },
           undefined,
         ],
       ]
@@ -144,6 +148,9 @@ exports[`icon 1`] = `
             "marginRight": 4,
             "top": 3,
           },
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
         Object {
@@ -173,7 +180,9 @@ exports[`icon 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -260,7 +269,9 @@ exports[`isLoading 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -313,7 +324,7 @@ exports[`light 1`] = `
             "textAlign": "center",
           },
           Object {
-            "color": "#4531cd",
+            "color": "#FFFFFF",
           },
           undefined,
         ],
@@ -366,7 +377,9 @@ exports[`render just views 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -419,7 +432,9 @@ exports[`small 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -471,7 +486,9 @@ exports[`typeColor:accent 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -523,7 +540,9 @@ exports[`typeColor:accentDark 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -575,7 +594,9 @@ exports[`typeColor:danger 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -627,7 +648,9 @@ exports[`typeColor:primary 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]
@@ -679,7 +702,9 @@ exports[`typeColor:secondary 1`] = `
             "fontSize": 14,
             "textAlign": "center",
           },
-          undefined,
+          Object {
+            "color": "#FFFFFF",
+          },
           undefined,
         ],
       ]

@@ -641,7 +641,9 @@ exports[`render just views 1`] = `
                           "fontSize": 14,
                           "textAlign": "center",
                         },
-                        undefined,
+                        Object {
+                          "color": "#FFFFFF",
+                        },
                         undefined,
                       ],
                     ]

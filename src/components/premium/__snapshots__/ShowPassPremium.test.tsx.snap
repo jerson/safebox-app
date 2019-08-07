@@ -187,6 +187,9 @@ exports[`render just views 1`] = `
                   "marginRight": 4,
                   "top": 3,
                 },
+                Object {
+                  "color": "#FFFFFF",
+                },
                 undefined,
               ],
               Object {
@@ -216,7 +219,9 @@ exports[`render just views 1`] = `
                   "fontSize": 14,
                   "textAlign": "center",
                 },
-                undefined,
+                Object {
+                  "color": "#FFFFFF",
+                },
                 undefined,
               ],
             ]

@@ -149,27 +149,27 @@ function Button(props: ButtonProps) {
   switch (typeColor) {
     case 'primaryLight':
       stylesButton.push(styles.primaryLight);
-      color = Colors.primaryLight;
+      color = Colors.white;
       break;
     case 'primary':
       stylesButton.push(styles.primary);
-      color = Colors.primary;
+      color = Colors.white;
       break;
     case 'secondary':
       stylesButton.push(styles.secondary);
-      color = Colors.secondary;
+      color = Colors.white;
       break;
     case 'accentDark':
       stylesButton.push(styles.accentDark);
-      color = Colors.accentDark;
+      color = Colors.white;
       break;
     case 'accent':
       stylesButton.push(styles.accent);
-      color = Colors.accent;
+      color = Colors.white;
       break;
     case 'danger':
       stylesButton.push(styles.danger);
-      color = Colors.danger;
+      color = Colors.white;
       break;
     default:
       break;
@@ -177,7 +177,7 @@ function Button(props: ButtonProps) {
 
   if (disabled) {
     stylesButton.push(styles.disabled);
-    color = Colors.grey3;
+    color = Colors.grey5;
   }
   if (small) {
     stylesButton.push(styles.small);
@@ -199,7 +199,7 @@ function Button(props: ButtonProps) {
       onPress={onPress ? onPressCallback : undefined}
     >
       {!!icon && !isLoading && (
-        <Icon style={[styles.icon, iconStyle]} name={icon} />
+        <Icon style={[styles.icon, { color }, iconStyle]} name={icon} />
       )}
       {isLoading && (
         <View
@@ -209,17 +209,11 @@ function Button(props: ButtonProps) {
             !title && styles.containerLoadingCenter
           ]}
         >
-          <Loading
-            style={styles.loading}
-            size={'small'}
-            color={light ? color : Colors.white}
-          />
+          <Loading style={styles.loading} size={'small'} color={color} />
         </View>
       )}
       {!!title && (
-        <Text style={[styles.title, light && { color }, textStyle]}>
-          {title}
-        </Text>
+        <Text style={[styles.title, { color }, textStyle]}>{title}</Text>
       )}
     </Touchable>
   );

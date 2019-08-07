@@ -123,7 +123,7 @@ function ShowPassPremium({ style }: ShowPassPremiumProps) {
             the option to see the passwords your secret accounts.
           </Text>
           <Button
-            icon={'star'}
+            icon={isPurchased ? undefined : 'star'}
             typeColor={'primaryLight'}
             onPress={purchase}
             disabled={isPurchased}
