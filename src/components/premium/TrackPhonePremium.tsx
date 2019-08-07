@@ -12,13 +12,18 @@ import SplitText from '../ui/SplitText';
 import Text from '../ui/Text';
 import Icon from 'react-native-vector-icons/Feather';
 import Client from '../../services/Client';
-import { HasProductRequest, BuyProductRequest } from '../../proto/services_pb';
+import {
+  HasProductRequest,
+  BuyProductRequest,
+  EnableLocationRequest
+} from '../../proto/services_pb';
 import Strings from '../../modules/format/Strings';
 import AlertMessage from '../ui/AlertMessage';
 import Button from '../ui/Button';
 import TextInput from '../ui/TextInput';
 import { useNavigation } from 'react-navigation-hooks';
 import useFocusedScreen from '../hooks/useFocusedScreen';
+import useTextInput from '../hooks/useTextInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -60,6 +65,8 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+
+  const [emailInput, emailInputProps] = useTextInput('');
 
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
@@ -126,6 +133,30 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
     check();
   }, []);
 
+  const disable = async () => {
+    const tmpEmail = email;
+    setEmail('');
+    try {
+      await Client.disableLocation();
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+      setEmail(tmpEmail);
+    }
+  };
+
+  const enable = async () => {
+    setEmail(emailInput);
+    try {
+      const request = new EnableLocationRequest();
+      request.setEmail(emailInput);
+      await Client.enableLocation(request);
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+      setEmail('');
+    }
+  };
   const price = 'S/ 1.00';
   const buttonTitle = isPurchased ? 'Purchased' : `Purchase Now - ${price}`;
   return (
@@ -160,45 +191,79 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
           />
         </View>
       </View>
+
       {isPurchased && (
         <View
           style={{
-            marginTop: 0,
-            padding: 10,
+            marginTop: 10,
+            paddingLeft: 50,
+            paddingRight: 20,
             flexDirection: 'row',
             alignItems: 'flex-start'
           }}
         >
           {!email && (
-            <>
+            <View
+              style={{
+                justifyContent: 'center',
+                flexDirection: 'row'
+              }}
+            >
               <TextInput
                 icon={'at-sign'}
                 placeholder={'Insert you email'}
                 style={{ marginRight: 10 }}
-                defaultValue={email}
+                defaultValue={''}
+                keyboardType={'email-address'}
+                autoCapitalize={'none'}
+                autoCorrect={false}
+                autoCompleteType={'email'}
+                returnKeyType={'done'}
+                onSubmitEditing={enable}
+                containerStyle={{ flex: 1, marginBottom: 0, marginTop: 0 }}
+                {...emailInputProps}
               />
               <Button
                 style={{
-                  marginTop: 15,
                   height: 45,
-                  width: 50
+                  width: 45,
+                  marginTop: 5
                 }}
+                onPress={enable}
+                typeColor={'primaryLight'}
                 icon={'save'}
               />
-            </>
+            </View>
           )}
           {!!email && (
-            <>
-              <Text>{email}</Text>
+            <View
+              style={{
+                justifyContent: 'center',
+                flexDirection: 'row'
+              }}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  paddingRight: 10,
+                  alignSelf: 'center'
+                }}
+              >
+                <Text style={{ color: Colors.grey5 }}>
+                  We will send your location to:
+                </Text>
+                <Text style={{ color: Colors.grey6 }}>{email}</Text>
+              </View>
               <Button
                 style={{
-                  marginTop: 15,
                   height: 45,
-                  width: 50
+                  width: 45
                 }}
-                icon={'delete'}
+                onPress={disable}
+                typeColor={'accentDark'}
+                icon={'trash'}
               />
-            </>
+            </View>
           )}
         </View>
       )}
