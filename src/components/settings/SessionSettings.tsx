@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -47,7 +47,7 @@ function SessionSettings({ style }: SessionSettingsProps) {
   const { navigate } = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
 
-  const tryLogout = useCallback(() => {
+  const tryLogout = () => {
     Alert.alert(
       'Sign out',
       'Are you sure?',
@@ -67,7 +67,7 @@ function SessionSettings({ style }: SessionSettingsProps) {
         cancelable: true
       }
     );
-  }, []);
+  };
 
   const logout = async () => {
     setIsLoading(true);

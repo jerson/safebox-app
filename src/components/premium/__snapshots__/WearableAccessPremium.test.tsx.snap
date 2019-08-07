@@ -17,7 +17,9 @@ exports[`render just views 1`] = `
         Object {
           "alignItems": "center",
         },
-        undefined,
+        Object {
+          "marginBottom": 5,
+        },
       ]
     }
   >
@@ -33,10 +35,10 @@ exports[`render just views 1`] = `
             "right": 0,
             "top": 12,
           },
-          false,
           Object {
             "backgroundColor": "#c2d0e7",
           },
+          false,
         ]
       }
     />
@@ -51,10 +53,10 @@ exports[`render just views 1`] = `
             "paddingRight": 8,
             "paddingTop": 6,
           },
-          false,
           Object {
-            "backgroundColor": "#9066f5",
+            "backgroundColor": "#6781a6",
           },
+          false,
         ]
       }
     >
@@ -78,7 +80,7 @@ exports[`render just views 1`] = `
           ]
         }
       >
-        Wearable Access Premium
+        Wearable Access - Premium
       </Text>
     </_class>
   </_class>
@@ -120,7 +122,7 @@ exports[`render just views 1`] = `
       style={
         Object {
           "flex": 1,
-          "paddingRight": 10,
+          "paddingRight": 20,
         }
       }
     >
@@ -137,26 +139,91 @@ exports[`render just views 1`] = `
             Object {
               "color": "#65748b",
               "fontSize": 13,
+              "marginBottom": 10,
             },
           ]
         }
       >
         If you have a device with WatchOS you can use the application to see information about your secret accounts.
       </Text>
-    </_class>
-    <RCTSwitch
-      accessibilityRole="button"
-      onChange={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "height": 31,
-          "width": 51,
+      <_class
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#9066f5",
+            "borderColor": "#9066f5",
+            "borderRadius": 10,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "margin": 0,
+            "opacity": 1,
+            "padding": 12,
+            "zIndex": 1,
+          }
         }
-      }
-      value={true}
-    />
+        testID="button_touchable"
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 12,
+              },
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 14,
+                  "marginRight": 4,
+                  "top": 3,
+                },
+                undefined,
+              ],
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontFamily": "Nunito",
+                "fontSize": undefined,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+              },
+              Object {},
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 14,
+                  "textAlign": "center",
+                },
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Purchase Now - S/ 1.00
+        </Text>
+      </_class>
+    </_class>
   </_class>
 </_class>
 `;

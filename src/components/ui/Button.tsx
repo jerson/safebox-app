@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.danger
   } as ViewStyle,
   disabled: {
-    backgroundColor: Colors.grey3,
-    borderColor: Colors.grey3
+    backgroundColor: Colors.grey4,
+    borderColor: Colors.grey4
   } as ViewStyle,
   small: {
     padding: 4,

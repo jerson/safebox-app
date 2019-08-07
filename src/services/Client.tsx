@@ -23,7 +23,15 @@ import {
   DevicesResponse,
   AddDeviceRequest,
   AddDeviceResponse,
-  LoginDeviceRequest
+  LoginDeviceRequest,
+  HasProductRequest,
+  HasProductResponse,
+  SendLocationRequest,
+  SendLocationResponse,
+  EnableLocationRequest,
+  EnableLocationResponse,
+  DisableLocationRequest,
+  DisableLocationResponse
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -202,6 +210,63 @@ export default class Client {
     const client = this.connect();
     return new Promise((resolve, reject) => {
       /* NOSONAR */ client.buyProduct(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static hasProduct(request: HasProductRequest): Promise<HasProductResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.hasProduct(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static sendLocation(
+    request: SendLocationRequest
+  ): Promise<SendLocationResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.sendLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static enableLocation(
+    request: EnableLocationRequest
+  ): Promise<EnableLocationResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.enableLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static disableLocation(): Promise<DisableLocationResponse> {
+    const request = new DisableLocationRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.disableLocation(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
