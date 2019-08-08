@@ -80,7 +80,7 @@ exports[`render just views 1`] = `
           ]
         }
       >
-        Track Phone - Premium
+        sample - Premium
       </Text>
     </_class>
   </_class>
@@ -118,7 +118,7 @@ exports[`render just views 1`] = `
         ]
       }
     >
-      
+      
     </Text>
     <_class
       style={
@@ -146,7 +146,7 @@ exports[`render just views 1`] = `
           ]
         }
       >
-        If you enable this option we will send you an email daily with the last location you used to connect to the application.
+        sample
       </Text>
       <_class
         accessible={true}

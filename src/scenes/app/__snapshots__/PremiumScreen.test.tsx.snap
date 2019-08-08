@@ -158,12 +158,14 @@ exports[`render just views 1`] = `
                       "color": undefined,
                       "fontSize": 12,
                     },
-                    Object {
-                      "color": "#65748b",
-                      "fontSize": 28,
-                      "marginLeft": 10,
-                      "marginRight": 15,
-                    },
+                    Array [
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 28,
+                        "marginLeft": 10,
+                        "marginRight": 15,
+                      },
+                    ],
                     Object {
                       "fontFamily": "Feather",
                       "fontStyle": "normal",
@@ -624,12 +626,14 @@ exports[`render just views 1`] = `
                       "color": undefined,
                       "fontSize": 12,
                     },
-                    Object {
-                      "color": "#65748b",
-                      "fontSize": 28,
-                      "marginLeft": 10,
-                      "marginRight": 15,
-                    },
+                    Array [
+                      Object {
+                        "color": "#65748b",
+                        "fontSize": 28,
+                        "marginLeft": 10,
+                        "marginRight": 15,
+                      },
+                    ],
                     Object {
                       "fontFamily": "Feather",
                       "fontStyle": "normal",
@@ -667,7 +671,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                  If you have a device with WatchOS you can use the application to see information about your secret accounts.
+                   If you have a device with WatchOS you can use the application to see information about your secret accounts.
                 </Text>
                 <_class
                   accessible={true}
