@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ViewStyle, View, StyleProp } from 'react-native';
+import {
+  StyleSheet,
+  ViewStyle,
+  View,
+  StyleProp,
+  TextStyle
+} from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Text from '../ui/Text';
 import Client from '../../services/Client';
@@ -11,12 +17,58 @@ import useTextInput from '../hooks/useTextInput';
 import ItemPremium from './ItemPremium';
 import AlertMessage from '../ui/AlertMessage';
 
+const styles = StyleSheet.create({
+  alertMessage: {
+    marginTop: 10,
+    marginLeft: 50,
+    marginRight: 20
+  } as ViewStyle,
+  button: {
+    height: 45,
+    width: 45
+  } as ViewStyle,
+  buttonEnable: {
+    height: 45,
+    width: 45,
+    marginTop: 5
+  } as ViewStyle,
+  label: { color: Colors.grey5 } as TextStyle,
+  value: { color: Colors.grey6 } as TextStyle,
+  purchasedContainer: {
+    marginTop: 10,
+    paddingLeft: 50,
+    paddingRight: 20,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  } as ViewStyle,
+  disableInfo: {
+    flex: 1,
+    paddingRight: 10,
+    alignSelf: 'center'
+  } as ViewStyle,
+  disableContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row'
+  } as ViewStyle,
+  enableContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row'
+  } as ViewStyle,
+  textInputContainer: {
+    flex: 1,
+    marginBottom: 0,
+    marginTop: 0,
+    marginRight: 10
+  } as ViewStyle
+});
+
 export interface TrackPhonePremiumProps {
   style?: StyleProp<ViewStyle>;
 }
 
 function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
   const [isPurchased, setIsPurchased] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [emailInput, emailInputProps] = useTextInput('');
   const [error, setError] = useState('');
@@ -44,28 +96,29 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
   }, [isPurchased]);
 
   const disable = async () => {
-    const tmpEmail = email;
-    setEmail('');
+    setIsLoading(true);
     try {
       await Client.disableLocation();
+      setEmail('');
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      setEmail(tmpEmail);
     }
+    setIsLoading(false);
   };
 
   const enable = async () => {
-    setEmail(emailInput);
+    setIsLoading(true);
     try {
       const request = new EnableLocationRequest();
       request.setEmail(emailInput);
       await Client.enableLocation(request);
+      setEmail(emailInput);
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      setEmail('');
     }
+    setIsLoading(false);
   };
   return (
     <ItemPremium
@@ -81,30 +134,17 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
           onTimeout={() => {
             setError('');
           }}
+          style={styles.alertMessage}
           message={error}
         />
       )}
       {isPurchased && (
-        <View
-          style={{
-            marginTop: 10,
-            paddingLeft: 50,
-            paddingRight: 20,
-            flexDirection: 'row',
-            alignItems: 'flex-start'
-          }}
-        >
+        <View style={styles.purchasedContainer}>
           {!email && (
-            <View
-              style={{
-                justifyContent: 'center',
-                flexDirection: 'row'
-              }}
-            >
+            <View style={styles.enableContainer}>
               <TextInput
                 icon={'at-sign'}
                 placeholder={'Insert you email'}
-                style={{ marginRight: 10 }}
                 defaultValue={''}
                 keyboardType={'email-address'}
                 autoCapitalize={'none'}
@@ -112,46 +152,28 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
                 autoCompleteType={'email'}
                 returnKeyType={'done'}
                 onSubmitEditing={enable}
-                containerStyle={{ flex: 1, marginBottom: 0, marginTop: 0 }}
+                containerStyle={styles.textInputContainer}
                 {...emailInputProps}
               />
               <Button
-                style={{
-                  height: 45,
-                  width: 45,
-                  marginTop: 5
-                }}
+                style={styles.buttonEnable}
                 onPress={enable}
+                isLoading={isLoading}
                 typeColor={'primaryLight'}
                 icon={'save'}
               />
             </View>
           )}
           {!!email && (
-            <View
-              style={{
-                justifyContent: 'center',
-                flexDirection: 'row'
-              }}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  paddingRight: 10,
-                  alignSelf: 'center'
-                }}
-              >
-                <Text style={{ color: Colors.grey5 }}>
-                  We will send your location to:
-                </Text>
-                <Text style={{ color: Colors.grey6 }}>{email}</Text>
+            <View style={styles.disableContainer}>
+              <View style={styles.disableInfo}>
+                <Text style={styles.label}>We will send your location to:</Text>
+                <Text style={styles.value}>{email}</Text>
               </View>
               <Button
-                style={{
-                  height: 45,
-                  width: 45
-                }}
+                style={styles.button}
                 onPress={disable}
+                isLoading={isLoading}
                 typeColor={'accentDark'}
                 icon={'trash'}
               />
