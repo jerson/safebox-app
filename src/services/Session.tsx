@@ -15,6 +15,7 @@ export default class Session {
   }
   static logout() {
     this.response = undefined;
+    this.password = undefined;
     Emitter.emit('onSession', false);
   }
   static getAccessToken() {
