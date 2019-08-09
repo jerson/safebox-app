@@ -16,6 +16,7 @@ import TextInput from '../ui/TextInput';
 import useTextInput from '../hooks/useTextInput';
 import ItemPremium from './ItemPremium';
 import AlertMessage from '../ui/AlertMessage';
+import Emitter from '../../modules/listener/Emitter';
 
 const styles = StyleSheet.create({
   alertMessage: {
@@ -75,6 +76,7 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
 
   const onPurchase = (isPurchased: boolean) => {
     setIsPurchased(isPurchased);
+    Emitter.emit('onTrackPhonePurchase', isPurchased);
   };
 
   const loadEmail = async () => {

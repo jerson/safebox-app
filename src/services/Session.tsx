@@ -1,4 +1,5 @@
 import { AuthResponse } from '../proto/services_pb';
+import Emitter from '../modules/listener/Emitter';
 const moment = require('moment');
 
 export default class Session {
@@ -10,9 +11,11 @@ export default class Session {
   }
   static login(response: AuthResponse) {
     this.response = response;
+    Emitter.emit('onSession', true);
   }
   static logout() {
     this.response = undefined;
+    Emitter.emit('onSession', false);
   }
   static getAccessToken() {
     if (!this.response) {
