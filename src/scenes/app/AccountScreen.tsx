@@ -40,6 +40,8 @@ import Icon from 'react-native-vector-icons/Feather';
 import Button from '../../components/ui/Button';
 import Log from '../../modules/log/Log';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
+import Biometrics from 'react-native-biometrics';
+import Config from '../../Config';
 
 const styles = StyleSheet.create({
   container: {
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     padding: 20,
     maxWidth: 360,
     marginBottom: 60,
+    marginTop: 10,
     backgroundColor: Colors.white,
     borderRadius: 12,
     overflow: 'visible',
@@ -98,7 +101,8 @@ const styles = StyleSheet.create({
   } as ViewStyle,
 
   buttonShowPassword: {
-    marginBottom: 5
+    marginBottom: 5,
+    minWidth: 240
   } as ViewStyle,
   buttonCopy: {
     height: 50,
@@ -157,7 +161,7 @@ function AccountScreen() {
 
   const [error, setError] = useAnimatedState('');
   const [toast, setToast] = useAnimatedState('');
-  const [locked, setLocked] = useState(true);
+  const [showUnlockModal, setShowUnlockModal] = useState(false);
 
   const [accountDecoded, setAccountDecoded] = useState<Account>();
   const [isLoading, setIsLoading] = useState(false);
@@ -165,6 +169,8 @@ function AccountScreen() {
 
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
+
+  let timeoutPassword: number;
 
   const checkPurchase = async () => {
     try {
@@ -183,31 +189,37 @@ function AccountScreen() {
   }, [focused]);
 
   const onUnlock = (password: string) => {
-    setError('');
     Session.setPassword(password);
-    setLocked(false);
+    setShowUnlockModal(false);
+    unlockPassword();
   };
 
-  useEffect(() => {
-    if (locked) {
-      return;
-    }
-
+  const unlockPassword = () => {
     setIsLoading(true);
     requestAnimationFrame(() => {
       loadPassword();
     });
-  }, [locked]);
-
-  const tryShowPassword = () => {
-    return true;
   };
 
-  /* const showPassword = () => {
-    return true;
-  };*/
+  const tryShowPassword = async () => {
+    try {
+      const success = await Biometrics.simplePrompt('Confirm');
+      if (success) {
+        if (!!Session.getPassword()) {
+          unlockPassword();
+        } else {
+          setShowUnlockModal(true);
+        }
+      }
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+    }
+  };
 
   const loadPassword = async () => {
+    setError('');
+
     try {
       const request = new AccountRequest();
       request.setId(account.getId());
@@ -217,14 +229,23 @@ function AccountScreen() {
         const accountDecoded = new Account();
         accountDecoded.setPassword(await decode(responseAccount.getPassword()));
         setAccountDecoded(accountDecoded);
+        timeoutPassword && clearTimeout(timeoutPassword);
+        timeoutPassword = setTimeout(() => {
+          setAccountDecoded(undefined);
+        }, Config.settings.timeoutPassword);
       }
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      setLocked(true);
     }
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    return () => {
+      timeoutPassword && clearTimeout(timeoutPassword);
+    };
+  }, []);
 
   const deleteAccount = async () => {
     setIsDeleting(true);
@@ -280,8 +301,6 @@ function AccountScreen() {
     return <View />;
   }
 
-  console.error(account);
-
   const hint = !!account.getHint() ? (
     <Text style={styles.help}>
       <Text style={styles.helpHint}>Hint:</Text> {account.getHint()}
@@ -290,12 +309,13 @@ function AccountScreen() {
 
   return (
     <Container style={styles.container}>
-      <LoadingOverlay isLoading={isDeleting || isLoading} />
+      <LoadingOverlay isLoading={isDeleting} />
       <StatusBar
         animated
         barStyle={'dark-content'}
         backgroundColor={Colors.grey2}
       />
+      <Locked visible={showUnlockModal} onUnlock={onUnlock} />
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
@@ -351,43 +371,14 @@ function AccountScreen() {
                   }
                 />
               </View>
-              {!isChecking && allowShowPassword && (
-                <View style={styles.premium}>
-                  <Button
-                    icon={'eye'}
-                    typeColor={'primaryLight'}
-                    onPress={tryShowPassword}
-                    style={styles.buttonShowPassword}
-                    title={'Show account password'}
-                  />
-                  {hint}
-                </View>
-              )}
-              {!isChecking && !allowShowPassword && (
-                <View>
-                  <View style={styles.noPremium}>
-                    <Text style={styles.noPremiumDescription}>
-                      Do you want to see your password?{'\n'}
-                      <Text
-                        onPress={goToPremium}
-                        style={{ color: Colors.primaryLight }}
-                      >
-                        Buy Premium
-                      </Text>
-                    </Text>
-                  </View>
-                  <View style={styles.center}>{hint}</View>
-                </View>
-              )}
-              {accountDecoded && (
+              {!!accountDecoded && (
                 <View style={styles.item}>
                   <TextInput
                     label={'Password'}
                     icon={'lock'}
                     editable={false}
-                    secureTextEntry
                     multiline
-                    value={'********'}
+                    value={accountDecoded.getPassword()}
                     containerStyle={styles.textInputContainer}
                     style={styles.textInput}
                     help={hint}
@@ -399,14 +390,46 @@ function AccountScreen() {
                           setToast('Password copied to clipboard');
                         }}
                         style={styles.buttonCopy}
-                        icon={'eye'}
+                        icon={'copy'}
                       />
                     }
                   />
                 </View>
               )}
+              {!isChecking && !accountDecoded && (
+                <>
+                  {allowShowPassword && (
+                    <View style={styles.premium}>
+                      <Button
+                        icon={'eye'}
+                        typeColor={'primaryLight'}
+                        onPress={tryShowPassword}
+                        isLoading={isLoading}
+                        style={styles.buttonShowPassword}
+                        title={'Show account password'}
+                      />
+                      {hint}
+                    </View>
+                  )}
+                  {!allowShowPassword && (
+                    <View>
+                      <View style={styles.noPremium}>
+                        <Text style={styles.noPremiumDescription}>
+                          Do you want to see your password?{'\n'}
+                          <Text
+                            onPress={goToPremium}
+                            style={{ color: Colors.primaryLight }}
+                          >
+                            Buy Premium
+                          </Text>
+                        </Text>
+                      </View>
+                      <View style={styles.center}>{hint}</View>
+                    </View>
+                  )}
+                </>
+              )}
             </View>
-            {locked && false && <Locked onUnlock={onUnlock} />}
           </Content>
         </SafeAreaView>
       </ScrollView>

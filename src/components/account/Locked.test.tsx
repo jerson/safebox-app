@@ -3,7 +3,8 @@ import * as renderer from 'react-test-renderer';
 import Locked, { LockedProps } from './Locked';
 
 const props: LockedProps = {
-  onUnlock: jest.fn()
+  onUnlock: jest.fn(),
+  visible: true
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<Locked {...props} />).toJSON();
