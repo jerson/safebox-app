@@ -11,7 +11,7 @@ import Log from '../../modules/log/Log';
 const TAG = '[TAG]';
 function LocationManager() {
   const [enabled, setEnabled] = useState(false);
-  const [watchID, setWatchID] = useState(0);
+  const [watchID, setWatchId] = useState(0);
 
   const options = {
     enableHighAccuracy: true,
@@ -85,11 +85,12 @@ function LocationManager() {
       },
       options
     );
-    setWatchID(watchId);
+    setWatchId(watchId);
   };
 
   const stopTracking = () => {
     watchID && navigator.geolocation.clearWatch(watchID);
+    setWatchId(0);
   };
 
   useEffect(() => {
