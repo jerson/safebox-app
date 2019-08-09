@@ -117,7 +117,7 @@ function Item({ item, isSame, onDelete }: ItemProps) {
       </View>
       <Button
         typeColor={'accentDark'}
-        icon={'trash'}
+        icon={'trash-2'}
         isLoading={isLoading}
         onPress={tryDelete}
         style={styles.button}

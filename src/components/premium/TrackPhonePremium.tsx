@@ -182,7 +182,7 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
                 onPress={disable}
                 isLoading={isLoading}
                 typeColor={'accentDark'}
-                icon={'trash'}
+                icon={'trash-2'}
               />
             </View>
           )}
