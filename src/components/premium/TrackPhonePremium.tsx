@@ -26,11 +26,13 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   button: {
     height: 45,
-    width: 45
+    width: 45,
+    paddingLeft: 15
   } as ViewStyle,
   buttonEnable: {
     height: 45,
     width: 45,
+    paddingLeft: 15,
     marginTop: 5
   } as ViewStyle,
   label: { color: Colors.grey5 } as TextStyle,
