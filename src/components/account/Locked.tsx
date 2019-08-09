@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   scrollView: {
     backgroundColor: tinyColor(Colors.accentDark)
-      .setAlpha(0.4)
+      .setAlpha(0.8)
       .toRgbString(),
     flex: 1
   }
@@ -95,6 +95,7 @@ function Locked({ visible, onUnlock }: LockedProps) {
       />
       <ScrollView
         style={styles.scrollView}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={styles.scrollViewContent}
       >
         <View style={[styles.container, styles.shadow]}>

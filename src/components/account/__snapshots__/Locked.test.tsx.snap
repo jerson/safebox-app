@@ -16,9 +16,10 @@ exports[`render just views 1`] = `
         "paddingBottom": 40,
       }
     }
+    keyboardShouldPersistTaps="handled"
     style={
       Object {
-        "backgroundColor": "rgba(103, 129, 166, 0.4)",
+        "backgroundColor": "rgba(103, 129, 166, 0.8)",
         "flex": 1,
       }
     }
