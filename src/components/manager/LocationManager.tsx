@@ -23,10 +23,10 @@ function LocationManager() {
     const callback = (isPurchased: boolean) => {
       setEnabled(isPurchased);
     };
-    Emitter.on('onTrackPhonePurchase', callback);
+    Emitter.on('onTrackPhoneEnabled', callback);
 
     return () => {
-      Emitter.off('onTrackPhonePurchase', callback);
+      Emitter.off('onTrackPhoneEnabled', callback);
     };
   }, []);
 

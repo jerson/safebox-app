@@ -78,8 +78,11 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
 
   const onPurchase = (isPurchased: boolean) => {
     setIsPurchased(isPurchased);
-    Emitter.emit('onTrackPhonePurchase', isPurchased);
   };
+
+  useEffect(() => {
+    Emitter.emit('onTrackPhoneEnabled', !!email);
+  }, [email]);
 
   const loadEmail = async () => {
     try {
