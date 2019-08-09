@@ -1420,7 +1420,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
         accesstoken: jspb.Message.getFieldWithDefault(msg, 1, ''),
         slug: jspb.Message.getFieldWithDefault(msg, 2, ''),
         payload: jspb.Message.getFieldWithDefault(msg, 3, ''),
-        type: jspb.Message.getFieldWithDefault(msg, 4, '')
+        type: jspb.Message.getFieldWithDefault(msg, 4, ''),
+        token: jspb.Message.getFieldWithDefault(msg, 5, '')
       };
 
     if (includeInstance) {
@@ -1471,6 +1472,10 @@ proto.BuyProductRequest.deserializeBinaryFromReader = function(msg, reader) {
         var value = /** @type {string} */ (reader.readString());
         msg.setType(value);
         break;
+      case 5:
+        var value = /** @type {string} */ (reader.readString());
+        msg.setToken(value);
+        break;
       default:
         reader.skipField();
         break;
@@ -1513,6 +1518,10 @@ proto.BuyProductRequest.serializeBinaryToWriter = function(message, writer) {
   f = message.getType();
   if (f.length > 0) {
     writer.writeString(4, f);
+  }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(5, f);
   }
 };
 
@@ -1566,6 +1575,19 @@ proto.BuyProductRequest.prototype.getType = function() {
 /** @param {string} value */
 proto.BuyProductRequest.prototype.setType = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
+};
+
+/**
+ * optional string token = 5;
+ * @return {string}
+ */
+proto.BuyProductRequest.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ''));
+};
+
+/** @param {string} value */
+proto.BuyProductRequest.prototype.setToken = function(value) {
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {

@@ -3,6 +3,7 @@ export default {
     url: 'https://safebox.jerson.dev'
   },
   settings: {
+    packageId: "dev.jerson.safebox",
     timeoutPassword: 60 * 1000,
     keyOptions: {
       RSABits: 2048,

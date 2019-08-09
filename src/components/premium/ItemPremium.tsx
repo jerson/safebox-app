@@ -18,6 +18,9 @@ import AlertMessage from '../ui/AlertMessage';
 import Button from '../ui/Button';
 import { useNavigation } from 'react-navigation-hooks';
 import useFocusedScreen from '../hooks/useFocusedScreen';
+import * as RNIap from 'react-native-iap';
+import Config from '../../Config';
+import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
@@ -58,6 +61,7 @@ export interface ItemPremiumProps {
   onPurchase?: (isPurchased: boolean) => void;
 }
 
+const TAG = '[ItemPremium]';
 function ItemPremium({
   style,
   icon,
@@ -69,10 +73,14 @@ function ItemPremium({
 }: ItemPremiumProps) {
   const [isPurchased, setIsPurchased] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [waitForPurchase, setWaitForPurchase] = useState(false);
   const [error, setError] = useState('');
+  const [product, setProduct] = useState<RNIap.Product<string>>();
 
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
+
+  const productPackageId = `${Config.settings.packageId}.${productId}`;
 
   useEffect(() => {
     focused && checkPurchase();
@@ -97,28 +105,84 @@ function ItemPremium({
   };
 
   const purchase = async () => {
-    if (isPurchased) {
-      return;
-    }
-    setIsLoading(true);
     try {
-      const request = new BuyProductRequest();
-      request.setSlug(productId);
-      request.setPayload('sample');
-      request.setType(Platform.OS);
-      await Client.buyProduct(request);
-      setIsPurchased(true);
+      setWaitForPurchase(true);
+      await RNIap.requestPurchase(productPackageId);
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      checkPurchase();
+      setWaitForPurchase(false);
     }
-
-    setIsLoading(false);
   };
 
-  const price = 'S/ 1.00';
-  const buttonTitle = isPurchased ? 'Purchased' : `Purchase Now - ${price}`;
+  useEffect(() => {
+    if (!waitForPurchase) {
+      return;
+    }
+    const purchaseUpdateSubscription = RNIap.purchaseUpdatedListener(
+      async (purchase: RNIap.ProductPurchase) => {
+        setWaitForPurchase(false);
+
+        const receipt = purchase.transactionReceipt;
+        if (!receipt) {
+          Log.warn(TAG, 'purchaseUpdatedListener', 'canceled');
+          return;
+        }
+        Log.debug(TAG, 'purchaseUpdatedListener', purchase);
+        setIsLoading(true);
+        try {
+          const request = new BuyProductRequest();
+          request.setSlug(productId);
+          request.setPayload(purchase.transactionReceipt);
+          request.setToken(purchase.purchaseToken || '');
+          request.setType(Platform.OS);
+          await Client.buyProduct(request);
+          setIsPurchased(true);
+
+          if (Platform.OS === 'ios') {
+            RNIap.finishTransactionIOS(purchase.transactionId || '');
+          } else if (Platform.OS === 'android') {
+            RNIap.acknowledgePurchaseAndroid(purchase.purchaseToken || '');
+          }
+        } catch (e) {
+          const message = Strings.getError(e);
+          setError(message);
+        }
+
+        setIsLoading(false);
+      }
+    );
+
+    const purchaseErrorSubscription = RNIap.purchaseErrorListener(
+      (e: RNIap.PurchaseError) => {
+        setWaitForPurchase(false);
+        const message = Strings.getError(e);
+        setError(message);
+      }
+    );
+
+    return () => {
+      purchaseErrorSubscription.remove();
+      purchaseUpdateSubscription.remove();
+    };
+  }, [waitForPurchase]);
+
+  const loadProduct = async () => {
+    try {
+      const products = await RNIap.getProducts([productPackageId]);
+      setProduct(products[0]);
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+    }
+  };
+
+  useEffect(() => {
+    !isPurchased && loadProduct();
+  }, [isPurchased]);
+
+  const price = product ? `- ${product.localizedPrice}` : '';
+  const buttonTitle = isPurchased ? 'Purchased' : `Purchase Now ${price}`;
   return (
     <View style={[styles.container, style]}>
       <SplitText
