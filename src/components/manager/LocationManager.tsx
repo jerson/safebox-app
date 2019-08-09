@@ -15,7 +15,7 @@ function LocationManager() {
 
   const options = {
     enableHighAccuracy: true,
-    timeout: 20000,
+    timeout: 30000,
     maximumAge: 1000
   };
 
@@ -98,6 +98,10 @@ function LocationManager() {
     } else {
       stopTracking();
     }
+
+    return () => {
+      stopTracking();
+    };
   }, [enabled]);
   return null;
 }
