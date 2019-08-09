@@ -68,21 +68,21 @@ function ItemPremium({
   children
 }: ItemPremiumProps) {
   const [isPurchased, setIsPurchased] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
 
   useEffect(() => {
-    focused && check();
+    focused && checkPurchase();
   }, [focused]);
 
   useEffect(() => {
     typeof onPurchase === 'function' && onPurchase(isPurchased);
   }, [isPurchased]);
 
-  const check = async () => {
+  const checkPurchase = async () => {
     try {
       const request = new HasProductRequest();
       request.setSlug(productId);
@@ -111,16 +111,11 @@ function ItemPremium({
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      check();
+      checkPurchase();
     }
 
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    check();
-  }, []);
 
   const price = 'S/ 1.00';
   const buttonTitle = isPurchased ? 'Purchased' : `Purchase Now - ${price}`;

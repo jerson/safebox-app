@@ -40,7 +40,7 @@ function List(
   { onLoad, currentDeviceUid }: ListProps,
   ref: React.Ref<ListRef>
 ) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useAnimatedState('');
   const [devices, setDevices] = useState<Device[]>([]);
   const navigation = useNavigation();
@@ -48,11 +48,6 @@ function List(
   React.useImperativeHandle(ref, () => ({
     load
   }));
-
-  useEffect(() => {
-    setIsLoading(true);
-    load();
-  }, []);
 
   const [focused] = useFocusedScreen(navigation);
 

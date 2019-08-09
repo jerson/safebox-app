@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
 function AccountsScreen() {
   const navigation = useNavigation();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useAnimatedState('');
   const [accounts, setAccounts] = useAnimatedState<AccountSingle[]>([]);
@@ -67,11 +67,6 @@ function AccountsScreen() {
     }
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    load();
-  }, []);
 
   useEffect(() => {
     focused && load();

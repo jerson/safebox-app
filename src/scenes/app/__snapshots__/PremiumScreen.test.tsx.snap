@@ -222,6 +222,7 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
+                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -229,63 +230,44 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <Text
-                    allowFontScaling={false}
+                  <_class
                     style={
                       Array [
                         Object {
-                          "color": undefined,
-                          "fontSize": 12,
+                          "bottom": 0,
+                          "justifyContent": "center",
+                          "left": 10,
+                          "position": "absolute",
+                          "top": 0,
                         },
+                        undefined,
+                        Object {
+                          "left": 0,
+                          "position": "relative",
+                        },
+                      ]
+                    }
+                  >
+                    <_class
+                      style={
                         Array [
+                          false,
+                          false,
+                          false,
                           Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
                             "marginRight": 4,
-                            "top": 3,
                           },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                        Object {
-                          "fontFamily": "Feather",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                        Object {},
-                      ]
-                    }
-                  >
-                    
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "fontFamily": "Nunito",
-                          "fontSize": undefined,
-                          "fontStyle": "normal",
-                          "fontWeight": "400",
-                        },
-                        Object {},
-                        Array [
-                          Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
-                            "textAlign": "center",
-                          },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                      ]
-                    }
-                  >
-                    Purchase Now - S/ 1.00
-                  </Text>
+                        ]
+                      }
+                    >
+                      <ActivityIndicator
+                        animating={true}
+                        color="#FFFFFF"
+                        hidesWhenStopped={true}
+                        size="small"
+                      />
+                    </_class>
+                  </_class>
                 </_class>
               </_class>
             </_class>
@@ -456,6 +438,7 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
+                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -463,63 +446,44 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <Text
-                    allowFontScaling={false}
+                  <_class
                     style={
                       Array [
                         Object {
-                          "color": undefined,
-                          "fontSize": 12,
+                          "bottom": 0,
+                          "justifyContent": "center",
+                          "left": 10,
+                          "position": "absolute",
+                          "top": 0,
                         },
+                        undefined,
+                        Object {
+                          "left": 0,
+                          "position": "relative",
+                        },
+                      ]
+                    }
+                  >
+                    <_class
+                      style={
                         Array [
+                          false,
+                          false,
+                          false,
                           Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
                             "marginRight": 4,
-                            "top": 3,
                           },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                        Object {
-                          "fontFamily": "Feather",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                        Object {},
-                      ]
-                    }
-                  >
-                    
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "fontFamily": "Nunito",
-                          "fontSize": undefined,
-                          "fontStyle": "normal",
-                          "fontWeight": "400",
-                        },
-                        Object {},
-                        Array [
-                          Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
-                            "textAlign": "center",
-                          },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                      ]
-                    }
-                  >
-                    Purchase Now - S/ 1.00
-                  </Text>
+                        ]
+                      }
+                    >
+                      <ActivityIndicator
+                        animating={true}
+                        color="#FFFFFF"
+                        hidesWhenStopped={true}
+                        size="small"
+                      />
+                    </_class>
+                  </_class>
                 </_class>
               </_class>
             </_class>
@@ -690,6 +654,7 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
+                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -697,63 +662,44 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <Text
-                    allowFontScaling={false}
+                  <_class
                     style={
                       Array [
                         Object {
-                          "color": undefined,
-                          "fontSize": 12,
+                          "bottom": 0,
+                          "justifyContent": "center",
+                          "left": 10,
+                          "position": "absolute",
+                          "top": 0,
                         },
+                        undefined,
+                        Object {
+                          "left": 0,
+                          "position": "relative",
+                        },
+                      ]
+                    }
+                  >
+                    <_class
+                      style={
                         Array [
+                          false,
+                          false,
+                          false,
                           Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
                             "marginRight": 4,
-                            "top": 3,
                           },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                        Object {
-                          "fontFamily": "Feather",
-                          "fontStyle": "normal",
-                          "fontWeight": "normal",
-                        },
-                        Object {},
-                      ]
-                    }
-                  >
-                    
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "fontFamily": "Nunito",
-                          "fontSize": undefined,
-                          "fontStyle": "normal",
-                          "fontWeight": "400",
-                        },
-                        Object {},
-                        Array [
-                          Object {
-                            "color": "#FFFFFF",
-                            "fontSize": 14,
-                            "textAlign": "center",
-                          },
-                          Object {
-                            "color": "#FFFFFF",
-                          },
-                          undefined,
-                        ],
-                      ]
-                    }
-                  >
-                    Purchase Now - S/ 1.00
-                  </Text>
+                        ]
+                      }
+                    >
+                      <ActivityIndicator
+                        animating={true}
+                        color="#FFFFFF"
+                        hidesWhenStopped={true}
+                        size="small"
+                      />
+                    </_class>
+                  </_class>
                 </_class>
               </_class>
             </_class>

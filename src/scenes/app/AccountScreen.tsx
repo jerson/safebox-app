@@ -19,7 +19,8 @@ import {
   AccountSingle,
   DeleteAccountRequest,
   AccountRequest,
-  Account
+  Account,
+  HasProductRequest
 } from '../../proto/services_pb';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
@@ -38,6 +39,7 @@ import TextInput from '../../components/ui/TextInput';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '../../components/ui/Button';
 import Log from '../../modules/log/Log';
+import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -90,6 +92,14 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-start'
   } as ViewStyle,
+  premium: {
+    alignItems: 'center',
+    marginTop: 20
+  } as ViewStyle,
+
+  buttonShowPassword: {
+    marginBottom: 5
+  } as ViewStyle,
   buttonCopy: {
     height: 50,
     width: 50,
@@ -107,7 +117,20 @@ const styles = StyleSheet.create({
     color: Colors.primaryLight,
     fontSize: 15,
     marginHorizontal: 2
-  }
+  } as TextStyle,
+  noPremiumDescription: {
+    color: Colors.grey5,
+    textAlign: 'center'
+  } as TextStyle,
+  noPremium: {
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: Colors.grey2
+  } as ViewStyle,
+  center: {
+    alignItems: 'center'
+  } as ViewStyle
 });
 
 const decode = async (input: string) => {
@@ -125,17 +148,39 @@ const decode = async (input: string) => {
 
 const TAG = '[AccountScreen]';
 function AccountScreen() {
-  const { setParams, goBack } = useNavigation();
+  const { setParams, goBack, navigate } = useNavigation();
   const account = useNavigationParam('account') as AccountSingle;
   const showDelete = useNavigationParam('showDelete') as boolean;
 
   const [isDeleting, setIsDeleting] = useState(false);
+  const [allowShowPassword, setAllowShowPassword] = useAnimatedState(false);
+
   const [error, setError] = useAnimatedState('');
   const [toast, setToast] = useAnimatedState('');
-  const [locked, setLocked] = useState(!Session.getPassword());
+  const [locked, setLocked] = useState(true);
 
   const [accountDecoded, setAccountDecoded] = useState<Account>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
+
+  const navigation = useNavigation();
+  const [focused] = useFocusedScreen(navigation);
+
+  const checkPurchase = async () => {
+    try {
+      const request = new HasProductRequest();
+      request.setSlug('showpass');
+      const response = await Client.hasProduct(request);
+      setAllowShowPassword(response.getPurchased());
+    } catch (e) {
+      Log.warn(TAG, 'checkPurchase', e);
+    }
+    setIsChecking(false);
+  };
+
+  useEffect(() => {
+    focused && checkPurchase();
+  }, [focused]);
 
   const onUnlock = (password: string) => {
     setError('');
@@ -153,6 +198,14 @@ function AccountScreen() {
       loadPassword();
     });
   }, [locked]);
+
+  const tryShowPassword = () => {
+    return true;
+  };
+
+  /* const showPassword = () => {
+    return true;
+  };*/
 
   const loadPassword = async () => {
     try {
@@ -219,6 +272,22 @@ function AccountScreen() {
     );
   }, [showDelete]);
 
+  const goToPremium = () => {
+    navigate('Premium');
+  };
+
+  if (typeof account.getId !== 'function') {
+    return <View />;
+  }
+
+  console.error(account);
+
+  const hint = !!account.getHint() ? (
+    <Text style={styles.help}>
+      <Text style={styles.helpHint}>Hint:</Text> {account.getHint()}
+    </Text>
+  ) : null;
+
   return (
     <Container style={styles.container}>
       <LoadingOverlay isLoading={isDeleting || isLoading} />
@@ -244,44 +313,73 @@ function AccountScreen() {
                 message={error}
               />
             )}
-            {!locked && accountDecoded && (
-              <View style={[styles.content, styles.shadow]}>
-                <Icon name={'unlock'} style={styles.icon} />
-                <Text style={styles.description}>
-                  Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
-                  clipboard
-                </Text>
-                {!!toast && (
-                  <AlertMessage
-                    color={Colors.accentDark}
-                    timeout={2000}
-                    icon={'copy'}
-                    onTimeout={() => setToast('')}
-                    message={toast}
+
+            <View style={[styles.content, styles.shadow]}>
+              <Icon name={'unlock'} style={styles.icon} />
+              <Text style={styles.description}>
+                Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
+                clipboard
+              </Text>
+              {!!toast && (
+                <AlertMessage
+                  color={Colors.accentDark}
+                  timeout={2000}
+                  icon={'copy'}
+                  onTimeout={() => setToast('')}
+                  message={toast}
+                />
+              )}
+              <View style={styles.item}>
+                <TextInput
+                  label={'Username'}
+                  icon={'user'}
+                  editable={false}
+                  multiline
+                  value={account.getUsername()}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  rightContainer={
+                    <Button
+                      typeColor={'primaryLight'}
+                      onPress={() => {
+                        Clipboard.setString(account.getUsername());
+                        setToast('Username copied to clipboard');
+                      }}
+                      style={styles.buttonCopy}
+                      icon={'copy'}
+                    />
+                  }
+                />
+              </View>
+              {!isChecking && allowShowPassword && (
+                <View style={styles.premium}>
+                  <Button
+                    icon={'eye'}
+                    typeColor={'primaryLight'}
+                    onPress={tryShowPassword}
+                    style={styles.buttonShowPassword}
+                    title={'Show account password'}
                   />
-                )}
-                <View style={styles.item}>
-                  <TextInput
-                    label={'Username'}
-                    icon={'user'}
-                    editable={false}
-                    multiline
-                    value={account.getUsername()}
-                    containerStyle={styles.textInputContainer}
-                    style={styles.textInput}
-                    rightContainer={
-                      <Button
-                        typeColor={'primaryLight'}
-                        onPress={() => {
-                          Clipboard.setString(account.getUsername());
-                          setToast('Username copied to clipboard');
-                        }}
-                        style={styles.buttonCopy}
-                        icon={'copy'}
-                      />
-                    }
-                  />
+                  {hint}
                 </View>
+              )}
+              {!isChecking && !allowShowPassword && (
+                <View>
+                  <View style={styles.noPremium}>
+                    <Text style={styles.noPremiumDescription}>
+                      Do you want to see your password?{'\n'}
+                      <Text
+                        onPress={goToPremium}
+                        style={{ color: Colors.primaryLight }}
+                      >
+                        Buy Premium
+                      </Text>
+                    </Text>
+                  </View>
+                  <View style={styles.center}>{hint}</View>
+                </View>
+              )}
+              {accountDecoded && (
                 <View style={styles.item}>
                   <TextInput
                     label={'Password'}
@@ -292,14 +390,7 @@ function AccountScreen() {
                     value={'********'}
                     containerStyle={styles.textInputContainer}
                     style={styles.textInput}
-                    help={
-                      !!account.getHint() && (
-                        <Text style={styles.help}>
-                          <Text style={styles.helpHint}>Hint:</Text>{' '}
-                          {account.getHint()}
-                        </Text>
-                      )
-                    }
+                    help={hint}
                     rightContainer={
                       <Button
                         typeColor={'primaryLight'}
@@ -308,14 +399,14 @@ function AccountScreen() {
                           setToast('Password copied to clipboard');
                         }}
                         style={styles.buttonCopy}
-                        icon={'copy'}
+                        icon={'eye'}
                       />
                     }
                   />
                 </View>
-              </View>
-            )}
-            {locked && <Locked onUnlock={onUnlock} />}
+              )}
+            </View>
+            {locked && false && <Locked onUnlock={onUnlock} />}
           </Content>
         </SafeAreaView>
       </ScrollView>
