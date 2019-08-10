@@ -19,7 +19,6 @@ import Button from '../ui/Button';
 import { useNavigation } from 'react-navigation-hooks';
 import useFocusedScreen from '../hooks/useFocusedScreen';
 import * as RNIap from 'react-native-iap';
-import Config from '../../Config';
 import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
@@ -80,8 +79,6 @@ function ItemPremium({
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
 
-  const productPackageId = `${Config.settings.packageId}.${productId}`;
-
   useEffect(() => {
     focused && checkPurchase();
   }, [focused]);
@@ -107,7 +104,7 @@ function ItemPremium({
   const purchase = async () => {
     try {
       setWaitForPurchase(true);
-      await RNIap.requestPurchase(productPackageId);
+      await RNIap.requestPurchase(productId);
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
@@ -131,10 +128,12 @@ function ItemPremium({
         Log.debug(TAG, 'purchaseUpdatedListener', purchase);
         setIsLoading(true);
         try {
+          const payload =
+            purchase.transactionReceipt || purchase.purchaseToken || '';
+
           const request = new BuyProductRequest();
           request.setSlug(productId);
-          request.setPayload(purchase.transactionReceipt);
-          request.setToken(purchase.purchaseToken || '');
+          request.setPayload(payload);
           request.setType(Platform.OS);
           await Client.buyProduct(request);
           setIsPurchased(true);
@@ -169,7 +168,7 @@ function ItemPremium({
 
   const loadProduct = async () => {
     try {
-      const products = await RNIap.getProducts([productPackageId]);
+      const products = await RNIap.getProducts([productId]);
       setProduct(products[0]);
     } catch (e) {
       const message = Strings.getError(e);

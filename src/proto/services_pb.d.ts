@@ -93,9 +93,6 @@ export class BuyProductRequest extends jspb.Message {
   getType(): string;
   setType(value: string): void;
 
-  getToken(): string;
-  setToken(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): BuyProductRequest.AsObject;
   static toObject(includeInstance: boolean, msg: BuyProductRequest): BuyProductRequest.AsObject;
@@ -110,7 +107,6 @@ export namespace BuyProductRequest {
     slug: string,
     payload: string,
     type: string,
-    token: string,
   }
 }
 
