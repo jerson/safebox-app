@@ -104,7 +104,7 @@ function ItemPremium({
   const purchase = async () => {
     try {
       setWaitForPurchase(true);
-      await RNIap.requestPurchase(productId);
+      await RNIap.requestPurchase(productId, false);
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);

@@ -42,6 +42,7 @@ import Log from '../../modules/log/Log';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 import Biometrics from 'react-native-biometrics';
 import Config from '../../Config';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
 
 const styles = StyleSheet.create({
   container: {
@@ -202,14 +203,24 @@ function AccountScreen() {
   };
 
   const tryShowPassword = async () => {
+    const callback = () => {
+      if (!!Session.getPassword()) {
+        unlockPassword();
+      } else {
+        setShowUnlockModal(true);
+      }
+    };
+
     try {
+      const settings = await SettingsStorage.getFirst();
+      if (!settings.biometricPublicKey) {
+        callback();
+        return;
+      }
+
       const success = await Biometrics.simplePrompt('Confirm');
       if (success) {
-        if (!!Session.getPassword()) {
-          unlockPassword();
-        } else {
-          setShowUnlockModal(true);
-        }
+        callback();
       }
     } catch (e) {
       const message = Strings.getError(e);
