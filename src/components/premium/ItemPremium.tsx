@@ -129,7 +129,7 @@ function ItemPremium({
         setIsLoading(true);
         try {
           const payload =
-            purchase.transactionReceipt || purchase.purchaseToken || '';
+            purchase.purchaseToken || purchase.transactionReceipt || '';
 
           const request = new BuyProductRequest();
           request.setSlug(productId);

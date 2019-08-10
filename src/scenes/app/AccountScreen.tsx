@@ -228,6 +228,13 @@ function AccountScreen() {
     }
   };
 
+  const startTimeoutPassword = () => {
+    timeoutPassword && clearTimeout(timeoutPassword);
+    timeoutPassword = setTimeout(() => {
+      setAccountDecoded(undefined);
+    }, Config.settings.timeoutPassword);
+  };
+
   const loadPassword = async () => {
     setError('');
 
@@ -240,10 +247,7 @@ function AccountScreen() {
         const accountDecoded = new Account();
         accountDecoded.setPassword(await decode(responseAccount.getPassword()));
         setAccountDecoded(accountDecoded);
-        timeoutPassword && clearTimeout(timeoutPassword);
-        timeoutPassword = setTimeout(() => {
-          setAccountDecoded(undefined);
-        }, Config.settings.timeoutPassword);
+        startTimeoutPassword();
       }
     } catch (e) {
       const message = Strings.getError(e);
