@@ -23,7 +23,17 @@ import {
   DevicesResponse,
   AddDeviceRequest,
   AddDeviceResponse,
-  LoginDeviceRequest
+  LoginDeviceRequest,
+  HasProductRequest,
+  HasProductResponse,
+  SendLocationRequest,
+  SendLocationResponse,
+  EnableLocationRequest,
+  EnableLocationResponse,
+  DisableLocationRequest,
+  DisableLocationResponse,
+  GetEmailRequest,
+  GetEmailResponse
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -34,7 +44,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.refreshToken(request, null, (err, response) => {
+      /* NOSONAR */ client.refreshToken(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -46,7 +56,7 @@ export default class Client {
   static login(request: LoginRequest): Promise<AuthResponse> {
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.login(request, null, (err, response) => {
+      /* NOSONAR */ client.login(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -58,7 +68,7 @@ export default class Client {
   static loginWithDevice(request: LoginDeviceRequest): Promise<AuthResponse> {
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.loginWithDevice(request, null, (err, response) => {
+      /* NOSONAR */ client.loginWithDevice(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -70,7 +80,7 @@ export default class Client {
   static register(request: RegisterRequest): Promise<AuthResponse> {
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.register(request, null, (err, response) => {
+      /* NOSONAR */ client.register(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -85,7 +95,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.logout(request, null, (err, response) => {
+      /* NOSONAR */ client.logout(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -99,7 +109,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.addAccount(request, null, (err, response) => {
+      /* NOSONAR */ client.addAccount(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -115,7 +125,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.deleteAccount(request, null, (err, response) => {
+      /* NOSONAR */ client.deleteAccount(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -129,7 +139,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.getAccount(request, null, (err, response) => {
+      /* NOSONAR */ client.getAccount(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -144,7 +154,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.getAccounts(request, null, (err, response) => {
+      /* NOSONAR */ client.getAccounts(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -158,7 +168,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.addDevice(request, null, (err, response) => {
+      /* NOSONAR */ client.addDevice(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -173,7 +183,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.deleteDevice(request, null, (err, response) => {
+      /* NOSONAR */ client.deleteDevice(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -188,7 +198,7 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.getDevices(request, null, (err, response) => {
+      /* NOSONAR */ client.getDevices(request, null, (err, response) => {
         if (err) {
           reject(err);
         }
@@ -201,7 +211,78 @@ export default class Client {
 
     const client = this.connect();
     return new Promise((resolve, reject) => {
-      client.buyProduct(request, null, (err, response) => {
+      /* NOSONAR */ client.buyProduct(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static hasProduct(request: HasProductRequest): Promise<HasProductResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.hasProduct(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static sendLocation(
+    request: SendLocationRequest
+  ): Promise<SendLocationResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.sendLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static enableLocation(
+    request: EnableLocationRequest
+  ): Promise<EnableLocationResponse> {
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.enableLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static disableLocation(): Promise<DisableLocationResponse> {
+    const request = new DisableLocationRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.disableLocation(request, null, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    });
+  }
+  static getEmail(): Promise<GetEmailResponse> {
+    const request = new GetEmailRequest();
+    request.setAccesstoken(Session.getAccessToken());
+
+    const client = this.connect();
+    return new Promise((resolve, reject) => {
+      /* NOSONAR */ client.getEmail(request, null, (err, response) => {
         if (err) {
           reject(err);
         }

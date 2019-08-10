@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+      },
+      undefined,
+    ]
+  }
+>
+  <_class
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "marginBottom": 5,
+        },
+      ]
+    }
+  >
+    <_class
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#9066f5",
+            "height": 1,
+            "left": 0,
+            "opacity": 0.5,
+            "position": "absolute",
+            "right": 0,
+            "top": 12,
+          },
+          Object {
+            "backgroundColor": "#c2d0e7",
+          },
+          false,
+        ]
+      }
+    />
+    <_class
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#4531cd",
+            "borderRadius": 10,
+            "paddingBottom": 4,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 6,
+          },
+          Object {
+            "backgroundColor": "#6781a6",
+          },
+          false,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#FFFFFF",
+              "fontSize": 13,
+              "lineHeight": 14,
+              "minWidth": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Track Phone - Premium
+      </Text>
+    </_class>
+  </_class>
+  <_class
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginTop": 10,
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 12,
+          },
+          Array [
+            Object {
+              "color": "#65748b",
+              "fontSize": 28,
+              "marginLeft": 10,
+              "marginRight": 15,
+            },
+          ],
+          Object {
+            "fontFamily": "Feather",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+    <_class
+      style={
+        Object {
+          "flex": 1,
+          "paddingRight": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#65748b",
+              "fontSize": 13,
+              "marginBottom": 10,
+            },
+          ]
+        }
+      >
+        If you enable this option we will send you an email daily with the last location you used to connect to the application.
+      </Text>
+      <_class
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#9066f5",
+            "borderColor": "#9066f5",
+            "borderRadius": 10,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "margin": 0,
+            "minHeight": 30,
+            "opacity": 1,
+            "padding": 12,
+            "zIndex": 1,
+          }
+        }
+        testID="button_touchable"
+      >
+        <_class
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "justifyContent": "center",
+                "left": 10,
+                "position": "absolute",
+                "top": 0,
+              },
+              undefined,
+              Object {
+                "left": 0,
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <_class
+            style={
+              Array [
+                false,
+                false,
+                false,
+                Object {
+                  "marginRight": 4,
+                },
+              ]
+            }
+          >
+            <ActivityIndicator
+              animating={true}
+              color="#FFFFFF"
+              hidesWhenStopped={true}
+              size="small"
+            />
+          </_class>
+        </_class>
+      </_class>
+    </_class>
+  </_class>
+</_class>
+`;

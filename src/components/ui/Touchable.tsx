@@ -17,6 +17,7 @@ function Touchable(props: TouchableProps, ref: React.Ref<TouchableOpacity>) {
   return (
     <TouchableOpacity
       ref={ref}
+      testID={'touchable'}
       {...extraProps}
       onPress={onPress}
       onLongPress={onLongPress}

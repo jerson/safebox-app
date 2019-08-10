@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+      },
+      undefined,
+    ]
+  }
+>
+  <_class
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    <_class
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#9066f5",
+            "height": 1,
+            "left": 0,
+            "opacity": 0.5,
+            "position": "absolute",
+            "right": 0,
+            "top": 12,
+          },
+          Object {
+            "backgroundColor": "#c2d0e7",
+          },
+          false,
+        ]
+      }
+    />
+    <_class
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#4531cd",
+            "borderRadius": 10,
+            "paddingBottom": 4,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 6,
+          },
+          Object {
+            "backgroundColor": "#6781a6",
+          },
+          false,
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#FFFFFF",
+              "fontSize": 13,
+              "lineHeight": 14,
+              "minWidth": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Session settings
+      </Text>
+    </_class>
+  </_class>
+  <_class
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginTop": 10,
+      }
+    }
+  >
+    <_class
+      style={
+        Object {
+          "flex": 1,
+          "paddingRight": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#65748b",
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        This option allows you to safely exit the application.
+      </Text>
+    </_class>
+    <_class
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#6781a6",
+          "borderColor": "#6781a6",
+          "borderRadius": 10,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "margin": 0,
+          "minWidth": 120,
+          "opacity": 1,
+          "padding": 12,
+          "zIndex": 1,
+        }
+      }
+      testID="button_touchable"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Array [
+              Object {
+                "color": "#FFFFFF",
+                "fontSize": 14,
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#FFFFFF",
+              },
+              undefined,
+            ],
+          ]
+        }
+      >
+        Sign out
+      </Text>
+    </_class>
+  </_class>
+</_class>
+`;

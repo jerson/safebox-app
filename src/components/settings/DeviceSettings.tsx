@@ -60,9 +60,7 @@ function DeviceSettings({ style }: DeviceSettingsProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');
 
-  const [isAddedCurrentDevice, setIsAddedCurrentDevice] = useAnimatedState(
-    false
-  );
+  const [isAddedCurrentDevice, setIsAddedCurrentDevice] = useState(false);
   const listRef = useRef<ListRef>(null);
 
   const deviceUid = DeviceInfo.getUniqueID();

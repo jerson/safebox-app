@@ -1,6 +1,6 @@
 import Font from './Font';
 
-it('default', () => {
+test('default', () => {
   const result = Font({ weight: 'Regular' });
   expect(JSON.stringify(result)).toBe(
     JSON.stringify({

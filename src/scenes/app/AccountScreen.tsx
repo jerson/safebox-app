@@ -19,7 +19,8 @@ import {
   AccountSingle,
   DeleteAccountRequest,
   AccountRequest,
-  Account
+  Account,
+  HasProductRequest
 } from '../../proto/services_pb';
 import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
@@ -37,6 +38,11 @@ import OpenPGP from 'react-native-fast-openpgp';
 import TextInput from '../../components/ui/TextInput';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '../../components/ui/Button';
+import Log from '../../modules/log/Log';
+import useFocusedScreen from '../../components/hooks/useFocusedScreen';
+import Biometrics from 'react-native-biometrics';
+import Config from '../../Config';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
 
 const styles = StyleSheet.create({
   container: {
@@ -71,6 +77,7 @@ const styles = StyleSheet.create({
     padding: 20,
     maxWidth: 360,
     marginBottom: 60,
+    marginTop: 10,
     backgroundColor: Colors.white,
     borderRadius: 12,
     overflow: 'visible',
@@ -89,6 +96,15 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-start'
   } as ViewStyle,
+  premium: {
+    alignItems: 'center',
+    marginTop: 20
+  } as ViewStyle,
+
+  buttonShowPassword: {
+    marginBottom: 5,
+    minWidth: 240
+  } as ViewStyle,
   buttonCopy: {
     height: 50,
     width: 50,
@@ -106,44 +122,122 @@ const styles = StyleSheet.create({
     color: Colors.primaryLight,
     fontSize: 15,
     marginHorizontal: 2
-  }
+  } as TextStyle,
+  noPremiumDescription: {
+    color: Colors.grey5,
+    textAlign: 'center'
+  } as TextStyle,
+  noPremium: {
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: Colors.grey2
+  } as ViewStyle,
+  center: {
+    alignItems: 'center'
+  } as ViewStyle
 });
 
-const decode = (input: string) => {
-  return OpenPGP.decrypt(input, Session.getPrivateKey(), Session.getPassword());
+const decode = async (input: string) => {
+  try {
+    return await OpenPGP.decrypt(
+      input,
+      Session.getPrivateKey(),
+      Session.getPassword()
+    );
+  } catch (e) {
+    Log.warn(TAG, 'decode', e);
+    throw new Error('invalid password');
+  }
 };
 
+const TAG = '[AccountScreen]';
 function AccountScreen() {
-  const { setParams, goBack } = useNavigation();
+  const { setParams, goBack, navigate } = useNavigation();
   const account = useNavigationParam('account') as AccountSingle;
   const showDelete = useNavigationParam('showDelete') as boolean;
 
   const [isDeleting, setIsDeleting] = useState(false);
+  const [allowShowPassword, setAllowShowPassword] = useAnimatedState(false);
+
   const [error, setError] = useAnimatedState('');
   const [toast, setToast] = useAnimatedState('');
-  const [locked, setLocked] = useState(!Session.getPassword());
+  const [showUnlockModal, setShowUnlockModal] = useState(false);
 
   const [accountDecoded, setAccountDecoded] = useState<Account>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
 
-  const onUnlock = (password: string) => {
-    setError('');
-    Session.setPassword(password);
-    setLocked(false);
+  const navigation = useNavigation();
+  const [focused] = useFocusedScreen(navigation);
+
+  let timeoutPassword: number;
+
+  const checkPurchase = async () => {
+    try {
+      const request = new HasProductRequest();
+      request.setSlug('showpass');
+      const response = await Client.hasProduct(request);
+      setAllowShowPassword(response.getPurchased());
+    } catch (e) {
+      Log.warn(TAG, 'checkPurchase', e);
+    }
+    setIsChecking(false);
   };
 
   useEffect(() => {
-    if (locked) {
-      return;
-    }
+    focused && checkPurchase();
+  }, [focused]);
 
+  const onUnlock = (password: string) => {
+    Session.setPassword(password);
+    setShowUnlockModal(false);
+    unlockPassword();
+  };
+
+  const unlockPassword = () => {
     setIsLoading(true);
     requestAnimationFrame(() => {
       loadPassword();
     });
-  }, [locked]);
+  };
+
+  const tryShowPassword = async () => {
+    const callback = () => {
+      if (!!Session.getPassword()) {
+        unlockPassword();
+      } else {
+        setShowUnlockModal(true);
+      }
+    };
+
+    try {
+      const settings = await SettingsStorage.getFirst();
+      if (!settings.biometricPublicKey) {
+        callback();
+        return;
+      }
+
+      const success = await Biometrics.simplePrompt('Confirm');
+      if (success) {
+        callback();
+      }
+    } catch (e) {
+      const message = Strings.getError(e);
+      setError(message);
+    }
+  };
+
+  const startTimeoutPassword = () => {
+    timeoutPassword && clearTimeout(timeoutPassword);
+    timeoutPassword = setTimeout(() => {
+      setAccountDecoded(undefined);
+    }, Config.settings.timeoutPassword);
+  };
 
   const loadPassword = async () => {
+    setError('');
+
     try {
       const request = new AccountRequest();
       request.setId(account.getId());
@@ -153,14 +247,20 @@ function AccountScreen() {
         const accountDecoded = new Account();
         accountDecoded.setPassword(await decode(responseAccount.getPassword()));
         setAccountDecoded(accountDecoded);
+        startTimeoutPassword();
       }
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
-      setLocked(true);
     }
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    return () => {
+      timeoutPassword && clearTimeout(timeoutPassword);
+    };
+  }, []);
 
   const deleteAccount = async () => {
     setIsDeleting(true);
@@ -208,14 +308,29 @@ function AccountScreen() {
     );
   }, [showDelete]);
 
+  const goToPremium = () => {
+    navigate('Premium');
+  };
+
+  if (typeof account.getId !== 'function') {
+    return <View />;
+  }
+
+  const hint = !!account.getHint() ? (
+    <Text style={styles.help}>
+      <Text style={styles.helpHint}>Hint:</Text> {account.getHint()}
+    </Text>
+  ) : null;
+
   return (
     <Container style={styles.container}>
-      <LoadingOverlay isLoading={isDeleting || isLoading} />
+      <LoadingOverlay isLoading={isDeleting} />
       <StatusBar
         animated
         barStyle={'dark-content'}
         backgroundColor={Colors.grey2}
       />
+      <Locked visible={showUnlockModal} onUnlock={onUnlock} />
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
@@ -233,62 +348,55 @@ function AccountScreen() {
                 message={error}
               />
             )}
-            {!locked && accountDecoded && (
-              <View style={[styles.content, styles.shadow]}>
-                <Icon name={'unlock'} style={styles.icon} />
-                <Text style={styles.description}>
-                  Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
-                  clipboard
-                </Text>
-                {!!toast && (
-                  <AlertMessage
-                    color={Colors.accentDark}
-                    timeout={2000}
-                    icon={'copy'}
-                    onTimeout={() => setToast('')}
-                    message={toast}
-                  />
-                )}
-                <View style={styles.item}>
-                  <TextInput
-                    label={'Username'}
-                    icon={'user'}
-                    editable={false}
-                    multiline
-                    value={account.getUsername()}
-                    containerStyle={styles.textInputContainer}
-                    style={styles.textInput}
-                    rightContainer={
-                      <Button
-                        typeColor={'primaryLight'}
-                        onPress={() => {
-                          Clipboard.setString(account.getUsername());
-                          setToast('Username copied to clipboard');
-                        }}
-                        style={styles.buttonCopy}
-                        icon={'copy'}
-                      />
-                    }
-                  />
-                </View>
+
+            <View style={[styles.content, styles.shadow]}>
+              <Icon name={'unlock'} style={styles.icon} />
+              <Text style={styles.description}>
+                Use <Icon style={styles.iconCopy} name={'copy'} /> to copy to
+                clipboard
+              </Text>
+              {!!toast && (
+                <AlertMessage
+                  color={Colors.accentDark}
+                  timeout={2000}
+                  icon={'copy'}
+                  onTimeout={() => setToast('')}
+                  message={toast}
+                />
+              )}
+              <View style={styles.item}>
+                <TextInput
+                  label={'Username'}
+                  icon={'user'}
+                  editable={false}
+                  multiline
+                  value={account.getUsername()}
+                  containerStyle={styles.textInputContainer}
+                  style={styles.textInput}
+                  rightContainer={
+                    <Button
+                      typeColor={'primaryLight'}
+                      onPress={() => {
+                        Clipboard.setString(account.getUsername());
+                        setToast('Username copied to clipboard');
+                      }}
+                      style={styles.buttonCopy}
+                      icon={'copy'}
+                    />
+                  }
+                />
+              </View>
+              {!!accountDecoded && (
                 <View style={styles.item}>
                   <TextInput
                     label={'Password'}
                     icon={'lock'}
                     editable={false}
-                    secureTextEntry
                     multiline
-                    value={'********'}
+                    value={accountDecoded.getPassword()}
                     containerStyle={styles.textInputContainer}
                     style={styles.textInput}
-                    help={
-                      !!account.getHint() && (
-                        <Text style={styles.help}>
-                          <Text style={styles.helpHint}>Hint:</Text>{' '}
-                          {account.getHint()}
-                        </Text>
-                      )
-                    }
+                    help={hint}
                     rightContainer={
                       <Button
                         typeColor={'primaryLight'}
@@ -302,9 +410,41 @@ function AccountScreen() {
                     }
                   />
                 </View>
-              </View>
-            )}
-            {locked && <Locked onUnlock={onUnlock} />}
+              )}
+              {!isChecking && !accountDecoded && (
+                <>
+                  {allowShowPassword && (
+                    <View style={styles.premium}>
+                      <Button
+                        icon={'eye'}
+                        typeColor={'primaryLight'}
+                        onPress={tryShowPassword}
+                        isLoading={isLoading}
+                        style={styles.buttonShowPassword}
+                        title={'Show account password'}
+                      />
+                      {hint}
+                    </View>
+                  )}
+                  {!allowShowPassword && (
+                    <View>
+                      <View style={styles.noPremium}>
+                        <Text style={styles.noPremiumDescription}>
+                          Do you want to see your password?{'\n'}
+                          <Text
+                            onPress={goToPremium}
+                            style={{ color: Colors.primaryLight }}
+                          >
+                            Buy Premium
+                          </Text>
+                        </Text>
+                      </View>
+                      <View style={styles.center}>{hint}</View>
+                    </View>
+                  )}
+                </>
+              )}
+            </View>
           </Content>
         </SafeAreaView>
       </ScrollView>

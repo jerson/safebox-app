@@ -27,6 +27,14 @@ import {
   DeleteDeviceResponse,
   DevicesRequest,
   DevicesResponse,
+  DisableLocationRequest,
+  DisableLocationResponse,
+  EnableLocationRequest,
+  EnableLocationResponse,
+  GetEmailRequest,
+  GetEmailResponse,
+  HasProductRequest,
+  HasProductResponse,
   LoginDeviceRequest,
   LoginRequest,
   LogoutRequest,
@@ -34,7 +42,9 @@ import {
   PingRequest,
   PingResponse,
   RefreshTokenRequest,
-  RegisterRequest} from './services_pb';
+  RegisterRequest,
+  SendLocationRequest,
+  SendLocationResponse} from './services_pb';
 
 export class ServicesClient {
   client_: grpcWeb.AbstractClientBase;
@@ -341,6 +351,94 @@ export class ServicesClient {
       callback);
   }
 
+  methodInfoSendLocation = new grpcWeb.AbstractClientBase.MethodInfo(
+    SendLocationResponse,
+    (request: SendLocationRequest) => {
+      return request.serializeBinary();
+    },
+    SendLocationResponse.deserializeBinary
+  );
+
+  sendLocation(
+    request: SendLocationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: SendLocationResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/SendLocation',
+      request,
+      metadata || {},
+      this.methodInfoSendLocation,
+      callback);
+  }
+
+  methodInfoEnableLocation = new grpcWeb.AbstractClientBase.MethodInfo(
+    EnableLocationResponse,
+    (request: EnableLocationRequest) => {
+      return request.serializeBinary();
+    },
+    EnableLocationResponse.deserializeBinary
+  );
+
+  enableLocation(
+    request: EnableLocationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: EnableLocationResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/EnableLocation',
+      request,
+      metadata || {},
+      this.methodInfoEnableLocation,
+      callback);
+  }
+
+  methodInfoDisableLocation = new grpcWeb.AbstractClientBase.MethodInfo(
+    DisableLocationResponse,
+    (request: DisableLocationRequest) => {
+      return request.serializeBinary();
+    },
+    DisableLocationResponse.deserializeBinary
+  );
+
+  disableLocation(
+    request: DisableLocationRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: DisableLocationResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/DisableLocation',
+      request,
+      metadata || {},
+      this.methodInfoDisableLocation,
+      callback);
+  }
+
+  methodInfoGetEmail = new grpcWeb.AbstractClientBase.MethodInfo(
+    GetEmailResponse,
+    (request: GetEmailRequest) => {
+      return request.serializeBinary();
+    },
+    GetEmailResponse.deserializeBinary
+  );
+
+  getEmail(
+    request: GetEmailRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: GetEmailResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/GetEmail',
+      request,
+      metadata || {},
+      this.methodInfoGetEmail,
+      callback);
+  }
+
   methodInfoBuyProduct = new grpcWeb.AbstractClientBase.MethodInfo(
     BuyProductResponse,
     (request: BuyProductRequest) => {
@@ -360,6 +458,28 @@ export class ServicesClient {
       request,
       metadata || {},
       this.methodInfoBuyProduct,
+      callback);
+  }
+
+  methodInfoHasProduct = new grpcWeb.AbstractClientBase.MethodInfo(
+    HasProductResponse,
+    (request: HasProductRequest) => {
+      return request.serializeBinary();
+    },
+    HasProductResponse.deserializeBinary
+  );
+
+  hasProduct(
+    request: HasProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: HasProductResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/Services/HasProduct',
+      request,
+      metadata || {},
+      this.methodInfoHasProduct,
       callback);
   }
 

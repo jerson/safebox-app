@@ -40,7 +40,7 @@ function List(
   { onLoad, currentDeviceUid }: ListProps,
   ref: React.Ref<ListRef>
 ) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useAnimatedState('');
   const [devices, setDevices] = useState<Device[]>([]);
   const navigation = useNavigation();
@@ -49,15 +49,10 @@ function List(
     load
   }));
 
-  useEffect(() => {
-    setIsLoading(true);
-    load();
-  }, []);
-
   const [focused] = useFocusedScreen(navigation);
 
   useEffect(() => {
-    load();
+    focused && load();
   }, [focused]);
 
   const load = async () => {
@@ -78,7 +73,7 @@ function List(
   };
 
   if (devices.length < 1) {
-    return null;
+    return <View />;
   }
 
   return (

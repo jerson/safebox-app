@@ -75,6 +75,7 @@
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
 		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
+		84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A195F622FF081200B4808F /* StoreKit.framework */; };
 		8FAA6C32723F4D1AB2C24A07 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCF69C7136F0487D9B4C9560 /* Nunito-ExtraLightItalic.ttf */; };
 		95183F4885B44352A1CC08F6 /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4495ACEAFD444EB89CF208 /* libRNCNetInfo-tvOS.a */; };
 		95F081F158484DB4AF88BEBD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB3129EAA8F74AA6A3ED0D66 /* Foundation.ttf */; };
@@ -676,6 +677,7 @@
 		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
 		8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@1x.png"; path = "SafeBox/iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		84A195F622FF081200B4808F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		853296A1065C48DDAE17C072 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		8B54DC9B3581489E9FCC5A2E /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		8C6888CB6957B5651C268F91 /* Pods-SafeBox-tvOS.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOS.beta.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOS/Pods-SafeBox-tvOS.beta.xcconfig"; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 				84939B9022F3C170003AA163 /* libRNIap.a in Frameworks */,
 				843DAF7622EEADE3007E1B7D /* libCodePush.a in Frameworks */,
 				843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */,
+				84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */,
 				843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
 				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
@@ -946,6 +949,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84A195F622FF081200B4808F /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -1433,6 +1437,9 @@
 						DevelopmentTeam = EKR687JWFU;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2471,6 +2478,7 @@
 			baseConfigurationReference = 39D087DAB62EDE6438BC64F2 /* Pods-SafeBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODEPUSH_TOKEN = "";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2496,7 +2504,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 				);
-				INFOPLIST_FILE = "SafeBox/Info-Debug.plist";
+				INFOPLIST_FILE = SafeBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2516,6 +2524,7 @@
 			baseConfigurationReference = EFA4F840259789EB55794B91 /* Pods-SafeBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODEPUSH_TOKEN = "vMjA-49s8Jya4FkNBV2idIsF-6LYheGWy_l-F";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -2989,6 +2998,7 @@
 			baseConfigurationReference = AF40822772281B8CE3F753F5 /* Pods-SafeBox.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODEPUSH_TOKEN = "q1aLRuQoG-CbYVDytE2vKZOHfSY6BecIug6XB";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -3014,7 +3024,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 				);
-				INFOPLIST_FILE = "SafeBox/Info-Beta.plist";
+				INFOPLIST_FILE = SafeBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
