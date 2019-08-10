@@ -7,11 +7,11 @@ const props: LoadingOverlayProps = {
   isLoading: true
 };
 
-it('render just views', () => {
+test('render just views', () => {
   const snapshot = renderer.create(<LoadingOverlay {...props} />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });
-it('render just views !isLoading', () => {
+test('render just views !isLoading', () => {
   const snapshot = renderer
     .create(<LoadingOverlay {...props} isLoading={false} />)
     .toJSON();

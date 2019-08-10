@@ -6,7 +6,7 @@ function useTextInput(
   const [value, setValue] = useState(initialValue);
 
   const onChangeText = (text: string) => {
-    setValue(text);
+    setValue(text.trim());
   };
 
   return [value, { onChangeText }, setValue];

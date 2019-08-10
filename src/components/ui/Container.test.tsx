@@ -8,12 +8,12 @@ const props: ContainerProps = {
   children: <View />
 };
 
-it('renders without crashing', () => {
+test('renders without crashing', () => {
   const snapshot = renderer.create(<Container {...props} />).toJSON();
   expect(snapshot).toBeTruthy();
 });
 
-it('render just views', () => {
+test('render just views', () => {
   const snapshot = renderer.create(<Container {...props} />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });

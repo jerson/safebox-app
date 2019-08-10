@@ -91,7 +91,6 @@ export default class BottomTabBarIcon extends React.Component<
       accessibilityLabel,
       onPress,
       onLongPress,
-      focused,
       children,
       ...props
     } = this.props;

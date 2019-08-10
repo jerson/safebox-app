@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ViewStyle, StatusBar, RefreshControl } from 'react-native';
-import { NavigationScreenProp, FlatList } from 'react-navigation';
+import {
+  StyleSheet,
+  ViewStyle,
+  FlatList,
+  StatusBar,
+  RefreshControl
+} from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
@@ -17,6 +22,7 @@ import EmptyAccounts from '../../components/help/EmptyAccounts';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 import AccountItem from '../../components/account/AccountItem';
 import Timeout from '../../components/session/Timeout';
+import { useNavigation } from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,13 +43,9 @@ const styles = StyleSheet.create({
   } as ViewStyle
 });
 
-interface Params {}
-interface Props {
-  navigation: NavigationScreenProp<Params>;
-}
-
-function AccountsScreen({ navigation }: Props) {
-  const [isLoading, setIsLoading] = useState(false);
+function AccountsScreen() {
+  const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useAnimatedState('');
   const [accounts, setAccounts] = useAnimatedState<AccountSingle[]>([]);
@@ -67,14 +69,7 @@ function AccountsScreen({ navigation }: Props) {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    load();
-  }, []);
-
-  useEffect(() => {
-    if (focused) {
-      load();
-    }
+    focused && load();
   }, [focused]);
 
   return (
@@ -138,7 +133,7 @@ function AccountsScreen({ navigation }: Props) {
   );
 }
 
-AccountsScreen.navigationOptions = ({ navigation }: Props) => ({
+AccountsScreen.navigationOptions = ({ navigation }: any) => ({
   title: 'SafeBox',
   headerLeft: null,
   headerRight: (

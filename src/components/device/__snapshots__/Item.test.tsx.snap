@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#ebf1f6",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "marginTop": 10,
+      "padding": 10,
+    }
+  }
+>
+  <_class
+    style={
+      Object {
+        "flex": 1,
+        "paddingRight": 10,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "fontFamily": "Nunito",
+            "fontSize": undefined,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          Object {},
+          Object {
+            "color": "#65748b",
+            "fontSize": 12,
+          },
+        ]
+      }
+    >
+      sample
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "fontFamily": "Nunito",
+            "fontSize": undefined,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          Object {},
+          Object {
+            "color": "#38414e",
+            "fontSize": 13,
+          },
+        ]
+      }
+    >
+      Added 
+      in 2 years
+    </Text>
+  </_class>
+  <_class
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#6781a6",
+        "borderColor": "#6781a6",
+        "borderRadius": 10,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "margin": 0,
+        "minHeight": 30,
+        "opacity": 1,
+        "padding": 12,
+        "paddingLeft": 14,
+        "paddingTop": 6,
+        "zIndex": 1,
+      }
+    }
+    testID="button_touchable"
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 12,
+          },
+          Array [
+            Object {
+              "color": "#FFFFFF",
+              "fontSize": 14,
+              "marginRight": 4,
+              "top": 3,
+            },
+            Object {
+              "color": "#FFFFFF",
+            },
+            undefined,
+          ],
+          Object {
+            "fontFamily": "Feather",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </_class>
+</_class>
+`;

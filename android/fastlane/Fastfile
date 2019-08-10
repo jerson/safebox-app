@@ -1,0 +1,27 @@
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Build Beta APK"
+  lane :build_beta do
+    gradle(task: "clean assembleReleaseBeta")
+  end
+
+  desc "Build Release APK"
+  lane :build_release do
+    gradle(task: "clean assembleRelease")
+  end
+
+  desc "Deploy a new version to the Google Play - Release channel"
+  lane :deploy_release do
+    gradle(task: "clean bundleRelease")
+    upload_to_play_store(track: 'production')
+  end
+
+  desc "Deploy a new version to the Google Play - Beta channel"
+  lane :deploy_release_beta do
+    gradle(task: "clean bundleRelease")
+    upload_to_play_store(track: 'beta')
+  end
+end

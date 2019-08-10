@@ -1,11 +1,21 @@
-.PHONY: proto
+.PHONY: proto android build
 
 default: build
 
-build: build-android
+build: 
+	cd android && fastlane android 
 
-build-android-release: format
-	yarn run build:android:release
+android-build-beta: 
+	cd android && fastlane android build_beta
+
+android-build-release: 
+	cd android && fastlane android build_release
+
+android-deploy-release-beta: 
+	cd android && fastlane android deploy_release_beta
+
+android-deploy-release: 
+	cd android && fastlane android deploy_release
 
 deps:
 	yarn install --pure-lockfile
@@ -23,6 +33,3 @@ proto:
 	protoc -I=proto services.proto \
     --js_out=import_style=commonjs:src/proto \
     --grpc-web_out=import_style=typescript,mode=grpcwebtext:src/proto
-
- 
-

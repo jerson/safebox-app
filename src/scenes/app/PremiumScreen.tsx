@@ -2,10 +2,12 @@ import React from 'react';
 import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
-import HeaderLanding from '../../components/ui/HeaderLanding';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
+import ShowPassPremium from '../../components/premium/ShowPassPremium';
+import TrackPhonePremium from '../../components/premium/TrackPhonePremium';
+import WearableAccessPremium from '../../components/premium/WearableAccessPremium';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,9 +19,8 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   } as ViewStyle,
-  headerLanding: {
-    marginTop: 20,
-    marginBottom: 20
+  block: {
+    marginBottom: 40
   } as ViewStyle
 });
 
@@ -39,12 +40,10 @@ function PremiumScreen() {
         style={styles.scrollView}
       >
         <SafeAreaView style={styles.safeArea}>
-          <Content center>
-            <HeaderLanding
-              titleStyle={{ color: Colors.primary }}
-              subtitleStyle={{ color: Colors.primary }}
-              style={styles.headerLanding}
-            />
+          <Content>
+            <TrackPhonePremium style={styles.block} />
+            <ShowPassPremium style={styles.block} />
+            <WearableAccessPremium style={styles.block} />
           </Content>
         </SafeAreaView>
       </ScrollView>

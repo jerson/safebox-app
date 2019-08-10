@@ -1,5 +1,245 @@
 import * as jspb from "google-protobuf"
 
+export class GetEmailRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetEmailRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetEmailRequest): GetEmailRequest.AsObject;
+  static serializeBinaryToWriter(message: GetEmailRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetEmailRequest;
+  static deserializeBinaryFromReader(message: GetEmailRequest, reader: jspb.BinaryReader): GetEmailRequest;
+}
+
+export namespace GetEmailRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class GetEmailResponse extends jspb.Message {
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetEmailResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetEmailResponse): GetEmailResponse.AsObject;
+  static serializeBinaryToWriter(message: GetEmailResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetEmailResponse;
+  static deserializeBinaryFromReader(message: GetEmailResponse, reader: jspb.BinaryReader): GetEmailResponse;
+}
+
+export namespace GetEmailResponse {
+  export type AsObject = {
+    email: string,
+  }
+}
+
+export class HasProductRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getSlug(): string;
+  setSlug(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HasProductRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: HasProductRequest): HasProductRequest.AsObject;
+  static serializeBinaryToWriter(message: HasProductRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HasProductRequest;
+  static deserializeBinaryFromReader(message: HasProductRequest, reader: jspb.BinaryReader): HasProductRequest;
+}
+
+export namespace HasProductRequest {
+  export type AsObject = {
+    accesstoken: string,
+    slug: string,
+  }
+}
+
+export class HasProductResponse extends jspb.Message {
+  getPurchased(): boolean;
+  setPurchased(value: boolean): void;
+
+  getDate(): string;
+  setDate(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): HasProductResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: HasProductResponse): HasProductResponse.AsObject;
+  static serializeBinaryToWriter(message: HasProductResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HasProductResponse;
+  static deserializeBinaryFromReader(message: HasProductResponse, reader: jspb.BinaryReader): HasProductResponse;
+}
+
+export namespace HasProductResponse {
+  export type AsObject = {
+    purchased: boolean,
+    date: string,
+  }
+}
+
+export class BuyProductRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getSlug(): string;
+  setSlug(value: string): void;
+
+  getPayload(): string;
+  setPayload(value: string): void;
+
+  getType(): string;
+  setType(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BuyProductRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: BuyProductRequest): BuyProductRequest.AsObject;
+  static serializeBinaryToWriter(message: BuyProductRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BuyProductRequest;
+  static deserializeBinaryFromReader(message: BuyProductRequest, reader: jspb.BinaryReader): BuyProductRequest;
+}
+
+export namespace BuyProductRequest {
+  export type AsObject = {
+    accesstoken: string,
+    slug: string,
+    payload: string,
+    type: string,
+  }
+}
+
+export class BuyProductResponse extends jspb.Message {
+  getId(): number;
+  setId(value: number): void;
+
+  getDate(): string;
+  setDate(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): BuyProductResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: BuyProductResponse): BuyProductResponse.AsObject;
+  static serializeBinaryToWriter(message: BuyProductResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): BuyProductResponse;
+  static deserializeBinaryFromReader(message: BuyProductResponse, reader: jspb.BinaryReader): BuyProductResponse;
+}
+
+export namespace BuyProductResponse {
+  export type AsObject = {
+    id: number,
+    date: string,
+  }
+}
+
+export class DisableLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DisableLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: DisableLocationRequest): DisableLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: DisableLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DisableLocationRequest;
+  static deserializeBinaryFromReader(message: DisableLocationRequest, reader: jspb.BinaryReader): DisableLocationRequest;
+}
+
+export namespace DisableLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+  }
+}
+
+export class DisableLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DisableLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: DisableLocationResponse): DisableLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: DisableLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DisableLocationResponse;
+  static deserializeBinaryFromReader(message: DisableLocationResponse, reader: jspb.BinaryReader): DisableLocationResponse;
+}
+
+export namespace DisableLocationResponse {
+  export type AsObject = {
+  }
+}
+
+export class EnableLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnableLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: EnableLocationRequest): EnableLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: EnableLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnableLocationRequest;
+  static deserializeBinaryFromReader(message: EnableLocationRequest, reader: jspb.BinaryReader): EnableLocationRequest;
+}
+
+export namespace EnableLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+    email: string,
+  }
+}
+
+export class EnableLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): EnableLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: EnableLocationResponse): EnableLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: EnableLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): EnableLocationResponse;
+  static deserializeBinaryFromReader(message: EnableLocationResponse, reader: jspb.BinaryReader): EnableLocationResponse;
+}
+
+export namespace EnableLocationResponse {
+  export type AsObject = {
+  }
+}
+
+export class SendLocationRequest extends jspb.Message {
+  getAccesstoken(): string;
+  setAccesstoken(value: string): void;
+
+  getLatitude(): string;
+  setLatitude(value: string): void;
+
+  getLongitude(): string;
+  setLongitude(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendLocationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SendLocationRequest): SendLocationRequest.AsObject;
+  static serializeBinaryToWriter(message: SendLocationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendLocationRequest;
+  static deserializeBinaryFromReader(message: SendLocationRequest, reader: jspb.BinaryReader): SendLocationRequest;
+}
+
+export namespace SendLocationRequest {
+  export type AsObject = {
+    accesstoken: string,
+    latitude: string,
+    longitude: string,
+  }
+}
+
+export class SendLocationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SendLocationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: SendLocationResponse): SendLocationResponse.AsObject;
+  static serializeBinaryToWriter(message: SendLocationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SendLocationResponse;
+  static deserializeBinaryFromReader(message: SendLocationResponse, reader: jspb.BinaryReader): SendLocationResponse;
+}
+
+export namespace SendLocationResponse {
+  export type AsObject = {
+  }
+}
+
 export class PingRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PingRequest.AsObject;
@@ -103,9 +343,6 @@ export namespace DeleteDeviceRequest {
 }
 
 export class DeleteDeviceResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteDeviceResponse.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteDeviceResponse): DeleteDeviceResponse.AsObject;
@@ -116,7 +353,6 @@ export class DeleteDeviceResponse extends jspb.Message {
 
 export namespace DeleteDeviceResponse {
   export type AsObject = {
-    success: boolean,
   }
 }
 
@@ -211,9 +447,6 @@ export namespace DeleteAccountRequest {
 }
 
 export class DeleteAccountResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteAccountResponse.AsObject;
   static toObject(includeInstance: boolean, msg: DeleteAccountResponse): DeleteAccountResponse.AsObject;
@@ -224,7 +457,6 @@ export class DeleteAccountResponse extends jspb.Message {
 
 export namespace DeleteAccountResponse {
   export type AsObject = {
-    success: boolean,
   }
 }
 
@@ -577,46 +809,6 @@ export class AccountResponse extends jspb.Message {
 export namespace AccountResponse {
   export type AsObject = {
     account?: Account.AsObject,
-  }
-}
-
-export class BuyProductRequest extends jspb.Message {
-  getAccesstoken(): string;
-  setAccesstoken(value: string): void;
-
-  getSlug(): string;
-  setSlug(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BuyProductRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: BuyProductRequest): BuyProductRequest.AsObject;
-  static serializeBinaryToWriter(message: BuyProductRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BuyProductRequest;
-  static deserializeBinaryFromReader(message: BuyProductRequest, reader: jspb.BinaryReader): BuyProductRequest;
-}
-
-export namespace BuyProductRequest {
-  export type AsObject = {
-    accesstoken: string,
-    slug: string,
-  }
-}
-
-export class BuyProductResponse extends jspb.Message {
-  getSuccess(): boolean;
-  setSuccess(value: boolean): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BuyProductResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: BuyProductResponse): BuyProductResponse.AsObject;
-  static serializeBinaryToWriter(message: BuyProductResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BuyProductResponse;
-  static deserializeBinaryFromReader(message: BuyProductResponse, reader: jspb.BinaryReader): BuyProductResponse;
-}
-
-export namespace BuyProductResponse {
-  export type AsObject = {
-    success: boolean,
   }
 }
 
