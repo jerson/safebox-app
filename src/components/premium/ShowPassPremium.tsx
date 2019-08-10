@@ -13,6 +13,7 @@ function ShowPassPremium({ style }: ShowPassPremiumProps) {
       productId={'showpass'}
       name={'Show Password'}
       icon={'eye'}
+      key={'showpass'}
       description={`With this option add additional security to your account and enable the option to see the passwords your secret accounts.`}
     />
   );

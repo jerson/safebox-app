@@ -8,7 +8,7 @@ import {
 import Client from '../../services/Client';
 import Log from '../../modules/log/Log';
 
-const TAG = '[TAG]';
+const TAG = '[LocationManager]';
 function LocationManager() {
   const [enabled, setEnabled] = useState(false);
   const [watchID, setWatchId] = useState(0);

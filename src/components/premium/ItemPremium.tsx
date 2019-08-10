@@ -102,35 +102,35 @@ function ItemPremium({
   };
 
   const purchase = async () => {
-    try {
-      setWaitForPurchase(true);
-      await RNIap.requestPurchase(productId, false);
-    } catch (e) {
-      const message = Strings.getError(e);
-      setError(message);
-      setWaitForPurchase(false);
-    }
+    setWaitForPurchase(true);
   };
 
   useEffect(() => {
     if (!waitForPurchase) {
       return;
     }
+
     const purchaseUpdateSubscription = RNIap.purchaseUpdatedListener(
       async (purchase: RNIap.ProductPurchase) => {
-        setWaitForPurchase(false);
-
-        const receipt = purchase.transactionReceipt;
-        if (!receipt) {
+        if (purchase.productId !== productId) {
+          Log.warn(
+            TAG,
+            'purchaseUpdatedListener',
+            'not this product',
+            purchase.productId
+          );
+          return;
+        }
+        const payload =
+          purchase.purchaseToken || purchase.transactionReceipt || '';
+        if (!payload) {
+          setError('Try again later');
           Log.warn(TAG, 'purchaseUpdatedListener', 'canceled');
           return;
         }
         Log.debug(TAG, 'purchaseUpdatedListener', purchase);
         setIsLoading(true);
         try {
-          const payload =
-            purchase.purchaseToken || purchase.transactionReceipt || '';
-
           const request = new BuyProductRequest();
           request.setSlug(productId);
           request.setPayload(payload);
@@ -146,23 +146,29 @@ function ItemPremium({
         } catch (e) {
           const message = Strings.getError(e);
           setError(message);
+          Log.warn(TAG, 'purchaseUpdatedListener', e);
         }
 
         setIsLoading(false);
+        setWaitForPurchase(false);
       }
     );
 
     const purchaseErrorSubscription = RNIap.purchaseErrorListener(
       (e: RNIap.PurchaseError) => {
+        setError(e.debugMessage || 'Error validating purchase');
         setWaitForPurchase(false);
-        const message = Strings.getError(e);
-        setError(message);
       }
     );
+    RNIap.requestPurchase(productId, false);
 
+    const timeout = setTimeout(() => {
+      setWaitForPurchase(false);
+    }, 10 * 1000);
     return () => {
       purchaseErrorSubscription.remove();
       purchaseUpdateSubscription.remove();
+      timeout && clearTimeout(timeout);
     };
   }, [waitForPurchase]);
 
@@ -177,8 +183,8 @@ function ItemPremium({
   };
 
   useEffect(() => {
-    !isPurchased && loadProduct();
-  }, [isPurchased]);
+    !isPurchased && !isLoading && !product && loadProduct();
+  }, [isPurchased, isLoading, product]);
 
   const price = product ? `- ${product.localizedPrice}` : '';
   const buttonTitle = isPurchased ? 'Purchased' : `Purchase Now ${price}`;

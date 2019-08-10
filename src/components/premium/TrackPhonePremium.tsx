@@ -134,6 +134,7 @@ function TrackPhonePremium({ style }: TrackPhonePremiumProps) {
       productId={'trackphone'}
       name={'Track Phone'}
       icon={'map-pin'}
+      key={'trackphone'}
       description={`If you enable this option we will send you an email daily with the last location you used to connect to the application.`}
     >
       {!!error && (

@@ -13,6 +13,7 @@ function WearableAccessPremium({ style }: WearableAccessPremiumProps) {
       productId={'wearableaccess'}
       name={'Wearable Access'}
       icon={'watch'}
+      key={'wearableaccess'}
       description={` If you have a device with WatchOS you can use the application to see information about your secret accounts.`}
     />
   );
