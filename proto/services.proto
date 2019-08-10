@@ -32,9 +32,69 @@ service Services {
     rpc GetAccount (AccountRequest) returns (AccountResponse) {
     }
 
-    rpc BuyProduct (BuyProductRequest) returns (BuyProductResponse) {
+    rpc SendLocation (SendLocationRequest) returns (SendLocationResponse) {
+    }
+    rpc EnableLocation (EnableLocationRequest) returns (EnableLocationResponse) {
+    }
+    rpc DisableLocation (DisableLocationRequest) returns (DisableLocationResponse) {
+    }
+    rpc GetEmail (GetEmailRequest) returns (GetEmailResponse) {
     }
 
+    rpc BuyProduct (BuyProductRequest) returns (BuyProductResponse) {
+    }
+    rpc HasProduct (HasProductRequest) returns (HasProductResponse) {
+    }
+
+}
+
+message GetEmailRequest {
+    string accessToken = 1;
+}
+message GetEmailResponse {
+    string email = 1;
+}
+
+message HasProductRequest {
+    string accessToken = 1;
+    string slug = 2;
+}
+message HasProductResponse {
+    bool purchased = 1;
+    string date = 2;
+}
+
+message BuyProductRequest {
+    string accessToken = 1;
+    string slug = 2;
+    string payload = 3;
+    string type = 4;
+}
+message BuyProductResponse {
+    int64 id = 1;
+    string date = 2;
+}
+
+
+message DisableLocationRequest {
+    string accessToken = 1;
+}
+message DisableLocationResponse {
+}
+
+message EnableLocationRequest {
+    string accessToken = 1;
+    string email = 2;
+}
+message EnableLocationResponse {
+}
+
+message SendLocationRequest {
+    string accessToken = 1;
+    string latitude = 2;
+    string longitude = 3;
+}
+message SendLocationResponse {
 }
 
 message PingRequest {
@@ -59,7 +119,6 @@ message DeleteDeviceRequest {
     int64 id = 2;
 }
 message DeleteDeviceResponse {
-    bool success = 1;
 }
 message Device {
     int64 id = 1;
@@ -78,7 +137,6 @@ message DeleteAccountRequest {
     int64 id = 2;
 }
 message DeleteAccountResponse {
-    bool success = 1;
 }
 
 message RefreshTokenRequest {
@@ -156,12 +214,4 @@ message AccountRequest {
 }
 message AccountResponse {
     Account account = 1;
-}
-
-message BuyProductRequest {
-    string accessToken = 1;
-    string slug = 2;
-}
-message BuyProductResponse {
-    bool success = 1;
 }

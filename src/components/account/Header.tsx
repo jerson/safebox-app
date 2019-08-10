@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   } as TextStyle
 });
 
-interface AccountHeaderProps {
+export interface AccountHeaderProps {
   title: string;
   icon: string;
   tintColor: string;

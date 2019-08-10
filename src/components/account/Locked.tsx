@@ -5,13 +5,17 @@ import {
   TextStyle,
   View,
   ImageStyle,
-  Image
+  Image,
+  Modal,
+  StatusBar,
+  ScrollView
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Button from '../ui/Button';
 import TextInput from '../ui/TextInput';
 import Text from '../ui/Text';
 import useTextInput from '../hooks/useTextInput';
+const tinyColor = require('tinycolor2');
 
 const styles = StyleSheet.create({
   shadow: {
@@ -57,63 +61,89 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     overflow: 'hidden',
     marginBottom: 10
-  } as ViewStyle
+  } as ViewStyle,
+  scrollViewContent: {
+    paddingBottom: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  } as ViewStyle,
+  scrollView: {
+    backgroundColor: tinyColor(Colors.accentDark)
+      .setAlpha(0.8)
+      .toRgbString(),
+    flex: 1
+  }
 });
 
 export interface LockedProps {
   onUnlock: (password: string) => void;
+  visible: boolean;
 }
 
-function Locked({ onUnlock }: LockedProps) {
+function Locked({ visible, onUnlock }: LockedProps) {
   const [password, passwordProps] = useTextInput('');
   const onUnlockCallback = () => {
     onUnlock(password);
   };
 
   return (
-    <View style={[styles.container, styles.shadow]}>
-      <View style={styles.logoContent}>
-        <Image
-          style={styles.logo}
-          resizeMode={'stretch'}
-          source={require('../../assets/images/logo.png')}
-        />
-      </View>
-      <Text style={styles.description}>
-        To continue you must enter the password with which you Sign In to
-        <Text style={{ color: Colors.primaryLight }}>
-          {' '}
-          Safe<Text weight={'Bold'}>Box</Text>
-        </Text>
-        .
-      </Text>
-      <TextInput
-        icon={'lock'}
-        secureTextEntry
-        keyboardType={'default'}
-        autoCapitalize={'none'}
-        autoCorrect={false}
-        autoCompleteType={'password'}
-        returnKeyType={'done'}
-        blurOnSubmit
-        onSubmitEditing={onUnlockCallback}
-        style={styles.textInput}
-        placeholder={'SafeBox password'}
-        help={
-          <Text style={styles.help}>
-            SafeBox password is used to unlock your secret passwords.
+    <Modal transparent animated animationType={'fade'} visible={visible}>
+      <StatusBar
+        animated
+        barStyle={'dark-content'}
+        backgroundColor={Colors.grey5}
+      />
+      <ScrollView
+        style={styles.scrollView}
+        keyboardShouldPersistTaps={'handled'}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <View style={[styles.container, styles.shadow]}>
+          <View style={styles.logoContent}>
+            <Image
+              style={styles.logo}
+              resizeMode={'stretch'}
+              source={require('../../assets/images/logo.png')}
+            />
+          </View>
+          <Text style={styles.description}>
+            To continue you must enter the password with which you Sign In to
+            <Text style={{ color: Colors.primaryLight }}>
+              {' '}
+              Safe<Text weight={'Bold'}>Box</Text>
+            </Text>
+            .
           </Text>
-        }
-        {...passwordProps}
-      />
-      <Button
-        icon={'unlock'}
-        style={styles.button}
-        onPress={onUnlockCallback}
-        typeColor={'primaryLight'}
-        title={'Unlock passwords'}
-      />
-    </View>
+          <TextInput
+            icon={'lock'}
+            secureTextEntry
+            keyboardType={'default'}
+            autoCapitalize={'none'}
+            autoCorrect={false}
+            autoCompleteType={'password'}
+            returnKeyType={'done'}
+            blurOnSubmit
+            autoFocus
+            onSubmitEditing={onUnlockCallback}
+            style={styles.textInput}
+            placeholder={'SafeBox password'}
+            help={
+              <Text style={styles.help}>
+                SafeBox password is used to unlock your secret passwords.
+              </Text>
+            }
+            {...passwordProps}
+          />
+          <Button
+            icon={'unlock'}
+            style={styles.button}
+            onPress={onUnlockCallback}
+            typeColor={'primaryLight'}
+            title={'Unlock passwords'}
+          />
+        </View>
+      </ScrollView>
+    </Modal>
   );
 }
 

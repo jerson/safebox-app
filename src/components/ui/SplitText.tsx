@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
   splitDefault: {
     backgroundColor: Colors.accent
   } as ViewStyle,
+  splitPrimaryLight: {
+    backgroundColor: Colors.accent
+  } as ViewStyle,
   label: {
     minWidth: 20,
     textAlign: 'center',
@@ -42,22 +45,32 @@ const styles = StyleSheet.create({
   } as TextStyle,
   labelContainerDefault: {
     backgroundColor: Colors.accentDark
+  } as TextStyle,
+  labelContainerPrimaryLight: {
+    backgroundColor: Colors.primaryLight
   } as TextStyle
 });
 export interface SplitTextProps {
   title?: string;
   style?: StyleProp<ViewStyle>;
-  type?: 'Primary' | 'Default';
+  type?: 'Primary' | 'PrimaryLight' | 'Default';
 }
 
 function SplitText({ title, type, style }: SplitTextProps) {
   return (
     <View style={[styles.container, style]}>
-      <View style={[styles.split, type === 'Default' && styles.splitDefault]} />
+      <View
+        style={[
+          styles.split,
+          type === 'Default' && styles.splitDefault,
+          type === 'PrimaryLight' && styles.splitPrimaryLight
+        ]}
+      />
       <View
         style={[
           styles.labelContainer,
-          type === 'Default' && styles.labelContainerDefault
+          type === 'Default' && styles.labelContainerDefault,
+          type === 'PrimaryLight' && styles.labelContainerPrimaryLight
         ]}
       >
         <Text style={styles.label}>{title}</Text>

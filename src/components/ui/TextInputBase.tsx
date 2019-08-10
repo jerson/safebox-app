@@ -100,12 +100,12 @@ function TextInputBaseWrapper(
   }));
 
   const onChangeTextCallback = (value: string) => {
-    Log.silent(TAG, 'onChangeTexteditable', editable, value);
+    Log.debug(TAG, 'onChangeTexteditable', editable, value);
     if (!editable) {
       return;
     }
 
-    Log.silent(TAG, 'onChangeText', value);
+    Log.debug(TAG, 'onChangeText', value);
     const isEmpty = !value;
     const error = '';
 

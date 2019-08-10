@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 12,
+      "elevation": 4,
+      "flexDirection": "row",
+      "marginBottom": 20,
+      "marginHorizontal": 20,
+      "opacity": 1,
+      "overflow": "visible",
+      "padding": 20,
+      "shadowColor": "#38414e",
+      "shadowOffset": Object {
+        "height": 4,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 16,
+    }
+  }
+  testID="touchable"
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 12,
+        },
+        Array [
+          Object {
+            "fontSize": 30,
+          },
+          Object {
+            "color": "#65748b",
+          },
+        ],
+        Object {
+          "fontFamily": "Feather",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <_class
+    style={
+      Object {
+        "paddingLeft": 10,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontFamily": "Nunito",
+            "fontSize": undefined,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          Object {},
+          Object {
+            "color": "#38414e",
+            "fontSize": 14,
+          },
+        ]
+      }
+    >
+      sample
+    </Text>
+  </_class>
+</_class>
+`;

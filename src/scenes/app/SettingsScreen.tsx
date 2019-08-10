@@ -7,6 +7,7 @@ import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
 import DeviceSettings from '../../components/settings/DeviceSettings';
 import SessionSettings from '../../components/settings/SessionSettings';
+import PremiumSettings from '../../components/settings/PremiumSettings';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1
   } as ViewStyle,
   block: {
-    marginBottom: 30
+    marginBottom: 40
   } as ViewStyle
 });
 
@@ -41,6 +42,7 @@ function SettingsScreen() {
         <SafeAreaView style={styles.safeArea}>
           <Content>
             <DeviceSettings style={styles.block} />
+            <PremiumSettings style={styles.block} />
             <SessionSettings style={styles.block} />
           </Content>
         </SafeAreaView>

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "height": 50,
+      "justifyContent": "center",
+      "opacity": 1,
+      "width": 50,
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 12,
+        },
+        Array [
+          Object {
+            "color": "#65748b",
+            "fontSize": 28,
+          },
+          undefined,
+        ],
+        Object {
+          "fontFamily": "Feather",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+</_class>
+`;
