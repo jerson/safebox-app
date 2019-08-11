@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
@@ -8,6 +8,7 @@ import Size from '../../modules/dimensions/Size';
 import ShowPassPremium from '../../components/premium/ShowPassPremium';
 import TrackPhonePremium from '../../components/premium/TrackPhonePremium';
 import WearableAccessPremium from '../../components/premium/WearableAccessPremium';
+import * as RNIap from 'react-native-iap';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +26,9 @@ const styles = StyleSheet.create({
 });
 
 function PremiumScreen() {
+  useEffect(() => {
+    RNIap.initConnection();
+  });
   return (
     <Container style={styles.container}>
       <StatusBar
