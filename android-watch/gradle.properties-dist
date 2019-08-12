@@ -1,0 +1,11 @@
+
+org.gradle.jvmargs=-Xmx1536m
+android.useAndroidX=true
+android.enableJetifier=true
+kotlin.code.style=official
+
+
+RELEASE_STORE_FILE=app.keystore
+RELEASE_KEY_ALIAS=YOUR_KEY_ALIAS
+RELEASE_STORE_PASSWORD=YOUR_STORE_PASSWORD
+RELEASE_KEY_PASSWORD=YOUR_KEY_PASSWORD
