@@ -99,10 +99,11 @@ function LocationManager() {
   };
 
   const stopTracking = () => {
-    watchID && Geolocation.clearWatch(watchID);
-    Geolocation.stopObserving();
-
-    setWatchId(0);
+    if(watchID){
+      Geolocation.clearWatch(watchID);
+      Geolocation.stopObserving();
+      setWatchId(0);
+    }
   };
 
   useEffect(() => {
