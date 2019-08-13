@@ -12,8 +12,8 @@ struct LoginView: View {
     
     let host: HostingController!
     
-    @State var username = ""
-    @State var password = ""
+    @State var username = "jerson"
+    @State var password = "123456"
     @State var showingAlert = false
     @State var error = ""
     
