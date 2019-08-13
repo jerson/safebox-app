@@ -7,22 +7,44 @@
 //
 
 import SwiftUI
+import Safebox
 
 struct AccountView: View {
     
+    var account: SafeboxAccountSingle
+    
     var body: some View {
-        ScrollView {
-         VStack {
-            Text("SafeBox")
+   
+            VStack(alignment: .leading) {
+            Text(account.label)
+                .font(.headline)
+                .fontWeight(.medium)
+                .foregroundColor(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.8))
+                .multilineTextAlignment(.leading)
+                Text(account.username)
+                    .fontWeight(.regular)
+                .multilineTextAlignment(.leading)
+                Text("Hint: \(account.hint)")
+                .font(.footnote)
+                .foregroundColor(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.5))
+                .multilineTextAlignment(.leading)
             }
-        }
+            .padding(.horizontal)
     }
 }
 
 #if DEBUG
 struct AccountView_Previews: PreviewProvider {
+    
+    static func  account() -> SafeboxAccountSingle {
+        let account = SafeboxAccountSingle()
+        account.username = "username454"
+        account.label = "Facebook Account"
+        account.hint = "Same gmail password"
+        return account
+    }
     static var previews: some View {
-        AccountView()
+        AccountView(account:account() )
     }
 }
 #endif

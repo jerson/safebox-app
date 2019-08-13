@@ -7,14 +7,14 @@
 //
 
 import SwiftUI
+import Safebox
 
 struct AccountsView: View {
     
     var body: some View {
-        ScrollView {
-         VStack {
-            Text("SafeBox")
-            }
+        
+        List {
+            AccountView(account: SafeboxAccountSingle())
         }
     }
 }

@@ -24,14 +24,11 @@ struct LoginView: View {
             Button(action: {
             
                 do{
-                    let response = try Client.connect().login(self.username, password: self.password)
+                    let response = try Client.connect().loginPremium(self.username, password: self.password)
                       
                     print("Response: \(response)")
                 }catch let error {
-                    
                   print("Error: \(error)")
-
-                
                 }
                 self.username = "test"
                 

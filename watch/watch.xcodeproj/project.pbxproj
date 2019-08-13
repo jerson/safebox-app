@@ -11,7 +11,6 @@
 		31E3299B22F52FD100A1A52D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E3299922F52FD100A1A52D /* Interface.storyboard */; };
 		31E3299D22F52FD200A1A52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E3299C22F52FD200A1A52D /* Assets.xcassets */; };
 		31E329A422F52FD300A1A52D /* watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 31E329A322F52FD300A1A52D /* watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		31E329A922F52FD300A1A52D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E329A822F52FD300A1A52D /* ContentView.swift */; };
 		31E329AB22F52FD300A1A52D /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E329AA22F52FD300A1A52D /* HostingController.swift */; };
 		31E329AD22F52FD300A1A52D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E329AC22F52FD300A1A52D /* ExtensionDelegate.swift */; };
 		31E329AF22F52FD400A1A52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E329AE22F52FD400A1A52D /* Assets.xcassets */; };
@@ -81,7 +80,6 @@
 		31E3299C22F52FD200A1A52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31E3299E22F52FD200A1A52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E329A322F52FD300A1A52D /* watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31E329A822F52FD300A1A52D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		31E329AA22F52FD300A1A52D /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		31E329AC22F52FD300A1A52D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		31E329AE22F52FD400A1A52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				84A9BE9823031CFF00E094A6 /* rpc */,
-				31E329A822F52FD300A1A52D /* ContentView.swift */,
 				31E329AA22F52FD300A1A52D /* HostingController.swift */,
 				31E329AC22F52FD300A1A52D /* ExtensionDelegate.swift */,
 				31E329AE22F52FD400A1A52D /* Assets.xcassets */,
@@ -330,7 +327,6 @@
 				31E329AB22F52FD300A1A52D /* HostingController.swift in Sources */,
 				849D9E702300D74400CDB74B /* Client.swift in Sources */,
 				84F601CD230115330054D4DB /* AccountsView.swift in Sources */,
-				31E329A922F52FD300A1A52D /* ContentView.swift in Sources */,
 				84F601CF2301164C0054D4DB /* AccountView.swift in Sources */,
 				84F601CB2301151B0054D4DB /* LoginView.swift in Sources */,
 				31E329AD22F52FD300A1A52D /* ExtensionDelegate.swift in Sources */,
