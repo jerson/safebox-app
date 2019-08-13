@@ -11,9 +11,10 @@ import SwiftUI
 struct LoginView: View {
 
     
-    @State var username: String = ""
-    @State var password: String = ""
+    @State var username = ""
+    @State var password = ""
     @State var showingAlert = false
+    @State var error = ""
     
     var body: some View {
         ScrollView  {
@@ -22,19 +23,23 @@ struct LoginView: View {
             TextField("Username", text: self.$username)
             TextField("Password", text: self.$password)
             Button(action: {
-            
+
+            self.error = ""
                 do{
                     let response = try Client.connect().loginPremium(self.username, password: self.password)
-                      
+
+                      self.password = ""
                     print("Response: \(response)")
-                }catch let error {
-                  print("Error: \(error)")
+                }catch let e {
+                    self.showingAlert = true
+                    self.error = e.localizedDescription
                 }
-                self.username = "test"
                 
                 
             }) {
                 Text("Sign In")
+            }.alert(isPresented: self.$showingAlert) { () -> Alert in
+                Alert.init(title: Text(self.error))
                 }
             }
         }
