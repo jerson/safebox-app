@@ -14,7 +14,7 @@
 @class SafeboxAccount;
 @class SafeboxAccountResponse;
 @class SafeboxAccountSingle;
-@class SafeboxAccountsResponse;
+@class SafeboxAccountSingleCollection;
 @class SafeboxAddAccountResponse;
 @class SafeboxAuthResponse;
 @class SafeboxKeyPairResponse;
@@ -62,19 +62,66 @@
 @property (nonatomic) NSString* _Nonnull label;
 @property (nonatomic) NSString* _Nonnull username;
 @property (nonatomic) NSString* _Nonnull hint;
+/**
+ * Equal ...
+ */
+- (BOOL)equal:(SafeboxAccountSingle* _Nullable)s2;
 @end
 
 /**
- * AccountsResponse ...
+ * AccountSingleCollection ...
  */
-@interface SafeboxAccountsResponse : NSObject <goSeqRefInterface> {
+@interface SafeboxAccountSingleCollection : NSObject <goSeqRefInterface> {
 }
 @property(strong, readonly) _Nonnull id _ref;
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
-- (nonnull instancetype)init;
-// skipped field AccountsResponse.Accounts with unsupported type: []*safebox.jerson.dev/api/mobile.AccountSingle
+// skipped constructor AccountSingleCollection.NewAccountSingleCollection with unsupported parameter or return types
 
+/**
+ * At ...
+ */
+- (SafeboxAccountSingle* _Nullable)at:(long)i;
+/**
+ * Clear ...
+ */
+- (void)clear;
+/**
+ * Clone ...
+ */
+- (SafeboxAccountSingleCollection* _Nullable)clone;
+/**
+ * Copy ...
+ */
+- (void)copy:(SafeboxAccountSingleCollection* _Nullable)rhs;
+/**
+ * Count ...
+ */
+- (long)count;
+/**
+ * Equal ...
+ */
+- (BOOL)equal:(SafeboxAccountSingleCollection* _Nullable)rhs;
+/**
+ * Index ...
+ */
+- (long)index:(SafeboxAccountSingle* _Nullable)rhs;
+/**
+ * Insert ...
+ */
+- (void)insert:(long)i n:(SafeboxAccountSingle* _Nullable)n;
+/**
+ * MarshalJSON ...
+ */
+- (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
+/**
+ * Remove ...
+ */
+- (void)remove:(long)i;
+/**
+ * UnmarshalJSON ...
+ */
+- (BOOL)unmarshalJSON:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
 @end
 
 /**
@@ -144,11 +191,22 @@
 @property (nonatomic) SafeboxSession* _Nullable session;
 - (SafeboxAddAccountResponse* _Nullable)addAccount:(NSString* _Nullable)label hint:(NSString* _Nullable)hint username:(NSString* _Nullable)username password:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
 - (SafeboxAccountResponse* _Nullable)getAccount:(int64_t)id_ error:(NSError* _Nullable* _Nullable)error;
-- (SafeboxAccountsResponse* _Nullable)getAccounts:(NSError* _Nullable* _Nullable)error;
+- (SafeboxAccountSingleCollection* _Nullable)getAccounts:(NSError* _Nullable* _Nullable)error;
 - (SafeboxAuthResponse* _Nullable)login:(NSString* _Nullable)username password:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
 - (SafeboxAuthResponse* _Nullable)loginDevice:(NSString* _Nullable)publicKey error:(NSError* _Nullable* _Nullable)error;
+- (SafeboxAuthResponse* _Nullable)loginDevicePremium:(NSString* _Nullable)publicKey error:(NSError* _Nullable* _Nullable)error;
+- (SafeboxAuthResponse* _Nullable)loginPremium:(NSString* _Nullable)username password:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
 - (SafeboxLogoutResponse* _Nullable)logout:(NSError* _Nullable* _Nullable)error;
+- (SafeboxAuthResponse* _Nullable)refreshToken:(NSError* _Nullable* _Nullable)error;
 - (SafeboxAuthResponse* _Nullable)register:(NSString* _Nullable)username password:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
+/**
+ * SetSessionPassword ...
+ */
+- (void)setSessionPassword:(NSString* _Nullable)password;
+/**
+ * SetSessionResponse ...
+ */
+- (void)setSessionResponse:(SafeboxAuthResponse* _Nullable)response;
 @end
 
 /**
@@ -160,11 +218,10 @@
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nonnull instancetype)init;
-/**
- * SetAccessToken ...
- */
-- (void)setAccessToken:(NSString* _Nullable)token;
 @end
+
+// skipped function NewAccountSingleCollection with unsupported parameter or return types
+
 
 /**
  * NewSafeBox ...
