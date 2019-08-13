@@ -61,9 +61,7 @@ function AccountsScreen() {
     try {
       const response = await Client.getAccounts();
       setAccounts(response.getAccountsList());
-      console.error(response);
     } catch (e) {
-      console.error(e);
       const message = Strings.getError(e);
       setError(message);
     }

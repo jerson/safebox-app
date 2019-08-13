@@ -10,8 +10,12 @@ import WatchKit
 import Foundation
 import SwiftUI
 
-class HostingController: WKHostingController<ContentView> {
-    override var body: ContentView {
-        return ContentView()
+class HostingController: WKHostingController<LoginView> {
+    override var body: LoginView {
+        return LoginView(host: self)
+    }
+    
+    func presentAccounts() {
+        self.presentController(withNames: ["Accounts"], contexts: nil)
     }
 }
