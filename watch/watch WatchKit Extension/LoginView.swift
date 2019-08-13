@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct LoginView: View {
-
     
-    @State var username = ""
-    @State var password = ""
+    let host: HostingController!
+    
+    @State var username = "jerson"
+    @State var password = "123456"
     @State var showingAlert = false
     @State var error = ""
     
@@ -24,21 +25,20 @@ struct LoginView: View {
                     .foregroundColor(Color(red: 0.56, green: 0.40, blue: 0.96, opacity: 1.0))
                     .multilineTextAlignment(.center)
             TextField("Username", text: self.$username)
-            TextField("Password", text: self.$password)
+            SecureField("Password", text: self.$password)
             Button(action: {
 
             self.error = ""
                 do{
                     let response = try Client.connect().loginPremium(self.username, password: self.password)
 
-                      self.password = ""
-                    print("Response: \(response)")
+                    Client.connect().setSessionResponse(response)
+                    self.password = ""
+                    self.host.presentAccounts()
                 }catch let e {
                     self.showingAlert = true
                     self.error = e.localizedDescription
                 }
-                
-                
             }) {
                 Text("Sign In").foregroundColor(Color(red: 0.98, green: 0.99, blue: 1.0, opacity: 1.0))
             }.alert(isPresented: self.$showingAlert) { () -> Alert in
@@ -53,7 +53,7 @@ struct LoginView: View {
 #if DEBUG
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(host:nil)
     }
 }
 #endif

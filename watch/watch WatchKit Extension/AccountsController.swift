@@ -9,13 +9,16 @@
 import WatchKit
 import Foundation
 import SwiftUI
+import Safebox
 
-class HostingController: WKHostingController<LoginView> {
-    override var body: LoginView {
-        return LoginView(host: self)
+class AccountsController: WKHostingController<AccountsView> {
+    
+
+    override var body: AccountsView {
+        return AccountsView(host: self)
     }
     
-    func presentAccounts() {
-        self.presentController(withNames: ["Accounts"], contexts: nil)
+    func presentLogin() {
+        self.presentController(withNames: ["Login"], contexts: nil)
     }
 }

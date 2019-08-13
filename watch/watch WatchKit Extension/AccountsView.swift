@@ -11,18 +11,42 @@ import Safebox
 
 struct AccountsView: View {
     
+    let host: AccountsController!
+    @State var accounts = SafeboxAccountSingleCollection()
+    @State var total = 0
+    
     var body: some View {
         
         List {
-            AccountView(account: SafeboxAccountSingle())
-        }
+            ForEach(0..<self.total) { index in
+                NavigationLink(destination: AccountView(account: self.accounts.at(index)!)) {
+                    AccountSingleView(account: self.accounts.at(index)!)
+                                          }
+                       }
+        
+            }.onAppear(
+                perform: {
+                    do{
+                        let response = try Client.connect().getAccounts()
+        
+                        self.accounts  = response
+                        self.total = self.accounts.count()
+                        
+                    }catch let e {
+                        print("error \(e.localizedDescription)")
+                    }
+
+            }
+        ).navigationBarTitle(Text("Accounts"))
     }
 }
+
+
 
 #if DEBUG
 struct AccountsView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsView()
+        AccountsView(host: nil, accounts: SafeboxAccountSingleCollection())
     }
 }
 #endif
