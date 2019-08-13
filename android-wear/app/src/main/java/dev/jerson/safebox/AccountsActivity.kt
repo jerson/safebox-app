@@ -1,4 +1,4 @@
-package dev.jerson.safebox.watch
+package dev.jerson.safebox
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dev.jerson.safebox.watch.adapters.AccountAdapter
-import dev.jerson.safebox.watch.grpc.Client
+import dev.jerson.safebox.adapters.AccountAdapter
+import dev.jerson.safebox.grpc.Client
 import kotlinx.android.synthetic.main.activity_accounts.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -35,7 +35,7 @@ class AccountsActivity : WearableActivity() {
                 uiThread {
                     list.visibility = View.VISIBLE
                     progressBar.visibility = View.GONE
-                    list.layoutManager = LinearLayoutManager(this@AccountsActivity) as RecyclerView.LayoutManager?
+                    list.layoutManager = LinearLayoutManager(this@AccountsActivity)
                     list.adapter = AccountAdapter(accounts, this@AccountsActivity)
 
                 }

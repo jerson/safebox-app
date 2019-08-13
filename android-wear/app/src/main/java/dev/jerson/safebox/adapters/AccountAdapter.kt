@@ -1,11 +1,11 @@
-package dev.jerson.safebox.watch.adapters
+package dev.jerson.safebox.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.jerson.safebox.watch.R
+import dev.jerson.safebox.R
 import kotlinx.android.synthetic.main.account_item.view.*
 import safebox.AccountSingleCollection
 

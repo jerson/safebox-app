@@ -1,4 +1,4 @@
-package dev.jerson.safebox.watch.grpc
+package dev.jerson.safebox.grpc
 
 import safebox.SafeBox
 import safebox.Safebox

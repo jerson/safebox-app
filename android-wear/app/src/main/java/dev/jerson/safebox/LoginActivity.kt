@@ -1,4 +1,4 @@
-package dev.jerson.safebox.watch
+package dev.jerson.safebox
 
 import android.content.Intent
 import android.os.Build
@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.view.View
 import android.widget.Toast
-import dev.jerson.safebox.watch.grpc.Client
+import dev.jerson.safebox.grpc.Client
 import kotlinx.android.synthetic.main.login_activity.*
 
 class LoginActivity : WearableActivity() {

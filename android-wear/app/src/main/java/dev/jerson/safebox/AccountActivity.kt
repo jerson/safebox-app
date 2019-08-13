@@ -1,4 +1,4 @@
-package dev.jerson.safebox.watch
+package dev.jerson.safebox
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
