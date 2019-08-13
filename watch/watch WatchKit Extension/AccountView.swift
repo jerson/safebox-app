@@ -24,12 +24,14 @@ struct AccountView: View {
                 Text(account.username)
                     .fontWeight(.regular)
                 .multilineTextAlignment(.leading)
-                Text("Hint: \(account.hint)")
-                .font(.footnote)
-                .foregroundColor(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.5))
-                .multilineTextAlignment(.leading)
+                if (!(account.hint=="")){
+                    Text("Hint: \(account.hint)").font(.footnote)
+                    .foregroundColor(Color(red: 1.0, green: 1.0, blue: 1.0, opacity: 0.5))
+                    .multilineTextAlignment(.leading)
+                }
+                
             }
-            .padding(.horizontal)
+            .padding(.all)
     }
 }
 

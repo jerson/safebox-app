@@ -12,8 +12,8 @@ struct LoginView: View {
     
     let host: HostingController!
     
-    @State var username = "jerson"
-    @State var password = "123456"
+    @State var username = ""
+    @State var password = ""
     @State var showingAlert = false
     @State var error = ""
     
@@ -30,9 +30,8 @@ struct LoginView: View {
 
             self.error = ""
                 do{
-                    let response = try Client.connect().loginPremium(self.username, password: self.password)
+                    _ = try Client.connect().loginPremium(self.username, password: self.password)
 
-                    Client.connect().setSessionResponse(response)
                     self.password = ""
                     self.host.presentAccounts()
                 }catch let e {

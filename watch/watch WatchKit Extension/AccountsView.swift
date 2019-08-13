@@ -18,23 +18,25 @@ struct AccountsView: View {
     var body: some View {
         
         List {
-            ForEach(0..<self.total) { index in
+            if (self.total>0){
+                ForEach(0..<self.total) { index in
                 NavigationLink(destination: AccountView(account: self.accounts.at(index)!)) {
-                    AccountSingleView(account: self.accounts.at(index)!)
-                                          }
+                    AccountView(account: self.accounts.at(index)!)
+                }
                        }
+            }
         
             }.onAppear(
                 perform: {
-                    do{
-                        let response = try Client.connect().getAccounts()
-        
-                        self.accounts  = response
-                        self.total = self.accounts.count()
-                        
-                    }catch let e {
-                        print("error \(e.localizedDescription)")
-                    }
+                        do{
+                            let response = try Client.connect().getAccounts()
+            
+                            self.accounts  = response
+                            self.total = self.accounts.count()
+                            
+                        }catch let e {
+                            print("error \(e.localizedDescription)")
+                        }
 
             }
         ).navigationBarTitle(Text("Accounts"))
@@ -45,8 +47,26 @@ struct AccountsView: View {
 
 #if DEBUG
 struct AccountsView_Previews: PreviewProvider {
+    
+    static func  account() -> SafeboxAccountSingle {
+        let account = SafeboxAccountSingle()
+        account.username = "username454"
+        account.label = "Facebook Account"
+        account.hint = "Same gmail password"
+        return account
+    }
+    
+    static func  accounts() -> SafeboxAccountSingleCollection {
+        let accounts = SafeboxAccountSingleCollection()
+   
+        for index in 0..<20 {
+            accounts.insert(index, n: account())
+        }
+        return accounts
+    }
+    
     static var previews: some View {
-        AccountsView(host: nil, accounts: SafeboxAccountSingleCollection())
+        AccountsView(host: nil, accounts: accounts(),total: 10)
     }
 }
 #endif
