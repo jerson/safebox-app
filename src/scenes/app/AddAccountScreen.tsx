@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import {
   KeyboardAvoidingView,
   StyleSheet,
@@ -6,33 +6,35 @@ import {
   ViewStyle,
   ScrollView,
   StatusBar,
-  Platform
-} from 'react-native';
-import { SafeAreaView } from 'react-navigation';
-import Colors from '../../modules/constants/Colors';
-import TextInput, { TextInputRef } from '../../components/ui/TextInput';
-import Button from '../../components/ui/Button';
-import Container from '../../components/ui/Container';
-import Content from '../../components/ui/Content';
-import Size from '../../modules/dimensions/Size';
-import useTextInput from '../../components/hooks/useTextInput';
-import Client from '../../services/Client';
+  Platform,
+  InteractionManager,
+  Keyboard
+} from "react-native";
+import { SafeAreaView } from "react-navigation";
+import Colors from "../../modules/constants/Colors";
+import TextInput, { TextInputRef } from "../../components/ui/TextInput";
+import Button from "../../components/ui/Button";
+import Container from "../../components/ui/Container";
+import Content from "../../components/ui/Content";
+import Size from "../../modules/dimensions/Size";
+import useTextInput from "../../components/hooks/useTextInput";
+import Client from "../../services/Client";
 import {
   AddAccountRequest,
   Account,
   AccountSingle
-} from '../../proto/services_pb';
-import OpenPGP from 'react-native-fast-openpgp';
+} from "../../proto/services_pb";
+import OpenPGP from "react-native-fast-openpgp";
 
-import Session from '../../services/Session';
-import Strings from '../../modules/format/Strings';
-import AlertMessage from '../../components/ui/AlertMessage';
-import useAnimatedState from '../../components/hooks/useAnimatedState';
-import SplitText from '../../components/ui/SplitText';
-import useIconLabel from '../../components/hooks/useIconLabel';
+import Session from "../../services/Session";
+import Strings from "../../modules/format/Strings";
+import AlertMessage from "../../components/ui/AlertMessage";
+import useAnimatedState from "../../components/hooks/useAnimatedState";
+import SplitText from "../../components/ui/SplitText";
+import useIconLabel from "../../components/hooks/useIconLabel";
 
-import { useNavigation } from 'react-navigation-hooks';
-import Log from '../../modules/log/Log';
+import { useNavigation } from "react-navigation-hooks";
+import Log from "../../modules/log/Log";
 
 const styles = StyleSheet.create({
   container: {
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   form: {
     width: 280,
     marginBottom: 60,
-    alignSelf: 'center'
+    alignSelf: "center"
   } as ViewStyle,
   button: {
     marginTop: 20
@@ -65,17 +67,17 @@ const encode = async (input: string) => {
   try {
     return await OpenPGP.encrypt(input, Session.getPublicKey());
   } catch (e) {
-    Log.warn(TAG, 'encode', e);
-    throw new Error('error encrypting your information, try again later');
+    Log.warn(TAG, "encode", e);
+    throw new Error("error encrypting your information, try again later");
   }
 };
 
-const TAG = '[AddAccountScreen]';
+const TAG = "[AddAccountScreen]";
 function AddAccountScreen() {
   const { replace } = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useAnimatedState('');
+  const [error, setError] = useAnimatedState("");
 
   const labelRef = useRef<TextInputRef>(null);
   const hintRef = useRef<TextInputRef>(null);
@@ -83,22 +85,22 @@ function AddAccountScreen() {
   const passwordRef = useRef<TextInputRef>(null);
   const repeatPasswordRef = useRef<TextInputRef>(null);
 
-  const [label, labelProps] = useTextInput('');
-  const [hint, hintProps] = useTextInput('');
-  const [username, usernameProps] = useTextInput('');
-  const [password, passwordProps] = useTextInput('');
-  const [repeatPassword, repeatPasswordProps] = useTextInput('');
+  const [label, labelProps] = useTextInput("");
+  const [hint, hintProps] = useTextInput("");
+  const [username, usernameProps] = useTextInput("");
+  const [password, passwordProps] = useTextInput("");
+  const [repeatPassword, repeatPasswordProps] = useTextInput("");
 
   const isValid = () => {
     const isValid = [!!label, !!username, !!password, !!repeatPassword].every(
       value => value
     );
     if (!isValid) {
-      setError('Complete missing fields');
+      setError("Complete missing fields");
       return false;
     }
     if (password !== repeatPassword) {
-      setError('Passwords must match');
+      setError("Passwords must match");
       return false;
     }
     return isValid;
@@ -125,7 +127,7 @@ function AddAccountScreen() {
       accountSingle.setUsername(username);
       accountSingle.setLabel(label);
 
-      replace('Account', { account: accountSingle });
+      replace("Account", { account: accountSingle });
       return;
     } catch (e) {
       const message = Strings.getError(e);
@@ -137,9 +139,10 @@ function AddAccountScreen() {
     if (!isValid()) {
       return;
     }
+    Keyboard.dismiss();
 
     setIsLoading(true);
-    requestAnimationFrame(async () => {
+    InteractionManager.runAfterInteractions(async () => {
       await submit();
     });
   };
@@ -149,11 +152,11 @@ function AddAccountScreen() {
     <Container style={styles.container}>
       <StatusBar
         animated
-        barStyle={'dark-content'}
+        barStyle={"dark-content"}
         backgroundColor={Colors.grey2}
       />
       <ScrollView
-        keyboardShouldPersistTaps={'handled'}
+        keyboardShouldPersistTaps={"handled"}
         contentContainerStyle={{
           minHeight: Size.getVisibleTabScreenHeight()
         }}
@@ -162,17 +165,17 @@ function AddAccountScreen() {
         <SafeAreaView style={styles.safeArea}>
           <Content center>
             <KeyboardAvoidingView
-              behavior={'padding'}
-              enabled={Platform.OS === 'ios'}
+              behavior={"padding"}
+              enabled={Platform.OS === "ios"}
             >
               <View style={styles.form}>
                 {!!error && <AlertMessage message={error} />}
                 <TextInput
-                  placeholder={'Label'}
-                  keyboardType={'default'}
-                  autoCapitalize={'sentences'}
+                  placeholder={"Label"}
+                  keyboardType={"default"}
+                  autoCapitalize={"sentences"}
                   autoCorrect
-                  returnKeyType={'next'}
+                  returnKeyType={"next"}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={labelRef}
@@ -183,12 +186,12 @@ function AddAccountScreen() {
                   {...labelExtraProps}
                 />
                 <TextInput
-                  icon={'feather'}
-                  placeholder={'Hint (optional)'}
-                  keyboardType={'default'}
-                  autoCapitalize={'sentences'}
+                  icon={"feather"}
+                  placeholder={"Hint (optional)"}
+                  keyboardType={"default"}
+                  autoCapitalize={"sentences"}
                   autoCorrect
-                  returnKeyType={'next'}
+                  returnKeyType={"next"}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={hintRef}
@@ -198,18 +201,18 @@ function AddAccountScreen() {
                   {...hintProps}
                 />
                 <SplitText
-                  type={'Default'}
+                  type={"Default"}
                   style={styles.splitView}
-                  title={'Sensitive credentials'}
+                  title={"Sensitive credentials"}
                 />
                 <TextInput
-                  icon={'user'}
-                  placeholder={'Username'}
-                  keyboardType={'default'}
-                  autoCapitalize={'none'}
+                  icon={"user"}
+                  placeholder={"Username"}
+                  keyboardType={"default"}
+                  autoCapitalize={"none"}
                   autoCorrect={false}
-                  autoCompleteType={'off'}
-                  returnKeyType={'next'}
+                  autoCompleteType={"off"}
+                  returnKeyType={"next"}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={usernameRef}
@@ -219,14 +222,14 @@ function AddAccountScreen() {
                   {...usernameProps}
                 />
                 <TextInput
-                  icon={'lock'}
-                  placeholder={'Password'}
+                  icon={"lock"}
+                  placeholder={"Password"}
                   secureTextEntry
-                  keyboardType={'default'}
-                  autoCapitalize={'none'}
+                  keyboardType={"default"}
+                  autoCapitalize={"none"}
                   autoCorrect={false}
-                  autoCompleteType={'off'}
-                  returnKeyType={'next'}
+                  autoCompleteType={"off"}
+                  returnKeyType={"next"}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={passwordRef}
@@ -237,14 +240,14 @@ function AddAccountScreen() {
                   {...passwordProps}
                 />
                 <TextInput
-                  icon={'lock'}
-                  placeholder={'Repeat password'}
+                  icon={"lock"}
+                  placeholder={"Repeat password"}
                   secureTextEntry
-                  keyboardType={'default'}
-                  autoCapitalize={'none'}
+                  keyboardType={"default"}
+                  autoCapitalize={"none"}
                   autoCorrect={false}
-                  autoCompleteType={'off'}
-                  returnKeyType={'done'}
+                  autoCompleteType={"off"}
+                  returnKeyType={"done"}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={repeatPasswordRef}
@@ -256,8 +259,8 @@ function AddAccountScreen() {
                 <Button
                   isLoading={isLoading}
                   style={styles.button}
-                  typeColor={'primaryLight'}
-                  title={'Add secret account'}
+                  typeColor={"primaryLight"}
+                  title={"Add secret account"}
                   onPress={tryToSubmit}
                 />
               </View>
@@ -270,7 +273,7 @@ function AddAccountScreen() {
 }
 
 AddAccountScreen.navigationOptions = () => ({
-  title: 'Add secret account'
+  title: "Add secret account"
 });
 
 export default AddAccountScreen;

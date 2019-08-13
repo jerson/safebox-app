@@ -9,6 +9,7 @@ import Log from "../../modules/log/Log";
 import Geolocation, {
   GeolocationResponse
 } from "@react-native-community/geolocation";
+import { Platform } from "react-native";
 
 const TAG = "[LocationManager]";
 function LocationManager() {
@@ -76,7 +77,7 @@ function LocationManager() {
   };
 
   const startTracking = () => {
-    Geolocation.requestAuthorization();
+    Platform.OS === "ios" && Geolocation.requestAuthorization();
     Geolocation.getCurrentPosition(
       position => {
         sendLocation(position);
@@ -99,7 +100,7 @@ function LocationManager() {
   };
 
   const stopTracking = () => {
-    if(watchID){
+    if (watchID) {
       Geolocation.clearWatch(watchID);
       Geolocation.stopObserving();
       setWatchId(0);
