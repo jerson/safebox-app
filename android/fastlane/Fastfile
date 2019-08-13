@@ -16,12 +16,20 @@ platform :android do
   desc "Deploy a new version to the Google Play - Release channel"
   lane :deploy_release do
     gradle(task: "clean bundleRelease")
-    upload_to_play_store(track: 'production')
+    upload_to_play_store(
+    track: 'production',
+    skip_upload_apk: true,
+    aab: 'app/build/outputs/bundle/release/app.aab'
+    )
   end
 
   desc "Deploy a new version to the Google Play - Beta channel"
   lane :deploy_release_beta do
     gradle(task: "clean bundleRelease")
-    upload_to_play_store(track: 'beta')
+    upload_to_play_store(
+    track: 'beta',
+    skip_upload_apk: true,
+    aab: 'app/build/outputs/bundle/release/app.aab'
+    )
   end
 end

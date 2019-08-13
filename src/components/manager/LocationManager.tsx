@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
-import { GeolocationReturnType } from 'react-native';
-import Emitter from '../../modules/listener/Emitter';
+import { useEffect, useState } from "react";
+import Emitter from "../../modules/listener/Emitter";
 import {
   HasProductRequest,
   SendLocationRequest
-} from '../../proto/services_pb';
-import Client from '../../services/Client';
-import Log from '../../modules/log/Log';
+} from "../../proto/services_pb";
+import Client from "../../services/Client";
+import Log from "../../modules/log/Log";
+import Geolocation, {
+  GeolocationResponse
+} from "@react-native-community/geolocation";
+import { Platform } from "react-native";
 
-const TAG = '[LocationManager]';
+const TAG = "[LocationManager]";
 function LocationManager() {
   const [enabled, setEnabled] = useState(false);
   const [watchID, setWatchId] = useState(0);
@@ -20,13 +23,20 @@ function LocationManager() {
   };
 
   useEffect(() => {
+    Geolocation.setRNConfiguration({
+      authorizationLevel: "always",
+      skipPermissionRequests: true
+    });
+  }, []);
+
+  useEffect(() => {
     const callback = (isPurchased: boolean) => {
       setEnabled(isPurchased);
     };
-    Emitter.on('onTrackPhoneEnabled', callback);
+    Emitter.on("onTrackPhoneEnabled", callback);
 
     return () => {
-      Emitter.off('onTrackPhoneEnabled', callback);
+      Emitter.off("onTrackPhoneEnabled", callback);
     };
   }, []);
 
@@ -38,50 +48,51 @@ function LocationManager() {
         setEnabled(false);
       }
     };
-    Emitter.on('onSession', callback);
+    Emitter.on("onSession", callback);
     return () => {
-      Emitter.off('onSession', callback);
+      Emitter.off("onSession", callback);
     };
   }, []);
 
   const check = async () => {
     try {
       const request = new HasProductRequest();
-      request.setSlug('trackphone');
+      request.setSlug("trackphone");
       const response = await Client.hasProduct(request);
       setEnabled(response.getPurchased());
     } catch (e) {
-      Log.warn(TAG, 'check', e);
+      Log.warn(TAG, "check", e);
     }
   };
 
-  const sendLocation = async (location: GeolocationReturnType) => {
+  const sendLocation = async (location: GeolocationResponse) => {
     try {
       const request = new SendLocationRequest();
       request.setLatitude(location.coords.latitude.toString());
       request.setLongitude(location.coords.longitude.toString());
       await Client.sendLocation(request);
     } catch (e) {
-      Log.warn(TAG, 'sendLocation', e);
+      Log.warn(TAG, "sendLocation", e);
     }
   };
 
   const startTracking = () => {
-    navigator.geolocation.getCurrentPosition(
+    Platform.OS === "ios" && Geolocation.requestAuthorization();
+    Geolocation.getCurrentPosition(
       position => {
         sendLocation(position);
       },
       e => {
-        Log.warn(TAG, 'getCurrentPosition', e);
+        Log.warn(TAG, "getCurrentPosition", e);
       },
       options
     );
-    const watchId = navigator.geolocation.watchPosition(
+    const watchId = Geolocation.watchPosition(
       position => {
         sendLocation(position);
       },
       e => {
-        Log.warn(TAG, 'watchPosition', e);
+        Log.warn(TAG, "watchPosition", e);
       },
       options
     );
@@ -89,8 +100,11 @@ function LocationManager() {
   };
 
   const stopTracking = () => {
-    watchID && navigator.geolocation.clearWatch(watchID);
-    setWatchId(0);
+    if (watchID) {
+      Geolocation.clearWatch(watchID);
+      Geolocation.stopObserving();
+      setWatchId(0);
+    }
   };
 
   useEffect(() => {

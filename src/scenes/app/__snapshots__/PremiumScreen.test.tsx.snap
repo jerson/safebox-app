@@ -222,7 +222,6 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
-                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -230,44 +229,63 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <_class
+                  <Text
+                    allowFontScaling={false}
                     style={
                       Array [
                         Object {
-                          "bottom": 0,
-                          "justifyContent": "center",
-                          "left": 10,
-                          "position": "absolute",
-                          "top": 0,
+                          "color": undefined,
+                          "fontSize": 12,
                         },
-                        undefined,
+                        Array [
+                          Object {
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "marginRight": 4,
+                            "top": 3,
+                          },
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
                         Object {
-                          "left": 0,
-                          "position": "relative",
+                          "fontFamily": "Feather",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
                         },
+                        Object {},
                       ]
                     }
                   >
-                    <_class
-                      style={
+                    
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontFamily": "Nunito",
+                          "fontSize": undefined,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                        },
+                        Object {},
                         Array [
-                          false,
-                          false,
-                          false,
                           Object {
-                            "marginRight": 4,
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "textAlign": "center",
                           },
-                        ]
-                      }
-                    >
-                      <ActivityIndicator
-                        animating={true}
-                        color="#FFFFFF"
-                        hidesWhenStopped={true}
-                        size="small"
-                      />
-                    </_class>
-                  </_class>
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    Purchase Now 
+                  </Text>
                 </_class>
               </_class>
             </_class>
@@ -438,7 +456,6 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
-                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -446,44 +463,63 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <_class
+                  <Text
+                    allowFontScaling={false}
                     style={
                       Array [
                         Object {
-                          "bottom": 0,
-                          "justifyContent": "center",
-                          "left": 10,
-                          "position": "absolute",
-                          "top": 0,
+                          "color": undefined,
+                          "fontSize": 12,
                         },
-                        undefined,
+                        Array [
+                          Object {
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "marginRight": 4,
+                            "top": 3,
+                          },
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
                         Object {
-                          "left": 0,
-                          "position": "relative",
+                          "fontFamily": "Feather",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
                         },
+                        Object {},
                       ]
                     }
                   >
-                    <_class
-                      style={
+                    
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontFamily": "Nunito",
+                          "fontSize": undefined,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                        },
+                        Object {},
                         Array [
-                          false,
-                          false,
-                          false,
                           Object {
-                            "marginRight": 4,
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "textAlign": "center",
                           },
-                        ]
-                      }
-                    >
-                      <ActivityIndicator
-                        animating={true}
-                        color="#FFFFFF"
-                        hidesWhenStopped={true}
-                        size="small"
-                      />
-                    </_class>
-                  </_class>
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    Purchase Now 
+                  </Text>
                 </_class>
               </_class>
             </_class>
@@ -635,7 +671,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                   If you have a device with WatchOS you can use the application to see information about your secret accounts.
+                  If you have a device with WearOS you can use the application to see information about your secret accounts.
                 </Text>
                 <_class
                   accessible={true}
@@ -654,7 +690,6 @@ exports[`render just views 1`] = `
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "margin": 0,
-                      "minHeight": 30,
                       "opacity": 1,
                       "padding": 12,
                       "zIndex": 1,
@@ -662,44 +697,63 @@ exports[`render just views 1`] = `
                   }
                   testID="button_touchable"
                 >
-                  <_class
+                  <Text
+                    allowFontScaling={false}
                     style={
                       Array [
                         Object {
-                          "bottom": 0,
-                          "justifyContent": "center",
-                          "left": 10,
-                          "position": "absolute",
-                          "top": 0,
+                          "color": undefined,
+                          "fontSize": 12,
                         },
-                        undefined,
+                        Array [
+                          Object {
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "marginRight": 4,
+                            "top": 3,
+                          },
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
                         Object {
-                          "left": 0,
-                          "position": "relative",
+                          "fontFamily": "Feather",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
                         },
+                        Object {},
                       ]
                     }
                   >
-                    <_class
-                      style={
+                    
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontFamily": "Nunito",
+                          "fontSize": undefined,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                        },
+                        Object {},
                         Array [
-                          false,
-                          false,
-                          false,
                           Object {
-                            "marginRight": 4,
+                            "color": "#FFFFFF",
+                            "fontSize": 14,
+                            "textAlign": "center",
                           },
-                        ]
-                      }
-                    >
-                      <ActivityIndicator
-                        animating={true}
-                        color="#FFFFFF"
-                        hidesWhenStopped={true}
-                        size="small"
-                      />
-                    </_class>
-                  </_class>
+                          Object {
+                            "color": "#FFFFFF",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    Purchase Now 
+                  </Text>
                 </_class>
               </_class>
             </_class>

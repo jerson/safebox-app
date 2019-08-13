@@ -1,6 +1,6 @@
 import './config';
 import './data';
-//import "./client";
+import './client';
 
 global.__TEST__ = true;
 global.__DEV__ = false;

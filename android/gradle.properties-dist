@@ -1,6 +1,6 @@
 org.gradle.jvmargs=-Xmx4563M
 
-android.enableR8=true
+kotlin.code.style=official
 
 RELEASE_STORE_FILE=app.keystore
 RELEASE_KEY_ALIAS=YOUR_KEY_ALIAS
