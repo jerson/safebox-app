@@ -1,3 +1,776 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render just views 1`] = `<_class />`;
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafdff",
+        "flex": 1,
+      },
+      Object {
+        "backgroundColor": "#fafdff",
+      },
+    ]
+  }
+>
+  <Modal
+    animated={true}
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "paddingBottom": 40,
+        }
+      }
+      keyboardShouldPersistTaps="handled"
+      style={
+        Object {
+          "backgroundColor": "rgba(103, 129, 166, 0.8)",
+          "flex": 1,
+        }
+      }
+    >
+      <_class>
+        <_class
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 12,
+                "margin": 20,
+                "marginBottom": 40,
+                "maxWidth": 280,
+                "overflow": "visible",
+                "padding": 20,
+              },
+              Object {
+                "elevation": 4,
+                "shadowColor": "#38414e",
+                "shadowOffset": Object {
+                  "height": 4,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 16,
+              },
+            ]
+          }
+        >
+          <_class
+            style={
+              Object {
+                "alignSelf": "center",
+                "backgroundColor": "#38414e",
+                "borderColor": "#c2d0e7",
+                "borderRadius": 15,
+                "borderWidth": 1,
+                "marginBottom": 10,
+                "overflow": "hidden",
+              }
+            }
+          >
+            <Image
+              resizeMode="stretch"
+              source={
+                Object {
+                  "testUri": "../../../src/assets/images/logo.png",
+                }
+              }
+              style={
+                Object {
+                  "height": 70,
+                  "width": 70,
+                }
+              }
+            />
+          </_class>
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontFamily": "Nunito",
+                  "fontSize": undefined,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                },
+                Object {},
+                Object {
+                  "color": "#38414e",
+                  "fontSize": 13,
+                  "textAlign": "justify",
+                },
+              ]
+            }
+          >
+            To continue you must enter the password with which you Sign In to
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Object {
+                    "color": "#9066f5",
+                  },
+                ]
+              }
+            >
+               
+              Safe
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "fontFamily": "Nunito",
+                      "fontSize": undefined,
+                      "fontStyle": "normal",
+                      "fontWeight": "700",
+                    },
+                    Object {},
+                    undefined,
+                  ]
+                }
+              >
+                Box
+              </Text>
+            </Text>
+            .
+          </Text>
+          <_class
+            style={
+              Array [
+                Object {
+                  "flexDirection": "column",
+                  "marginBottom": 20,
+                  "marginTop": 10,
+                  "position": "relative",
+                },
+                undefined,
+              ]
+            }
+          >
+            <_class
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "paddingBottom": 4,
+                  },
+                  undefined,
+                ]
+              }
+            />
+            <_class
+              style={
+                Array [
+                  Object {
+                    "position": "relative",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <TextInput
+                allowFontScaling={true}
+                autoCapitalize="none"
+                autoCompleteType="password"
+                autoCorrect={false}
+                autoFocus={true}
+                blurOnSubmit={true}
+                editable={true}
+                keyboardType="default"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                onSubmitEditing={[Function]}
+                placeholder="SafeBox password"
+                placeholderTextColor="#65748b"
+                rejectResponderTermination={true}
+                returnKeyType="done"
+                secureTextEntry={true}
+                selectionColor="#65748b"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "#f2f4f9",
+                      "borderRadius": 10,
+                      "borderWidth": 1,
+                      "color": "#38414e",
+                      "fontFamily": "Nunito",
+                      "fontSize": 15,
+                      "fontStyle": "normal",
+                      "fontWeight": "400",
+                      "paddingBottom": 10,
+                      "paddingLeft": 10,
+                      "paddingRight": 8,
+                      "paddingTop": 10,
+                      "textDecorationLine": "none",
+                    },
+                    Object {
+                      "paddingLeft": 40,
+                    },
+                    false,
+                    false,
+                    Object {
+                      "paddingRight": 40,
+                    },
+                    Object {
+                      "borderColor": "#9066f5",
+                      "marginTop": 0,
+                    },
+                  ]
+                }
+                underlineColorAndroid="transparent"
+                value=""
+              />
+              <_class
+                style={
+                  Object {
+                    "bottom": 1,
+                    "justifyContent": "center",
+                    "left": 12,
+                    "position": "absolute",
+                    "top": 0,
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": undefined,
+                        "fontSize": 12,
+                      },
+                      Array [
+                        Object {
+                          "color": "#65748b",
+                          "fontSize": 20,
+                        },
+                        false,
+                        false,
+                        undefined,
+                      ],
+                      Object {
+                        "fontFamily": "Feather",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </_class>
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "position": "absolute",
+                      "right": -60,
+                    },
+                    undefined,
+                  ]
+                }
+              />
+            </_class>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Object {
+                    "color": "#65748b",
+                    "fontSize": 12,
+                    "marginTop": 5,
+                  },
+                ]
+              }
+            >
+              SafeBox password is used to unlock your secret passwords.
+            </Text>
+          </_class>
+          <_class
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#9066f5",
+                "borderColor": "#9066f5",
+                "borderRadius": 10,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "margin": 0,
+                "opacity": 1,
+                "padding": 12,
+                "zIndex": 1,
+              }
+            }
+            testID="button_touchable"
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 14,
+                      "marginRight": 4,
+                      "top": 3,
+                    },
+                    Object {
+                      "color": "#FFFFFF",
+                    },
+                    undefined,
+                  ],
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Array [
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 14,
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "color": "#FFFFFF",
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              Unlock passwords
+            </Text>
+          </_class>
+        </_class>
+      </_class>
+    </RCTScrollView>
+  </Modal>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "minHeight": 1220,
+      }
+    }
+    keyboardShouldPersistTaps="handled"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <_class>
+      <_class
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={
+          Object {
+            "flex": 1,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 20,
+          }
+        }
+      >
+        <_class
+          style={
+            Array [
+              Object {
+                "paddingHorizontal": 20,
+              },
+              Object {
+                "justifyContent": "center",
+              },
+              Object {
+                "flex": 1,
+                "paddingTop": 20,
+              },
+              undefined,
+            ]
+          }
+        >
+          <_class
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderRadius": 12,
+                  "marginBottom": 60,
+                  "marginTop": 10,
+                  "maxWidth": 360,
+                  "overflow": "visible",
+                  "padding": 20,
+                },
+                Object {
+                  "elevation": 4,
+                  "shadowColor": "#38414e",
+                  "shadowOffset": Object {
+                    "height": 4,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 16,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#9066f5",
+                    "fontSize": 40,
+                    "marginBottom": 10,
+                  },
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontFamily": "Nunito",
+                    "fontSize": undefined,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                  },
+                  Object {},
+                  Object {
+                    "color": "#65748b",
+                    "fontSize": 13,
+                    "marginBottom": 10,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Use 
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 12,
+                    },
+                    Object {
+                      "color": "#9066f5",
+                      "fontSize": 15,
+                      "marginHorizontal": 2,
+                    },
+                    Object {
+                      "fontFamily": "Feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+               to copy to clipboard
+            </Text>
+            <_class
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "width": "100%",
+                }
+              }
+            >
+              <_class
+                style={
+                  Array [
+                    Object {
+                      "flexDirection": "column",
+                      "marginBottom": 20,
+                      "marginTop": 10,
+                      "position": "relative",
+                    },
+                    Object {
+                      "flex": 1,
+                      "marginBottom": 0,
+                      "marginRight": 60,
+                    },
+                  ]
+                }
+              >
+                <_class
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "paddingBottom": 4,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "fontFamily": "Nunito",
+                          "fontSize": undefined,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                        },
+                        Object {},
+                        Array [
+                          Object {
+                            "color": "#65748b",
+                            "fontSize": 14,
+                            "lineHeight": 16,
+                          },
+                          false,
+                          false,
+                        ],
+                      ]
+                    }
+                  >
+                    Username
+                  </Text>
+                </_class>
+                <_class
+                  style={
+                    Array [
+                      Object {
+                        "position": "relative",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <TextInput
+                    allowFontScaling={true}
+                    editable={false}
+                    multiline={true}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholderTextColor="#65748b"
+                    rejectResponderTermination={true}
+                    selectionColor="#65748b"
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#FFFFFF",
+                          "borderColor": "#f2f4f9",
+                          "borderRadius": 10,
+                          "borderWidth": 1,
+                          "color": "#38414e",
+                          "fontFamily": "Nunito",
+                          "fontSize": 15,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "paddingBottom": 10,
+                          "paddingLeft": 10,
+                          "paddingRight": 8,
+                          "paddingTop": 10,
+                          "textDecorationLine": "none",
+                        },
+                        Object {
+                          "paddingLeft": 40,
+                        },
+                        false,
+                        false,
+                        Object {
+                          "paddingRight": 40,
+                        },
+                        Object {},
+                      ]
+                    }
+                    underlineColorAndroid="transparent"
+                    value="sample"
+                  />
+                  <_class
+                    style={
+                      Object {
+                        "bottom": 1,
+                        "justifyContent": "center",
+                        "left": 12,
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": undefined,
+                            "fontSize": 12,
+                          },
+                          Array [
+                            Object {
+                              "color": "#65748b",
+                              "fontSize": 20,
+                            },
+                            false,
+                            false,
+                            undefined,
+                          ],
+                          Object {
+                            "fontFamily": "Feather",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                  </_class>
+                  <_class
+                    style={
+                      Array [
+                        Object {
+                          "position": "absolute",
+                          "right": -60,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <_class
+                      accessible={true}
+                      isTVSelectable={true}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#9066f5",
+                          "borderColor": "#9066f5",
+                          "borderRadius": 25,
+                          "flexDirection": "row",
+                          "height": 50,
+                          "justifyContent": "center",
+                          "margin": 0,
+                          "minHeight": 30,
+                          "opacity": 1,
+                          "padding": 12,
+                          "paddingLeft": 15,
+                          "paddingTop": 14,
+                          "width": 50,
+                          "zIndex": 1,
+                        }
+                      }
+                      testID="button_touchable"
+                    >
+                      <Text
+                        allowFontScaling={false}
+                        style={
+                          Array [
+                            Object {
+                              "color": undefined,
+                              "fontSize": 12,
+                            },
+                            Array [
+                              Object {
+                                "color": "#FFFFFF",
+                                "fontSize": 14,
+                                "marginRight": 4,
+                                "top": 3,
+                              },
+                              Object {
+                                "color": "#FFFFFF",
+                              },
+                              undefined,
+                            ],
+                            Object {
+                              "fontFamily": "Feather",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        
+                      </Text>
+                    </_class>
+                  </_class>
+                </_class>
+              </_class>
+            </_class>
+          </_class>
+        </_class>
+      </_class>
+    </_class>
+  </RCTScrollView>
+</_class>
+`;
