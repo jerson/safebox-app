@@ -5,7 +5,6 @@ import android.support.wearable.activity.WearableActivity
 import android.view.View
 import android.widget.Toast
 import android.support.wear.widget.WearableLinearLayoutManager
-import android.support.wear.widget.WearableRecyclerView
 import dev.jerson.safebox.adapters.AccountAdapter
 import dev.jerson.safebox.grpc.Client
 import kotlinx.android.synthetic.main.activity_accounts.*

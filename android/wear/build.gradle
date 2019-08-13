@@ -10,7 +10,7 @@ android {
         applicationId "dev.jerson.safebox"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 8
+        versionCode 9
         versionName "1.0.0"
     }
 
