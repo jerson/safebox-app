@@ -312,10 +312,6 @@ function AccountScreen() {
     navigate('Premium');
   };
 
-  if (typeof account.getId !== 'function') {
-    return <View />;
-  }
-
   const hint = !!account.getHint() ? (
     <Text style={styles.help}>
       <Text style={styles.helpHint}>Hint:</Text> {account.getHint()}

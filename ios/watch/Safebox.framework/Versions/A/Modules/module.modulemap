@@ -1,0 +1,8 @@
+framework module "Safebox" {
+	header "ref.h"
+    header "Safebox.objc.h"
+    header "Universe.objc.h"
+    header "Safebox.h"
+
+    export *
+}

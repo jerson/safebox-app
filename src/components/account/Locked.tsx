@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     margin: 20,
-    marginBottom: 40,
     maxWidth: 280,
     backgroundColor: Colors.white,
     borderRadius: 12,
@@ -64,6 +63,7 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   scrollViewContent: {
     paddingBottom: 40,
+    paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center'
   } as ViewStyle,
