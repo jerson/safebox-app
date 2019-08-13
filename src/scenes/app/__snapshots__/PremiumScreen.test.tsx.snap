@@ -671,7 +671,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 >
-                   If you have a device with WatchOS you can use the application to see information about your secret accounts.
+                  If you have a device with WearOS you can use the application to see information about your secret accounts.
                 </Text>
                 <_class
                   accessible={true}
