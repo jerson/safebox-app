@@ -118,6 +118,7 @@ function Item({ item, isSame, onDelete }: ItemProps) {
       <Button
         typeColor={'accentDark'}
         icon={'trash-2'}
+        testID={'item_button_delete'}
         isLoading={isLoading}
         onPress={tryDelete}
         style={styles.button}

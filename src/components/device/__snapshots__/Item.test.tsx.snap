@@ -90,7 +90,7 @@ exports[`render just views 1`] = `
         "zIndex": 1,
       }
     }
-    testID="button_touchable"
+    testID="item_button_delete"
   >
     <Text
       allowFontScaling={false}

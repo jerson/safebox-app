@@ -21,3 +21,9 @@ test('render just views', () => {
   const snapshot = renderer.create(<Item {...props} />).toJSON();
   expect(snapshot).toMatchSnapshot();
 });
+test('tryDelete', () => {
+  const instance = renderer.create(<Item {...props} />).root;
+
+  const element = instance.findByProps({ testID: 'item_button_delete' });
+  element.props.onPress();
+});
