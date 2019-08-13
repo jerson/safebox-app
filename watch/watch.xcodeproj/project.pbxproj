@@ -159,7 +159,7 @@
 		31E329A722F52FD300A1A52D /* watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				849D9E6F2300D74400CDB74B /* Client.swift */,
+				84A9BE9823031CFF00E094A6 /* rpc */,
 				31E329A822F52FD300A1A52D /* ContentView.swift */,
 				31E329AA22F52FD300A1A52D /* HostingController.swift */,
 				31E329AC22F52FD300A1A52D /* ExtensionDelegate.swift */,
@@ -179,6 +179,14 @@
 				31E329B122F52FD400A1A52D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		84A9BE9823031CFF00E094A6 /* rpc */ = {
+			isa = PBXGroup;
+			children = (
+				849D9E6F2300D74400CDB74B /* Client.swift */,
+			);
+			name = rpc;
 			sourceTree = "<group>";
 		};
 		E701E2582BB979A3A046CCE0 /* Pods */ = {
