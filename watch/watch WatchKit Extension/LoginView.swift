@@ -19,7 +19,10 @@ struct LoginView: View {
     var body: some View {
         ScrollView  {
             VStack(spacing: 10) {
-            Text("SafeBox")
+                Text("SafeBox")
+                    .font(.headline)
+                    .foregroundColor(Color(red: 0.56, green: 0.40, blue: 0.96, opacity: 1.0))
+                    .multilineTextAlignment(.center)
             TextField("Username", text: self.$username)
             TextField("Password", text: self.$password)
             Button(action: {
@@ -37,7 +40,7 @@ struct LoginView: View {
                 
                 
             }) {
-                Text("Sign In")
+                Text("Sign In").foregroundColor(Color(red: 0.98, green: 0.99, blue: 1.0, opacity: 1.0))
             }.alert(isPresented: self.$showingAlert) { () -> Alert in
                 Alert.init(title: Text(self.error))
                 }
