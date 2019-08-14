@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "padding": 6,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#65748b",
+            "fontSize": 13,
+          },
+          undefined,
+          undefined,
+          undefined,
+        ],
+      ]
+    }
+  >
+    sample
+  </Text>
+</_class>
+`;

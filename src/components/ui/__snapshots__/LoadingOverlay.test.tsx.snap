@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views !isLoading 1`] = `null`;
+
+exports[`render just views 1`] = `null`;

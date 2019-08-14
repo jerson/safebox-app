@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  accessibilityLabel="test"
+  accessible={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "position": "relative",
+    }
+  }
+>
+  <_class
+    style={
+      Object {
+        "backgroundColor": "#9066f5",
+        "borderTopLeftRadius": 100,
+        "borderTopRightRadius": 100,
+        "bottom": -60,
+        "left": 10,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 10,
+        "top": 2,
+        "transform": Array [
+          Object {
+            "scale": 1,
+          },
+        ],
+        "zIndex": 0,
+      }
+    }
+  />
+  <_class
+    focused={true}
+    style={Object {}}
+  />
+</_class>
+`;

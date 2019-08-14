@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Array [
+      false,
+      false,
+      false,
+      undefined,
+    ]
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#4531cd"
+    hidesWhenStopped={true}
+    size="small"
+  />
+</_class>
+`;

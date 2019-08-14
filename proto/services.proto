@@ -1,0 +1,217 @@
+syntax = "proto3";
+
+
+service Services {
+    rpc Ping (PingRequest) returns (PingResponse) {
+    }
+
+    rpc AddDevice (AddDeviceRequest) returns (AddDeviceResponse) {
+    }
+    rpc DeleteDevice (DeleteDeviceRequest) returns (DeleteDeviceResponse) {
+    }
+    rpc GetDevices (DevicesRequest) returns (DevicesResponse) {
+    }
+
+    rpc Login (LoginRequest) returns (AuthResponse) {
+    }
+    rpc LoginWithDevice (LoginDeviceRequest) returns (AuthResponse) {
+    }
+    rpc Logout (LogoutRequest) returns (LogoutResponse) {
+    }
+    rpc RefreshToken (RefreshTokenRequest) returns (AuthResponse) {
+    }
+    rpc Register (RegisterRequest) returns (AuthResponse) {
+    }
+
+    rpc AddAccount (AddAccountRequest) returns (AddAccountResponse) {
+    }
+    rpc DeleteAccount (DeleteAccountRequest) returns (DeleteAccountResponse) {
+    }
+    rpc GetAccounts (AccountsRequest) returns (AccountsResponse) {
+    }
+    rpc GetAccount (AccountRequest) returns (AccountResponse) {
+    }
+
+    rpc SendLocation (SendLocationRequest) returns (SendLocationResponse) {
+    }
+    rpc EnableLocation (EnableLocationRequest) returns (EnableLocationResponse) {
+    }
+    rpc DisableLocation (DisableLocationRequest) returns (DisableLocationResponse) {
+    }
+    rpc GetEmail (GetEmailRequest) returns (GetEmailResponse) {
+    }
+
+    rpc BuyProduct (BuyProductRequest) returns (BuyProductResponse) {
+    }
+    rpc HasProduct (HasProductRequest) returns (HasProductResponse) {
+    }
+
+}
+
+message GetEmailRequest {
+    string accessToken = 1;
+}
+message GetEmailResponse {
+    string email = 1;
+}
+
+message HasProductRequest {
+    string accessToken = 1;
+    string slug = 2;
+}
+message HasProductResponse {
+    bool purchased = 1;
+    string date = 2;
+}
+
+message BuyProductRequest {
+    string accessToken = 1;
+    string slug = 2;
+    string payload = 3;
+    string type = 4;
+}
+message BuyProductResponse {
+    int64 id = 1;
+    string date = 2;
+}
+
+
+message DisableLocationRequest {
+    string accessToken = 1;
+}
+message DisableLocationResponse {
+}
+
+message EnableLocationRequest {
+    string accessToken = 1;
+    string email = 2;
+}
+message EnableLocationResponse {
+}
+
+message SendLocationRequest {
+    string accessToken = 1;
+    string latitude = 2;
+    string longitude = 3;
+}
+message SendLocationResponse {
+}
+
+message PingRequest {
+}
+
+message PingResponse {
+    string name = 1;
+}
+
+
+message AddDeviceRequest {
+    string accessToken = 1;
+    string name = 2;
+    string publicKey = 3;
+    string uid = 4;
+}
+message AddDeviceResponse {
+    int64 id = 1;
+}
+message DeleteDeviceRequest {
+    string accessToken = 1;
+    int64 id = 2;
+}
+message DeleteDeviceResponse {
+}
+message Device {
+    int64 id = 1;
+    string name = 2;
+    string dateCreated = 3;
+    string uid = 4;
+}
+message DevicesRequest {
+    string accessToken = 1;
+}
+message DevicesResponse {
+    repeated Device devices = 1;
+}
+message DeleteAccountRequest {
+    string accessToken = 1;
+    int64 id = 2;
+}
+message DeleteAccountResponse {
+}
+
+message RefreshTokenRequest {
+    string accessToken = 1;
+}
+
+message KeyPairResponse {
+    string publicKey = 1;
+    string privateKey = 2;
+}
+
+message LogoutRequest {
+    string accessToken = 1;
+}
+
+message LogoutResponse {
+}
+
+message LoginDeviceRequest {
+    string publicKey = 1;
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message RegisterRequest {
+    string username = 1;
+    string privateKey = 2;
+    string publicKey = 3;
+}
+
+
+message AuthResponse {
+    string accessToken = 1;
+    string dateExpire = 2;
+    string date = 3;
+    KeyPairResponse keyPair = 4;
+}
+
+message Account {
+    string label = 1;
+    string username = 2;
+    string password = 3;
+    string hint = 4;
+}
+
+message AccountSingle {
+    int64 id = 1;
+    string label = 2;
+    string username = 3;
+    string hint = 4;
+}
+
+
+message AddAccountRequest {
+    string accessToken = 1;
+    Account account = 2;
+}
+message AddAccountResponse {
+    int64 id = 1;
+}
+
+message AccountsRequest {
+    string accessToken = 1;
+}
+message AccountsResponse {
+    repeated AccountSingle accounts = 1;
+}
+
+message AccountRequest {
+    string accessToken = 1;
+    int64 id = 2;
+}
+message AccountResponse {
+    Account account = 1;
+}

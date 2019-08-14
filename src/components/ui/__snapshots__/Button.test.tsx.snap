@@ -1,0 +1,716 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allowOnPress 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`disabled 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#ebf1f6",
+      "borderColor": "#ebf1f6",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#65748b",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`icon 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 12,
+        },
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "marginRight": 4,
+            "top": 3,
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+        Object {
+          "fontFamily": "Feather",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`isLoading 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <_class
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "justifyContent": "center",
+          "left": 10,
+          "position": "absolute",
+          "top": 0,
+        },
+        undefined,
+        false,
+      ]
+    }
+  >
+    <_class
+      style={
+        Array [
+          false,
+          false,
+          false,
+          Object {
+            "marginRight": 4,
+          },
+        ]
+      }
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#FFFFFF"
+        hidesWhenStopped={true}
+        size="small"
+      />
+    </_class>
+  </_class>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`light 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`render just views 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`small 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 4,
+      "paddingHorizontal": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`typeColor:accent 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#c2d0e7",
+      "borderColor": "#c2d0e7",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`typeColor:accentDark 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#6781a6",
+      "borderColor": "#6781a6",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`typeColor:danger 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#c2d0e7",
+      "borderColor": "#c2d0e7",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`typeColor:primary 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4531cd",
+      "borderColor": "#4531cd",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;
+
+exports[`typeColor:secondary 1`] = `
+<_class
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#65748b",
+      "borderColor": "#65748b",
+      "borderRadius": 10,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "margin": 0,
+      "opacity": 1,
+      "padding": 12,
+      "zIndex": 1,
+    }
+  }
+  testID="button_touchable"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Nunito",
+          "fontSize": undefined,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Object {},
+        Array [
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFFFFF",
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    Sample
+  </Text>
+</_class>
+`;

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render just views 1`] = `
+<_class
+  style={
+    Object {
+      "backgroundColor": "#fafdff",
+      "overflow": "visible",
+    }
+  }
+>
+  <_class
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#fafdff",
+          "flexDirection": "row",
+          "height": 84,
+          "paddingTop": 20,
+        },
+        undefined,
+        Object {
+          "overflow": "visible",
+        },
+      ]
+    }
+  >
+    <_class
+      style={
+        Object {
+          "width": 60,
+        }
+      }
+    >
+      <_class />
+    </_class>
+    <_class
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "fontFamily": "Nunito",
+              "fontSize": undefined,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Object {},
+            Object {
+              "color": "#38414e",
+              "fontFamily": "Nunito",
+              "fontSize": 18,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "marginBottom": 2,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        sample
+      </Text>
+    </_class>
+    <_class
+      style={
+        Object {
+          "width": 60,
+        }
+      }
+    />
+  </_class>
+</_class>
+`;
