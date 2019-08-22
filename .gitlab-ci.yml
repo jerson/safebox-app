@@ -29,8 +29,6 @@ test:
 
 lint:
   stage: test
-  tags:
-    - osx
   script:
     - make deps
     - make lint
@@ -49,6 +47,8 @@ android_build_release:
 
 ios_build_release:
   stage: build
+  tags:
+    - osx
   script:
     - make deps
     - make ios-build-release
