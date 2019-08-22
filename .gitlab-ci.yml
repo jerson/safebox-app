@@ -14,64 +14,86 @@ before_script:
   - base64 --decode $APP_KEY_STORE > android/wear/app.keystore
 
 stages:
-- test
-- build
-- deploy
+  - test
+  - build
+  - deploy
 
 test:
   stage: test
   script:
-  - make deps
-  - make test
-  - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
-  - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
+    - make deps
+    - make test
+    - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
+    - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
   when: always
-  
+
 lint:
   stage: test
+  tags:
+    - osx
   script:
-  - make deps
-  - make lint
+    - make deps
+    - make lint
   when: always
 
-build_beta:
+android_build_release:
   stage: build
   script:
-  - make deps
-  - make android-build-beta
+    - make deps
+    - make android-build-release
   when: manual
   artifacts:
     paths:
-    - app/build/outputs/apk/releaseBeta
+      - app/build/outputs/apk/release
     expire_in: 1 week
 
-build_release:
+ios_build_release:
   stage: build
   script:
-  - make deps
-  - make android-build-release
+    - make deps
+    - make ios-build-release
   when: manual
-  artifacts:
-    paths:
-    - app/build/outputs/apk/release
-    expire_in: 1 week
+  #artifacts:
+  #  paths:
+  #    - app/build/outputs/apk/release
+  #  expire_in: 1 week
 
-deploy_release_beta:
+android_deploy_release_beta:
   stage: deploy
   script:
-  - make deps
-  - apt-get update && apt-get install -y ruby ruby-dev
-  - gem install fastlane -NV
-  - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
-  - make android-deploy-release-beta
+    - make deps
+    - apt-get update && apt-get install -y ruby ruby-dev
+    - gem install fastlane -NV
+    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+    - make android-deploy-release-beta
   when: manual
 
-deploy_release:
+android_deploy_release:
   stage: deploy
   script:
-  - make deps
-  - apt-get update && apt-get install -y ruby ruby-dev
-  - gem install fastlane -NV
-  - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
-  - make android-deploy-release
+    - make deps
+    - apt-get update && apt-get install -y ruby ruby-dev
+    - gem install fastlane -NV
+    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+    - make android-deploy-release
+  when: manual
+
+ios_deploy_release_beta:
+  stage: deploy
+  tags:
+    - osx
+  script:
+    - make deps
+    - brew cask install fastlane
+    - make ios-deploy-release-beta
+  when: manual
+
+ios_deploy_release:
+  stage: deploy
+  tags:
+    - osx
+  script:
+    - make deps
+    - brew cask install fastlane
+    - make ios-deploy-release
   when: manual

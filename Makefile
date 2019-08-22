@@ -1,4 +1,4 @@
-.PHONY: proto android build
+.PHONY: proto android ios build
 
 default: build
 
@@ -16,6 +16,18 @@ android-deploy-release-beta:
 
 android-deploy-release: 
 	cd android && fastlane android deploy_release
+
+ios-build-beta: 
+	cd ios && fastlane ios build_beta
+
+ios-build-release: 
+	cd ios && fastlane ios build_release
+
+ios-deploy-release-beta: 
+	cd ios && fastlane ios deploy_release_beta
+
+ios-deploy-release: 
+	cd ios && fastlane ios deploy_release
 
 deps:
 	yarn install --pure-lockfile
