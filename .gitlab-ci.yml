@@ -1,8 +1,5 @@
 image: jerson/react-native:android-28
 
-variables:
-  SONAR_VERSION: "4.0.0.1744"
-
 before_script:
   - cp -f src/Config.tsx-dist src/Config.tsx
   - cp -f android/gradle.properties-dist android/gradle.properties
@@ -16,15 +13,6 @@ stages:
   - test
   - build
   - deploy
-
-test:
-  stage: test
-  script:
-    - make deps
-    - make test
-    - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION-linux.zip -O sonar.zip; unzip sonar.zip; rm sonar.zip
-    - ./sonar-scanner-$SONAR_VERSION-linux/bin/sonar-scanner -Dsonar.host.url=$SONAR_SERVER -Dsonar.login=$SONAR_TOKEN
-  when: always
 
 lint:
   stage: test
