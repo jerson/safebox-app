@@ -3,7 +3,6 @@ platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'SafeBox' do
-  pod 'AppCenter/Push', '~> 2.2.0'
   # Comment the next line if you don't want to use dynamic frameworks
   # use_frameworks!
 
@@ -37,6 +36,7 @@ target 'SafeBox' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   
+  pod 'AppCenter/Push', '~> 2.2.0'
   pod 'AppCenter/Crashes', '~> 2.2.0'
   pod 'AppCenter/Analytics', '~> 2.2.0'
   pod 'AppCenterReactNativeShared', '~> 2.2.0'
