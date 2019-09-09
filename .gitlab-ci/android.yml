@@ -7,8 +7,8 @@
     - sed -i'' -e "s/YOUR_KEY_PASSWORD/${APP_KEY_PASSWORD}/g" android/gradle.properties
     - sed -i'' -e "s/YOUR_KEY_ALIAS/${APP_KEY_ALIAS}/g" android/gradle.properties
     - sed -i'' -e "s/YOUR_VERSION_CODE/${CI_JOB_ID}/g" android/gradle.properties
-    - base64 --decode $APP_KEY_STORE > android/app/app.keystore
-    - base64 --decode $APP_KEY_STORE > android/wear/app.keystore
+    - base64 -d $APP_KEY_STORE > android/app/app.keystore
+    - base64 -d $APP_KEY_STORE > android/wear/app.keystore
     - make deps
     - make android-build-release
   artifacts:
@@ -50,7 +50,7 @@ android_deploy_release_beta:
   image: jerson/fastlane:2
   stage: deploy
   script:
-    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+    - base64 -d $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
     - make android-deploy-release-beta
   only:
     - develop
@@ -62,7 +62,7 @@ android_deploy_release:
   image: jerson/fastlane:2
   stage: deploy
   script:
-    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+    - base64 -d $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
     - make android-deploy-release
   only:
     - master

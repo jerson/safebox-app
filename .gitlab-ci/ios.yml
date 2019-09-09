@@ -3,7 +3,7 @@
     - osx
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
-    - base64 --decode $KEYCHAIN > ios/xcode.keychain
+    - base64 -d $KEYCHAIN > ios/xcode.keychain
     - make deps
     - make ios-build-release
   artifacts:
