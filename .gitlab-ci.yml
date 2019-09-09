@@ -1,82 +1,114 @@
-image: jerson/react-native:android-28
-
-before_script:
-  - cp -f src/Config.tsx-dist src/Config.tsx
-  - cp -f android/gradle.properties-dist android/gradle.properties
-  - sed -i'' -e "s/YOUR_STORE_PASSWORD/${APP_STORE_PASSWORD}/g" android/gradle.properties
-  - sed -i'' -e "s/YOUR_KEY_PASSWORD/${APP_KEY_PASSWORD}/g" android/gradle.properties
-  - sed -i'' -e "s/YOUR_KEY_ALIAS/${APP_KEY_ALIAS}/g" android/gradle.properties
-  - base64 --decode $APP_KEY_STORE > android/app/app.keystore
-  - base64 --decode $APP_KEY_STORE > android/wear/app.keystore
+.tags:
+  only:
+    refs:
+      - tags
 
 stages:
   - test
   - build
   - deploy
+  - release
 
 lint:
+  image: jerson/node:10.16
   stage: test
   script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
     - make deps
     - make lint
   when: always
 
+tests:
+  image: jerson/node:10.16
+  stage: test
+  script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
+    - make deps
+    - make test
+  when: always
+  coverage: '/^All files\s+\|\s+\d+\.*\d*\s+\|\s*(\d+\.*\d*)/'
+
 android_build_release:
+  image: jerson/react-native:android-28
   stage: build
   script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
+    - cp -f android/gradle.properties-dist android/gradle.properties
+    - sed -i'' -e "s/YOUR_STORE_PASSWORD/${APP_STORE_PASSWORD}/g" android/gradle.properties
+    - sed -i'' -e "s/YOUR_KEY_PASSWORD/${APP_KEY_PASSWORD}/g" android/gradle.properties
+    - sed -i'' -e "s/YOUR_KEY_ALIAS/${APP_KEY_ALIAS}/g" android/gradle.properties
+    - sed -i'' -e "s/YOUR_VERSION_CODE/${CI_JOB_ID}/g" android/gradle.properties
+    - base64 --decode $APP_KEY_STORE > android/app/app.keystore
+    - base64 --decode $APP_KEY_STORE > android/wear/app.keystore
     - make deps
     - make android-build-release
-  when: manual
   artifacts:
     paths:
-      - app/build/outputs/apk/release
+      - android/app/build/outputs/bundle/release
     expire_in: 1 week
+  when: always
+  only:
+    - develop
+    - master
+  allow_failure: true
 
 ios_build_release:
   stage: build
   tags:
     - osx
   script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
     - make deps
+    - base64 --decode $KEYCHAIN > ios/xcode.keychain
     - make ios-build-release
-  when: manual
-  #artifacts:
-  #  paths:
-  #    - app/build/outputs/apk/release
-  #  expire_in: 1 week
+  artifacts:
+    paths:
+      - ios/ipa
+    expire_in: 1 week
+  only:
+    - develop
+    - master
+  when: always
+  allow_failure: true
 
 android_deploy_release_beta:
+  image: jerson/fastlane:2
   stage: deploy
   script:
-    - make deps
     - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
     - make android-deploy-release-beta
-  when: manual
-
-android_deploy_release:
-  stage: deploy
-  script:
-    - make deps
-    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
-    - make android-deploy-release
+  only:
+    - develop
   when: manual
 
 ios_deploy_release_beta:
+  image: jerson/fastlane:2
   stage: deploy
-  tags:
-    - osx
   script:
-    - make deps
-    - brew cask install fastlane
     - make ios-deploy-release-beta
+  only:
+    - develop
   when: manual
 
-ios_deploy_release:
-  stage: deploy
-  tags:
-    - osx
+android_deploy_release:
+  image: jerson/fastlane:2
+  stage: release
   script:
-    - make deps
-    - brew cask install fastlane
-    - make ios-deploy-release
+    - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
+    - make android-deploy-release
   when: manual
+  only:
+    - master
+  environment:
+    name: production
+
+ios_deploy_release:
+  image: jerson/fastlane:2
+  stage: release
+  script:
+    - make ios-deploy-release
+  only:
+    - master
+  when: manual
+  environment:
+    name: production

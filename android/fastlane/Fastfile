@@ -8,14 +8,13 @@ platform :android do
     gradle(task: "clean assembleReleaseBeta")
   end
 
-  desc "Build Release APK"
+  desc "Build Release Bundle"
   lane :build_release do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "clean bundleRelease")
   end
 
   desc "Deploy a new version to the Google Play - Release channel"
   lane :deploy_release do
-    gradle(task: "clean bundleRelease")
     upload_to_play_store(
     track: 'production',
     skip_upload_apk: true,
@@ -25,7 +24,6 @@ platform :android do
 
   desc "Deploy a new version to the Google Play - Beta channel"
   lane :deploy_release_beta do
-    gradle(task: "clean bundleRelease")
     upload_to_play_store(
     track: 'beta',
     skip_upload_apk: true,
