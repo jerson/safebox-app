@@ -24,7 +24,7 @@ android_codepush_release:
   stage: build
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
-    - npm install -g code-push-cli
+    - npm install -g appcenter-cli
     - code-push login --accessKey $CODEPUSH_ACCESSKEY
     - make deps
     - npm run codepush:android:production
