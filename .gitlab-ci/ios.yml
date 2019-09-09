@@ -24,9 +24,6 @@ ios_codepush_release:
     - make deps
     - npm run codepush:ios:production
   when: manual
-  only:
-    - develop
-    - master
 
 ios_build_release_develop:
   extends: .build-ios
