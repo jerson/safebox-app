@@ -12,7 +12,6 @@
     expire_in: 1 week
   dependencies:
     - lint
-  allow_failure: false
 
 ios_codepush_release:
   image: jerson/node:10.16

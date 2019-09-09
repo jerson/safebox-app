@@ -17,7 +17,6 @@
     expire_in: 1 week
   dependencies:
     - lint
-  allow_failure: false
 
 android_codepush_release:
   image: jerson/node:10.16
