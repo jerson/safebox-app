@@ -40,12 +40,17 @@ platform :ios do
 
   desc "Deploy a new version to the Apple Store - Release channel"
   lane :deploy_release do
-    deliver(force: true)
+    deliver(
+      force: true,
+      ipa: 'ipa/SafeBox.ipa'
+    )
   end
 
   desc "Deploy a new version to the Apple Store - Beta channel"
   lane :deploy_release_beta do
-    pilot
+    pilot(
+      ipa: 'ipa/SafeBox.ipa'
+    )
   end
 
 end
