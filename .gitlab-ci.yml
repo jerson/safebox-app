@@ -98,7 +98,7 @@ android_deploy_release_beta:
     - develop
   when: manual
   dependencies:
-    - android_build_release
+    - android_build_release_develop
 
 ios_deploy_release_beta:
   image: jerson/fastlane:2
@@ -109,7 +109,7 @@ ios_deploy_release_beta:
     - develop
   when: manual
   dependencies:
-    - ios_build_release
+    - ios_build_release_develop
 
 android_deploy_release:
   image: jerson/fastlane:2
@@ -121,7 +121,7 @@ android_deploy_release:
     - master
   when: manual
   dependencies:
-    - android_build_release
+    - android_build_release_master
   environment:
     name: production
 
@@ -134,6 +134,6 @@ ios_deploy_release:
     - master
   when: manual
   dependencies:
-    - ios_build_release
+    - ios_build_release_master
   environment:
     name: production
