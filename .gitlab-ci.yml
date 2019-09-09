@@ -49,7 +49,6 @@ android_build_release:
     - lint
     - test
   allow_failure: false
-  interruptible: true
 
 ios_build_release:
   stage: build
@@ -72,7 +71,6 @@ ios_build_release:
     - test
   when: always
   allow_failure: false
-  interruptible: true
 
 android_deploy_release_beta:
   image: jerson/fastlane:2
