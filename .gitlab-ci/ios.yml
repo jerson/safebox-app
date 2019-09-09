@@ -16,7 +16,7 @@
 
 ios_codepush_release:
   image: jerson/node:10.16
-  stage: test
+  stage: build
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - npm install -g code-push-cli
