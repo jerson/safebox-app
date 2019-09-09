@@ -21,6 +21,7 @@ ios_codepush_release:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - npm install -g code-push-cli
     - code-push login --accessKey $CODEPUSH_ACCESSKEY
+    - make deps
     - npm run codepush:ios:production
   when: manual
   only:
