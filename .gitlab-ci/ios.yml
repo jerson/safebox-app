@@ -1,5 +1,4 @@
 .build-ios:
-  stage: build
   tags:
     - osx
   script:
@@ -15,14 +14,29 @@
     - lint
   allow_failure: false
 
+ios_codepush_release:
+  image: jerson/node:10.16
+  stage: test
+  script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
+    - npm install -g code-push-cli
+    - code-push login --accessKey $CODEPUSH_ACCESSKEY
+    - npm run codepush:ios:production
+  when: manual
+  only:
+    - develop
+    - master
+
 ios_build_release_develop:
   extends: .build-ios
+  stage: build
   when: manual
   only:
     - develop
 
 ios_build_release_master:
   extends: .build-ios
+  stage: build
   when: always
   only:
     - master
@@ -35,8 +49,6 @@ ios_deploy_release_beta:
   only:
     - develop
   when: manual
-  dependencies:
-    - ios_build_release_develop
 
 ios_deploy_release:
   image: jerson/fastlane:2
@@ -46,7 +58,5 @@ ios_deploy_release:
   only:
     - master
   when: manual
-  dependencies:
-    - ios_build_release_master
   environment:
     name: production

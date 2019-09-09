@@ -1,6 +1,5 @@
 .build-android:
   image: jerson/react-native:android-28
-  stage: build
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - cp -f android/gradle.properties-dist android/gradle.properties
@@ -20,14 +19,29 @@
     - lint
   allow_failure: false
 
+android_codepush_release:
+  image: jerson/node:10.16
+  stage: test
+  script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
+    - npm install -g code-push-cli
+    - code-push login --accessKey $CODEPUSH_ACCESSKEY
+    - npm run codepush:android:production
+  when: manual
+  only:
+    - develop
+    - master
+
 android_build_release_develop:
   extends: .build-android
+  stage: build
   when: manual
   only:
     - develop
 
 android_build_release_master:
   extends: .build-android
+  stage: build
   when: always
   only:
     - master
@@ -41,8 +55,6 @@ android_deploy_release_beta:
   only:
     - develop
   when: manual
-  dependencies:
-    - android_build_release_develop
 
 android_deploy_release:
   image: jerson/fastlane:2
@@ -53,7 +65,5 @@ android_deploy_release:
   only:
     - master
   when: manual
-  dependencies:
-    - android_build_release_master
   environment:
     name: production

@@ -6,7 +6,6 @@ stages:
   - test
   - build
   - deploy
-  - release
 
 lint:
   image: jerson/node:10.16
