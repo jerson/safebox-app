@@ -20,10 +20,12 @@ ios_codepush_release:
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - npm install -g appcenter-cli
-    - code-push login --accessKey $CODEPUSH_ACCESSKEY
+    - appcenter login --accessKey $CODEPUSH_ACCESSKEY
     - make deps
     - npm run codepush:ios:production
   when: manual
+  dependencies:
+    - test
 
 ios_build_release_develop:
   extends: .build-ios
@@ -47,6 +49,8 @@ ios_deploy_release_beta:
   only:
     - develop
   when: manual
+  dependencies:
+    - ios_build_release_develop
 
 ios_deploy_release:
   image: jerson/fastlane:2
@@ -58,3 +62,5 @@ ios_deploy_release:
   when: manual
   environment:
     name: production
+  dependencies:
+    - ios_build_release_master

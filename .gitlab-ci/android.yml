@@ -25,10 +25,12 @@ android_codepush_release:
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - npm install -g appcenter-cli
-    - code-push login --accessKey $CODEPUSH_ACCESSKEY
+    - appcenter login --accessKey $CODEPUSH_ACCESSKEY
     - make deps
     - npm run codepush:android:production
   when: manual
+  dependencies:
+    - test
 
 android_build_release_develop:
   extends: .build-android
@@ -53,6 +55,8 @@ android_deploy_release_beta:
   only:
     - develop
   when: manual
+  dependencies:
+    - android_build_release_develop
 
 android_deploy_release:
   image: jerson/fastlane:2
@@ -65,3 +69,5 @@ android_deploy_release:
   when: manual
   environment:
     name: production
+  dependencies:
+    - android_build_release_master
