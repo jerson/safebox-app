@@ -13,7 +13,7 @@ lint:
     - make lint
   when: always
 
-tests:
+test:
   image: jerson/node:10.16
   stage: test
   script:
@@ -37,15 +37,19 @@ android_build_release:
     - base64 --decode $APP_KEY_STORE > android/wear/app.keystore
     - make deps
     - make android-build-release
+  only:
+    - develop
+    - master
   artifacts:
     paths:
       - android/app/build/outputs/bundle/release
     expire_in: 1 week
   when: always
-  only:
-    - develop
-    - master
+  dependencies:
+    - lint
+    - test
   allow_failure: false
+  interruptible: true
 
 ios_build_release:
   stage: build
@@ -56,15 +60,19 @@ ios_build_release:
     - base64 --decode $KEYCHAIN > ios/xcode.keychain
     - make deps
     - make ios-build-release
+  only:
+    - develop
+    - master
   artifacts:
     paths:
       - ios/ipa
     expire_in: 1 week
-  only:
-    - develop
-    - master
+  dependencies:
+    - lint
+    - test
   when: always
   allow_failure: false
+  interruptible: true
 
 android_deploy_release_beta:
   image: jerson/fastlane:2
@@ -75,6 +83,8 @@ android_deploy_release_beta:
   only:
     - develop
   when: manual
+  dependencies:
+    - android_build_release
 
 ios_deploy_release_beta:
   image: jerson/fastlane:2
@@ -84,6 +94,8 @@ ios_deploy_release_beta:
   only:
     - develop
   when: manual
+  dependencies:
+    - ios_build_release
 
 android_deploy_release:
   image: jerson/fastlane:2
@@ -91,9 +103,11 @@ android_deploy_release:
   script:
     - base64 --decode $GOOGLE_PLAY_SETTINGS > android/fastlane/google-play.json
     - make android-deploy-release
-  when: manual
   only:
     - master
+  when: manual
+  dependencies:
+    - android_build_release
   environment:
     name: production
 
@@ -105,5 +119,7 @@ ios_deploy_release:
   only:
     - master
   when: manual
+  dependencies:
+    - ios_build_release
   environment:
     name: production
