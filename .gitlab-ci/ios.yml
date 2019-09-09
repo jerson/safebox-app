@@ -1,0 +1,52 @@
+.build-ios:
+  stage: build
+  tags:
+    - osx
+  script:
+    - cp -f src/Config.tsx-dist src/Config.tsx
+    - base64 --decode $KEYCHAIN > ios/xcode.keychain
+    - make deps
+    - make ios-build-release
+  artifacts:
+    paths:
+      - ios/ipa
+    expire_in: 1 week
+  dependencies:
+    - lint
+  allow_failure: false
+
+ios_build_release_develop:
+  extends: .build-ios
+  when: manual
+  only:
+    - develop
+
+ios_build_release_master:
+  extends: .build-ios
+  when: always
+  only:
+    - master
+
+ios_deploy_release_beta:
+  image: jerson/fastlane:2
+  stage: deploy
+  script:
+    - make ios-deploy-release-beta
+  only:
+    - develop
+  when: manual
+  dependencies:
+    - ios_build_release_develop
+
+ios_deploy_release:
+  image: jerson/fastlane:2
+  stage: deploy
+  script:
+    - make ios-deploy-release
+  only:
+    - master
+  when: manual
+  dependencies:
+    - ios_build_release_master
+  environment:
+    name: production
