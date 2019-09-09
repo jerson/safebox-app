@@ -10,7 +10,8 @@ platform :ios do
     unlock_keychain(
       path: "xcode.keychain",
       password: ""
-    )     
+    )
+    get_certificates         
     get_provisioning_profile 
     increment_build_number(build_number: ENV['CI_JOB_ID'])
     gym(
@@ -25,7 +26,8 @@ platform :ios do
     unlock_keychain(
       path: "xcode.keychain",
       password: ""
-    )      
+    )
+    get_certificates         
     get_provisioning_profile 
     increment_build_number(build_number: ENV['CI_JOB_ID'])
     gym(
