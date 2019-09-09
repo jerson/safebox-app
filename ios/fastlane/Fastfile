@@ -11,7 +11,8 @@ platform :ios do
       path: "xcode.keychain",
       password: ""
     )
-    get_certificates         
+    # esto genera otro, y ya esta en el keychain
+    # get_certificates        
     get_provisioning_profile 
     increment_build_number(build_number: ENV['CI_JOB_ID'])
     gym(
@@ -27,7 +28,8 @@ platform :ios do
       path: "xcode.keychain",
       password: ""
     )
-    get_certificates         
+    # esto genera otro, y ya esta en el keychain
+    # get_certificates         
     get_provisioning_profile 
     increment_build_number(build_number: ENV['CI_JOB_ID'])
     gym(
