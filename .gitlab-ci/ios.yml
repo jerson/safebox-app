@@ -19,7 +19,7 @@ ios_codepush_release:
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
     - npm install -g appcenter-cli
-    - appcenter login --accessKey $CODEPUSH_ACCESSKEY
+    - appcenter login --token $APPCENTER_ACCESSKEY
     - make deps
     - npm run codepush:ios:production
   when: manual
