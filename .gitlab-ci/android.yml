@@ -23,6 +23,7 @@ android_codepush_release:
   stage: build
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
+    - cp -f android/gradle.properties-dist android/gradle.properties
     - npm install -g appcenter-cli
     - appcenter login --token $APPCENTER_ACCESSKEY
     - make deps
