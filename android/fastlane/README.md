@@ -25,7 +25,7 @@ Build Beta APK
 ```
 fastlane android build_release
 ```
-Build Release APK
+Build Release Bundle
 ### android deploy_release
 ```
 fastlane android deploy_release

@@ -30,8 +30,8 @@ android {
         applicationId "dev.jerson.safebox"
         minSdkVersion 23
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 12
-        versionName "1.1.0"
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME
     }
 
     signingConfigs {
