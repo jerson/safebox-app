@@ -1,5 +1,5 @@
-import { NavigationScreenProp } from 'react-navigation';
-import { useState, useEffect } from 'react';
+import {NavigationScreenProp} from 'react-navigation';
+import {useState, useEffect} from 'react';
 
 function useFocusedScreen(navigation: NavigationScreenProp<any>) {
   const [focused, setFocused] = useState(navigation.isFocused);

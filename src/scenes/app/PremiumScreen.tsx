@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, ViewStyle, ScrollView, StatusBar} from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
@@ -13,17 +13,17 @@ import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   scrollView: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   safeArea: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   block: {
-    marginBottom: 40
-  } as ViewStyle
+    marginBottom: 40,
+  } as ViewStyle,
 });
 
 interface ProductList {
@@ -39,7 +39,7 @@ function PremiumScreen() {
       const response = await RNIap.getProducts([
         'showpass',
         'trackphone',
-        'wearableaccess'
+        'wearableaccess',
       ]);
       const data: ProductList = {};
       for (const item of response) {
@@ -66,10 +66,9 @@ function PremiumScreen() {
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleTabScreenHeight()
+          minHeight: Size.getVisibleTabScreenHeight(),
         }}
-        style={styles.scrollView}
-      >
+        style={styles.scrollView}>
         <SafeAreaView style={styles.safeArea}>
           <Content>
             <TrackPhonePremium
@@ -93,7 +92,7 @@ function PremiumScreen() {
 
 PremiumScreen.navigationOptions = {
   title: 'Premium',
-  headerLeft: null
+  headerLeft: null,
 };
 
 export default PremiumScreen;

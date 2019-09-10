@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Object {
       "backgroundColor": "#fafdff",
@@ -9,7 +9,7 @@ exports[`render just views 1`] = `
     }
   }
 >
-  <_class
+  <View
     style={
       Array [
         Object {
@@ -26,16 +26,16 @@ exports[`render just views 1`] = `
       ]
     }
   >
-    <_class
+    <View
       style={
         Object {
           "width": 60,
         }
       }
     >
-      <_class />
-    </_class>
-    <_class
+      <View />
+    </View>
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -98,14 +98,14 @@ exports[`render just views 1`] = `
       >
         sample
       </Text>
-    </_class>
-    <_class
+    </View>
+    <View
       style={
         Object {
           "width": 60,
         }
       }
     />
-  </_class>
-</_class>
+  </View>
+</View>
 `;

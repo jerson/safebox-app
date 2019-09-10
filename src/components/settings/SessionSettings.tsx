@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   ViewStyle,
   View,
   StyleProp,
   Alert,
-  TextStyle
+  TextStyle,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import SplitText from '../ui/SplitText';
 import Button from '../ui/Button';
 import Session from '../../services/Session';
-import { useNavigation } from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 import Text from '../ui/Text';
 import Log from '../../modules/log/Log';
 import Client from '../../services/Client';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   content: {
     marginTop: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   info: {
     flex: 1,
-    paddingRight: 10
+    paddingRight: 10,
   } as ViewStyle,
   description: {
     fontSize: 12,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   button: {
-    minWidth: 120
-  } as ViewStyle
+    minWidth: 120,
+  } as ViewStyle,
 });
 
 export interface SessionSettingsProps {
@@ -43,8 +43,8 @@ export interface SessionSettingsProps {
 }
 
 const TAG = '[SessionSettings]';
-function SessionSettings({ style }: SessionSettingsProps) {
-  const { navigate } = useNavigation();
+function SessionSettings({style}: SessionSettingsProps) {
+  const {navigate} = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
 
   const tryLogout = () => {
@@ -56,16 +56,16 @@ function SessionSettings({ style }: SessionSettingsProps) {
           text: 'Yes, Sign out',
           onPress: () => {
             logout();
-          }
+          },
         },
         {
           text: 'Cancel',
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ],
       {
-        cancelable: true
-      }
+        cancelable: true,
+      },
     );
   };
 

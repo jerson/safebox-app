@@ -1,11 +1,11 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import Container, { ContainerProps } from './Container';
-import { View } from 'react-native';
+import Container, {ContainerProps} from './Container';
+import {View} from 'react-native';
 
 const props: ContainerProps = {
   style: {},
-  children: <View />
+  children: <View />,
 };
 
 test('renders without crashing', () => {

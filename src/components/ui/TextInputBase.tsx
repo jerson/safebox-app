@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   InteractionManager,
   MeasureLayoutOnSuccessCallback,
   TextInput,
-  TextInputProps as BaseTextInputProps
+  TextInputProps as BaseTextInputProps,
 } from 'react-native';
 
 import Colors from '../../modules/constants/Colors';
@@ -30,7 +30,7 @@ export interface TextInputBaseRef {
   measureLayout: (
     relativeToNativeNode: number,
     onSuccess: MeasureLayoutOnSuccessCallback,
-    onFail?: () => void
+    onFail?: () => void,
   ) => void;
   focus: () => void;
   blur: () => void;
@@ -38,7 +38,7 @@ export interface TextInputBaseRef {
 
 function TextInputBaseWrapper(
   props: TextInputBaseProps,
-  ref: React.Ref<TextInputBaseRef>
+  ref: React.Ref<TextInputBaseRef>,
 ) {
   const {
     defaultValue,
@@ -82,7 +82,7 @@ function TextInputBaseWrapper(
     measureLayout: (
       relativeToNativeNode: number,
       onSuccess: MeasureLayoutOnSuccessCallback,
-      onFail?: () => void
+      onFail?: () => void,
     ) => {
       inputRef.current &&
         inputRef.current.measureLayout(
@@ -92,11 +92,11 @@ function TextInputBaseWrapper(
             ? onFail
             : () => {
                 return;
-              }
+              },
         );
     },
     focus,
-    blur
+    blur,
   }));
 
   const onChangeTextCallback = (value: string) => {
@@ -163,7 +163,7 @@ function TextInputBaseWrapper(
 
 const TextInputBase = React.forwardRef(TextInputBaseWrapper);
 TextInputBase.defaultProps = {
-  editable: true
+  editable: true,
 };
 
 export default TextInputBase;

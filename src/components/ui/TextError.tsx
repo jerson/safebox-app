@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, TextProps, TextStyle } from 'react-native';
+import {StyleSheet, TextProps, TextStyle} from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Text from './Text';
 
 const styles = StyleSheet.create({
   text: {
     color: Colors.danger,
-    fontSize: 13
+    fontSize: 13,
   } as TextStyle,
   centerText: {
     textAlign: 'center',
-    alignSelf: 'center'
-  } as TextStyle
+    alignSelf: 'center',
+  } as TextStyle,
 });
 
 export interface TextErrorProps extends TextProps {
@@ -21,13 +21,12 @@ export interface TextErrorProps extends TextProps {
 }
 
 function TextError(props: TextErrorProps) {
-  const { children, center, decoration, style, ...extraProps } = props;
+  const {children, center, decoration, style, ...extraProps} = props;
 
   return (
     <Text
       style={[styles.text, center && styles.centerText, style]}
-      {...extraProps}
-    >
+      {...extraProps}>
       {children}
       {decoration && '.'}
     </Text>
@@ -36,7 +35,7 @@ function TextError(props: TextErrorProps) {
 
 TextError.defaultProps = {
   decoration: true,
-  center: false
+  center: false,
 };
 
 export default TextError;

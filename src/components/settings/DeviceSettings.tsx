@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   StyleSheet,
   ViewStyle,
   View,
   StyleProp,
   TextStyle,
-  Platform
+  Platform,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import SplitText from '../ui/SplitText';
@@ -16,38 +16,38 @@ import Log from '../../modules/log/Log';
 import useAnimatedState from '../hooks/useAnimatedState';
 import AlertMessage from '../ui/AlertMessage';
 import Client from '../../services/Client';
-import { AddDeviceRequest, Device } from '../../proto/services_pb';
+import {AddDeviceRequest, Device} from '../../proto/services_pb';
 import DeviceInfo from 'react-native-device-info';
 import Strings from '../../modules/format/Strings';
 import NotAvailableDevice from '../help/NotAvailableDevice';
-import List, { ListRef } from '../device/List';
+import List, {ListRef} from '../device/List';
 import AppStorage from '../../modules/storage/AppStorage';
 import SettingsStorage from '../../modules/storage/SettingsStorage';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   content: {
     marginTop: 5,
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   info: {
-    marginBottom: 10
+    marginBottom: 10,
   } as ViewStyle,
   description: {
     fontSize: 12,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   options: {
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   splitText: {
-    marginBottom: 5
+    marginBottom: 5,
   } as ViewStyle,
   button: {
-    minWidth: 160
-  } as ViewStyle
+    minWidth: 160,
+  } as ViewStyle,
 });
 
 export interface DeviceSettingsProps {
@@ -55,7 +55,7 @@ export interface DeviceSettingsProps {
 }
 
 const TAG = '[DeviceSettings]';
-function DeviceSettings({ style }: DeviceSettingsProps) {
+function DeviceSettings({style}: DeviceSettingsProps) {
   const [biometricType, setBiometricType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useAnimatedState('');

@@ -1,5 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render just views !isLoading 1`] = `null`;
+exports[`render just views !isLoading 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fafdff",
+      "bottom": 0,
+      "flex": 1,
+      "justifyContent": "center",
+      "left": 0,
+      "opacity": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+      "zIndex": 1000,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        false,
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#4531cd"
+      hidesWhenStopped={true}
+      size="large"
+    />
+  </View>
+</View>
+`;
 
 exports[`render just views 1`] = `null`;

@@ -1,3 +1,3 @@
 import ES from './es';
 
-export { ES as L };
+export {ES as L};

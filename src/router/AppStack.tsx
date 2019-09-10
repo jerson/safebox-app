@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation';
 import BottomTabBar from '../components/navigation/BottomTabBar';
 import Colors from '../modules/constants/Colors';
 import AccountsStack from './app/AccountsStack';
@@ -11,11 +11,11 @@ export default createBottomTabNavigator(
   {
     Accounts: AccountsStack,
     Premium: PremiumStack,
-    Settings: SettingsStack
+    Settings: SettingsStack,
   },
   {
-    defaultNavigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state;
+    defaultNavigationOptions: ({navigation}) => {
+      const {routeName} = navigation.state;
       let tabBarLabel;
       let iconName: string;
 
@@ -40,11 +40,11 @@ export default createBottomTabNavigator(
       return {
         tabBarLabel,
 
-        tabBarIcon: ({ focused }) => {
-          const iconStyleTab = { fontSize: 22 };
+        tabBarIcon: ({focused}) => {
+          const iconStyleTab = {fontSize: 22};
           const color = focused ? Colors.white : Colors.grey5;
-          return <Icon name={iconName} style={[iconStyleTab, { color }]} />;
-        }
+          return <Icon name={iconName} style={[iconStyleTab, {color}]} />;
+        },
       };
     },
     tabBarComponent: props => {
@@ -52,7 +52,7 @@ export default createBottomTabNavigator(
     },
     animationEnabled: true,
     tabBarOptions: {
-      scrollEnabled: true
-    }
-  }
+      scrollEnabled: true,
+    },
+  },
 );

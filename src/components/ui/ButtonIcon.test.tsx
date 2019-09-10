@@ -1,17 +1,17 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import ButtonIcon, { ButtonIconProps } from './ButtonIcon';
+import ButtonIcon, {ButtonIconProps} from './ButtonIcon';
 
 const props: ButtonIconProps = {
-  iconStyle: { fontSize: 20 },
+  iconStyle: {fontSize: 20},
   style: {
     width: 30,
     height: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   name: 'plus-circle',
-  onPress: jest.fn()
+  onPress: jest.fn(),
 };
 
 test('renders without crashing', () => {

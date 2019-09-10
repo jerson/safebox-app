@@ -1,7 +1,7 @@
 import Log from './Log';
 
 test('exception', () => {
-  Log.exception('sample', 'sample', { message: 'sample' });
+  Log.exception('sample', 'sample', {message: 'sample'});
 });
 
 test('debug', () => {

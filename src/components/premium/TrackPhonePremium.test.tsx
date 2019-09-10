@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import TrackPhonePremium, { TrackPhonePremiumProps } from './TrackPhonePremium';
+import TrackPhonePremium, {TrackPhonePremiumProps} from './TrackPhonePremium';
 
 const props: TrackPhonePremiumProps = {};
 test('renders without crashing', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewStyle, StyleProp } from 'react-native';
+import {ViewStyle, StyleProp} from 'react-native';
 import ItemPremium from './ItemPremium';
 import * as RNIap from 'react-native-iap';
 
@@ -8,7 +8,7 @@ export interface WearableAccessPremiumProps {
   product?: RNIap.Product<string>;
 }
 
-function WearableAccessPremium({ style, product }: WearableAccessPremiumProps) {
+function WearableAccessPremium({style, product}: WearableAccessPremiumProps) {
   return (
     <ItemPremium
       style={style}

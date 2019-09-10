@@ -1,7 +1,7 @@
 import Strings from './Strings';
 
 test('getError', () => {
-  expect(Strings.getError({ message: 'sample' })).toBe('Sample');
+  expect(Strings.getError({message: 'sample'})).toBe('Sample');
 });
 
 test('capitalizeFirstLetter', () => {

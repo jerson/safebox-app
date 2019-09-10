@@ -9,6 +9,6 @@ module.exports = {
     '<rootDir>/src/proto/',
     '<rootDir>/src/assets/',
     '<rootDir>/src/router/',
-    '<rootDir>/tests/'
-  ]
+    '<rootDir>/tests/',
+  ],
 };

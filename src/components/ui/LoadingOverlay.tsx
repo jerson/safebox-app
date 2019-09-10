@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Animated, StyleSheet, ViewStyle } from 'react-native';
-import Loading, { LoadingProps } from './Loading';
+import React, {useState, useEffect} from 'react';
+import {Animated, StyleSheet, ViewStyle} from 'react-native';
+import Loading, {LoadingProps} from './Loading';
 import Colors from '../../modules/constants/Colors';
 
 const styles = StyleSheet.create({
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     top: 0,
     flex: 1,
     zIndex: 1000,
-    justifyContent: 'center'
-  } as ViewStyle
+    justifyContent: 'center',
+  } as ViewStyle,
 });
 
 export interface LoadingOverlayProps extends LoadingProps {
@@ -23,7 +23,7 @@ export interface LoadingOverlayProps extends LoadingProps {
 }
 
 function LoadingOverlay(props: LoadingOverlayProps) {
-  const { style, isLoading, duration, ...extraProps } = props;
+  const {style, isLoading, duration, ...extraProps} = props;
 
   const [isVisible, setIsVisible] = useState(false);
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -44,7 +44,7 @@ function LoadingOverlay(props: LoadingOverlayProps) {
     animation && animation.stop();
     animation = Animated.timing(fadeAnim, {
       toValue: isLoading ? 1 : 0,
-      duration
+      duration,
     });
 
     animation.start(() => {
@@ -56,7 +56,7 @@ function LoadingOverlay(props: LoadingOverlayProps) {
     return null;
   }
   return (
-    <Animated.View style={[styles.container, { opacity: fadeAnim }, style]}>
+    <Animated.View style={[styles.container, {opacity: fadeAnim}, style]}>
       <Loading {...extraProps} />
     </Animated.View>
   );
@@ -65,6 +65,6 @@ LoadingOverlay.defaultProps = {
   size: 'large',
   color: Colors.primary,
   isLoading: false,
-  duration: 100
+  duration: 100,
 };
 export default LoadingOverlay;

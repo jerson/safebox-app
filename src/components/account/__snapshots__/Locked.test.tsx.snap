@@ -25,8 +25,8 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class>
-      <_class
+    <View>
+      <View
         style={
           Array [
             Object {
@@ -50,7 +50,7 @@ exports[`render just views 1`] = `
           ]
         }
       >
-        <_class
+        <View
           style={
             Object {
               "alignSelf": "center",
@@ -77,7 +77,7 @@ exports[`render just views 1`] = `
               }
             }
           />
-        </_class>
+        </View>
         <Text
           style={
             Array [
@@ -134,7 +134,7 @@ exports[`render just views 1`] = `
           </Text>
           .
         </Text>
-        <_class
+        <View
           style={
             Array [
               Object {
@@ -147,7 +147,7 @@ exports[`render just views 1`] = `
             ]
           }
         >
-          <_class
+          <View
             style={
               Array [
                 Object {
@@ -159,7 +159,7 @@ exports[`render just views 1`] = `
               ]
             }
           />
-          <_class
+          <View
             style={
               Array [
                 Object {
@@ -223,7 +223,7 @@ exports[`render just views 1`] = `
               underlineColorAndroid="transparent"
               value=""
             />
-            <_class
+            <View
               style={
                 Object {
                   "bottom": 1,
@@ -262,8 +262,8 @@ exports[`render just views 1`] = `
               >
                 
               </Text>
-            </_class>
-            <_class
+            </View>
+            <View
               style={
                 Array [
                   Object {
@@ -274,7 +274,7 @@ exports[`render just views 1`] = `
                 ]
               }
             />
-          </_class>
+          </View>
           <Text
             style={
               Array [
@@ -295,10 +295,12 @@ exports[`render just views 1`] = `
           >
             SafeBox password is used to unlock your secret passwords.
           </Text>
-        </_class>
-        <_class
+        </View>
+        <View
           accessible={true}
+          focusable={true}
           isTVSelectable={true}
+          onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -377,9 +379,9 @@ exports[`render just views 1`] = `
           >
             Unlock passwords
           </Text>
-        </_class>
-      </_class>
-    </_class>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
 </Modal>
 `;

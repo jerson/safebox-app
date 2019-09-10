@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   accessibilityLabel="test"
   accessible={true}
+  focusable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -17,7 +19,7 @@ exports[`render just views 1`] = `
     }
   }
 >
-  <_class
+  <View
     style={
       Object {
         "backgroundColor": "#9066f5",
@@ -38,9 +40,9 @@ exports[`render just views 1`] = `
       }
     }
   />
-  <_class
+  <View
     focused={true}
     style={Object {}}
   />
-</_class>
+</View>
 `;

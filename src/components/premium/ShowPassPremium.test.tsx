@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import ShowPassPremium, { ShowPassPremiumProps } from './ShowPassPremium';
+import ShowPassPremium, {ShowPassPremiumProps} from './ShowPassPremium';
 
 const props: ShowPassPremiumProps = {};
 test('renders without crashing', () => {

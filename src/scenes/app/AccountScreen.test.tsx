@@ -11,7 +11,7 @@ jest.mock('react-navigation-hooks', () => {
           return true;
 
         case 'account':
-          const { AccountSingle } = require('../../proto/services_pb');
+          const {AccountSingle} = require('../../proto/services_pb');
 
           const account = new AccountSingle();
           account.setHint('sample');
@@ -35,13 +35,13 @@ jest.mock('react-navigation-hooks', () => {
         },
         addListener: () => {
           return true;
-        }
+        },
       };
-    }
+    },
   };
 });
 
-const props: AccountScreen = {};
+const props = {};
 test('renders without crashing', () => {
   const snapshot = renderer.create(<AccountScreen {...props} />).toJSON();
   expect(snapshot).toBeTruthy();

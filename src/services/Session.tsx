@@ -1,4 +1,4 @@
-import { AuthResponse } from '../proto/services_pb';
+import {AuthResponse} from '../proto/services_pb';
 import Emitter from '../modules/listener/Emitter';
 const moment = require('moment');
 

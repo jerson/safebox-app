@@ -78,21 +78,6 @@
     "typedoc": "0.15.0",
     "typescript": "3.6.2"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write --single-quote",
-      "git add"
-    ],
-    "*.tsx": [
-      "prettier --write --single-quote",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn test --bail && lint-staged"
-    }
-  },
   "jestSonar": {
     "sonar56x": true,
     "reportPath": "build/sonar"

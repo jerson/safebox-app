@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 import NavigationOptions from '../../modules/constants/NavigationOptions';
 import AccountsScreen from '../../scenes/app/AccountsScreen';
 import AddAccountScreen from '../../scenes/app/AddAccountScreen';
@@ -8,9 +8,9 @@ export default createStackNavigator(
   {
     Accounts: AccountsScreen,
     Account: AccountScreen,
-    AddAccount: AddAccountScreen
+    AddAccount: AddAccountScreen,
   },
   {
-    ...NavigationOptions.header
-  }
+    ...NavigationOptions.header,
+  },
 );

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Alert, ViewStyle, TextStyle } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Alert, ViewStyle, TextStyle} from 'react-native';
 import Text from '../ui/Text';
-import { Device, DeleteDeviceRequest } from '../../proto/services_pb';
+import {Device, DeleteDeviceRequest} from '../../proto/services_pb';
 import Button from '../ui/Button';
 import Client from '../../services/Client';
 import Strings from '../../modules/format/Strings';
@@ -20,27 +20,27 @@ const styles = StyleSheet.create({
     borderColor: Colors.grey3,
     borderWidth: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   info: {
     flex: 1,
-    paddingRight: 10
+    paddingRight: 10,
   } as ViewStyle,
   button: {
     paddingTop: 6,
-    paddingLeft: 14
+    paddingLeft: 14,
   } as ViewStyle,
   uid: {
     fontSize: 12,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   date: {
     fontSize: 13,
-    color: Colors.grey6
+    color: Colors.grey6,
   } as TextStyle,
   isSame: {
-    color: Colors.primaryLight
-  } as TextStyle
+    color: Colors.primaryLight,
+  } as TextStyle,
 });
 
 export interface ItemProps {
@@ -49,7 +49,7 @@ export interface ItemProps {
   onDelete?: () => void;
 }
 
-function Item({ item, isSame, onDelete }: ItemProps) {
+function Item({item, isSame, onDelete}: ItemProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const deletePublicKey = async () => {
@@ -86,16 +86,16 @@ function Item({ item, isSame, onDelete }: ItemProps) {
           text: 'Yes, Delete',
           onPress: () => {
             deleteDevice();
-          }
+          },
         },
         {
           text: 'Cancel',
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ],
       {
-        cancelable: true
-      }
+        cancelable: true,
+      },
     );
   };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import * as renderer from 'react-test-renderer';
 import SettingsScreen from './SettingsScreen';
 
-const props: SettingsScreen = {};
+const props = {};
 test('renders without crashing', () => {
   const snapshot = renderer.create(<SettingsScreen {...props} />).toJSON();
   expect(snapshot).toBeTruthy();

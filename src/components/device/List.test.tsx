@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import List, { ListProps } from './List';
+import List, {ListProps} from './List';
 
 const props: ListProps = {};
 test('renders without crashing', () => {

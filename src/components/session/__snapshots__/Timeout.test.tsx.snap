@@ -35,7 +35,7 @@ exports[`render just views 1`] = `
     ]
   }
 >
-  <_class
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -66,9 +66,11 @@ exports[`render just views 1`] = `
       Session expires in 
       00
     </Text>
-    <_class
+    <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -119,9 +121,9 @@ exports[`render just views 1`] = `
       >
         Extend
       </Text>
-    </_class>
-  </_class>
-  <_class
+    </View>
+  </View>
+  <View
     style={
       Object {
         "backgroundColor": "#c2d0e7",
@@ -132,7 +134,7 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class
+    <View
       style={
         Object {
           "backgroundColor": "rgba(187, 202, 228, 1)",
@@ -142,6 +144,6 @@ exports[`render just views 1`] = `
         }
       }
     />
-  </_class>
+  </View>
 </BVLinearGradient>
 `;

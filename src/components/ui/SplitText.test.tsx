@@ -1,9 +1,9 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import SplitText, { SplitTextProps } from './SplitText';
+import SplitText, {SplitTextProps} from './SplitText';
 
 const props: SplitTextProps = {
-  title: 'sample'
+  title: 'sample',
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<SplitText {...props} />).toJSON();

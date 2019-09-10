@@ -1,16 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleProp,
   StyleSheet,
   TextStyle,
   View,
   ViewStyle,
-  TextInput as TextInputOriginal
+  TextInput as TextInputOriginal,
 } from 'react-native';
 import TextError from './TextError';
 import TextInputBase, {
   TextInputBaseProps,
-  TextInputBaseRef
+  TextInputBaseRef,
 } from './TextInputBase';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
@@ -20,40 +20,40 @@ import ButtonIcon from './ButtonIcon';
 
 const Sizes = {
   ClearButtonWidth: 40,
-  Icon: 20
+  Icon: 20,
 };
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flexDirection: 'column',
     marginBottom: 20,
-    marginTop: 10
+    marginTop: 10,
   } as ViewStyle,
   content: {
-    position: 'relative'
+    position: 'relative',
   } as ViewStyle,
   iconContainer: {
     position: 'absolute',
     top: 0,
     left: 12,
     bottom: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   inputClearButton: {
-    paddingRight: Sizes.ClearButtonWidth
+    paddingRight: Sizes.ClearButtonWidth,
   } as TextStyle,
   textErrorContainer: {
-    marginTop: 10
+    marginTop: 10,
   } as ViewStyle,
   icon: {
     fontSize: Sizes.Icon,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   iconError: {
-    color: Colors.danger
+    color: Colors.danger,
   } as TextStyle,
   iconFocus: {
-    color: Colors.secondary
+    color: Colors.secondary,
   } as TextStyle,
   input: {
     ...Font(),
@@ -67,40 +67,40 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     paddingTop: 10,
     fontSize: 15,
-    textDecorationLine: 'none'
+    textDecorationLine: 'none',
   } as TextStyle,
   labelText: {
     lineHeight: 16,
     fontSize: 14,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   labelErrorText: {
-    color: Colors.danger
+    color: Colors.danger,
   } as TextStyle,
   labelFocusText: {
-    color: Colors.secondary
+    color: Colors.secondary,
   } as TextStyle,
   labelContainer: {
     flexDirection: 'row',
     paddingBottom: 4,
-    alignItems: 'center'
+    alignItems: 'center',
   } as TextStyle,
   inputFocus: {
-    borderColor: Colors.secondary
+    borderColor: Colors.secondary,
   } as TextStyle,
   inputImage: {
-    paddingLeft: Sizes.Icon + 20
+    paddingLeft: Sizes.Icon + 20,
   } as TextStyle,
   inputError: {
     borderColor: Colors.danger,
-    shadowOffset: { width: 0, height: 0 },
+    shadowOffset: {width: 0, height: 0},
     shadowColor: Colors.grey6,
     shadowRadius: 0,
-    shadowOpacity: 0
+    shadowOpacity: 0,
   } as TextStyle,
   rightContainer: {
     position: 'absolute',
-    right: -60
+    right: -60,
   } as ViewStyle,
   clearButton: {
     position: 'absolute',
@@ -109,12 +109,12 @@ const styles = StyleSheet.create({
     bottom: 1,
     width: Sizes.ClearButtonWidth,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   clearButtonIcon: {
     fontSize: 22,
-    color: Colors.accentDark
-  } as TextStyle
+    color: Colors.accentDark,
+  } as TextStyle,
 });
 
 export interface TextInputProps extends TextInputBaseProps {
@@ -173,7 +173,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
   const [isFocused, setIsFocused] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | React.ReactNode>(
-    ''
+    '',
   );
 
   React.useImperativeHandle(ref, () => ({
@@ -206,12 +206,12 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
     },
     getInputRef: () => {
       if (!inputRef.current) {
-        return { current: null };
+        return {current: null};
       }
       return inputRef.current && inputRef.current.getInputRef();
     },
     focus,
-    blur
+    blur,
   }));
 
   const onClearAll = () => {
@@ -245,9 +245,8 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
             style={[
               styles.labelText,
               isInvalid && styles.labelErrorText,
-              isFocused && styles.labelFocusText
-            ]}
-          >
+              isFocused && styles.labelFocusText,
+            ]}>
             {label}
           </Text>
         )}
@@ -263,7 +262,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
             isInvalid && styles.inputError,
             isFocused && styles.inputFocus,
             showClearButton && styles.inputClearButton,
-            style
+            style,
           ]}
           onEmptyState={setIsEmpty}
           onError={setErrorMessage}
@@ -279,7 +278,7 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
                 styles.icon,
                 isInvalid && styles.iconError,
                 isFocused && styles.iconFocus,
-                iconStyle
+                iconStyle,
               ]}
               name={icon}
             />
@@ -311,6 +310,6 @@ function TextInputWrapper(props: TextInputProps, ref: React.Ref<TextInputRef>) {
 const TextInput = React.forwardRef(TextInputWrapper);
 TextInput.defaultProps = {
   editable: true,
-  showClearButton: true
+  showClearButton: true,
 };
 export default TextInput;

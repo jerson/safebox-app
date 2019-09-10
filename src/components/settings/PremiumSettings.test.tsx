@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import PremiumSettings, { PremiumSettingsProps } from './PremiumSettings';
+import PremiumSettings, {PremiumSettingsProps} from './PremiumSettings';
 
 const props: PremiumSettingsProps = {};
 test('renders without crashing', () => {

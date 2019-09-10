@@ -1,9 +1,9 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import Text, { TextProps } from './Text';
+import Text, {TextProps} from './Text';
 
 const props: TextProps = {
-  children: 'sample'
+  children: 'sample',
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<Text {...props} />).toJSON();

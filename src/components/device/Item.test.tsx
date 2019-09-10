@@ -1,7 +1,7 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import Item, { ItemProps } from './Item';
-import { Device } from '../../proto/services_pb';
+import Item, {ItemProps} from './Item';
+import {Device} from '../../proto/services_pb';
 const moment = require('moment');
 
 const item = new Device();
@@ -10,7 +10,7 @@ item.setId(1);
 item.setName('sample');
 item.setUid('sample');
 const props: ItemProps = {
-  item
+  item,
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<Item {...props} />).toJSON();
@@ -24,6 +24,6 @@ test('render just views', () => {
 test('tryDelete', () => {
   const instance = renderer.create(<Item {...props} />).root;
 
-  const element = instance.findByProps({ testID: 'item_button_delete' });
+  const element = instance.findByProps({testID: 'item_button_delete'});
   element.props.onPress();
 });

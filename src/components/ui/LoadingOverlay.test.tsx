@@ -1,10 +1,10 @@
 import React from 'react';
 
 import * as renderer from 'react-test-renderer';
-import LoadingOverlay, { LoadingOverlayProps } from './LoadingOverlay';
+import LoadingOverlay, {LoadingOverlayProps} from './LoadingOverlay';
 
 const props: LoadingOverlayProps = {
-  isLoading: true
+  isLoading: true,
 };
 
 test('render just views', () => {

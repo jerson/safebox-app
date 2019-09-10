@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import Timeout, { TimeoutProps } from './Timeout';
+import Timeout, {TimeoutProps} from './Timeout';
 
 const props: TimeoutProps = {};
 test('renders without crashing', () => {

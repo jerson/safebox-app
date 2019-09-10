@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { LayoutAnimation } from 'react-native';
+import {useState} from 'react';
+import {LayoutAnimation} from 'react-native';
 
 function useAnimatedState<T>(initialValue: T): [T, (value: T) => void] {
   const [value, setValue] = useState(initialValue);

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Array [
       Object {
@@ -27,8 +27,8 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class>
-      <_class
+    <View>
+      <View
         onLayout={[Function]}
         pointerEvents="box-none"
         style={
@@ -41,7 +41,7 @@ exports[`render just views 1`] = `
           }
         }
       >
-        <_class
+        <View
           style={
             Array [
               Object {
@@ -56,7 +56,7 @@ exports[`render just views 1`] = `
             ]
           }
         >
-          <_class
+          <View
             style={
               Array [
                 Object {
@@ -68,7 +68,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -80,7 +80,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -99,7 +99,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -139,9 +139,9 @@ exports[`render just views 1`] = `
                 >
                   Track Phone - Premium
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -177,7 +177,7 @@ exports[`render just views 1`] = `
               >
                 
               </Text>
-              <_class
+              <View
                 style={
                   Object {
                     "flex": 1,
@@ -205,9 +205,11 @@ exports[`render just views 1`] = `
                 >
                   If you enable this option we will send you an email daily with the last location you used to connect to the application.
                 </Text>
-                <_class
+                <View
                   accessible={true}
+                  focusable={true}
                   isTVSelectable={true}
+                  onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -286,11 +288,11 @@ exports[`render just views 1`] = `
                   >
                     Purchase Now 
                   </Text>
-                </_class>
-              </_class>
-            </_class>
-          </_class>
-          <_class
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
             style={
               Array [
                 Object {
@@ -302,7 +304,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -314,7 +316,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -333,7 +335,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -373,9 +375,9 @@ exports[`render just views 1`] = `
                 >
                   Show Password - Premium
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -411,7 +413,7 @@ exports[`render just views 1`] = `
               >
                 
               </Text>
-              <_class
+              <View
                 style={
                   Object {
                     "flex": 1,
@@ -439,9 +441,11 @@ exports[`render just views 1`] = `
                 >
                   With this option add additional security to your account and enable the option to see the passwords your secret accounts.
                 </Text>
-                <_class
+                <View
                   accessible={true}
+                  focusable={true}
                   isTVSelectable={true}
+                  onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -520,11 +524,11 @@ exports[`render just views 1`] = `
                   >
                     Purchase Now 
                   </Text>
-                </_class>
-              </_class>
-            </_class>
-          </_class>
-          <_class
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
             style={
               Array [
                 Object {
@@ -536,7 +540,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -548,7 +552,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -567,7 +571,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -607,9 +611,9 @@ exports[`render just views 1`] = `
                 >
                   Wearable Access - Premium
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -645,7 +649,7 @@ exports[`render just views 1`] = `
               >
                 
               </Text>
-              <_class
+              <View
                 style={
                   Object {
                     "flex": 1,
@@ -673,9 +677,11 @@ exports[`render just views 1`] = `
                 >
                   If you have a device with WearOS you can use the application to see information about your secret accounts.
                 </Text>
-                <_class
+                <View
                   accessible={true}
+                  focusable={true}
                   isTVSelectable={true}
+                  onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -754,13 +760,13 @@ exports[`render just views 1`] = `
                   >
                     Purchase Now 
                   </Text>
-                </_class>
-              </_class>
-            </_class>
-          </_class>
-        </_class>
-      </_class>
-    </_class>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
-</_class>
+</View>
 `;

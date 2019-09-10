@@ -1,5 +1,5 @@
 import Session from './Session';
-import { AuthResponse, KeyPairResponse } from '../proto/services_pb';
+import {AuthResponse, KeyPairResponse} from '../proto/services_pb';
 const moment = require('moment');
 
 test('setPassword', () => {
@@ -19,7 +19,7 @@ test('getPrivateKey', () => {
 });
 test('getDateExpire', () => {
   expect(Session.getDateExpire()).toStrictEqual(
-    moment('2018-01-01T12:05:00.000Z').toDate()
+    moment('2018-01-01T12:05:00.000Z').toDate(),
   );
 });
 

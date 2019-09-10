@@ -1,14 +1,14 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import BottomTabBarIcon, { BottomTabBarIconProps } from './BottomTabBarIcon';
+import BottomTabBarIcon, {BottomTabBarIconProps} from './BottomTabBarIcon';
 
 const props: BottomTabBarIconProps = {
   focused: true,
   accessibilityLabel: 'test',
   onLongPress: jest.fn(),
   onPress: jest.fn(),
-  style: {}
+  style: {},
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<BottomTabBarIcon {...props} />).toJSON();

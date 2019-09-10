@@ -1,4 +1,4 @@
-import Realm, { Results } from 'realm';
+import Realm, {Results} from 'realm';
 import DeviceInfo from 'react-native-device-info';
 import SettingsModel from './models/SettingsModel';
 import Log from '../log/Log';
@@ -12,14 +12,14 @@ export default class AppStorage {
       schema: [SettingsModel],
       schemaVersion: 1,
       encryptionKey: AppStorage.createId(),
-      path: 'app.realm'
+      path: 'app.realm',
     });
   }
 
   static async create<T>(
     schema: SchemaType,
     object: T,
-    update: boolean = true
+    update: boolean = true,
   ): Promise<T> {
     const realm = await AppStorage.open();
     return new Promise((resolve, reject) => {
@@ -82,7 +82,7 @@ export default class AppStorage {
   }
 
   static async findAll<T>(
-    schema: SchemaType
+    schema: SchemaType,
   ): Promise<Results<T & Realm.Object>> {
     const realm = await AppStorage.open();
     return new Promise(resolve => {

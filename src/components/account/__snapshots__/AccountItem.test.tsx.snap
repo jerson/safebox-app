@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -60,7 +62,7 @@ exports[`render just views 1`] = `
   >
     
   </Text>
-  <_class
+  <View
     style={
       Object {
         "paddingLeft": 10,
@@ -86,6 +88,6 @@ exports[`render just views 1`] = `
     >
       sample
     </Text>
-  </_class>
-</_class>
+  </View>
+</View>
 `;

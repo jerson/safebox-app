@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import SessionSettings, { SessionSettingsProps } from './SessionSettings';
+import SessionSettings, {SessionSettingsProps} from './SessionSettings';
 
 const props: SessionSettingsProps = {};
 test('renders without crashing', () => {

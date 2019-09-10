@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -6,13 +6,13 @@ import {
   View,
   StyleProp,
   Alert,
-  Animated
+  Animated,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Button from '../ui/Button';
 import Text from '../ui/Text';
 import Session from '../../services/Session';
-import { useNavigation } from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 import useAnimatedState from '../hooks/useAnimatedState';
 import AlertMessage from '../ui/AlertMessage';
 import Client from '../../services/Client';
@@ -28,33 +28,33 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 5,
     justifyContent: 'center',
-    zIndex: 100
+    zIndex: 100,
   } as ViewStyle,
   content: {
     marginBottom: 4,
     flexDirection: 'row',
     alignItems: 'center',
-    height: 30
+    height: 30,
   } as ViewStyle,
-  button: { minWidth: 100, paddingTop: 1 } as ViewStyle,
+  button: {minWidth: 100, paddingTop: 1} as ViewStyle,
   timeout: {
     fontSize: 13,
     color: Colors.grey5,
-    flex: 1
+    flex: 1,
   } as TextStyle,
   progress: {
     width: '100%',
     height: 6,
     borderRadius: 6,
     backgroundColor: Colors.accent,
-    overflow: 'hidden'
+    overflow: 'hidden',
   } as ViewStyle,
   seek: {
     width: '100%',
     height: 6,
     borderRadius: 6,
-    backgroundColor: Colors.accent
-  } as ViewStyle
+    backgroundColor: Colors.accent,
+  } as ViewStyle,
 });
 
 const colorsGradient = [
@@ -63,7 +63,7 @@ const colorsGradient = [
   Colors.grey1,
   tinyColor(Colors.grey1)
     .setAlpha(0)
-    .toRgbString()
+    .toRgbString(),
 ];
 const colorsProgress = [
   tinyColor(Colors.danger).toRgbString(),
@@ -73,7 +73,7 @@ const colorsProgress = [
   tinyColor(Colors.secondary).toRgbString(),
   tinyColor(Colors.accent)
     .darken(2)
-    .toRgbString()
+    .toRgbString(),
 ];
 
 export interface TimeoutProps {
@@ -82,8 +82,8 @@ export interface TimeoutProps {
 }
 
 const expirationSeconds = 300;
-function Timeout({ onShouldRefresh, style }: TimeoutProps) {
-  const { navigate } = useNavigation();
+function Timeout({onShouldRefresh, style}: TimeoutProps) {
+  const {navigate} = useNavigation();
   const [shouldRefresh, setShouldRefresh] = useState(false);
   const [remaining, setRemaining] = useState(0);
   const [error, setError] = useAnimatedState('');
@@ -109,7 +109,7 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
     const diff = Math.round(
       moment
         .duration(moment(Session.getDateExpire()).diff(moment()))
-        .asSeconds()
+        .asSeconds(),
     );
 
     setRemaining(diff);
@@ -138,14 +138,14 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
             text: 'Extend session',
             onPress: () => {
               refreshToken();
-            }
+            },
           },
           {
             text: 'Ignore',
-            style: 'cancel'
-          }
+            style: 'cancel',
+          },
         ],
-        { cancelable: false }
+        {cancelable: false},
       );
     }
     typeof onShouldRefresh === 'function' && onShouldRefresh(shouldRefresh);
@@ -167,7 +167,7 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
   };
   useEffect(() => {
     Animated.spring(percentAnimation, {
-      toValue: getPercent()
+      toValue: getPercent(),
     }).start();
   }, [remaining]);
 
@@ -176,11 +176,11 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
 
   const color = percentAnimation.interpolate({
     inputRange: [0, 5, 10, 30, 80, 100],
-    outputRange: colorsProgress
+    outputRange: colorsProgress,
   });
   const percentString = percentAnimation.interpolate({
     inputRange: [0, 100],
-    outputRange: ['0%', '100%']
+    outputRange: ['0%', '100%'],
   });
 
   return (
@@ -209,10 +209,7 @@ function Timeout({ onShouldRefresh, style }: TimeoutProps) {
       </View>
       <View style={styles.progress}>
         <Animated.View
-          style={[
-            styles.seek,
-            { width: percentString, backgroundColor: color }
-          ]}
+          style={[styles.seek, {width: percentString, backgroundColor: color}]}
         />
       </View>
     </LinearGradient>

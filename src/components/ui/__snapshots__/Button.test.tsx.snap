@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`allowOnPress 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -51,13 +53,15 @@ exports[`allowOnPress 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`disabled 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -105,13 +109,15 @@ exports[`disabled 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`icon 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -190,13 +196,15 @@ exports[`icon 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`isLoading 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -218,7 +226,7 @@ exports[`isLoading 1`] = `
   }
   testID="button_touchable"
 >
-  <_class
+  <View
     style={
       Array [
         Object {
@@ -233,7 +241,7 @@ exports[`isLoading 1`] = `
       ]
     }
   >
-    <_class
+    <View
       style={
         Array [
           false,
@@ -251,8 +259,8 @@ exports[`isLoading 1`] = `
         hidesWhenStopped={true}
         size="small"
       />
-    </_class>
-  </_class>
+    </View>
+  </View>
   <Text
     style={
       Array [
@@ -279,13 +287,15 @@ exports[`isLoading 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`light 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -333,13 +343,15 @@ exports[`light 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`render just views 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -387,13 +399,15 @@ exports[`render just views 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`small 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -442,13 +456,15 @@ exports[`small 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`typeColor:accent 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -496,13 +512,15 @@ exports[`typeColor:accent 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`typeColor:accentDark 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -550,13 +568,15 @@ exports[`typeColor:accentDark 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`typeColor:danger 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -604,13 +624,15 @@ exports[`typeColor:danger 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`typeColor:primary 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -658,13 +680,15 @@ exports[`typeColor:primary 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;
 
 exports[`typeColor:secondary 1`] = `
-<_class
+<View
   accessible={true}
+  focusable={true}
   isTVSelectable={true}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -712,5 +736,5 @@ exports[`typeColor:secondary 1`] = `
   >
     Sample
   </Text>
-</_class>
+</View>
 `;

@@ -1,3 +1,3 @@
 export default {
-  app_name: 'SafeBox'
+  app_name: 'SafeBox',
 };

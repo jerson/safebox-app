@@ -1,4 +1,4 @@
-import { Dimensions, Platform, StatusBar } from 'react-native';
+import {Dimensions, Platform, StatusBar} from 'react-native';
 
 export default class Size {
   static getStatusBarHeight(): number {
@@ -69,7 +69,7 @@ export default class Size {
   }
 
   static isiPhoneX(): boolean {
-    const { height, width } = Dimensions.get('window');
+    const {height, width} = Dimensions.get('window');
     const isAllowedDevice =
       // @ts-ignore
       Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS;

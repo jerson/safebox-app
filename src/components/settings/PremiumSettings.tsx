@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   ViewStyle,
@@ -6,7 +6,7 @@ import {
   StyleProp,
   Alert,
   TextStyle,
-  Platform
+  Platform,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import SplitText from '../ui/SplitText';
@@ -16,32 +16,32 @@ import * as RNIap from 'react-native-iap';
 import Log from '../../modules/log/Log';
 import Client from '../../services/Client';
 import Strings from '../../modules/format/Strings';
-import { HasProductRequest, BuyProductRequest } from '../../proto/services_pb';
+import {HasProductRequest, BuyProductRequest} from '../../proto/services_pb';
 import AlertMessage from '../ui/AlertMessage';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   content: {
     marginTop: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   info: {
     flex: 1,
-    paddingRight: 10
+    paddingRight: 10,
   } as ViewStyle,
   description: {
     fontSize: 12,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   button: {
-    minWidth: 160
+    minWidth: 160,
   } as ViewStyle,
   splitText: {
-    marginBottom: 5
-  } as ViewStyle
+    marginBottom: 5,
+  } as ViewStyle,
 });
 
 export interface PremiumSettingsProps {
@@ -49,7 +49,7 @@ export interface PremiumSettingsProps {
 }
 
 const TAG = '[PremiumSettings]';
-function PremiumSettings({ style }: PremiumSettingsProps) {
+function PremiumSettings({style}: PremiumSettingsProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 

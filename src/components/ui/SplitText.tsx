@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-  StyleProp
-} from 'react-native';
+import {View, StyleSheet, ViewStyle, TextStyle, StyleProp} from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   split: {
     height: 1,
@@ -20,20 +14,20 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 12
+    top: 12,
   } as ViewStyle,
   splitDefault: {
-    backgroundColor: Colors.accent
+    backgroundColor: Colors.accent,
   } as ViewStyle,
   splitPrimaryLight: {
-    backgroundColor: Colors.accent
+    backgroundColor: Colors.accent,
   } as ViewStyle,
   label: {
     minWidth: 20,
     textAlign: 'center',
     color: Colors.white,
     lineHeight: 14,
-    fontSize: 13
+    fontSize: 13,
   } as TextStyle,
   labelContainer: {
     paddingLeft: 8,
@@ -41,14 +35,14 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 4,
     borderRadius: 10,
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
   } as TextStyle,
   labelContainerDefault: {
-    backgroundColor: Colors.accentDark
+    backgroundColor: Colors.accentDark,
   } as TextStyle,
   labelContainerPrimaryLight: {
-    backgroundColor: Colors.primaryLight
-  } as TextStyle
+    backgroundColor: Colors.primaryLight,
+  } as TextStyle,
 });
 export interface SplitTextProps {
   title?: string;
@@ -56,23 +50,22 @@ export interface SplitTextProps {
   type?: 'Primary' | 'PrimaryLight' | 'Default';
 }
 
-function SplitText({ title, type, style }: SplitTextProps) {
+function SplitText({title, type, style}: SplitTextProps) {
   return (
     <View style={[styles.container, style]}>
       <View
         style={[
           styles.split,
           type === 'Default' && styles.splitDefault,
-          type === 'PrimaryLight' && styles.splitPrimaryLight
+          type === 'PrimaryLight' && styles.splitPrimaryLight,
         ]}
       />
       <View
         style={[
           styles.labelContainer,
           type === 'Default' && styles.labelContainerDefault,
-          type === 'PrimaryLight' && styles.labelContainerPrimaryLight
-        ]}
-      >
+          type === 'PrimaryLight' && styles.labelContainerPrimaryLight,
+        ]}>
         <Text style={styles.label}>{title}</Text>
       </View>
     </View>
@@ -80,7 +73,7 @@ function SplitText({ title, type, style }: SplitTextProps) {
 }
 
 SplitText.defaultProps = {
-  type: 'Primary'
+  type: 'Primary',
 };
 
 export default SplitText;

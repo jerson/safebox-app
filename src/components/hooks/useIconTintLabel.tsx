@@ -59,7 +59,7 @@ function useIconTintLabel(value: string) {
 
   return {
     icon,
-    tintColor
+    tintColor,
   };
 }
 export default useIconTintLabel;

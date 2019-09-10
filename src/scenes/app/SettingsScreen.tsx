@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, ViewStyle, ScrollView, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import {StyleSheet, ViewStyle, ScrollView, StatusBar} from 'react-native';
+import {SafeAreaView} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
@@ -11,17 +11,17 @@ import PremiumSettings from '../../components/settings/PremiumSettings';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   scrollView: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   safeArea: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   block: {
-    marginBottom: 40
-  } as ViewStyle
+    marginBottom: 40,
+  } as ViewStyle,
 });
 
 function SettingsScreen() {
@@ -35,10 +35,9 @@ function SettingsScreen() {
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleTabScreenHeight()
+          minHeight: Size.getVisibleTabScreenHeight(),
         }}
-        style={styles.scrollView}
-      >
+        style={styles.scrollView}>
         <SafeAreaView style={styles.safeArea}>
           <Content>
             <DeviceSettings style={styles.block} />
@@ -53,7 +52,7 @@ function SettingsScreen() {
 
 SettingsScreen.navigationOptions = {
   title: 'Settings',
-  headerLeft: null
+  headerLeft: null,
 };
 
 export default SettingsScreen;

@@ -2,8 +2,8 @@ export default class SettingsModel {
   public static schema: Realm.ObjectSchema = {
     name: 'Settings',
     properties: {
-      biometricPublicKey: { type: 'string', optional: true, default: '' }
-    }
+      biometricPublicKey: {type: 'string', optional: true, default: ''},
+    },
   };
 
   public static initWithDefaults() {

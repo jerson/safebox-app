@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import {StyleProp, StyleSheet, ViewStyle, TextStyle} from 'react-native';
 import Colors from '../../modules/constants/Colors';
 
 import ButtonIcon from '../ui/ButtonIcon';
@@ -7,7 +7,7 @@ import ButtonIcon from '../ui/ButtonIcon';
 const styles = StyleSheet.create({
   back: {
     fontSize: 28,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   container: {
     height: 50,
@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    opacity: 1
-  } as ViewStyle
+    opacity: 1,
+  } as ViewStyle,
 });
 
 export interface HeaderIconProps {
@@ -25,7 +25,7 @@ export interface HeaderIconProps {
   style?: StyleProp<TextStyle>;
 }
 
-function HeaderIcon({ style, name, onPress }: HeaderIconProps) {
+function HeaderIcon({style, name, onPress}: HeaderIconProps) {
   return (
     <ButtonIcon
       name={name}

@@ -1,7 +1,7 @@
 export default class Strings {
   static getError(e: any) {
     return Strings.capitalizeFirstLetter(
-      `${e.message.split(';').join('\n\n')}`
+      `${e.message.split(';').join('\n\n')}`,
     );
   }
   static capitalizeFirstLetter(input: string) {

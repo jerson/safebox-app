@@ -1,7 +1,7 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import {useState, Dispatch, SetStateAction} from 'react';
 
 function useTextInput(
-  initialValue: string
+  initialValue: string,
 ): [string, any, Dispatch<SetStateAction<string>>] {
   const [value, setValue] = useState(initialValue);
 
@@ -9,6 +9,6 @@ function useTextInput(
     setValue(text.trim());
   };
 
-  return [value, { onChangeText }, setValue];
+  return [value, {onChangeText}, setValue];
 }
 export default useTextInput;

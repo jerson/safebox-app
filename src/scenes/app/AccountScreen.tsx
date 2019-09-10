@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,9 @@ import {
   StatusBar,
   Alert,
   TextStyle,
-  Clipboard
+  Clipboard,
 } from 'react-native';
-import { SafeAreaView, HeaderProps } from 'react-navigation';
+import {SafeAreaView, HeaderProps} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 
 import Container from '../../components/ui/Container';
@@ -20,9 +20,9 @@ import {
   DeleteAccountRequest,
   AccountRequest,
   Account,
-  HasProductRequest
+  HasProductRequest,
 } from '../../proto/services_pb';
-import { useNavigationParam, useNavigation } from 'react-navigation-hooks';
+import {useNavigationParam, useNavigation} from 'react-navigation-hooks';
 import Text from '../../components/ui/Text';
 import Header from '../../components/account/Header';
 import useIconTintLabel from '../../components/hooks/useIconTintLabel';
@@ -46,32 +46,32 @@ import SettingsStorage from '../../modules/storage/SettingsStorage';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   scrollView: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   safeArea: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   textInput: {} as ViewStyle,
   textInputContainer: {
     flex: 1,
     marginBottom: 0,
-    marginRight: 60
+    marginRight: 60,
   } as ViewStyle,
   icon: {
     fontSize: 40,
     alignSelf: 'center',
     marginBottom: 10,
-    color: Colors.primaryLight
+    color: Colors.primaryLight,
   } as ViewStyle,
   shadow: {
     shadowOpacity: 0.1,
     shadowRadius: 16,
     shadowColor: Colors.grey6,
-    shadowOffset: { height: 4, width: 0 },
-    elevation: 4
+    shadowOffset: {height: 4, width: 0},
+    elevation: 4,
   } as ViewStyle,
   content: {
     padding: 20,
@@ -81,61 +81,61 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 12,
     overflow: 'visible',
-    alignSelf: 'center'
+    alignSelf: 'center',
   } as ViewStyle,
   help: {
     marginTop: 5,
     fontSize: 13,
-    color: Colors.grey6
+    color: Colors.grey6,
   } as TextStyle,
   helpHint: {
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   item: {
     flexDirection: 'row',
     width: '100%',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   } as ViewStyle,
   premium: {
     alignItems: 'center',
-    marginTop: 20
+    marginTop: 20,
   } as ViewStyle,
 
   buttonShowPassword: {
     marginBottom: 5,
-    minWidth: 240
+    minWidth: 240,
   } as ViewStyle,
   buttonCopy: {
     height: 50,
     width: 50,
     paddingTop: 14,
     paddingLeft: 15,
-    borderRadius: 25
+    borderRadius: 25,
   } as ViewStyle,
   description: {
     fontSize: 13,
     color: Colors.grey5,
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
   } as TextStyle,
   iconCopy: {
     color: Colors.primaryLight,
     fontSize: 15,
-    marginHorizontal: 2
+    marginHorizontal: 2,
   } as TextStyle,
   noPremiumDescription: {
     color: Colors.grey5,
-    textAlign: 'center'
+    textAlign: 'center',
   } as TextStyle,
   noPremium: {
     marginTop: 10,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: Colors.grey2
+    backgroundColor: Colors.grey2,
   } as ViewStyle,
   center: {
-    alignItems: 'center'
-  } as ViewStyle
+    alignItems: 'center',
+  } as ViewStyle,
 });
 
 const decode = async (input: string) => {
@@ -143,7 +143,7 @@ const decode = async (input: string) => {
     return await OpenPGP.decrypt(
       input,
       Session.getPrivateKey(),
-      Session.getPassword()
+      Session.getPassword(),
     );
   } catch (e) {
     Log.warn(TAG, 'decode', e);
@@ -153,7 +153,7 @@ const decode = async (input: string) => {
 
 const TAG = '[AccountScreen]';
 function AccountScreen() {
-  const { setParams, goBack, navigate } = useNavigation();
+  const {setParams, goBack, navigate} = useNavigation();
   const account = useNavigationParam('account') as AccountSingle;
   const showDelete = useNavigationParam('showDelete') as boolean;
 
@@ -171,7 +171,7 @@ function AccountScreen() {
   const navigation = useNavigation();
   const [focused] = useFocusedScreen(navigation);
 
-  let timeoutPassword: number;
+  let timeoutPassword: any;
 
   const checkPurchase = async () => {
     try {
@@ -288,23 +288,23 @@ function AccountScreen() {
           text: 'Delete',
           onPress: () => {
             deleteAccount();
-            setParams({ showDelete: false });
-          }
+            setParams({showDelete: false});
+          },
         },
         {
           text: 'Cancel',
           onPress: () => {
-            setParams({ showDelete: false });
+            setParams({showDelete: false});
           },
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ],
       {
         cancelable: true,
         onDismiss: () => {
-          setParams({ showDelete: false });
-        }
-      }
+          setParams({showDelete: false});
+        },
+      },
     );
   }, [showDelete]);
 
@@ -330,10 +330,9 @@ function AccountScreen() {
       <ScrollView
         keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleTabScreenHeight()
+          minHeight: Size.getVisibleTabScreenHeight(),
         }}
-        style={styles.scrollView}
-      >
+        style={styles.scrollView}>
         <SafeAreaView style={styles.safeArea}>
           <Content center>
             {!!error && (
@@ -429,8 +428,7 @@ function AccountScreen() {
                           Do you want to see your password?{'\n'}
                           <Text
                             onPress={goToPremium}
-                            style={{ color: Colors.primaryLight }}
-                          >
+                            style={{color: Colors.primaryLight}}>
                             Buy Premium
                           </Text>
                         </Text>
@@ -448,7 +446,7 @@ function AccountScreen() {
   );
 }
 
-AccountScreen.navigationOptions = ({ navigation }: any) => ({
+AccountScreen.navigationOptions = ({navigation}: any) => ({
   header: (props: HeaderProps) => {
     const account = navigation.getParam('account');
     const label = useIconTintLabel(account.getLabel());
@@ -465,10 +463,10 @@ AccountScreen.navigationOptions = ({ navigation }: any) => ({
     <HeaderIcon
       name={'trash-2'}
       onPress={() => {
-        navigation.setParams({ showDelete: true });
+        navigation.setParams({showDelete: true});
       }}
     />
-  )
+  ),
 });
 
 export default AccountScreen;

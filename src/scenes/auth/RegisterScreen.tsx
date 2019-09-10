@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useRef} from 'react';
 import {
   KeyboardAvoidingView,
   StyleSheet,
@@ -8,89 +8,89 @@ import {
   StatusBar,
   Platform,
   InteractionManager,
-  Keyboard
-} from "react-native";
-import { SafeAreaView } from "react-navigation";
-import Colors from "../../modules/constants/Colors";
-import HeaderLanding from "../../components/ui/HeaderLanding";
-import TextInput, { TextInputRef } from "../../components/ui/TextInput";
-import Button from "../../components/ui/Button";
-import Container from "../../components/ui/Container";
-import Content from "../../components/ui/Content";
-import Size from "../../modules/dimensions/Size";
-import useTextInput from "../../components/hooks/useTextInput";
-import Client from "../../services/Client";
-import { RegisterRequest } from "../../proto/services_pb";
-import OpenPGP, { KeyOptions } from "react-native-fast-openpgp";
-import Config from "../../Config";
-import Session from "../../services/Session";
-import Strings from "../../modules/format/Strings";
-import AlertMessage from "../../components/ui/AlertMessage";
-import ButtonLink from "../../components/ui/ButtonLink";
-import useAnimatedState from "../../components/hooks/useAnimatedState";
-import { useNavigation } from "react-navigation-hooks";
-import Log from "../../modules/log/Log";
+  Keyboard,
+} from 'react-native';
+import {SafeAreaView} from 'react-navigation';
+import Colors from '../../modules/constants/Colors';
+import HeaderLanding from '../../components/ui/HeaderLanding';
+import TextInput, {TextInputRef} from '../../components/ui/TextInput';
+import Button from '../../components/ui/Button';
+import Container from '../../components/ui/Container';
+import Content from '../../components/ui/Content';
+import Size from '../../modules/dimensions/Size';
+import useTextInput from '../../components/hooks/useTextInput';
+import Client from '../../services/Client';
+import {RegisterRequest} from '../../proto/services_pb';
+import OpenPGP, {KeyOptions} from 'react-native-fast-openpgp';
+import Config from '../../Config';
+import Session from '../../services/Session';
+import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
+import ButtonLink from '../../components/ui/ButtonLink';
+import useAnimatedState from '../../components/hooks/useAnimatedState';
+import {useNavigation} from 'react-navigation-hooks';
+import Log from '../../modules/log/Log';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   scrollView: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   safeArea: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   headerLanding: {
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
   } as ViewStyle,
   textInput: {} as ViewStyle,
   textInputContainer: {
-    marginBottom: 0
+    marginBottom: 0,
   } as ViewStyle,
   form: {
     width: 280,
     marginBottom: 60,
-    alignSelf: "center"
+    alignSelf: 'center',
   } as ViewStyle,
   button: {
-    marginTop: 20
+    marginTop: 20,
   } as ViewStyle,
   buttonLink: {
-    marginTop: 40
-  } as ViewStyle
+    marginTop: 40,
+  } as ViewStyle,
 });
 
-const TAG = "[RegisterScreen]";
+const TAG = '[RegisterScreen]';
 function RegisterScreen() {
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useAnimatedState("");
+  const [error, setError] = useAnimatedState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
   const repeatPasswordRef = useRef<TextInputRef>(null);
 
-  const [username, usernameProps] = useTextInput("");
-  const [password, passwordProps] = useTextInput("");
-  const [repeatPassword, repeatPasswordProps] = useTextInput("");
+  const [username, usernameProps] = useTextInput('');
+  const [password, passwordProps] = useTextInput('');
+  const [repeatPassword, repeatPasswordProps] = useTextInput('');
 
   const goToLogin = () => {
-    navigate("Login");
+    navigate('Login');
   };
 
   const isValid = () => {
     const isValid = [!!username, !!password, !!repeatPassword].every(
-      value => value
+      value => value,
     );
     if (!isValid) {
-      setError("Complete missing fields");
+      setError('Complete missing fields');
       return false;
     }
     if (password !== repeatPassword) {
-      setError("Passwords must match");
+      setError('Passwords must match');
       return false;
     }
     return isValid;
@@ -101,11 +101,11 @@ function RegisterScreen() {
       return await OpenPGP.generate({
         passphrase: password,
         name: username,
-        keyOptions: Config.settings.keyOptions as KeyOptions
+        keyOptions: Config.settings.keyOptions as KeyOptions,
       });
     } catch (e) {
-      Log.warn(TAG, "generateKeyPair", e);
-      throw new Error("error generating your credentials, try again later");
+      Log.warn(TAG, 'generateKeyPair', e);
+      throw new Error('error generating your credentials, try again later');
     }
   };
 
@@ -123,7 +123,7 @@ function RegisterScreen() {
       Session.login(response);
       Session.setPassword(password);
 
-      navigate("Accounts");
+      navigate('Accounts');
     } catch (e) {
       const message = Strings.getError(e);
       setError(message);
@@ -148,44 +148,42 @@ function RegisterScreen() {
     <Container style={styles.container}>
       <StatusBar
         animated
-        barStyle={"dark-content"}
+        barStyle={'dark-content'}
         backgroundColor={Colors.grey2}
       />
       <ScrollView
-        keyboardShouldPersistTaps={"handled"}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleHeight()
+          minHeight: Size.getVisibleHeight(),
         }}
-        style={styles.scrollView}
-      >
+        style={styles.scrollView}>
         <SafeAreaView style={styles.safeArea}>
           <Content center>
             <KeyboardAvoidingView
-              behavior={"padding"}
-              enabled={Platform.OS === "ios"}
-            >
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}>
               <HeaderLanding
-                titleStyle={{ color: Colors.primary }}
-                subtitleStyle={{ color: Colors.primary }}
+                titleStyle={{color: Colors.primary}}
+                subtitleStyle={{color: Colors.primary}}
                 style={styles.headerLanding}
               />
               <View style={styles.form}>
                 {!!error && (
                   <AlertMessage
                     onTimeout={() => {
-                      setError("");
+                      setError('');
                     }}
                     message={error}
                   />
                 )}
                 <TextInput
-                  icon={"user"}
-                  placeholder={"Username"}
-                  keyboardType={"default"}
-                  autoCapitalize={"none"}
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
                   autoCorrect={false}
-                  autoCompleteType={"username"}
-                  returnKeyType={"next"}
+                  autoCompleteType={'username'}
+                  returnKeyType={'next'}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={usernameRef}
@@ -195,14 +193,14 @@ function RegisterScreen() {
                   {...usernameProps}
                 />
                 <TextInput
-                  icon={"lock"}
-                  placeholder={"Password"}
+                  icon={'lock'}
+                  placeholder={'Password'}
                   secureTextEntry
-                  keyboardType={"default"}
-                  autoCapitalize={"none"}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
                   autoCorrect={false}
-                  autoCompleteType={"password"}
-                  returnKeyType={"next"}
+                  autoCompleteType={'password'}
+                  returnKeyType={'next'}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={passwordRef}
@@ -213,14 +211,14 @@ function RegisterScreen() {
                   {...passwordProps}
                 />
                 <TextInput
-                  icon={"lock"}
-                  placeholder={"Repeat password"}
+                  icon={'lock'}
+                  placeholder={'Repeat password'}
                   secureTextEntry
-                  keyboardType={"default"}
-                  autoCapitalize={"none"}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
                   autoCorrect={false}
-                  autoCompleteType={"password"}
-                  returnKeyType={"done"}
+                  autoCompleteType={'password'}
+                  returnKeyType={'done'}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={repeatPasswordRef}
@@ -232,14 +230,14 @@ function RegisterScreen() {
                 <Button
                   isLoading={isLoading}
                   style={styles.button}
-                  typeColor={"primaryLight"}
-                  title={"Create account"}
+                  typeColor={'primaryLight'}
+                  title={'Create account'}
                   onPress={tryToSubmit}
                 />
 
                 <ButtonLink
                   style={styles.buttonLink}
-                  title={"Back to Sign In"}
+                  title={'Back to Sign In'}
                   onPress={goToLogin}
                 />
               </View>
@@ -254,7 +252,7 @@ function RegisterScreen() {
 RegisterScreen.navigationOptions = {
   headerLeft: null,
   headerRight: null,
-  title: null
+  title: null,
 };
 
 export default RegisterScreen;

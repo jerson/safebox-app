@@ -3,16 +3,16 @@ import {
   Text as TextBase,
   TextProps as TextBaseProps,
   TextStyle,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import Font, {
   FontWeight,
   FontTypeStyle,
-  FontFamily
+  FontFamily,
 } from '../../modules/resources/Font';
 
 const styles = StyleSheet.create({
-  text: {} as TextStyle
+  text: {} as TextStyle,
 });
 
 export interface TextProps extends TextBaseProps {
@@ -23,14 +23,14 @@ export interface TextProps extends TextBaseProps {
   children: string | React.ReactNode;
 }
 
-function Text({ style, weight, textStyle, family, size, ...props }: TextProps) {
+function Text({style, weight, textStyle, family, size, ...props}: TextProps) {
   const customStyle = {
     fontSize: size,
     ...Font({
       weight,
       family,
-      style: textStyle
-    })
+      style: textStyle,
+    }),
   } as TextStyle;
   return <TextBase style={[customStyle, styles.text, style]} {...props} />;
 }

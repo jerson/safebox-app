@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Platform, StyleSheet, ViewStyle, TextStyle } from 'react-native';
-import { HeaderProps } from 'react-navigation';
+import {View, Platform, StyleSheet, ViewStyle, TextStyle} from 'react-native';
+import {HeaderProps} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 import Size from '../../modules/dimensions/Size';
@@ -12,41 +12,41 @@ const height = Size.getActionBarHeight() + paddingTop;
 const styles = StyleSheet.create({
   globalContainer: {
     backgroundColor: Colors.grey1,
-    overflow: 'visible'
+    overflow: 'visible',
   } as ViewStyle,
   container: {
     height,
     paddingTop,
     backgroundColor: Colors.grey1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   shadow: {
-    overflow: 'visible'
+    overflow: 'visible',
   } as ViewStyle,
   title: {
-    ...Font({ weight: 'Bold' }),
+    ...Font({weight: 'Bold'}),
     textAlign: 'center',
     color: Colors.grey6,
     fontSize: 18,
     marginLeft: 10,
-    marginBottom: 2
+    marginBottom: 2,
   } as TextStyle,
   centerContainer: {
     flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   leftContainer: {
-    width: 60
+    width: 60,
   } as ViewStyle,
   rightContainer: {
-    width: 60
+    width: 60,
   } as ViewStyle,
   icon: {
-    fontSize: 20
-  } as TextStyle
+    fontSize: 20,
+  } as TextStyle,
 });
 
 export interface AccountHeaderProps {
@@ -56,7 +56,7 @@ export interface AccountHeaderProps {
 }
 
 function Header(props: HeaderProps & AccountHeaderProps) {
-  const { options } = props.scene.descriptor;
+  const {options} = props.scene.descriptor;
   const isEmpty = !options.headerLeft && !options.headerRight && !options.title;
   if (isEmpty) {
     return null;
@@ -68,7 +68,7 @@ function Header(props: HeaderProps & AccountHeaderProps) {
         <View style={styles.leftContainer}>{options.headerLeft}</View>
         <View style={styles.centerContainer}>
           <Icon
-            style={[styles.icon, { color: props.tintColor }]}
+            style={[styles.icon, {color: props.tintColor}]}
             name={props.icon}
           />
           <Text allowFontScaling={false} style={styles.title}>

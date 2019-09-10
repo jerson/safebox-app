@@ -1,12 +1,12 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import ItemPremium, { ItemPremiumProps } from './ItemPremium';
+import ItemPremium, {ItemPremiumProps} from './ItemPremium';
 
 const props: ItemPremiumProps = {
   description: 'sample',
   name: 'sample',
   icon: 'trash',
-  productId: 'sample'
+  productId: 'sample',
 };
 test('renders without crashing', () => {
   const snapshot = renderer.create(<ItemPremium {...props} />).toJSON();

@@ -1,8 +1,8 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import TextError, { TextErrorProps } from './TextError';
+import TextError, {TextErrorProps} from './TextError';
 
-const props: TextErrorProps = { children: 'test' };
+const props: TextErrorProps = {children: 'test'};
 
 test('renders without crashing', () => {
   const snapshot = renderer.create(<TextError {...props} />).toJSON();

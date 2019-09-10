@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Array [
       Object {
@@ -11,7 +11,7 @@ exports[`render just views 1`] = `
     ]
   }
 >
-  <_class
+  <View
     style={
       Array [
         Object {
@@ -21,7 +21,7 @@ exports[`render just views 1`] = `
       ]
     }
   >
-    <_class
+    <View
       style={
         Array [
           Object {
@@ -40,7 +40,7 @@ exports[`render just views 1`] = `
         ]
       }
     />
-    <_class
+    <View
       style={
         Array [
           Object {
@@ -80,9 +80,9 @@ exports[`render just views 1`] = `
       >
         Session settings
       </Text>
-    </_class>
-  </_class>
-  <_class
+    </View>
+  </View>
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -91,7 +91,7 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class
+    <View
       style={
         Object {
           "flex": 1,
@@ -118,10 +118,12 @@ exports[`render just views 1`] = `
       >
         This option allows you to safely exit the application.
       </Text>
-    </_class>
-    <_class
+    </View>
+    <View
       accessible={true}
+      focusable={true}
       isTVSelectable={true}
+      onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -170,7 +172,7 @@ exports[`render just views 1`] = `
       >
         Sign out
       </Text>
-    </_class>
-  </_class>
-</_class>
+    </View>
+  </View>
+</View>
 `;

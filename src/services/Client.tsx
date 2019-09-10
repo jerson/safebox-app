@@ -1,4 +1,4 @@
-import { ServicesClient } from '../proto/ServicesServiceClientPb';
+import {ServicesClient} from '../proto/ServicesServiceClientPb';
 import Config from '../Config';
 import {
   AccountRequest,
@@ -33,7 +33,7 @@ import {
   DisableLocationRequest,
   DisableLocationResponse,
   GetEmailRequest,
-  GetEmailResponse
+  GetEmailResponse,
 } from '../proto/services_pb';
 import Session from './Session';
 
@@ -119,7 +119,7 @@ export default class Client {
   }
 
   static deleteAccount(
-    request: DeleteAccountRequest
+    request: DeleteAccountRequest,
   ): Promise<DeleteAccountResponse> {
     request.setAccesstoken(Session.getAccessToken());
 
@@ -177,7 +177,7 @@ export default class Client {
     });
   }
   static deleteDevice(
-    request: DeleteDeviceRequest
+    request: DeleteDeviceRequest,
   ): Promise<DeleteDeviceResponse> {
     request.setAccesstoken(Session.getAccessToken());
 
@@ -233,7 +233,7 @@ export default class Client {
     });
   }
   static sendLocation(
-    request: SendLocationRequest
+    request: SendLocationRequest,
   ): Promise<SendLocationResponse> {
     request.setAccesstoken(Session.getAccessToken());
 
@@ -248,7 +248,7 @@ export default class Client {
     });
   }
   static enableLocation(
-    request: EnableLocationRequest
+    request: EnableLocationRequest,
   ): Promise<EnableLocationResponse> {
     request.setAccesstoken(Session.getAccessToken());
 

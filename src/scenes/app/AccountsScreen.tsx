@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   ViewStyle,
   FlatList,
   StatusBar,
-  RefreshControl
+  RefreshControl,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Container from '../../components/ui/Container';
 import Content from '../../components/ui/Content';
 import Size from '../../modules/dimensions/Size';
-import { AccountSingle } from '../../proto/services_pb';
+import {AccountSingle} from '../../proto/services_pb';
 
 import useAnimatedState from '../../components/hooks/useAnimatedState';
 import HeaderIcon from '../../components/navigation/HeaderIcon';
@@ -22,25 +22,25 @@ import EmptyAccounts from '../../components/help/EmptyAccounts';
 import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 import AccountItem from '../../components/account/AccountItem';
 import Timeout from '../../components/session/Timeout';
-import { useNavigation } from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.grey1
+    backgroundColor: Colors.grey1,
   } as ViewStyle,
   flatList: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   alertMessage: {
     marginHorizontal: 20,
-    marginBottom: 20
+    marginBottom: 20,
   } as ViewStyle,
   timeout: {
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 0
-  } as ViewStyle
+    top: 0,
+  } as ViewStyle,
 });
 
 function AccountsScreen() {
@@ -99,7 +99,7 @@ function AccountsScreen() {
               />
             );
           }}
-          extraData={{ isLoading, error }}
+          extraData={{isLoading, error}}
           refreshControl={
             <RefreshControl
               colors={[Colors.primary]}
@@ -111,9 +111,9 @@ function AccountsScreen() {
           style={styles.flatList}
           contentContainerStyle={{
             minHeight: Size.getVisibleTabScreenHeight(),
-            paddingTop: 80
+            paddingTop: 80,
           }}
-          renderItem={({ item }) => {
+          renderItem={({item}) => {
             return <AccountItem item={item} />;
           }}
           data={accounts}
@@ -133,18 +133,18 @@ function AccountsScreen() {
   );
 }
 
-AccountsScreen.navigationOptions = ({ navigation }: any) => ({
+AccountsScreen.navigationOptions = ({navigation}: any) => ({
   title: 'SafeBox',
   headerLeft: null,
   headerRight: (
     <HeaderIcon
       name={'plus-circle'}
-      style={{ color: Colors.primaryLight }}
+      style={{color: Colors.primaryLight}}
       onPress={() => {
         navigation.navigate('AddAccount');
       }}
     />
-  )
+  ),
 });
 
 export default AccountsScreen;

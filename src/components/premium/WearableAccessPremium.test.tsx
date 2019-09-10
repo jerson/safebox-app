@@ -1,7 +1,7 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
 import WearableAccessPremium, {
-  WearableAccessPremiumProps
+  WearableAccessPremiumProps,
 } from './WearableAccessPremium';
 
 const props: WearableAccessPremiumProps = {};

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Array [
       Object {
@@ -27,8 +27,8 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class>
-      <_class
+    <View>
+      <View
         onLayout={[Function]}
         pointerEvents="box-none"
         style={
@@ -41,7 +41,7 @@ exports[`render just views 1`] = `
           }
         }
       >
-        <_class
+        <View
           style={
             Array [
               Object {
@@ -58,7 +58,7 @@ exports[`render just views 1`] = `
             ]
           }
         >
-          <_class
+          <View
             onLayout={[Function]}
             style={
               Object {
@@ -66,7 +66,7 @@ exports[`render just views 1`] = `
               }
             }
           >
-            <_class
+            <View
               style={
                 Object {
                   "alignSelf": "center",
@@ -75,7 +75,7 @@ exports[`render just views 1`] = `
                 }
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -90,7 +90,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -102,7 +102,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -159,7 +159,7 @@ exports[`render just views 1`] = `
                     underlineColorAndroid="transparent"
                     value=""
                   />
-                  <_class
+                  <View
                     style={
                       Object {
                         "bottom": 1,
@@ -200,8 +200,8 @@ exports[`render just views 1`] = `
                     >
                       
                     </Text>
-                  </_class>
-                  <_class
+                  </View>
+                  <View
                     style={
                       Array [
                         Object {
@@ -212,9 +212,9 @@ exports[`render just views 1`] = `
                       ]
                     }
                   />
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
@@ -229,7 +229,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -241,7 +241,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -298,7 +298,7 @@ exports[`render just views 1`] = `
                     underlineColorAndroid="transparent"
                     value=""
                   />
-                  <_class
+                  <View
                     style={
                       Object {
                         "bottom": 1,
@@ -337,8 +337,8 @@ exports[`render just views 1`] = `
                     >
                       
                     </Text>
-                  </_class>
-                  <_class
+                  </View>
+                  <View
                     style={
                       Array [
                         Object {
@@ -349,9 +349,9 @@ exports[`render just views 1`] = `
                       ]
                     }
                   />
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
@@ -363,7 +363,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -382,7 +382,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -422,9 +422,9 @@ exports[`render just views 1`] = `
                   >
                     Sensitive credentials
                   </Text>
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
@@ -439,7 +439,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -451,7 +451,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -509,7 +509,7 @@ exports[`render just views 1`] = `
                     underlineColorAndroid="transparent"
                     value=""
                   />
-                  <_class
+                  <View
                     style={
                       Object {
                         "bottom": 1,
@@ -548,8 +548,8 @@ exports[`render just views 1`] = `
                     >
                       
                     </Text>
-                  </_class>
-                  <_class
+                  </View>
+                  <View
                     style={
                       Array [
                         Object {
@@ -560,9 +560,9 @@ exports[`render just views 1`] = `
                       ]
                     }
                   />
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
@@ -577,7 +577,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -589,7 +589,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -648,7 +648,7 @@ exports[`render just views 1`] = `
                     underlineColorAndroid="transparent"
                     value=""
                   />
-                  <_class
+                  <View
                     style={
                       Object {
                         "bottom": 1,
@@ -687,8 +687,8 @@ exports[`render just views 1`] = `
                     >
                       
                     </Text>
-                  </_class>
-                  <_class
+                  </View>
+                  <View
                     style={
                       Array [
                         Object {
@@ -699,9 +699,9 @@ exports[`render just views 1`] = `
                       ]
                     }
                   />
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 style={
                   Array [
                     Object {
@@ -716,7 +716,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               >
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -728,7 +728,7 @@ exports[`render just views 1`] = `
                     ]
                   }
                 />
-                <_class
+                <View
                   style={
                     Array [
                       Object {
@@ -788,7 +788,7 @@ exports[`render just views 1`] = `
                     underlineColorAndroid="transparent"
                     value=""
                   />
-                  <_class
+                  <View
                     style={
                       Object {
                         "bottom": 1,
@@ -827,8 +827,8 @@ exports[`render just views 1`] = `
                     >
                       
                     </Text>
-                  </_class>
-                  <_class
+                  </View>
+                  <View
                     style={
                       Array [
                         Object {
@@ -839,11 +839,13 @@ exports[`render just views 1`] = `
                       ]
                     }
                   />
-                </_class>
-              </_class>
-              <_class
+                </View>
+              </View>
+              <View
                 accessible={true}
+                focusable={true}
                 isTVSelectable={true}
+                onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
@@ -892,12 +894,12 @@ exports[`render just views 1`] = `
                 >
                   Add secret account
                 </Text>
-              </_class>
-            </_class>
-          </_class>
-        </_class>
-      </_class>
-    </_class>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
-</_class>
+</View>
 `;

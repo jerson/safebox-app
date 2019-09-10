@@ -1,6 +1,6 @@
 import React from 'react';
 import * as renderer from 'react-test-renderer';
-import DeviceSettings, { DeviceSettingsProps } from './DeviceSettings';
+import DeviceSettings, {DeviceSettingsProps} from './DeviceSettings';
 
 const props: DeviceSettingsProps = {};
 test('renders without crashing', () => {

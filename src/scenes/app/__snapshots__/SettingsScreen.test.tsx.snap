@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Array [
       Object {
@@ -27,8 +27,8 @@ exports[`render just views 1`] = `
       }
     }
   >
-    <_class>
-      <_class
+    <View>
+      <View
         onLayout={[Function]}
         pointerEvents="box-none"
         style={
@@ -41,7 +41,7 @@ exports[`render just views 1`] = `
           }
         }
       >
-        <_class
+        <View
           style={
             Array [
               Object {
@@ -56,7 +56,7 @@ exports[`render just views 1`] = `
             ]
           }
         >
-          <_class
+          <View
             style={
               Array [
                 Object {
@@ -68,7 +68,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -80,7 +80,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -99,7 +99,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -139,9 +139,9 @@ exports[`render just views 1`] = `
                 >
                   Biometric settings
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -149,7 +149,7 @@ exports[`render just views 1`] = `
                 }
               }
             >
-              <_class
+              <View
                 style={
                   Object {
                     "marginBottom": 10,
@@ -175,8 +175,8 @@ exports[`render just views 1`] = `
                 >
                   you can add additional authentication methods such as fingerprint or facial validation, depending on your device.
                 </Text>
-              </_class>
-              <_class
+              </View>
+              <View
                 style={
                   Object {
                     "backgroundColor": "#f2f4f9",
@@ -204,11 +204,11 @@ exports[`render just views 1`] = `
                 >
                   your device does not have any supported method, try another device.
                 </Text>
-              </_class>
-            </_class>
-            <_class />
-          </_class>
-          <_class
+              </View>
+            </View>
+            <View />
+          </View>
+          <View
             style={
               Array [
                 Object {
@@ -220,7 +220,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -232,7 +232,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -251,7 +251,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -291,9 +291,9 @@ exports[`render just views 1`] = `
                 >
                   Premium settings
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -302,7 +302,7 @@ exports[`render just views 1`] = `
                 }
               }
             >
-              <_class
+              <View
                 style={
                   Object {
                     "flex": 1,
@@ -329,10 +329,12 @@ exports[`render just views 1`] = `
                 >
                   If you made a purchase before and do not see it in the premium section, you can restore it here.
                 </Text>
-              </_class>
-              <_class
+              </View>
+              <View
                 accessible={true}
+                focusable={true}
                 isTVSelectable={true}
+                onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
@@ -381,10 +383,10 @@ exports[`render just views 1`] = `
                 >
                   Restore purchases
                 </Text>
-              </_class>
-            </_class>
-          </_class>
-          <_class
+              </View>
+            </View>
+          </View>
+          <View
             style={
               Array [
                 Object {
@@ -396,7 +398,7 @@ exports[`render just views 1`] = `
               ]
             }
           >
-            <_class
+            <View
               style={
                 Array [
                   Object {
@@ -406,7 +408,7 @@ exports[`render just views 1`] = `
                 ]
               }
             >
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -425,7 +427,7 @@ exports[`render just views 1`] = `
                   ]
                 }
               />
-              <_class
+              <View
                 style={
                   Array [
                     Object {
@@ -465,9 +467,9 @@ exports[`render just views 1`] = `
                 >
                   Session settings
                 </Text>
-              </_class>
-            </_class>
-            <_class
+              </View>
+            </View>
+            <View
               style={
                 Object {
                   "alignItems": "center",
@@ -476,7 +478,7 @@ exports[`render just views 1`] = `
                 }
               }
             >
-              <_class
+              <View
                 style={
                   Object {
                     "flex": 1,
@@ -503,10 +505,12 @@ exports[`render just views 1`] = `
                 >
                   This option allows you to safely exit the application.
                 </Text>
-              </_class>
-              <_class
+              </View>
+              <View
                 accessible={true}
+                focusable={true}
                 isTVSelectable={true}
+                onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
@@ -555,12 +559,12 @@ exports[`render just views 1`] = `
                 >
                   Sign out
                 </Text>
-              </_class>
-            </_class>
-          </_class>
-        </_class>
-      </_class>
-    </_class>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
   </RCTScrollView>
-</_class>
+</View>
 `;

@@ -4,9 +4,9 @@ import {
   StyleProp,
   StyleSheet,
   TextStyle,
-  ViewStyle
+  ViewStyle,
 } from 'react-native';
-import Touchable, { TouchableProps } from './Touchable';
+import Touchable, {TouchableProps} from './Touchable';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 import Text from './Text';
@@ -14,18 +14,18 @@ import Text from './Text';
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
-    padding: 6
+    padding: 6,
   } as ViewStyle,
   strong: {
-    ...Font({ weight: 'Bold' })
+    ...Font({weight: 'Bold'}),
   } as TextStyle,
   title: {
     color: Colors.grey5,
-    fontSize: 13
+    fontSize: 13,
   } as TextStyle,
   accent: {
-    color: Colors.primary
-  } as TextStyle
+    color: Colors.primary,
+  } as TextStyle,
 });
 
 export interface ButtonLinkProps extends TouchableProps {
@@ -65,17 +65,15 @@ function ButtonLink(props: ButtonLinkProps) {
     <Touchable
       style={[styles.container, style]}
       {...extraProps}
-      onPress={onPress ? onPressCallback : undefined}
-    >
+      onPress={onPress ? onPressCallback : undefined}>
       {title && (
         <Text
           style={[
             styles.title,
             strong && styles.strong,
             accent && styles.accent,
-            titleStyle
-          ]}
-        >
+            titleStyle,
+          ]}>
           {title}
         </Text>
       )}

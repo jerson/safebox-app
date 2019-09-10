@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render just views 1`] = `
-<_class
+<View
   style={
     Object {
       "alignItems": "center",
@@ -10,7 +10,7 @@ exports[`render just views 1`] = `
     }
   }
 >
-  <_class
+  <View
     style={
       Object {
         "alignSelf": "center",
@@ -37,7 +37,7 @@ exports[`render just views 1`] = `
         }
       }
     />
-  </_class>
+  </View>
   <Text
     style={
       Array [
@@ -73,9 +73,11 @@ exports[`render just views 1`] = `
       Secret account
     </Text>
   </Text>
-  <_class
+  <View
     accessible={true}
+    focusable={true}
     isTVSelectable={true}
+    onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -155,6 +157,6 @@ exports[`render just views 1`] = `
     >
       Add first secret account
     </Text>
-  </_class>
-</_class>
+  </View>
+</View>
 `;

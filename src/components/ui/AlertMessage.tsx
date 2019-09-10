@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
-import Touchable, { TouchableProps } from './Touchable';
+import React, {useEffect} from 'react';
+import {StyleSheet, TextStyle, View, ViewStyle} from 'react-native';
+import Touchable, {TouchableProps} from './Touchable';
 import Colors from '../../modules/constants/Colors';
 import Text from './Text';
 import Icon from 'react-native-vector-icons/Feather';
@@ -13,11 +13,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.danger,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
   } as ViewStyle,
   text: {
     color: Colors.white,
-    fontSize: 13
+    fontSize: 13,
   } as TextStyle,
   icon: {
     fontSize: 18,
@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
     marginTop: 2,
     alignSelf: 'flex-start',
     color: Colors.white,
-    opacity: 0.8
+    opacity: 0.8,
   } as TextStyle,
   content: {
-    flex: 1
-  } as ViewStyle
+    flex: 1,
+  } as ViewStyle,
 });
 
 export interface AlertMessageProps extends TouchableProps {
@@ -73,10 +73,9 @@ function AlertMessage(props: AlertMessageProps) {
   }
   return (
     <Touchable
-      style={[styles.container, { backgroundColor: color }, style]}
+      style={[styles.container, {backgroundColor: color}, style]}
       onPress={onPress}
-      {...extraProps}
-    >
+      {...extraProps}>
       <Icon style={styles.icon} name={icon || 'alert-circle'} />
       <View style={styles.content}>
         <Text style={styles.text}>{message}</Text>
@@ -87,6 +86,6 @@ function AlertMessage(props: AlertMessageProps) {
 AlertMessage.defaultProps = {
   timeout: 5000,
   icon: 'alert-circle',
-  color: Colors.danger
+  color: Colors.danger,
 };
 export default AlertMessage;

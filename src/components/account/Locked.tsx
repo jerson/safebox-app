@@ -8,7 +8,7 @@ import {
   Image,
   Modal,
   StatusBar,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Button from '../ui/Button';
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 16,
     shadowColor: Colors.grey6,
-    shadowOffset: { height: 4, width: 0 },
-    elevation: 4
+    shadowOffset: {height: 4, width: 0},
+    elevation: 4,
   } as ViewStyle,
   container: {
     padding: 20,
@@ -31,26 +31,26 @@ const styles = StyleSheet.create({
     maxWidth: 280,
     backgroundColor: Colors.white,
     borderRadius: 12,
-    overflow: 'visible'
+    overflow: 'visible',
   } as ViewStyle,
   textInput: {
     marginTop: 0,
-    borderColor: Colors.primaryLight
+    borderColor: Colors.primaryLight,
   } as ViewStyle,
   button: {} as ViewStyle,
   description: {
     fontSize: 13,
     color: Colors.grey6,
-    textAlign: 'justify'
+    textAlign: 'justify',
   } as TextStyle,
   help: {
     marginTop: 5,
     fontSize: 12,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   logo: {
     width: 70,
-    height: 70
+    height: 70,
   } as ImageStyle,
   logoContent: {
     backgroundColor: Colors.grey6,
@@ -59,20 +59,20 @@ const styles = StyleSheet.create({
     borderColor: Colors.accent,
     alignSelf: 'center',
     overflow: 'hidden',
-    marginBottom: 10
+    marginBottom: 10,
   } as ViewStyle,
   scrollViewContent: {
     paddingBottom: 40,
     paddingTop: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   scrollView: {
     backgroundColor: tinyColor(Colors.accentDark)
       .setAlpha(0.8)
       .toRgbString(),
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export interface LockedProps {
@@ -80,7 +80,7 @@ export interface LockedProps {
   visible: boolean;
 }
 
-function Locked({ visible, onUnlock }: LockedProps) {
+function Locked({visible, onUnlock}: LockedProps) {
   const [password, passwordProps] = useTextInput('');
   const onUnlockCallback = () => {
     onUnlock(password);
@@ -96,8 +96,7 @@ function Locked({ visible, onUnlock }: LockedProps) {
       <ScrollView
         style={styles.scrollView}
         keyboardShouldPersistTaps={'handled'}
-        contentContainerStyle={styles.scrollViewContent}
-      >
+        contentContainerStyle={styles.scrollViewContent}>
         <View style={[styles.container, styles.shadow]}>
           <View style={styles.logoContent}>
             <Image
@@ -108,7 +107,7 @@ function Locked({ visible, onUnlock }: LockedProps) {
           </View>
           <Text style={styles.description}>
             To continue you must enter the password with which you Sign In to
-            <Text style={{ color: Colors.primaryLight }}>
+            <Text style={{color: Colors.primaryLight}}>
               {' '}
               Safe<Text weight={'Bold'}>Box</Text>
             </Text>

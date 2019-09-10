@@ -6,7 +6,7 @@ import {
   Image,
   ImageStyle,
   TextStyle,
-  StyleProp
+  StyleProp,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
 import Text from './Text';
@@ -14,7 +14,7 @@ import Text from './Text';
 const styles = StyleSheet.create({
   logo: {
     width: 90,
-    height: 90
+    height: 90,
   } as ImageStyle,
   logoContent: {
     backgroundColor: Colors.grey6,
@@ -22,28 +22,28 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.accent,
     alignSelf: 'center',
-    overflow: 'hidden'
+    overflow: 'hidden',
   } as ViewStyle,
   header: {
     overflow: 'visible',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   shadow: {
     shadowOpacity: 0.1,
     shadowRadius: 16,
     shadowColor: Colors.grey6,
-    shadowOffset: { height: 4, width: 0 },
-    elevation: 4
+    shadowOffset: {height: 4, width: 0},
+    elevation: 4,
   } as ViewStyle,
   name: {
     fontSize: 35,
-    color: Colors.white
+    color: Colors.white,
   } as TextStyle,
   subtitle: {
     fontSize: 14,
-    color: Colors.grey2
-  } as TextStyle
+    color: Colors.grey2,
+  } as TextStyle,
 });
 
 export interface HeaderLandingProps {
@@ -58,7 +58,7 @@ function HeaderLanding({
   subtitle,
   titleStyle,
   subtitleStyle,
-  shadow
+  shadow,
 }: HeaderLandingProps) {
   return (
     <View style={[styles.header, shadow && styles.shadow, style]}>
@@ -83,7 +83,7 @@ function HeaderLanding({
 
 HeaderLanding.defaultProps = {
   subtitle: 'secrets always safe',
-  shadow: false
+  shadow: false,
 };
 
 export default HeaderLanding;

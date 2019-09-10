@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 
 const font: any = {
   Nunito: {
@@ -9,12 +9,12 @@ const font: any = {
       Regular: '400',
       SemiBold: '600',
       Light: '300',
-      ExtraLight: '200'
+      ExtraLight: '200',
     },
     styles: {
-      Italic: 'italic'
-    }
-  }
+      Italic: 'italic',
+    },
+  },
 };
 
 export interface FontStyle {
@@ -51,13 +51,13 @@ export interface FontProps {
 }
 
 export default (options: FontProps = {}): FontStyle => {
-  const { family = 'Nunito' } = options;
-  let { weight = 'Regular', style } = options;
+  const {family = 'Nunito'} = options;
+  let {weight = 'Regular', style} = options;
 
   if (!family || !font[family]) {
     return {};
   }
-  const { weights, styles } = font[family];
+  const {weights, styles} = font[family];
 
   if (Platform.OS === 'android') {
     weight = weights[weight] ? weight : '';
@@ -66,7 +66,7 @@ export default (options: FontProps = {}): FontStyle => {
     const suffix = weight + style;
 
     return {
-      fontFamily: family + (suffix.length ? `-${suffix}` : '')
+      fontFamily: family + (suffix.length ? `-${suffix}` : ''),
     };
   }
   weight = weights[weight] || weights.Regular;
@@ -75,6 +75,6 @@ export default (options: FontProps = {}): FontStyle => {
   return {
     fontFamily: family,
     fontWeight: weight,
-    fontStyle: style
+    fontStyle: style,
   };
 };

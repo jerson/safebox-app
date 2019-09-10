@@ -8,12 +8,12 @@ import {
   ViewStyle,
   TextStyle,
   EmitterSubscription,
-  View
+  View,
 } from 'react-native';
 import {
   SafeAreaView,
   NavigationRoute,
-  NavigationScreenProp
+  NavigationScreenProp,
 } from 'react-navigation';
 import BottomTabBarIcon from './BottomTabBarIcon';
 import Colors from '../../modules/constants/Colors';
@@ -21,7 +21,7 @@ import Font from '../../modules/resources/Font';
 
 const isIos = Platform.OS === 'ios';
 const Sizes = {
-  Height: 55
+  Height: 55,
 };
 
 const styles = StyleSheet.create({
@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 6,
     shadowColor: Colors.grey2,
-    shadowOffset: { height: 0, width: 0 },
+    shadowOffset: {height: 0, width: 0},
     elevation: 16,
-    overflow: 'visible'
+    overflow: 'visible',
   } as ViewStyle,
   container: {
     left: 0,
     right: 0,
-    bottom: 0
+    bottom: 0,
   } as ViewStyle,
   tab: {
     flex: 1,
@@ -49,35 +49,35 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     paddingHorizontal: 1,
     justifyContent: 'flex-end',
-    flexDirection: 'column'
+    flexDirection: 'column',
   } as ViewStyle,
   icon: {
-    alignItems: 'center'
+    alignItems: 'center',
   } as ViewStyle,
   label: {
-    ...Font({ weight: 'Bold' }),
+    ...Font({weight: 'Bold'}),
     textAlign: 'center',
     fontSize: 12,
     marginTop: 4,
     lineHeight: 15,
-    color: Colors.grey5
+    color: Colors.grey5,
   } as TextStyle,
   labelFocused: {
-    ...Font({ weight: 'Bold' }),
-    color: Colors.white
-  } as TextStyle
+    ...Font({weight: 'Bold'}),
+    color: Colors.white,
+  } as TextStyle,
 });
 export interface BottomTabBarProps {
   navigation: NavigationScreenProp<NavigationRoute>;
   onTabPress: (params: Route) => void;
   onTabLongPress: (params: Route) => void;
-  getAccessibilityLabel: (props: { route: NavigationRoute }) => string;
+  getAccessibilityLabel: (props: {route: NavigationRoute}) => string;
   getLabelText: (params: Route) => string;
   renderIcon: (params: Route) => React.ReactNode;
 }
 
 export interface BottomTabBarState {
-  layout: { height: number; width: number };
+  layout: {height: number; width: number};
   keyboard: boolean;
   visible: Animated.Value;
 }
@@ -98,9 +98,9 @@ export default class BottomTabBar extends React.Component<
   static defaultProps = {};
 
   state: BottomTabBarState = {
-    layout: { height: 0, width: 0 },
+    layout: {height: 0, width: 0},
     keyboard: false,
-    visible: new Animated.Value(1)
+    visible: new Animated.Value(1),
   };
 
   keyboardWillShowListener!: EmitterSubscription;
@@ -109,11 +109,11 @@ export default class BottomTabBar extends React.Component<
   componentDidMount() {
     this.keyboardWillShowListener = Keyboard.addListener(
       Platform.OS === 'android' ? 'keyboardDidShow' : 'keyboardWillShow',
-      this.keyboardWillShow
+      this.keyboardWillShow,
     );
     this.keyboardWillHideListener = Keyboard.addListener(
       Platform.OS === 'android' ? 'keyboardDidHide' : 'keyboardWillHide',
-      this.keyboardWillHide
+      this.keyboardWillHide,
     );
   }
 
@@ -123,12 +123,12 @@ export default class BottomTabBar extends React.Component<
   }
 
   keyboardWillShow = () => {
-    this.setState({ keyboard: true }, () =>
+    this.setState({keyboard: true}, () =>
       Animated.timing(this.state.visible, {
         toValue: 0,
         duration: 150,
-        useNativeDriver: true
-      }).start()
+        useNativeDriver: true,
+      }).start(),
     );
   };
 
@@ -136,15 +136,15 @@ export default class BottomTabBar extends React.Component<
     Animated.timing(this.state.visible, {
       toValue: 1,
       duration: 100,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start(() => {
-      this.setState({ keyboard: false });
+      this.setState({keyboard: false});
     });
   };
 
   handleLayout = (e: LayoutChangeEvent) => {
-    const { layout } = this.state;
-    const { height, width } = e.nativeEvent.layout;
+    const {layout} = this.state;
+    const {height, width} = e.nativeEvent.layout;
     if (height === layout.height && width === layout.width) {
       return;
     }
@@ -152,28 +152,27 @@ export default class BottomTabBar extends React.Component<
     this.setState({
       layout: {
         height,
-        width
-      }
+        width,
+      },
     });
   };
 
-  renderLabel = ({ route, focused }: RouteFocused) => {
-    const { getLabelText } = this.props;
-    const label = getLabelText({ route });
+  renderLabel = ({route, focused}: RouteFocused) => {
+    const {getLabelText} = this.props;
+    const label = getLabelText({route});
 
     return (
       <Animated.Text
         numberOfLines={1}
         style={[styles.label, focused && styles.labelFocused]}
-        allowFontScaling={false}
-      >
+        allowFontScaling={false}>
         {label}
       </Animated.Text>
     );
   };
 
   renderIcon = (params: RouteFocused) => {
-    const { renderIcon } = this.props;
+    const {renderIcon} = this.props;
 
     return <View style={styles.icon}>{renderIcon(params)}</View>;
   };
@@ -183,10 +182,10 @@ export default class BottomTabBar extends React.Component<
       navigation,
       onTabPress,
       onTabLongPress,
-      getAccessibilityLabel
+      getAccessibilityLabel,
     } = this.props;
-    const { routes } = navigation.state;
-    const { visible, keyboard, layout } = this.state;
+    const {routes} = navigation.state;
+    const {visible, keyboard, layout} = this.state;
     const currentIndex = navigation.state.index;
 
     const transform = {
@@ -194,36 +193,34 @@ export default class BottomTabBar extends React.Component<
         {
           translateY: visible.interpolate({
             inputRange: [0, 1],
-            outputRange: [layout.height, 0]
-          })
-        }
+            outputRange: [layout.height, 0],
+          }),
+        },
       ],
-      position: keyboard ? 'absolute' : null
+      position: keyboard ? 'absolute' : null,
     };
 
     return (
       <Animated.View
         style={[styles.container, transform]}
         pointerEvents={keyboard ? 'none' : 'auto'}
-        onLayout={this.handleLayout}
-      >
+        onLayout={this.handleLayout}>
         <SafeAreaView style={styles.tabBar}>
           {routes.map((route, index) => {
             const focused = index === currentIndex;
-            const scene: RouteFocused = { route, focused };
+            const scene: RouteFocused = {route, focused};
             const accessibilityLabel = getAccessibilityLabel({
-              route
+              route,
             });
 
             return (
               <BottomTabBarIcon
                 key={route.key}
-                onPress={() => onTabPress({ route })}
-                onLongPress={() => onTabLongPress({ route })}
+                onPress={() => onTabPress({route})}
+                onLongPress={() => onTabLongPress({route})}
                 accessibilityLabel={accessibilityLabel}
                 focused={focused}
-                style={styles.tab}
-              >
+                style={styles.tab}>
                 {this.renderIcon(scene)}
                 {this.renderLabel(scene)}
               </BottomTabBarIcon>

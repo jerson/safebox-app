@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect} from 'react';
 import {
   KeyboardAvoidingView,
   StyleSheet,
@@ -7,90 +7,90 @@ import {
   ScrollView,
   Platform,
   Keyboard,
-  InteractionManager
-} from "react-native";
-import { SafeAreaView } from "react-navigation";
-import Colors from "../../modules/constants/Colors";
-import HeaderLanding from "../../components/ui/HeaderLanding";
-import TextInput, { TextInputRef } from "../../components/ui/TextInput";
-import Button from "../../components/ui/Button";
-import SplitText from "../../components/ui/SplitText";
-import Container from "../../components/ui/Container";
-import Content from "../../components/ui/Content";
-import Size from "../../modules/dimensions/Size";
-import useTextInput from "../../components/hooks/useTextInput";
+  InteractionManager,
+} from 'react-native';
+import {SafeAreaView} from 'react-navigation';
+import Colors from '../../modules/constants/Colors';
+import HeaderLanding from '../../components/ui/HeaderLanding';
+import TextInput, {TextInputRef} from '../../components/ui/TextInput';
+import Button from '../../components/ui/Button';
+import SplitText from '../../components/ui/SplitText';
+import Container from '../../components/ui/Container';
+import Content from '../../components/ui/Content';
+import Size from '../../modules/dimensions/Size';
+import useTextInput from '../../components/hooks/useTextInput';
 import {
   LoginRequest,
   LoginDeviceRequest,
-  AuthResponse
-} from "../../proto/services_pb";
-import Client from "../../services/Client";
-import Session from "../../services/Session";
-import Strings from "../../modules/format/Strings";
-import AlertMessage from "../../components/ui/AlertMessage";
-import useAnimatedState from "../../components/hooks/useAnimatedState";
-import { useNavigation } from "react-navigation-hooks";
-import SettingsStorage from "../../modules/storage/SettingsStorage";
-import Log from "../../modules/log/Log";
-import Biometrics from "react-native-biometrics";
+  AuthResponse,
+} from '../../proto/services_pb';
+import Client from '../../services/Client';
+import Session from '../../services/Session';
+import Strings from '../../modules/format/Strings';
+import AlertMessage from '../../components/ui/AlertMessage';
+import useAnimatedState from '../../components/hooks/useAnimatedState';
+import {useNavigation} from 'react-navigation-hooks';
+import SettingsStorage from '../../modules/storage/SettingsStorage';
+import Log from '../../modules/log/Log';
+import Biometrics from 'react-native-biometrics';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
   } as ViewStyle,
   scrollView: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   safeArea: {
-    flex: 1
+    flex: 1,
   } as ViewStyle,
   headerLanding: {
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
   } as ViewStyle,
   textInput: {
     borderColor: Colors.primary,
-    borderWidth: 1
+    borderWidth: 1,
   } as ViewStyle,
   textInputContainer: {
-    marginBottom: 0
+    marginBottom: 0,
   } as ViewStyle,
   form: {
     width: 280,
     marginBottom: 20,
-    alignSelf: "center"
+    alignSelf: 'center',
   } as ViewStyle,
   button: {
-    marginTop: 20
+    marginTop: 20,
   } as ViewStyle,
   splitText: {
-    marginTop: 20
+    marginTop: 20,
   } as ViewStyle,
   buttonLogin: {
     flex: 1,
-    marginLeft: 10
+    marginLeft: 10,
   } as ViewStyle,
   buttonBiometric: {
-    paddingLeft: 15
+    paddingLeft: 15,
   } as ViewStyle,
   buttonRow: {
-    flexDirection: "row"
-  } as ViewStyle
+    flexDirection: 'row',
+  } as ViewStyle,
 });
 
-const TAG = "[LoginScreen]";
+const TAG = '[LoginScreen]';
 function LoginScreen() {
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
 
   const [hasBiometric, setHasBiometric] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useAnimatedState("");
+  const [error, setError] = useAnimatedState('');
 
   const usernameRef = useRef<TextInputRef>(null);
   const passwordRef = useRef<TextInputRef>(null);
 
-  const [username, usernameProps] = useTextInput("");
-  const [password, passwordProps] = useTextInput("");
+  const [username, usernameProps] = useTextInput('');
+  const [password, passwordProps] = useTextInput('');
 
   const checkSettings = async () => {
     try {
@@ -99,7 +99,7 @@ function LoginScreen() {
       hasBiometric && startBiometric();
       setHasBiometric(hasBiometric);
     } catch (e) {
-      Log.warn(TAG, "checkSettings", e);
+      Log.warn(TAG, 'checkSettings', e);
     }
   };
   useEffect(() => {
@@ -108,23 +108,23 @@ function LoginScreen() {
 
   const startBiometric = async () => {
     try {
-      const success = await Biometrics.simplePrompt("Sign In");
+      const success = await Biometrics.simplePrompt('Sign In');
       if (success) {
-        setError("");
+        setError('');
         setIsLoading(true);
         requestAnimationFrame(() => {
           submitWithDevice();
         });
       }
     } catch (e) {
-      Log.warn(TAG, "startBiometric", e);
+      Log.warn(TAG, 'startBiometric', e);
     }
   };
 
   const isValid = () => {
     const isValid = [!!username, !!password].every(value => value);
     if (!isValid) {
-      setError("Complete missing fields");
+      setError('Complete missing fields');
     }
     return isValid;
   };
@@ -165,7 +165,7 @@ function LoginScreen() {
   const processAuthResponse = (response: AuthResponse) => {
     Session.login(response);
     Session.setPassword(password);
-    navigate("Accounts");
+    navigate('Accounts');
   };
   const tryToSubmit = () => {
     if (!isValid()) {
@@ -173,7 +173,7 @@ function LoginScreen() {
     }
     Keyboard.dismiss();
 
-    setError("");
+    setError('');
     setIsLoading(true);
     InteractionManager.runAfterInteractions(async () => {
       submit();
@@ -181,42 +181,40 @@ function LoginScreen() {
   };
 
   const goToRegister = () => {
-    navigate("Register");
+    navigate('Register');
   };
 
   return (
     <Container style={styles.container}>
       <ScrollView
-        keyboardShouldPersistTaps={"handled"}
+        keyboardShouldPersistTaps={'handled'}
         contentContainerStyle={{
-          minHeight: Size.getVisibleHeight()
+          minHeight: Size.getVisibleHeight(),
         }}
-        style={styles.scrollView}
-      >
+        style={styles.scrollView}>
         <SafeAreaView style={styles.safeArea}>
           <Content center>
             <KeyboardAvoidingView
-              behavior={"padding"}
-              enabled={Platform.OS === "ios"}
-            >
+              behavior={'padding'}
+              enabled={Platform.OS === 'ios'}>
               <HeaderLanding style={styles.headerLanding} />
               <View style={styles.form}>
                 {!!error && (
                   <AlertMessage
                     onTimeout={() => {
-                      setError("");
+                      setError('');
                     }}
                     message={error}
                   />
                 )}
                 <TextInput
-                  icon={"user"}
-                  placeholder={"Username"}
-                  keyboardType={"default"}
-                  autoCapitalize={"none"}
+                  icon={'user'}
+                  placeholder={'Username'}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
                   autoCorrect={false}
-                  autoCompleteType={"username"}
-                  returnKeyType={"next"}
+                  autoCompleteType={'username'}
+                  returnKeyType={'next'}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={usernameRef}
@@ -226,14 +224,14 @@ function LoginScreen() {
                   {...usernameProps}
                 />
                 <TextInput
-                  icon={"lock"}
-                  placeholder={"Password"}
+                  icon={'lock'}
+                  placeholder={'Password'}
                   secureTextEntry
-                  keyboardType={"default"}
-                  autoCapitalize={"none"}
+                  keyboardType={'default'}
+                  autoCapitalize={'none'}
                   autoCorrect={false}
-                  autoCompleteType={"password"}
-                  returnKeyType={"done"}
+                  autoCompleteType={'password'}
+                  returnKeyType={'done'}
                   containerStyle={styles.textInputContainer}
                   style={styles.textInput}
                   ref={passwordRef}
@@ -245,16 +243,16 @@ function LoginScreen() {
                 {hasBiometric && (
                   <View style={[styles.button, styles.buttonRow]}>
                     <Button
-                      typeColor={"accentDark"}
-                      icon={"target"}
+                      typeColor={'accentDark'}
+                      icon={'target'}
                       style={styles.buttonBiometric}
                       onPress={startBiometric}
                     />
                     <Button
                       style={styles.buttonLogin}
                       isLoading={isLoading}
-                      typeColor={"primaryLight"}
-                      title={"Sign In"}
+                      typeColor={'primaryLight'}
+                      title={'Sign In'}
                       onPress={tryToSubmit}
                     />
                   </View>
@@ -263,16 +261,16 @@ function LoginScreen() {
                   <Button
                     style={styles.button}
                     isLoading={isLoading}
-                    typeColor={"primaryLight"}
-                    title={"Sign In"}
+                    typeColor={'primaryLight'}
+                    title={'Sign In'}
                     onPress={tryToSubmit}
                   />
                 )}
-                <SplitText style={styles.splitText} title={"or"} />
+                <SplitText style={styles.splitText} title={'or'} />
                 <Button
                   style={styles.button}
-                  typeColor={"accentDark"}
-                  title={"Create account"}
+                  typeColor={'accentDark'}
+                  title={'Create account'}
                   onPress={goToRegister}
                 />
               </View>
@@ -287,7 +285,7 @@ function LoginScreen() {
 LoginScreen.navigationOptions = {
   headerLeft: null,
   headerRight: null,
-  title: null
+  title: null,
 };
 
 export default LoginScreen;

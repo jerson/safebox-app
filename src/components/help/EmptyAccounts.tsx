@@ -5,17 +5,17 @@ import {
   TextStyle,
   View,
   ImageStyle,
-  Image
+  Image,
 } from 'react-native';
 import Colors from '../../modules/constants/Colors';
-import { useNavigation } from 'react-navigation-hooks';
+import {useNavigation} from 'react-navigation-hooks';
 import Button from '../ui/Button';
 import Text from '../ui/Text';
 
 const styles = StyleSheet.create({
   logo: {
     width: 90,
-    height: 90
+    height: 90,
   } as ImageStyle,
   logoContent: {
     backgroundColor: Colors.grey6,
@@ -24,24 +24,24 @@ const styles = StyleSheet.create({
     borderColor: Colors.accent,
     alignSelf: 'center',
     overflow: 'hidden',
-    marginBottom: 10
+    marginBottom: 10,
   } as ViewStyle,
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 30
+    padding: 30,
   } as ViewStyle,
   button: {
-    marginTop: 20
+    marginTop: 20,
   } as ViewStyle,
   description: {
     textAlign: 'center',
-    color: Colors.grey5
-  } as TextStyle
+    color: Colors.grey5,
+  } as TextStyle,
 });
 
 function EmptyAccounts() {
-  const { navigate } = useNavigation();
+  const {navigate} = useNavigation();
   const goToAdd = () => {
     navigate('AddAccount');
   };

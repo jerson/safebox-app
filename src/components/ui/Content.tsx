@@ -1,23 +1,17 @@
 import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  View,
-  ViewProps,
-  ViewStyle
-} from 'react-native';
+import {StyleProp, StyleSheet, View, ViewProps, ViewStyle} from 'react-native';
 
 const styles = StyleSheet.create({
   content: {
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   } as ViewStyle,
   center: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   } as ViewStyle,
   vertical: {
     flex: 1,
-    paddingTop: 20
-  } as ViewStyle
+    paddingTop: 20,
+  } as ViewStyle,
 });
 
 export interface ContentProps extends ViewProps {
@@ -37,17 +31,16 @@ export interface ContentProps extends ViewProps {
 }
 
 function Content(props: ContentProps) {
-  const { style, center, vertical, children, ...extraProps } = props;
+  const {style, center, vertical, children, ...extraProps} = props;
   return (
     <View
       style={[
         styles.content,
         center && styles.center,
         vertical && styles.vertical,
-        style
+        style,
       ]}
-      {...extraProps}
-    >
+      {...extraProps}>
       {children}
     </View>
   );
@@ -55,7 +48,7 @@ function Content(props: ContentProps) {
 
 Content.defaultProps = {
   center: false,
-  vertical: true
+  vertical: true,
 };
 
 export default Content;
