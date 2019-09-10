@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SafeBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SafeBoxTests.m */; };
+		03474FE4A48A46B8B58125A8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F49CE4E1B9BF4B89BDF5B8A4 /* libc++.tbd */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -30,11 +31,13 @@
 		6742A57E8BD94F67B2B9E208 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E96D36B8FD074B79A917733F /* Nunito-Light.ttf */; };
 		713D321A9E754FEA87ECE4BC /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B9692861E6348E49C80C4C2 /* Nunito-Black.ttf */; };
 		8422451222E6B3D000904C7B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422449522E6AF8E00904C7B /* libLottie.a */; };
+		8466BA652327538C00F6B398 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466BA642327538C00F6B398 /* Sample.swift */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
 		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
 		84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A195F622FF081200B4808F /* StoreKit.framework */; };
 		8FAA6C32723F4D1AB2C24A07 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCF69C7136F0487D9B4C9560 /* Nunito-ExtraLightItalic.ttf */; };
+		95EC179F0ECA4E3686878AAF /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD9316CBE824003B24AE598 /* libRealmReact.a */; };
 		9EC37705DB763D1F0E4635F9 /* libPods-SafeBoxTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40747D45A31E0C46569304EB /* libPods-SafeBoxTests.a */; };
 		AA67C2BBD6724BFBA04C9234 /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438C592A1BE741A7938DB23F /* Nunito-BoldItalic.ttf */; };
 		C568EFADA14841281A82B862 /* Pods_SafeBox_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE1C11E03BC896C5426213E /* Pods_SafeBox_tvOS.framework */; };
@@ -90,6 +93,13 @@
 			remoteGlobalIDString = 486E85F3220A36F6007CD915;
 			remoteInfo = LottieLibraryIOS;
 		};
+		8466BA7523275A5600F6B398 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F60690131CA2766F0003FB26;
+			remoteInfo = RealmReact;
+		};
 		84BDC0FC23274DB200381E45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
@@ -117,6 +127,7 @@
 		2D02E47B1E0B4A5D006451C7 /* SafeBox-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SafeBox-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SafeBox-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SafeBox-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		39D087DAB62EDE6438BC64F2 /* Pods-SafeBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox.debug.xcconfig"; path = "Target Support Files/Pods-SafeBox/Pods-SafeBox.debug.xcconfig"; sourceTree = "<group>"; };
 		3A331AC73EDA4E628B8759EA /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBold.ttf"; path = "../src/assets/fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3B9692861E6348E49C80C4C2 /* Nunito-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Black.ttf"; path = "../src/assets/fonts/Nunito-Black.ttf"; sourceTree = "<group>"; };
@@ -131,6 +142,8 @@
 		7ED0007BC4694D27936FDC97 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BlackItalic.ttf"; path = "../src/assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		8357A57C3A0ABD1616BA9EE5 /* Pods-SafeBox-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOS/Pods-SafeBox-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		843DAF0A22EEA800007E1B7D /* SafeBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SafeBox.entitlements; path = SafeBox/SafeBox.entitlements; sourceTree = "<group>"; };
+		8466BA632327538B00F6B398 /* SafeBox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafeBox-Bridging-Header.h"; sourceTree = "<group>"; };
+		8466BA642327538C00F6B398 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sample.swift; path = SafeBox/Sample.swift; sourceTree = "<group>"; };
 		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
 		8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@1x.png"; path = "SafeBox/iTunesArtwork@1x.png"; sourceTree = "<group>"; };
@@ -153,6 +166,7 @@
 		CF4EED0497044D55B3D9BA20 /* Lato-RegularItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-RegularItalic.ttf"; path = "../src/assets/fonts/Lato-RegularItalic.ttf"; sourceTree = "<group>"; };
 		D0ED02E4747142A0A14C311C /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../src/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		D6B7BF594D9EB7D470A303B6 /* Pods-SafeBox-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SafeBox-tvOSTests/Pods-SafeBox-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		DBD9316CBE824003B24AE598 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		E77C8542F41247F38306720D /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E96D36B8FD074B79A917733F /* Nunito-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Light.ttf"; path = "../src/assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; };
 		EA77D4A7CEF9AC46125506D1 /* libPods-SafeBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +175,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EFA4F840259789EB55794B91 /* Pods-SafeBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox.release.xcconfig"; path = "Target Support Files/Pods-SafeBox/Pods-SafeBox.release.xcconfig"; sourceTree = "<group>"; };
 		F05D0719BB6DE6E715646512 /* Pods-SafeBoxTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBoxTests.beta.xcconfig"; path = "Target Support Files/Pods-SafeBoxTests/Pods-SafeBoxTests.beta.xcconfig"; sourceTree = "<group>"; };
+		F49CE4E1B9BF4B89BDF5B8A4 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		F57C62593B7F4E068D8D14DF /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../src/assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		F5FA08C1016C49578EB93D8E /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-ThinItalic.ttf"; path = "../src/assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		F9B01C429D5A40EB9B4C2A15 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../src/assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -186,6 +201,8 @@
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				3DFDE15CE5044ED1A6182238 /* libz.tbd in Frameworks */,
 				4AE4A7568FDE1F3F5EF2B66E /* libPods-SafeBox.a in Frameworks */,
+				95EC179F0ECA4E3686878AAF /* libRealmReact.a in Frameworks */,
+				03474FE4A48A46B8B58125A8 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +259,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				8466BA642327538C00F6B398 /* Sample.swift */,
+				8466BA632327538B00F6B398 /* SafeBox-Bridging-Header.h */,
 			);
 			name = SafeBox;
 			sourceTree = "<group>";
@@ -258,6 +277,7 @@
 				5306929987F025F279EE7AEF /* Pods_SafeBox_tvOSTests.framework */,
 				EA77D4A7CEF9AC46125506D1 /* libPods-SafeBox.a */,
 				40747D45A31E0C46569304EB /* libPods-SafeBoxTests.a */,
+				F49CE4E1B9BF4B89BDF5B8A4 /* libc++.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				A3092C4358484AADA36736BC /* Lottie.xcodeproj */,
+				35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -324,6 +345,7 @@
 				2926C12771DC4696B76D5AF9 /* libRNScreens-tvOS.a */,
 				8F78E9AB96844C498F3D6E5F /* Lottie.framework */,
 				EC52CFC1AAFE4BE9ACBE2F14 /* libLottie.a */,
+				DBD9316CBE824003B24AE598 /* libRealmReact.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -336,6 +358,14 @@
 				8422449322E6AF8E00904C7B /* Lottie.framework */,
 				8422449522E6AF8E00904C7B /* libLottie.a */,
 				84BDC0FD23274DB200381E45 /* libLottie.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8466BA6D23275A5600F6B398 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8466BA7623275A5600F6B398 /* libRealmReact.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,6 +496,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = EKR687JWFU;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -503,6 +534,10 @@
 				{
 					ProductGroup = 8422448722E6AF8E00904C7B /* Products */;
 					ProjectRef = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
+				},
+				{
+					ProductGroup = 8466BA6D23275A5600F6B398 /* Products */;
+					ProjectRef = 35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -542,6 +577,13 @@
 			fileType = archive.ar;
 			path = libLottie.a;
 			remoteRef = 8422449422E6AF8E00904C7B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8466BA7623275A5600F6B398 /* libRealmReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRealmReact.a;
+			remoteRef = 8466BA7523275A5600F6B398 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		84BDC0FD23274DB200381E45 /* libLottie.a */ = {
@@ -738,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				8466BA652327538C00F6B398 /* Sample.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -791,6 +834,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14844DBC9D3989CE7BE4DC4E /* Pods-SafeBoxTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = EKR687JWFU;
@@ -798,13 +842,17 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBoxTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -821,17 +869,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52CF5FBE4CB96AA732DD0202 /* Pods-SafeBoxTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = EKR687JWFU;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBoxTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -849,6 +902,7 @@
 			baseConfigurationReference = 39D087DAB62EDE6438BC64F2 /* Pods-SafeBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODEPUSH_TOKEN = "";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -857,7 +911,10 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Debug)";
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -868,6 +925,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox.debug;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox Debug";
+				SWIFT_OBJC_BRIDGING_HEADER = "SafeBox-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -878,6 +938,7 @@
 			baseConfigurationReference = EFA4F840259789EB55794B91 /* Pods-SafeBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODEPUSH_TOKEN = "vMjA-49s8Jya4FkNBV2idIsF-6LYheGWy_l-F";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -886,7 +947,10 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = SafeBox;
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -897,6 +961,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = SafeBox;
+				SWIFT_OBJC_BRIDGING_HEADER = "SafeBox-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -915,12 +981,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -947,12 +1017,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -978,12 +1052,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1009,12 +1087,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1183,6 +1265,7 @@
 			baseConfigurationReference = AF40822772281B8CE3F753F5 /* Pods-SafeBox.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODEPUSH_TOKEN = "q1aLRuQoG-CbYVDytE2vKZOHfSY6BecIug6XB";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -1191,7 +1274,10 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Beta)";
 				ENABLE_BITCODE = NO;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1203,6 +1289,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.jerson.safebox.beta;
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox AdHoc";
+				SWIFT_OBJC_BRIDGING_HEADER = "SafeBox-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1212,17 +1300,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F05D0719BB6DE6E715646512 /* Pods-SafeBoxTests.beta.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = EKR687JWFU;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = SafeBoxTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1248,12 +1341,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1279,12 +1376,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/realm/src/**",
+				);
 				INFOPLIST_FILE = "SafeBox-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
