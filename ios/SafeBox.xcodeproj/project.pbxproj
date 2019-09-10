@@ -30,7 +30,6 @@
 		64D72897BA1440E1AA2E888D /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7220FC6B7C24B959B7109A5 /* Nunito-BlackItalic.ttf */; };
 		6742A57E8BD94F67B2B9E208 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E96D36B8FD074B79A917733F /* Nunito-Light.ttf */; };
 		713D321A9E754FEA87ECE4BC /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B9692861E6348E49C80C4C2 /* Nunito-Black.ttf */; };
-		8422451222E6B3D000904C7B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422449522E6AF8E00904C7B /* libLottie.a */; };
 		8466BA652327538C00F6B398 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466BA642327538C00F6B398 /* Sample.swift */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
@@ -65,47 +64,12 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "SafeBox-tvOS";
 		};
-		8422448E22E6AF8E00904C7B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 486E83B2220A317C007CD915;
-			remoteInfo = Lottie_iOS;
-		};
-		8422449022E6AF8E00904C7B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 486E84E2220A357D007CD915;
-			remoteInfo = Lottie_tvOS;
-		};
-		8422449222E6AF8E00904C7B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 486E8567220A3605007CD915;
-			remoteInfo = Lottie_macOS;
-		};
-		8422449422E6AF8E00904C7B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 486E85F3220A36F6007CD915;
-			remoteInfo = LottieLibraryIOS;
-		};
 		8466BA7523275A5600F6B398 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F60690131CA2766F0003FB26;
 			remoteInfo = RealmReact;
-		};
-		84BDC0FC23274DB200381E45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 486E8675220A3751007CD915;
-			remoteInfo = LottieLibraryMacOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -153,7 +117,6 @@
 		8FE1C11E03BC896C5426213E /* Pods_SafeBox_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SafeBox_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90420FC30D77442FAD04AA31 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "SafeBox/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		9E949FB70BDE489696CEA382 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../src/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
-		A3092C4358484AADA36736BC /* Lottie.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
 		A398D6F061734B3799647AE1 /* Lato-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Thin.ttf"; path = "../src/assets/fonts/Lato-Thin.ttf"; sourceTree = "<group>"; };
 		A9FBAD27CF424AAE9C8A6255 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		AF40822772281B8CE3F753F5 /* Pods-SafeBox.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeBox.beta.xcconfig"; path = "Target Support Files/Pods-SafeBox/Pods-SafeBox.beta.xcconfig"; sourceTree = "<group>"; };
@@ -197,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */,
-				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				3DFDE15CE5044ED1A6182238 /* libz.tbd in Frameworks */,
 				4AE4A7568FDE1F3F5EF2B66E /* libPods-SafeBox.a in Frameworks */,
@@ -304,7 +266,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A3092C4358484AADA36736BC /* Lottie.xcodeproj */,
 				35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
@@ -348,18 +309,6 @@
 				DBD9316CBE824003B24AE598 /* libRealmReact.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		8422448722E6AF8E00904C7B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8422448F22E6AF8E00904C7B /* Lottie.framework */,
-				8422449122E6AF8E00904C7B /* Lottie.framework */,
-				8422449322E6AF8E00904C7B /* Lottie.framework */,
-				8422449522E6AF8E00904C7B /* libLottie.a */,
-				84BDC0FD23274DB200381E45 /* libLottie.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8466BA6D23275A5600F6B398 /* Products */ = {
@@ -431,6 +380,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				AE4204A09E59D70DED3DD717 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -532,10 +482,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 8422448722E6AF8E00904C7B /* Products */;
-					ProjectRef = A3092C4358484AADA36736BC /* Lottie.xcodeproj */;
-				},
-				{
 					ProductGroup = 8466BA6D23275A5600F6B398 /* Products */;
 					ProjectRef = 35EEF2D6934A4853A96831C9 /* RealmReact.xcodeproj */;
 				},
@@ -551,46 +497,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		8422448F22E6AF8E00904C7B /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 8422448E22E6AF8E00904C7B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8422449122E6AF8E00904C7B /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 8422449022E6AF8E00904C7B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8422449322E6AF8E00904C7B /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 8422449222E6AF8E00904C7B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8422449522E6AF8E00904C7B /* libLottie.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libLottie.a;
-			remoteRef = 8422449422E6AF8E00904C7B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8466BA7623275A5600F6B398 /* libRealmReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRealmReact.a;
 			remoteRef = 8466BA7523275A5600F6B398 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84BDC0FD23274DB200381E45 /* libLottie.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libLottie.a;
-			remoteRef = 84BDC0FC23274DB200381E45 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -719,6 +630,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		AE4204A09E59D70DED3DD717 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SafeBox/Pods-SafeBox-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SafeBox/Pods-SafeBox-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		B77F66F4E00253616EE71AF6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

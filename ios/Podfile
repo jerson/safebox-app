@@ -36,10 +36,10 @@ target 'SafeBox' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   
-  pod 'AppCenter/Push', '~> 2.2.0'
-  pod 'AppCenter/Crashes', '~> 2.2.0'
-  pod 'AppCenter/Analytics', '~> 2.2.0'
-  pod 'AppCenterReactNativeShared', '~> 2.2.0'
+  pod 'AppCenter/Push', '~> 2.3.0'
+  pod 'AppCenter/Crashes', '~> 2.3.0'
+  pod 'AppCenter/Analytics', '~> 2.3.0'
+  pod 'AppCenterReactNativeShared', '~> 2.3.0'
   
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
@@ -50,6 +50,8 @@ target 'SafeBox' do
     inherit! :search_paths
     # Pods for testing
   end
+  
+  use_native_modules!
 
 end
 

@@ -1,14 +1,37 @@
 PODS:
-  - AppCenter/Analytics (2.2.0):
+  - appcenter (2.3.0):
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-analytics (2.3.0):
+    - AppCenter/Analytics
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-crashes (2.3.0):
+    - AppCenter/Crashes (= 2.3.0)
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-push (2.3.0):
+    - AppCenter/Push
+    - AppCenterReactNativeShared
+    - React
+  - AppCenter/Analytics (2.3.0):
     - AppCenter/Core
-  - AppCenter/Core (2.2.0)
-  - AppCenter/Crashes (2.2.0):
+  - AppCenter/Core (2.3.0)
+  - AppCenter/Crashes (2.3.0):
     - AppCenter/Core
-  - AppCenter/Push (2.2.0):
+  - AppCenter/Push (2.3.0):
     - AppCenter/Core
-  - AppCenterReactNativeShared (2.2.0):
-    - AppCenter/Core (= 2.2.0)
+  - AppCenterReactNativeShared (2.3.0):
+    - AppCenter/Core (= 2.3.0)
+  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
+  - BVLinearGradient (2.5.6):
+    - React
+  - CodePush (5.7.0):
+    - Base64 (~> 1.1)
+    - JWT (~> 3.0.0-beta.7)
+    - React
+    - SSZipArchive (~> 2.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.6)
@@ -32,6 +55,12 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - JWT (3.0.0-beta.11):
+    - Base64 (~> 1.1.2)
+  - lottie-ios (3.0.3)
+  - lottie-react-native (3.1.0):
+    - lottie-ios (~> 3.0.3)
+    - React
   - RCTRequired (0.61.0-rc.2)
   - RCTTypeSafety (0.61.0-rc.2):
     - FBLazyVector (= 0.61.0-rc.2)
@@ -194,6 +223,19 @@ PODS:
     - React-cxxreact (= 0.61.0-rc.2)
     - React-jsi (= 0.61.0-rc.2)
   - React-jsinspector (0.61.0-rc.2)
+  - react-native-biometrics (1.6.1):
+    - React
+  - react-native-fast-openpgp (0.4.4):
+    - FastOpenpgp
+    - React
+  - react-native-geolocation (2.0.2):
+    - React
+  - react-native-netinfo (4.2.1):
+    - React
+  - react-native-slider (2.0.0):
+    - React
+  - react-native-webview (7.0.5):
+    - React
   - React-RCTActionSheet (0.61.0-rc.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.0-rc.2)
   - React-RCTAnimation (0.61.0-rc.2):
@@ -231,13 +273,34 @@ PODS:
     - React-cxxreact (= 0.61.0-rc.2)
     - React-jsi (= 0.61.0-rc.2)
     - ReactCommon/jscallinvoker (= 0.61.0-rc.2)
+  - RNCAsyncStorage (1.6.1):
+    - React
+  - RNCViewpager (1.1.7):
+    - React
+  - RNDeviceInfo (2.3.2):
+    - React
+  - RNGestureHandler (1.4.1):
+    - React
+  - RNIap (3.4.6):
+    - React
+  - RNScreens (1.0.0-alpha.22):
+    - React
+  - RNVectorIcons (6.6.0):
+    - React
+  - SSZipArchive (2.2.2)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - AppCenter/Analytics (~> 2.2.0)
-  - AppCenter/Crashes (~> 2.2.0)
-  - AppCenter/Push (~> 2.2.0)
-  - AppCenterReactNativeShared (~> 2.2.0)
+  - appcenter (from `../node_modules/appcenter`)
+  - appcenter-analytics (from `../node_modules/appcenter-analytics`)
+  - appcenter-crashes (from `../node_modules/appcenter-crashes`)
+  - appcenter-push (from `../node_modules/appcenter-push`)
+  - AppCenter/Analytics (~> 2.3.0)
+  - AppCenter/Crashes (~> 2.3.0)
+  - AppCenter/Push (~> 2.3.0)
+  - AppCenterReactNativeShared (~> 2.3.0)
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
+  - CodePush (from `../node_modules/react-native-code-push`)
   - Crashlytics (~> 3.12.0)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Fabric (~> 1.9.0)
@@ -246,6 +309,8 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - lottie-ios (from `../node_modules/lottie-ios`)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -256,6 +321,12 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-biometrics (from `../node_modules/react-native-biometrics`)
+  - react-native-fast-openpgp (from `../node_modules/react-native-fast-openpgp`)
+  - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -268,17 +339,39 @@ DEPENDENCIES:
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCViewpager (from `../node_modules/@react-native-community/viewpager`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNIap (from `../node_modules/react-native-iap`)
+  - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AppCenter
     - AppCenterReactNativeShared
+    - Base64
     - boost-for-react-native
     - Crashlytics
     - Fabric
+    - JWT
+    - SSZipArchive
 
 EXTERNAL SOURCES:
+  appcenter:
+    :path: "../node_modules/appcenter"
+  appcenter-analytics:
+    :path: "../node_modules/appcenter-analytics"
+  appcenter-crashes:
+    :path: "../node_modules/appcenter-crashes"
+  appcenter-push:
+    :path: "../node_modules/appcenter-push"
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
+  CodePush:
+    :path: "../node_modules/react-native-code-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FastOpenpgp:
@@ -291,6 +384,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  lottie-ios:
+    :path: "../node_modules/lottie-ios"
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -311,6 +408,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-biometrics:
+    :path: "../node_modules/react-native-biometrics"
+  react-native-fast-openpgp:
+    :path: "../node_modules/react-native-fast-openpgp"
+  react-native-geolocation:
+    :path: "../node_modules/@react-native-community/geolocation"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
+  react-native-slider:
+    :path: "../node_modules/@react-native-community/slider"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -333,13 +442,34 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/WebSocket"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
+  RNCViewpager:
+    :path: "../node_modules/@react-native-community/viewpager"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppCenter: c809e69d93218b9861b4f8e54ded8dcf4d2131e7
-  AppCenterReactNativeShared: 5751a607a8aa06ebf19b48bf9d92bf3a75dab04e
+  AppCenter: 9784d2fc998c9bd0b8fbaf4fb9ed69526d12ce1a
+  appcenter: e55cb133b100379be61158f511082196b8022424
+  appcenter-analytics: 9db55feacae3ca037c310d31620760ae054d50c6
+  appcenter-crashes: 47c9257ce4c9a7625face00f77908e69fa459394
+  appcenter-push: 9c9408354d19580d433586a72de514b0c09329b2
+  AppCenterReactNativeShared: 7ac481cba7f926848a7be76dca4dcb2692df3b06
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
+  CodePush: d2e54ad42df82a8db65b2d23d8191b950ba945e1
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -348,6 +478,9 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 7346950c8ca1a89906aa6ae0354d2bf2d0d9b630
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
+  lottie-ios: 6037add6441183d4ffd100d2ac78724aa8d919d4
+  lottie-react-native: 86aeee2caa9250e4c8027ac75711a59c6679e532
   RCTRequired: b66414f979ffc6af5984788874035e7fbeec3447
   RCTTypeSafety: ecfa8525d2912d8baeabe36508565fc05ea58537
   React: 103ef188b57d077554398f7b47fbe05647e64ec4
@@ -358,6 +491,12 @@ SPEC CHECKSUMS:
   React-jsi: e3cb906c55730eb03cf72dbd1550d77b24fab413
   React-jsiexecutor: 038f005198b68a9ad498524b8b683155191cb838
   React-jsinspector: 1c2f0abdeaa89519290b8dc7f08c64d91bd7e281
+  react-native-biometrics: 4aaf49f9f8bd28c6aa3ec53534ca1b6b00486f6a
+  react-native-fast-openpgp: 660e475dd69fd8bd8f0ed01663e16d28a537ff5d
+  react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
+  react-native-netinfo: aeb1752abb78a9c15cdcea067a6c95d596dcfc45
+  react-native-slider: 40bdbfc1af0393922ac331bc1d95a6c5d5174fb6
+  react-native-webview: 174e0f8f1bf547224a134215607c75c4bb0312b7
   React-RCTActionSheet: 81eb7333581f15a5d59d1671ad3f039f465f7d2b
   React-RCTAnimation: b3cf7939e8c0d13086a71f66ccec15b3c20877b8
   React-RCTBlob: 367fd66d67165996b88c110982c0c5b6f3cdea5c
@@ -369,8 +508,16 @@ SPEC CHECKSUMS:
   React-RCTVibration: 8ac3e5f1b4d38f911ba2aef33d28893b3a2e332c
   React-RCTWebSocket: 3a27ffa8626da8c4247fe52dd07b0ae9cb183cc3
   ReactCommon: 758df47dacc2ddda94fca831d54928334a5d5c73
+  RNCAsyncStorage: 2e2e3feb9bdadc752a026703d8c4065ca912e75a
+  RNCViewpager: d11d720f0c6fbd2024788d09108a9f7abb1fac5a
+  RNDeviceInfo: 17e34f6dd902f08d88cbe2c0b7a01be948d43641
+  RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
+  RNIap: 72d12cee50f543d3e9278c954a22fbce2aee57bb
+  RNScreens: 720a9e6968beb73e8196239801e887d8401f86ed
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Yoga: ec296b22dbed143b218926f1a2652c6a647874db
 
-PODFILE CHECKSUM: b5f6960f8dd8119ff4ba1d256cf82a59c86ea793
+PODFILE CHECKSUM: e0195101a50683a55a6e2770f1150335b00991b3
 
 COCOAPODS: 1.7.5
