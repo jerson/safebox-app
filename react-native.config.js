@@ -3,6 +3,12 @@ module.exports = {
     ios: {},
     android: {},
   },
+  dependencies: {
+    realm: {
+      platforms: {
+        ios: null,
+      },
+    },
+  },
   assets: ['./src/assets/fonts/'],
 };
-
