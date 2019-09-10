@@ -22,9 +22,9 @@ jest.mock('react-navigation-hooks', () => {
         navigate: jest.fn(),
         getParam: jest.fn(),
         setParams: jest.fn(),
-        addListener: jest.fn()
+        addListener: jest.fn(),
       };
-    }
+    },
   };
 });
 
@@ -32,7 +32,7 @@ jest.mock('@react-native-community/async-storage', () => {
   return {
     setItem: jest.fn(),
     getItem: jest.fn(),
-    removeItem: jest.fn()
+    removeItem: jest.fn(),
   };
 });
 
@@ -40,8 +40,8 @@ jest.mock('@react-native-community/netinfo', () => {
   return {
     isConnected: {
       addEventListener: jest.fn(),
-      fetch: jest.fn()
-    }
+      fetch: jest.fn(),
+    },
   };
 });
 
@@ -61,9 +61,9 @@ jest.mock('InteractionManager', () => {
         },
         cancel: () => {
           return true;
-        }
+        },
       };
-    }
+    },
   };
 });
 
@@ -75,22 +75,22 @@ jest.mock('Animated', () => {
       return {
         start: callback => {
           value.setValue(config.toValue);
-          callback && callback({ finished: true });
+          callback && callback({finished: true});
         },
         stop: callback => {
-          callback && callback({ finished: true });
-        }
+          callback && callback({finished: true});
+        },
       };
     },
     spring: (value, config) => {
       return {
         start: callback => {
           value.setValue(config.toValue);
-          callback && callback({ finished: true });
+          callback && callback({finished: true});
         },
         stop: callback => {
-          callback && callback({ finished: true });
-        }
+          callback && callback({finished: true});
+        },
       };
     },
     parallel: (animations, config) => {
@@ -100,7 +100,7 @@ jest.mock('Animated', () => {
       const result = {
         start: callback => {
           if (doneCount === animations.length) {
-            callback && callback({ finished: true });
+            callback && callback({finished: true});
             return;
           }
           animations.forEach((animation, idx) => {
@@ -117,7 +117,7 @@ jest.mock('Animated', () => {
               }
             };
             if (!animation) {
-              cb({ finished: true });
+              cb({finished: true});
             } else {
               animation.start(cb);
             }
@@ -128,9 +128,9 @@ jest.mock('Animated', () => {
             !hasEnded[idx] && animation.stop();
             hasEnded[idx] = true;
           });
-        }
+        },
       };
       return result;
-    }
+    },
   };
 });

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.view.View
 import android.widget.Toast
-import android.support.wear.widget.WearableLinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jerson.safebox.adapters.AccountAdapter
 import dev.jerson.safebox.grpc.Client
 import kotlinx.android.synthetic.main.activity_accounts.*
@@ -34,7 +34,7 @@ class AccountsActivity : WearableActivity() {
                 uiThread {
                     list.visibility = View.VISIBLE
                     progressBar.visibility = View.GONE
-                    list.layoutManager = WearableLinearLayoutManager(this@AccountsActivity)
+                    list.layoutManager = LinearLayoutManager(this@AccountsActivity)
                     list.adapter = AccountAdapter(accounts, this@AccountsActivity)
 
                 }
