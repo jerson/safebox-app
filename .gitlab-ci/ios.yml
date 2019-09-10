@@ -14,11 +14,10 @@
     - lint
 
 ios_codepush_release:
-  image: jerson/node:10.16
+  image: jerson/appcenter:2
   stage: build
   script:
     - cp -f src/Config.tsx-dist src/Config.tsx
-    - npm install -g appcenter-cli
     - appcenter login --token $APPCENTER_ACCESSKEY
     - make deps
     - npm run codepush:ios:production
