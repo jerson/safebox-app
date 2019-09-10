@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import NavigationOptions from '../../modules/constants/NavigationOptions';
 import AccountsScreen from '../../scenes/app/AccountsScreen';
 import AddAccountScreen from '../../scenes/app/AddAccountScreen';

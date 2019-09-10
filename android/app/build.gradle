@@ -239,6 +239,8 @@ dependencies {
     wearApp project(':wear')
     implementation 'com.google.android.gms:play-services-wearable:16.0.1'
     implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

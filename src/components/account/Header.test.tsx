@@ -2,9 +2,9 @@ import React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import Header, {AccountHeaderProps} from './Header';
-import {HeaderProps} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import {View} from 'react-native';
+import {HeaderProps} from 'react-navigation-stack/lib/typescript/types';
 
 const props: HeaderProps & AccountHeaderProps = {
   mode: {} as any,

@@ -9,7 +9,7 @@ import {
   TextStyle,
   Clipboard,
 } from 'react-native';
-import {SafeAreaView, HeaderProps} from 'react-navigation';
+import {SafeAreaView} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 
 import Container from '../../components/ui/Container';
@@ -43,6 +43,7 @@ import useFocusedScreen from '../../components/hooks/useFocusedScreen';
 import Biometrics from 'react-native-biometrics';
 import Config from '../../Config';
 import SettingsStorage from '../../modules/storage/SettingsStorage';
+import {HeaderProps} from 'react-navigation-stack/lib/typescript/types';
 
 const styles = StyleSheet.create({
   container: {

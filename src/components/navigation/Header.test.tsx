@@ -2,8 +2,8 @@ import React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import Header from './Header';
-import {HeaderProps} from 'react-navigation';
 import {View} from 'react-native';
+import {HeaderProps} from 'react-navigation-stack/lib/typescript/types';
 
 const props: HeaderProps = {
   mode: {} as any,

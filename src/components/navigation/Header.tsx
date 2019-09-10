@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Platform, StyleSheet, ViewStyle, TextStyle} from 'react-native';
-import {HeaderProps} from 'react-navigation';
 import Colors from '../../modules/constants/Colors';
 import Font from '../../modules/resources/Font';
 import Size from '../../modules/dimensions/Size';
 import Text from '../ui/Text';
+import {HeaderProps} from 'react-navigation-stack/lib/typescript/types';
 
 const paddingTop = Platform.OS === 'ios' ? Size.getStatusBarHeight() : 0;
 const height = Size.getActionBarHeight() + paddingTop;
