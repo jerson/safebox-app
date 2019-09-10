@@ -1,5 +1,8 @@
 org.gradle.jvmargs=-Xmx4563M
 
+android.useAndroidX=true
+android.enableJetifier=true
+
 kotlin.code.style=official
 
 RELEASE_STORE_FILE=app.keystore
