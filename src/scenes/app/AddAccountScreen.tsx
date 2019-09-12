@@ -74,6 +74,7 @@ const encode = async (input: string) => {
 
 const TAG = '[AddAccountScreen]';
 function AddAccountScreen() {
+  // @ts-ignore
   const {replace} = useNavigation();
 
   const [isLoading, setIsLoading] = useState(false);

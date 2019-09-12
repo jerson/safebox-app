@@ -116,7 +116,7 @@ export default class AppStorage {
     });
   }
   private static createId() {
-    const stringId = DeviceInfo.getUniqueID();
+    const stringId = DeviceInfo.getUniqueIdSync();
     const ids = [];
     let count = 0;
 

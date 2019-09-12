@@ -63,7 +63,7 @@ function DeviceSettings({style}: DeviceSettingsProps) {
   const [isAddedCurrentDevice, setIsAddedCurrentDevice] = useState(false);
   const listRef = useRef<ListRef>(null);
 
-  const deviceUid = DeviceInfo.getUniqueID();
+  const deviceUid = DeviceInfo.getUniqueIdSync();
 
   useEffect(() => {
     checkBiometricType();
@@ -101,7 +101,7 @@ function DeviceSettings({style}: DeviceSettingsProps) {
     setIsLoading(true);
     try {
       const request = new AddDeviceRequest();
-      request.setName(DeviceInfo.getDeviceName() || '');
+      request.setName(DeviceInfo.getDeviceNameSync() || '');
       request.setUid(deviceUid);
       request.setPublickey(publicKey);
       await Client.addDevice(request);

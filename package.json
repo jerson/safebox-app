@@ -37,7 +37,7 @@
     "react-native": "0.61.0-rc.2",
     "react-native-biometrics": "1.6.1",
     "react-native-code-push": "5.7.0",
-    "react-native-device-info": "2.3.2",
+    "react-native-device-info": "3.0.0",
     "react-native-fast-openpgp": "0.4.4",
     "react-native-gesture-handler": "1.4.1",
     "react-native-iap": "3.4.6",
@@ -47,11 +47,11 @@
     "react-native-screens": "2.0.0-alpha.3",
     "react-native-vector-icons": "6.6.0",
     "react-native-webview": "7.0.5",
-    "react-navigation": "4.0.2",
+    "react-navigation": "4.0.4",
     "react-navigation-hooks": "1.0.3",
-    "react-navigation-stack": "^1.5.4",
-    "react-navigation-tabs": "^2.4.1",
-    "realm": "2.29.2",
+    "react-navigation-stack": "^1.7.3",
+    "react-navigation-tabs": "^2.5.1",
+    "realm": "3.0.0",
     "tinycolor2": "1.4.1"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
     "@types/jest": "24.0.18",
     "@types/react": "16.9.2",
     "@types/react-native": "0.60.13",
-    "@types/react-native-vector-icons": "6.4.1",
+    "@types/react-native-vector-icons": "6.4.2",
     "@types/react-test-renderer": "16.9.0",
     "babel-jest": "24.9.0",
     "husky": "3.0.5",
@@ -79,7 +79,7 @@
     "tslint-react": "4.0.0",
     "tslint-react-native": "0.0.7",
     "typedoc": "0.15.0",
-    "typescript": "3.6.2"
+    "typescript": "3.6.3"
   },
   "jestSonar": {
     "sonar56x": true,
