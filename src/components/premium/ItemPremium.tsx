@@ -58,7 +58,7 @@ export interface ItemPremiumProps {
   name: string;
   children?: React.ReactNode | React.ReactNode[];
   onPurchase?: (isPurchased: boolean) => void;
-  product?: RNIap.Product<string>;
+  product?: RNIap.Product;
 }
 
 const TAG = '[ItemPremium]';

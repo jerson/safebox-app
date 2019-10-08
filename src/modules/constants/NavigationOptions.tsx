@@ -1,9 +1,9 @@
 import React from 'react';
-import {NavigationScreenProps} from 'react-navigation';
 import Header from '../../components/navigation/Header';
 import {View, Easing, Animated} from 'react-native';
 import HeaderIcon from '../../components/navigation/HeaderIcon';
 import {HeaderProps} from 'react-navigation-stack/lib/typescript/types';
+import { NavigationScreenConfigProps } from 'react-navigation';
 
 const transitionConfigSlide = () => {
   return {
@@ -51,7 +51,7 @@ const transitionConfigFade = () => {
 };
 const header = {
   headerMode: 'screen',
-  defaultNavigationOptions: ({navigation}: NavigationScreenProps<any>) => ({
+  defaultNavigationOptions: ({navigation}: NavigationScreenConfigProps<any>) => ({
     title: '',
     headerLeft: (
       <HeaderIcon

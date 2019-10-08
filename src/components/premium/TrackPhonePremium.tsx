@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
 export interface TrackPhonePremiumProps {
   style?: StyleProp<ViewStyle>;
-  product?: RNIap.Product<string>;
+  product?: RNIap.Product;
 }
 
 function TrackPhonePremium({style, product}: TrackPhonePremiumProps) {

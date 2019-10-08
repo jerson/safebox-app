@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 interface ProductList {
-  [key: string]: RNIap.Product<string>;
+  [key: string]: RNIap.Product;
 }
 const TAG = '[PremiumScreen]';
 function PremiumScreen() {

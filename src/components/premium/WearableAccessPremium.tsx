@@ -5,7 +5,7 @@ import * as RNIap from 'react-native-iap';
 
 export interface WearableAccessPremiumProps {
   style?: StyleProp<ViewStyle>;
-  product?: RNIap.Product<string>;
+  product?: RNIap.Product;
 }
 
 function WearableAccessPremium({style, product}: WearableAccessPremiumProps) {
