@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - name: Config
+        run: |
+          cp -f src/Config.tsx-dist src/Config.tsx
+      - name: Add secrets
+        run: |
+          echo $KEYCHAIN | base64 -d > ios/xcode.keychain
+        env:
+          KEYCHAIN: ${{ secrets.KEYCHAIN }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10'
+      - uses: jaid/action-npm-install@v1.2.1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
+      - uses: maierj/fastlane-action@v2.0.1
+        with:
+          subdirectory: 'ios'
+          lane: 'ios build_release'
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: SafeBox_$tag.ipa
+          file: ios/ipa/SafeBox.ipa
+          tag: ${{ github.ref }}
+          overwrite: true
+      - uses: maierj/fastlane-action@v2.0.1
+        with:
+          subdirectory: 'android'
+          lane: 'ios deploy_release_beta'
+
