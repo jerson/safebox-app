@@ -32,4 +32,14 @@ platform :android do
     aab: 'app/build/outputs/bundle/release/app.aab'
     )
   end
+
+  desc "Deploy a new version to the Google Play - Internal channel"
+  lane :deploy_release_beta do
+    gradle(task: "clean bundleRelease")
+    upload_to_play_store(
+    track: 'internal',
+    skip_upload_apk: true,
+    aab: 'app/build/outputs/bundle/release/app.aab'
+    )
+  end
 end

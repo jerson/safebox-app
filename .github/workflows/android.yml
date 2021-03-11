@@ -1,0 +1,65 @@
+name: Android Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - uses: android-actions/setup-android@v2
+      - name: Install Android Platform
+        run: |
+          sdkmanager "platform-tools"
+          sdkmanager "platforms;android-29"
+          sdkmanager "build-tools;29.0.2"
+      - name: Config
+        run: |
+          cp -f src/Config.tsx-dist src/Config.tsx
+          cp -f android/gradle.properties-dist android/gradle.properties
+          sed -i'' -e "s/YOUR_STORE_PASSWORD/${APP_STORE_PASSWORD}/g" android/gradle.properties
+          sed -i'' -e "s/YOUR_KEY_PASSWORD/${APP_KEY_PASSWORD}/g" android/gradle.properties
+          sed -i'' -e "s/YOUR_KEY_ALIAS/${APP_KEY_ALIAS}/g" android/gradle.properties
+          sed -i'' -e "s/YOUR_VERSION_CODE/${GITHUB_RUN_ID}/g" android/gradle.properties
+        env:
+          APP_STORE_PASSWORD: ${{ secrets.APP_STORE_PASSWORD }}
+          APP_KEY_PASSWORD: ${{ secrets.APP_KEY_PASSWORD }}
+          APP_KEY_ALIAS: ${{ secrets.APP_KEY_ALIAS }}
+      - name: Add secrets
+        run: |
+          echo $APP_KEY_STORE | base64 -d > android/app/app.keystore
+          echo $APP_KEY_STORE | base64 -d > android/wear/app.keystore
+          echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json
+        env:
+          GOOGLE_PLAY_SETTINGS: ${{ secrets.GOOGLE_PLAY_SETTINGS }}
+          APP_KEY_STORE: ${{ secrets.APP_KEY_STORE }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10'
+      - name: Install Deps
+        run: make deps
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
+      - uses: maierj/fastlane-action@v2.0.1
+        with:
+          subdirectory: 'android'
+          lane: 'android build_release'
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: SafeBox_$tag.aab
+          file: android/app/build/outputs/bundle/release/app.aab
+          tag: ${{ github.ref }}
+          overwrite: true
+      - uses: maierj/fastlane-action@v2.0.1
+        with:
+          subdirectory: 'android'
+          lane: 'android deploy_release_internal'
