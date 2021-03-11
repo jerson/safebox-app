@@ -39,10 +39,12 @@ jobs:
           echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json
         env:
           GOOGLE_PLAY_SETTINGS: ${{ secrets.GOOGLE_PLAY_SETTINGS }}
+          APP_KEY_STORE: ${{ secrets.APP_KEY_STORE }}
       - uses: actions/setup-node@v2
         with:
           node-version: '10'
-      - uses: jaid/action-npm-install@v1.2.1
+      - name: Install Deps
+        run: make deps
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
