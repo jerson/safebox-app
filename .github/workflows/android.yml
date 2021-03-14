@@ -48,9 +48,7 @@ jobs:
         run: |
           echo $APP_KEY_STORE | base64 -d > android/app/app.keystore
           echo $APP_KEY_STORE | base64 -d > android/wear/app.keystore
-          echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json
         env:
-          GOOGLE_PLAY_SETTINGS: ${{ secrets.GOOGLE_PLAY_SETTINGS }}
           APP_KEY_STORE: ${{ secrets.APP_KEY_STORE }}
       - uses: actions/setup-node@v2
         with:
@@ -97,6 +95,11 @@ jobs:
         with:
           name: 'android'
           path: android/app/build/outputs/bundle/release/app.aab
+      - name: Add secrets
+        run: |
+          echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json
+        env:
+          GOOGLE_PLAY_SETTINGS: ${{ secrets.GOOGLE_PLAY_SETTINGS }}
       - uses: maierj/fastlane-action@v2.0.1
         with:
           subdirectory: 'android'
