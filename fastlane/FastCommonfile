@@ -1,10 +1,5 @@
 fastlane_require "dotenv"
 
-before_all do
-  # for now its not mandatory
-  #Dotenv.overload(File.expand_path("../.env", __dir__))
-end
-
 def zip_file(path)
   output_path = "#{path}.zip"
   zip(path: path, output_path: output_path)
