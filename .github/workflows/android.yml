@@ -95,7 +95,7 @@ jobs:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: 'download'
+          name: 'android'
           path: android/app/build/outputs/bundle/release/app.aab
       - uses: maierj/fastlane-action@v2.0.1
         with:
