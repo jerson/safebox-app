@@ -47,9 +47,11 @@ platform :ios do
         path:  File.expand_path("xcode.keychain", project_dir),
         password: ""
       )
-      # esto genera otro, y ya esta en el keychain
+      # get_certificates will create multiple certs and we need to use our own
       # get_certificates         
-      get_provisioning_profile 
+      get_provisioning_profile(
+        username: ENV['FASTLANE_USER']
+      )
       increment_build_number(build_number: ENV['CI_JOB_ID'])
       gym(
         scheme: "SafeBox",
