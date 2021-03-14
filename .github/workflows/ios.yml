@@ -54,6 +54,7 @@ jobs:
         env:
           CI_JOB_ID: ${{ github.run_id }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION || '' }}
+          SLACK_URL: ${{ secrets.SLACK_URL || '' }}
           #FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
           #FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
       - uses: actions/upload-artifact@v2
@@ -85,3 +86,4 @@ jobs:
           lane: 'ios deploy_${{ env.DEPLOY_TYPE }}'
         env:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          SLACK_URL: ${{ secrets.SLACK_URL || '' }}
