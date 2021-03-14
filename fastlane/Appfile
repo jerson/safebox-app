@@ -1,3 +1,5 @@
+# Android package id
 package_name "dev.jerson.safebox"
 
+# iOS package id
 app_identifier "dev.jerson.safebox" 
