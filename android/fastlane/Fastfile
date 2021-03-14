@@ -39,7 +39,6 @@ platform :android do
       upload_to_play_store(
       track: 'production',
       skip_upload_apk: true,
-      json_key: File.expand_path("google-play.json", __dir__),
       aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
       )
       on_success(platform_icon, name)
@@ -56,7 +55,6 @@ platform :android do
       upload_to_play_store(
       track: 'beta',
       skip_upload_apk: true,
-      json_key: File.expand_path("google-play.json", __dir__),
       aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
       )
       on_success(platform_icon, name)
@@ -73,7 +71,6 @@ platform :android do
       upload_to_play_store(
       track: 'internal',
       skip_upload_apk: true,
-      json_key: File.expand_path("google-play.json", __dir__),
       aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
       )
       on_success(platform_icon, name)

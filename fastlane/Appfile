@@ -1,5 +1,9 @@
-# Android package id
+# Android settings
 package_name "dev.jerson.safebox"
+json_key_file(File.expand_path("../android/fastlane/google-play.json", __dir__))
 
-# iOS package id
-app_identifier "dev.jerson.safebox" 
+# iOS settings
+app_identifier "dev.jerson.safebox"
+apple_id "jeral17@gmail.com"
+team_id "EKR687JWFU"
+itc_team_id "119617415"
