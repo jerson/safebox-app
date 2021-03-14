@@ -94,7 +94,10 @@ jobs:
         id: download
         with:
           name: 'android'
-          path: android/app/build/outputs/bundle/release/app.aab
+      - name: Copy files
+        run: |
+          mkdir -p android/app/build/outputs/bundle/release || echo "ok"
+          mv ${{steps.download.outputs.download-path}} android/app/build/outputs/bundle/release/app.aab
       - name: Add secrets
         run: |
           echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json

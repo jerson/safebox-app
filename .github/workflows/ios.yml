@@ -75,7 +75,10 @@ jobs:
         id: download
         with:
           name: 'ios'
-          path: ios/ipa/SafeBox.ipa
+      - name: Copy files
+        run: |
+          mkdir -p ios/ipa || echo "ok"
+          mv ${{steps.download.outputs.download-path}} ios/ipa/SafeBox.ipa
       - uses: maierj/fastlane-action@v2.0.1
         with:
           subdirectory: 'ios'
