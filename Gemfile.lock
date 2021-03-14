@@ -219,6 +219,7 @@ GEM
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
+    rexml (3.2.4)
     rouge (2.0.7)
     ruby-macho (1.4.0)
     rubyzip (1.1.7)
@@ -292,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (= 1.10.1)
   fastlane (= 1.92.0)
+  rexml
 
 BUNDLED WITH
    2.2.14
