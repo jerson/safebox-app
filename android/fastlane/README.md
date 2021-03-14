@@ -12,7 +12,7 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## Android
@@ -36,6 +36,11 @@ Deploy a new version to the Google Play - Release channel
 fastlane android deploy_release_beta
 ```
 Deploy a new version to the Google Play - Beta channel
+### android deploy_release_internal
+```
+fastlane android deploy_release_internal
+```
+Deploy a new version to the Google Play - Internal channel
 
 ----
 
