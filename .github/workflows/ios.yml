@@ -1,17 +1,22 @@
-name: iOS Build
+name: iOS
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version Overwrite
+        description: Version Release (Optional), used to create a release tag with the output file
         required: false
+      deploy_type:
+        description: Deploy Type (release_beta)
+        default: release_beta
+        required: true
   push:
     tags:
       - "v*"
       
 env:
   VERSION: ${{ github.event.inputs.version || (startsWith(github.ref, 'refs/tags/') && github.ref || '') }}
+  DEPLOY_TYPE: ${{ github.event.inputs.deploy_type || 'release_beta' }}
 
 jobs:
   build:
@@ -56,13 +61,22 @@ jobs:
           file: ios/ipa/SafeBox.ipa
           tag: ${{ env.VERSION }}
           overwrite: true
-      - if: ${{ env.VERSION=='' }}
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
-          name: SafeBox_ios
+          name: ios
+          path: ios/ipa/SafeBox.ipa
+
+  deploy:
+    runs-on: macos-10.15
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: 'ios'
           path: ios/ipa/SafeBox.ipa
       - uses: maierj/fastlane-action@v2.0.1
         with:
-          subdirectory: 'android'
-          lane: 'ios deploy_release_beta'
-
+          subdirectory: 'ios'
+          lane: 'ios deploy_${{ env.DEPLOY_TYPE }}'
