@@ -69,19 +69,24 @@ jobs:
         with:
           subdirectory: 'android'
           lane: 'android build_release'
+      - name: List
+        run: |
+          ls -la
+          cd  android/app/build/outputs/bundle/release && ls -la
+          cd  app/build/outputs/bundle/release && ls -la
       - if: ${{ env.VERSION!='' }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: SafeBox_android_$tag.aab
-          file: android/app/build/outputs/bundle/release/app.aab
+          file: app/build/outputs/bundle/release/app.aab
           tag: ${{ env.VERSION }}
           overwrite: true
       - if: ${{ env.VERSION=='' }}
         uses: actions/upload-artifact@v2
         with:
           name: SafeBox_android
-          path: android/app/build/outputs/bundle/release/app.aab
+          path: app/build/outputs/bundle/release/app.aab
       - uses: maierj/fastlane-action@v2.0.1
         with:
           subdirectory: 'android'
