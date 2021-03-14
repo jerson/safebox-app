@@ -23,7 +23,9 @@ platform :ios do
       )
       # get_certificates will create multiple certs and we need to use our own
       # get_certificates        
-      get_provisioning_profile
+      get_provisioning_profile(
+        username: ENV['FASTLANE_USER']
+      )
       increment_build_number(build_number: ENV['CI_JOB_ID'])
       gym(
         scheme: "SafeBox (Beta)",
