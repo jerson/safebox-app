@@ -57,7 +57,7 @@ jobs:
           SLACK_URL: ${{ secrets.SLACK_URL || '' }}
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
           FASTLANE_ITC_TEAM_ID: ${{ secrets.FASTLANE_ITC_TEAM_ID }}
-          #FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: ios
