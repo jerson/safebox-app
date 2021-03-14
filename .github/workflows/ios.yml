@@ -56,7 +56,7 @@ jobs:
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION || '' }}
           SLACK_URL: ${{ secrets.SLACK_URL || '' }}
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
-          FASTLANE_ITC_TEAM_ID: ${{ secrets.FASTLANE_ITC_TEAM_ID }}
+          FASTLANE_TEAM_ID: ${{ secrets.FASTLANE_TEAM_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
@@ -86,5 +86,7 @@ jobs:
         with:
           lane: 'ios deploy_${{ env.DEPLOY_TYPE }}'
         env:
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_TEAM_ID: ${{ secrets.FASTLANE_TEAM_ID }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
           SLACK_URL: ${{ secrets.SLACK_URL || '' }}
