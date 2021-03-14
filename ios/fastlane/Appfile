@@ -1,4 +1,0 @@
-app_identifier "dev.jerson.safebox" # The bundle identifier of your app
-
-# you can even provide different app identifiers, Apple IDs and team names per lane:
-# More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md

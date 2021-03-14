@@ -1,7 +1,6 @@
 import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
-fastlane_version "2.28.3"
 
-default_platform :ios
+app_identifier "dev.jerson.safebox" 
 
 project_dir = File.expand_path("..", __dir__)
 output = File.expand_path("ipa", project_dir)
