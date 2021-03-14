@@ -50,12 +50,12 @@ jobs:
           ruby-version: '2.7.2'
       - uses: maierj/fastlane-action@v2.0.1
         with:
-          subdirectory: 'ios'
           lane: 'ios build_release'
         env:
           CI_JOB_ID: ${{ github.run_id }}
-          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION || '' }}
+          #FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          #FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: ios
@@ -82,7 +82,6 @@ jobs:
       - if: ${{ env.DEPLOY_TYPE!='' }}
         uses: maierj/fastlane-action@v2.0.1
         with:
-          subdirectory: 'ios'
           lane: 'ios deploy_${{ env.DEPLOY_TYPE }}'
         env:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}

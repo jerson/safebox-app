@@ -69,7 +69,6 @@ jobs:
           ruby-version: '2.7.2'
       - uses: maierj/fastlane-action@v2.0.1
         with:
-          subdirectory: 'android'
           lane: 'android build_release'
         env:
           CI_JOB_ID: ${{ github.run_id }}
@@ -103,5 +102,4 @@ jobs:
       - if: ${{ env.DEPLOY_TYPE!='' }}
         uses: maierj/fastlane-action@v2.0.1
         with:
-          subdirectory: 'android'
           lane: 'android deploy_${{ env.DEPLOY_TYPE }}'

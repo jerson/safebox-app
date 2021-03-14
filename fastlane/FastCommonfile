@@ -1,0 +1,99 @@
+fastlane_require "dotenv"
+
+before_all do
+  # for now its not mandatory
+  #Dotenv.overload(File.expand_path("../.env", __dir__))
+end
+
+def zip_file(path)
+  output_path = "#{path}.zip"
+  zip(path: path, output_path: output_path)
+  output_path
+end
+
+def on_error(platform, name, exception)
+  message = "ERROR: #{platform} #{name} - Build: #{ENV["CI_JOB_ID"]}"
+
+  if FastlaneCore::Helper.mac?
+    notification(subtitle: "Error Build", message: message)
+  end
+
+  if ENV["SLACK_URL"].to_s == ""
+    UI.header "SLACK FALLBACK: #{message}"
+  else
+    slack(
+        message: message,
+        success: false,
+        payload: {
+        },
+        attachment_properties: {
+            fields: [
+                {
+                    title: "Error message",
+                    value: exception.to_s,
+                    short: false
+                }
+            ]
+        }
+    )
+  end
+  UI.user_error!(exception.to_s)
+end
+
+def on_success(platform, name)
+  message = "SUCCESSFUL: #{platform} #{name} - Build: #{ENV["CI_JOB_ID"]}"
+
+  if FastlaneCore::Helper.mac?
+    notification(subtitle: "Success Build", message: message)
+  end
+
+  if ENV["SLACK_URL"].to_s == ""
+    UI.header "SLACK FALLBACK: #{message}"
+  else
+    slack(
+        message: message,
+        success: true,
+        payload: {
+        },
+        attachment_properties: {
+            fields: fields,
+            actions: actions
+        }
+    )
+  end
+
+end
+
+def on_start(platform, name)
+  message = "STARTED: #{platform} #{name} - Build: #{ENV["CI_JOB_ID"]}"
+
+  if FastlaneCore::Helper.mac?
+    notification(subtitle: "Start Build", message: message)
+  end
+
+  if ENV["SLACK_URL"].to_s == ""
+    UI.header "SLACK FALLBACK: #{message}"
+  else
+    slack(
+        message: message,
+        payload: { }
+    )
+  end
+end
+
+def date_formatted_minute
+  Time.now.strftime("%d-%m-%Y_%H-%M")
+end
+
+def date_formatted_hour
+  Time.now.strftime("%d-%m-%Y_%H")
+end
+
+def copy(from, to)
+  File.open(to, "w") { |file| file.puts File.read(from) }
+end
+
+def sed(from, to, input)
+  text = File.read(input)
+  File.open(input, "w") { |file| file.puts text.gsub(from, to) }
+end

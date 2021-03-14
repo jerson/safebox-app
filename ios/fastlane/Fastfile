@@ -1,56 +1,91 @@
-
+import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
 fastlane_version "2.28.3"
 
 default_platform :ios
 
+project_dir = File.expand_path("..", __dir__)
+output = File.expand_path("ipa", project_dir)
+workspace = File.expand_path("SafeBox.xcworkspace", project_dir)
+podfile = File.expand_path("Podfile", project_dir)
+platform_icon = ":ios:"
+current_date = date_formatted_minute
+
 platform :ios do
   desc "Build Beta IPA"
   lane :build_beta do
-    cocoapods
-    unlock_keychain(
-      path: "xcode.keychain",
-      password: ""
-    )
-    # esto genera otro, y ya esta en el keychain
-    # get_certificates        
-    get_provisioning_profile 
-    increment_build_number(build_number: ENV['CI_JOB_ID'])
-    gym(
-      scheme: "SafeBox (Beta)",
-      output_directory: "ipa"
-    ) 
+    name = "Build Beta: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      cocoapods(repo_update: true, podfile: podfile)
+      unlock_keychain(
+        path: File.expand_path("xcode.keychain", project_dir),
+        password: ""
+      )
+      # esto genera otro, y ya esta en el keychain
+      # get_certificates        
+      get_provisioning_profile 
+      increment_build_number(build_number: ENV['CI_JOB_ID'])
+      gym(
+        scheme: "SafeBox (Beta)",
+        output_directory: File.expand_path("ipa", project_dir)
+      ) 
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Build Release IPA"
   lane :build_release do
-    cocoapods
-    unlock_keychain(
-      path: "xcode.keychain",
-      password: ""
-    )
-    # esto genera otro, y ya esta en el keychain
-    # get_certificates         
-    get_provisioning_profile 
-    increment_build_number(build_number: ENV['CI_JOB_ID'])
-    gym(
-      scheme: "SafeBox",
-      output_directory: "ipa"
-    ) 
+    name = "Build Release Bundle: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      cocoapods(repo_update: true, podfile: podfile)
+      unlock_keychain(
+        path:  File.expand_path("xcode.keychain", project_dir),
+        password: ""
+      )
+      # esto genera otro, y ya esta en el keychain
+      # get_certificates         
+      get_provisioning_profile 
+      increment_build_number(build_number: ENV['CI_JOB_ID'])
+      gym(
+        scheme: "SafeBox",
+        output_directory: File.expand_path("ipa", project_dir)
+      ) 
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Deploy a new version to the Apple Store - Release channel"
   lane :deploy_release do
-    deliver(
-      force: true,
-      ipa: 'ipa/SafeBox.ipa'
-    )
+    name = "Deploy Release channel: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      deliver(
+        force: true,
+        ipa: File.expand_path("ipa/SafeBox.ipa", project_dir)
+      )
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Deploy a new version to the Apple Store - Beta channel"
   lane :deploy_release_beta do
-    pilot(
-      ipa: 'ipa/SafeBox.ipa'
-    )
+    name = "Deploy Beta channel: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      pilot(
+        ipa: File.expand_path("ipa/SafeBox.ipa", project_dir)
+      )
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
 end

@@ -1,42 +1,83 @@
+import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
 
 default_platform(:android)
+
+project_dir = File.expand_path("..", __dir__)
+output = File.expand_path("app/build/outputs", project_dir)
+platform_icon = ":android:"
+current_date = date_formatted_minute
 
 platform :android do
 
   desc "Build Beta APK"
   lane :build_beta do
-    gradle(task: "clean assembleReleaseBeta")
+    name = "Build Beta: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      gradle(task: "clean assembleReleaseBeta", project_dir: project_dir)
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Build Release Bundle"
   lane :build_release do
-    gradle(task: "clean bundleRelease")
+    name = "Build Release Bundle: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      gradle(task: "clean bundleRelease", project_dir: project_dir)
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Deploy a new version to the Google Play - Release channel"
   lane :deploy_release do
-    upload_to_play_store(
-    track: 'production',
-    skip_upload_apk: true,
-    aab: 'app/build/outputs/bundle/release/app.aab'
-    )
+    name = "Deploy Release channel: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      upload_to_play_store(
+      track: 'production',
+      skip_upload_apk: true,
+      aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
+      )
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Deploy a new version to the Google Play - Beta channel"
   lane :deploy_release_beta do
-    upload_to_play_store(
-    track: 'beta',
-    skip_upload_apk: true,
-    aab: 'app/build/outputs/bundle/release/app.aab'
-    )
+    name = "Deploy Beta channel: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      upload_to_play_store(
+      track: 'beta',
+      skip_upload_apk: true,
+      aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
+      )
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 
   desc "Deploy a new version to the Google Play - Internal channel"
   lane :deploy_release_internal do
-    upload_to_play_store(
-    track: 'internal',
-    skip_upload_apk: true,
-    aab: 'app/build/outputs/bundle/release/app.aab'
-    )
+    name = "Deploy Internal channel: #{current_date}"
+    begin
+      on_start(platform_icon, name)
+      upload_to_play_store(
+      track: 'internal',
+      skip_upload_apk: true,
+      aab: File.expand_path("app/build/outputs/bundle/release/app.aab", project_dir)
+      )
+      on_success(platform_icon, name)
+    rescue => exception
+      on_error(platform_icon, name, exception)
+    end
   end
 end
