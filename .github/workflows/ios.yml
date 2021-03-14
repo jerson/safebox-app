@@ -55,7 +55,8 @@ jobs:
           CI_JOB_ID: ${{ github.run_id }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION || '' }}
           SLACK_URL: ${{ secrets.SLACK_URL || '' }}
-          #FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_ITC_TEAM_ID: ${{ secrets.FASTLANE_ITC_TEAM_ID }}
           #FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:

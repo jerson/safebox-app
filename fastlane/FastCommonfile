@@ -12,7 +12,7 @@ def on_error(platform, name, exception)
   end
 
   if ENV["SLACK_URL"].to_s == ""
-    UI.header "SLACK FALLBACK: #{message}"
+    UI.header "MESSAGE: #{message}"
   else
     slack(
         message: message,
@@ -41,7 +41,7 @@ def on_success(platform, name)
   end
 
   if ENV["SLACK_URL"].to_s == ""
-    UI.header "SLACK FALLBACK: #{message}"
+    UI.header "MESSAGE: #{message}"
   else
     slack(
         message: message,
@@ -65,7 +65,7 @@ def on_start(platform, name)
   end
 
   if ENV["SLACK_URL"].to_s == ""
-    UI.header "SLACK FALLBACK: #{message}"
+    UI.header "MESSAGE: #{message}"
   else
     slack(
         message: message,
