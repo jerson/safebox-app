@@ -74,9 +74,6 @@ jobs:
         with:
           subdirectory: 'android'
           lane: 'android build_release'
-      - name: List
-        run: |
-          cd  android/app/build/outputs/bundle/release && ls -la
       - if: ${{ env.VERSION!='' }}
         uses: svenstaro/upload-release-action@v2
         with:
