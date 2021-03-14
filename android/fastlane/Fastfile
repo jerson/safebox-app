@@ -1,7 +1,5 @@
 import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
 
-package_name("dev.jerson.safebox")
-
 project_dir = File.expand_path("..", __dir__)
 output = File.expand_path("app/build/outputs", project_dir)
 platform_icon = ":android:"

@@ -1,7 +1,5 @@
 import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
 
-app_identifier "dev.jerson.safebox" 
-
 project_dir = File.expand_path("..", __dir__)
 output = File.expand_path("ipa", project_dir)
 workspace = File.expand_path("SafeBox.xcworkspace", project_dir)

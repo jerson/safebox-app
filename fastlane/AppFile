@@ -1,2 +1,0 @@
-import(File.expand_path("../ios/fastlane/AppFile", __dir__))
-import(File.expand_path("../android/fastlane/AppFile", __dir__))
