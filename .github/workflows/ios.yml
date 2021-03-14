@@ -7,7 +7,7 @@ on:
         description: 'Version Release (Optional): used to create a release tag with the output file'
         required: false
       deploy_type:
-        description: 'Deploy Type (Optional): (release_internal|release_beta|release)'
+        description: 'Deploy Type (Optional): (release_beta)'
         required: false
   push:
     tags:
