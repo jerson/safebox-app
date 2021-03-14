@@ -1,5 +1,3 @@
-fastlane_require "dotenv"
-
 def zip_file(path)
   output_path = "#{path}.zip"
   zip(path: path, output_path: output_path)
