@@ -1,2 +1,2 @@
-json_key_file(File.expand_path("../fastlane/google-play.json", __dir__)) # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+json_key_file(File.expand_path("google-play.json", __dir__)) # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("dev.jerson.safebox") # e.g. com.krausefx.app
