@@ -14,7 +14,6 @@ target 'SafeBox' do
   
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
-  pod 'FastOpenpgp', :path => '../node_modules/react-native-fast-openpgp/ios/native'
 
 
   target 'SafeBoxTests' do
