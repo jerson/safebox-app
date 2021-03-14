@@ -4,19 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version Release (Optional), used to create a release tag with the output file
+        description: 'Version Release (Optional): used to create a release tag with the output file'
         required: false
       deploy_type:
-        description: Deploy Type (release_internal|release_beta|release)
-        default: release_internal
-        required: true
+        description: 'Deploy Type (Optional): (release_internal|release_beta|release)'
+        required: false
   push:
     tags:
       - "v*"
 
 env:
   VERSION: ${{ github.event.inputs.version || (startsWith(github.ref, 'refs/tags/') && github.ref || '') }}
-  DEPLOY_TYPE: ${{ github.event.inputs.deploy_type || 'release_internal' }}
+  DEPLOY_TYPE: ${{ github.event.inputs.deploy_type || '' }}
 
 jobs:
   build:
@@ -72,19 +71,10 @@ jobs:
         with:
           subdirectory: 'android'
           lane: 'android build_release'
-      - if: ${{ env.VERSION!='' }}
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: android_$tag.aab
-          file: android/app/build/outputs/bundle/release/app.aab
-          tag: ${{ env.VERSION }}
-          overwrite: true
       - uses: actions/upload-artifact@v2
         with:
           name: android
-          path: android/app/build/outputs/bundle/release/app.aab
-
+          path: android/app/build/outputs/bundle/release
   deploy:
     runs-on: ubuntu-20.04
     needs: build
@@ -93,17 +83,23 @@ jobs:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: 'android'
-      - name: Copy files
-        run: |
-          mkdir -p android/app/build/outputs/bundle/release || echo "ok"
-          mv ${{steps.download.outputs.download-path}} android/app/build/outputs/bundle/release/app.aab
+          name: android
+          path: android/app/build/outputs/bundle/release
       - name: Add secrets
         run: |
           echo $GOOGLE_PLAY_SETTINGS | base64 -d > android/fastlane/google-play.json
         env:
           GOOGLE_PLAY_SETTINGS: ${{ secrets.GOOGLE_PLAY_SETTINGS }}
-      - uses: maierj/fastlane-action@v2.0.1
+      - if: ${{ env.VERSION!='' }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: android_$tag.aab
+          file: android/app/build/outputs/bundle/release/app.aab
+          tag: ${{ env.VERSION }}
+          overwrite: true
+      - if: ${{ env.DEPLOY_TYPE!='' }}
+        uses: maierj/fastlane-action@v2.0.1
         with:
           subdirectory: 'android'
           lane: 'android deploy_${{ env.DEPLOY_TYPE }}'

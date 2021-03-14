@@ -4,19 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Version Release (Optional), used to create a release tag with the output file
+        description: 'Version Release (Optional): used to create a release tag with the output file'
         required: false
       deploy_type:
-        description: Deploy Type (release_beta)
-        default: release_beta
-        required: true
+        description: 'Deploy Type (Optional): (release_internal|release_beta|release)'
+        required: false
   push:
     tags:
       - "v*"
       
 env:
   VERSION: ${{ github.event.inputs.version || (startsWith(github.ref, 'refs/tags/') && github.ref || '') }}
-  DEPLOY_TYPE: ${{ github.event.inputs.deploy_type || 'release_beta' }}
+  DEPLOY_TYPE: ${{ github.event.inputs.deploy_type || '' }}
 
 jobs:
   build:
@@ -53,18 +52,10 @@ jobs:
         with:
           subdirectory: 'ios'
           lane: 'ios build_release'
-      - if: ${{ env.VERSION!='' }}
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: SafeBox_ios_$tag.ipa
-          file: ios/ipa/SafeBox.ipa
-          tag: ${{ env.VERSION }}
-          overwrite: true
       - uses: actions/upload-artifact@v2
         with:
           name: ios
-          path: ios/ipa/SafeBox.ipa
+          path: ios/ipa
 
   deploy:
     runs-on: macos-10.15
@@ -74,12 +65,18 @@ jobs:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: 'ios'
-      - name: Copy files
-        run: |
-          mkdir -p ios/ipa || echo "ok"
-          mv ${{steps.download.outputs.download-path}} ios/ipa/SafeBox.ipa
-      - uses: maierj/fastlane-action@v2.0.1
+          name: ios
+          path: ios/ipa
+      - if: ${{ env.VERSION!='' }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: SafeBox_ios_$tag.ipa
+          file: ios/ipa/SafeBox.ipa
+          tag: ${{ env.VERSION }}
+          overwrite: true
+      - if: ${{ env.DEPLOY_TYPE!='' }}
+        uses: maierj/fastlane-action@v2.0.1
         with:
           subdirectory: 'ios'
           lane: 'ios deploy_${{ env.DEPLOY_TYPE }}'
