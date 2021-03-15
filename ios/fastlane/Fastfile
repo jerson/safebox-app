@@ -3,6 +3,7 @@ import(File.expand_path("../../fastlane/FastCommonfile", __dir__))
 project_dir = File.expand_path("..", __dir__)
 output = File.expand_path("ipa", project_dir)
 workspace = File.expand_path("SafeBox.xcworkspace", project_dir)
+xcodeproj = File.expand_path("SafeBox.xcodeproj", project_dir)
 podfile = File.expand_path("Podfile", project_dir)
 platform_icon = ":ios:"
 current_date = date_formatted_minute
@@ -17,14 +18,21 @@ platform :ios do
       unlock_keychain(
         path: File.expand_path("xcode.keychain", project_dir),
         password: ENV['KEYCHAIN_PASSWORD'].to_s
-      )
-      # get_certificates will create multiple certs and we need to use our own
-      # get_certificates        
-      get_provisioning_profile()
-      #increment_build_number(build_number: ENV['CI_JOB_ID'])
+      )        
+      get_provisioning_profile
+      increment_build_number(build_number: ENV['CI_JOB_ID'], xcodeproj: xcodeproj)
       gym(
+        workspace: workspace,
         scheme: "SafeBox (Beta)",
-        output_directory: File.expand_path("ipa", project_dir)
+        output_directory: output,
+        include_symbols: true,
+        include_bitcode: true,
+        export_options: {
+            method: "ad-hoc",
+            provisioningProfiles: {
+                "dev.jerson.safebox.beta" => "SafeBox AdHoc"
+            }
+        }
       ) 
       on_success(platform_icon, name)
     rescue => exception
@@ -41,14 +49,21 @@ platform :ios do
       unlock_keychain(
         path:  File.expand_path("xcode.keychain", project_dir),
         password: ENV['KEYCHAIN_PASSWORD'].to_s
-      )
-      # get_certificates will create multiple certs and we need to use our own
-      # get_certificates         
-      get_provisioning_profile()
-      #increment_build_number(build_number: ENV['CI_JOB_ID'])
+      )   
+      get_provisioning_profile
+      increment_build_number(build_number: ENV['CI_JOB_ID'], xcodeproj: xcodeproj)
       gym(
+        workspace: workspace,
         scheme: "SafeBox",
-        output_directory: File.expand_path("ipa", project_dir)
+        output_directory: output,
+        include_symbols: true,
+        include_bitcode: true,
+        export_options: {
+            method: "app-store",
+            provisioningProfiles: {
+                "dev.jerson.safebox" => "SafeBox"
+            }
+        }
       ) 
       on_success(platform_icon, name)
     rescue => exception
