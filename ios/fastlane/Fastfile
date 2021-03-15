@@ -25,8 +25,8 @@ platform :ios do
         workspace: workspace,
         scheme: "SafeBox (Beta)",
         output_directory: output,
-        include_symbols: true,
-        include_bitcode: true,
+        include_symbols: false,
+        include_bitcode: false,
         export_options: {
             method: "ad-hoc",
             provisioningProfiles: {
