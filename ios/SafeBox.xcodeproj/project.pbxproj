@@ -71,8 +71,8 @@
 		843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAEA022EEA33A007E1B7D /* libAppCenterReactNativeCrashes.a */; };
 		843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */; };
 		843DAF7622EEADE3007E1B7D /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAF3922EEADD5007E1B7D /* libCodePush.a */; };
-		844CBDE725FEF13500AAD61F /* Openpgp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; };
-		844CBDE825FEF13500AAD61F /* Openpgp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		844CC1BE25FF105E00AAD61F /* Openpgp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; };
+		844CC1BF25FF105E00AAD61F /* Openpgp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84939B9022F3C170003AA163 /* libRNIap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84939B8A22F3C169003AA163 /* libRNIap.a */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
@@ -612,13 +612,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		844CBDE925FEF13500AAD61F /* Embed Frameworks */ = {
+		844CC1C025FF105E00AAD61F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				844CBDE825FEF13500AAD61F /* Openpgp.framework in Embed Frameworks */,
+				844CC1BF25FF105E00AAD61F /* Openpgp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,7 +784,7 @@
 				84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */,
 				843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
-				844CBDE725FEF13500AAD61F /* Openpgp.framework in Frameworks */,
+				844CC1BE25FF105E00AAD61F /* Openpgp.framework in Frameworks */,
 				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -1410,7 +1410,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				844CBDE925FEF13500AAD61F /* Embed Frameworks */,
+				844CC1C025FF105E00AAD61F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2542,6 +2542,14 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Debug)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"$(SRCROOT)/../node_modules/react-native-fast-openpgp/ios",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
@@ -2590,6 +2598,14 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = SafeBox;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"$(SRCROOT)/../node_modules/react-native-fast-openpgp/ios",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
@@ -3074,6 +3090,14 @@
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Beta)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"$(SRCROOT)/../node_modules/react-native-fast-openpgp/ios",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/@react-native-community/async-storage/ios",
