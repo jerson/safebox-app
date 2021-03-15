@@ -78,7 +78,7 @@ platform :ios do
       on_start(platform_icon, name)
       deliver(
         force: true,
-        ipa: File.expand_path("ipa/SafeBox.ipa", project_dir)
+        ipa: File.expand_path("SafeBox.ipa", output)
       )
       on_success(platform_icon, name)
     rescue => exception
@@ -92,7 +92,7 @@ platform :ios do
     begin
       on_start(platform_icon, name)
       pilot(
-        ipa: File.expand_path("ipa/SafeBox.ipa", project_dir)
+        ipa: File.expand_path("SafeBox.ipa", output)
       )
       on_success(platform_icon, name)
     rescue => exception
