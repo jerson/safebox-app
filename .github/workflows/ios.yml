@@ -53,10 +53,11 @@ jobs:
           lane: 'ios build_release'
         env:
           CI_JOB_ID: ${{ github.run_id }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
           FASTLANE_TEAM_ID: ${{ secrets.FASTLANE_TEAM_ID }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION || '' }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
           SLACK_URL: ${{ secrets.SLACK_URL || '' }}
       - uses: actions/upload-artifact@v2
         with:

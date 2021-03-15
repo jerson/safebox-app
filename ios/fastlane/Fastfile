@@ -16,7 +16,7 @@ platform :ios do
       cocoapods(repo_update: true, podfile: podfile)
       unlock_keychain(
         path: File.expand_path("xcode.keychain", project_dir),
-        password: ""
+        password: ENV['KEYCHAIN_PASSWORD'].to_s
       )
       # get_certificates will create multiple certs and we need to use our own
       # get_certificates        
@@ -40,7 +40,7 @@ platform :ios do
       cocoapods(repo_update: true, podfile: podfile)
       unlock_keychain(
         path:  File.expand_path("xcode.keychain", project_dir),
-        password: ""
+        password: ENV['KEYCHAIN_PASSWORD'].to_s
       )
       # get_certificates will create multiple certs and we need to use our own
       # get_certificates         
