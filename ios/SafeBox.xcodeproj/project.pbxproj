@@ -2572,6 +2572,7 @@
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox Debug";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2619,6 +2620,7 @@
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = SafeBox;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -3103,6 +3105,7 @@
 				PRODUCT_NAME = SafeBox;
 				PROVISIONING_PROFILE_SPECIFIER = "SafeBox AdHoc";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Beta;
