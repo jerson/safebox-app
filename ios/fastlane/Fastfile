@@ -78,6 +78,7 @@ platform :ios do
       on_start(platform_icon, name)
       deliver(
         force: true,
+        submit_for_review: false,
         ipa: File.expand_path("SafeBox.ipa", output)
       )
       on_success(platform_icon, name)
@@ -92,7 +93,9 @@ platform :ios do
     begin
       on_start(platform_icon, name)
       pilot(
-        ipa: File.expand_path("SafeBox.ipa", output)
+        ipa: File.expand_path("SafeBox.ipa", output),
+        # this will allow to use FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD
+        skip_waiting_for_build_processing: true
       )
       on_success(platform_icon, name)
     rescue => exception
