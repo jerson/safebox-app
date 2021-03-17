@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>6</string>
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_TOKEN)</string>
 	<key>LSRequiresIPhoneOS</key>

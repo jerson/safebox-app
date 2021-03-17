@@ -76,6 +76,8 @@
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
 		8496AF5D22EE1E9A0013F32B /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5A22EE1E9A0013F32B /* iTunesArtwork@1x.png */; };
 		84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A195F622FF081200B4808F /* StoreKit.framework */; };
+		84F208972601A14600EEB251 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8422448F22E6AF8E00904C7B /* Lottie.framework */; };
+		84F208982601A14600EEB251 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8422448F22E6AF8E00904C7B /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8FAA6C32723F4D1AB2C24A07 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCF69C7136F0487D9B4C9560 /* Nunito-ExtraLightItalic.ttf */; };
 		95183F4885B44352A1CC08F6 /* libRNCNetInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4495ACEAFD444EB89CF208 /* libRNCNetInfo-tvOS.a */; };
 		95F081F158484DB4AF88BEBD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB3129EAA8F74AA6A3ED0D66 /* Foundation.ttf */; };
@@ -616,6 +618,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				84F208982601A14600EEB251 /* Lottie.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -795,6 +798,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				E5A24B12E8E643A0A35D7765 /* libRNCAsyncStorage.a in Frameworks */,
+				84F208972601A14600EEB251 /* Lottie.framework in Frameworks */,
 				A5D2F1A5F6CE40F9A0D9989D /* libRNCNetInfo.a in Frameworks */,
 				FC477B6BDF3A4B4CBB866FE3 /* libRNCSlider.a in Frameworks */,
 				FC6EE8F7BBE54742B03F73E1 /* libRNCViewpager.a in Frameworks */,
@@ -2531,7 +2535,7 @@
 				CODEPUSH_TOKEN = "";
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Debug)";
@@ -2588,7 +2592,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = SafeBox;
 				ENABLE_BITCODE = NO;
@@ -3080,7 +3084,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafeBox/SafeBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = EKR687JWFU;
 				DISPLAY_NAME = "SafeBox (Beta)";
 				ENABLE_BITCODE = NO;
