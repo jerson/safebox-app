@@ -71,8 +71,6 @@
 		843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAEA022EEA33A007E1B7D /* libAppCenterReactNativeCrashes.a */; };
 		843DAF0922EEA7BD007E1B7D /* libAppCenterReactNativePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAECC22EEA7B5007E1B7D /* libAppCenterReactNativePush.a */; };
 		843DAF7622EEADE3007E1B7D /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DAF3922EEADD5007E1B7D /* libCodePush.a */; };
-		844CC1BE25FF105E00AAD61F /* Openpgp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; };
-		844CC1BF25FF105E00AAD61F /* Openpgp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 844CBDA125FEF13500AAD61F /* Openpgp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84939B9022F3C170003AA163 /* libRNIap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84939B8A22F3C169003AA163 /* libRNIap.a */; };
 		8496AF5B22EE1E9A0013F32B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */; };
 		8496AF5C22EE1E9A0013F32B /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */; };
@@ -618,7 +616,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				844CC1BF25FF105E00AAD61F /* Openpgp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,7 +695,6 @@
 		843DAF0A22EEA800007E1B7D /* SafeBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SafeBox.entitlements; path = SafeBox/SafeBox.entitlements; sourceTree = "<group>"; };
 		843DAF2D22EEADD5007E1B7D /* CodePush.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		843ED8170DC24BAFB5D53046 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
-		844CBDA125FEF13500AAD61F /* Openpgp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Openpgp.framework; path = "../node_modules/react-native-fast-openpgp/ios/Openpgp.framework"; sourceTree = "<group>"; };
 		84939B4522F3C168003AA163 /* RNIap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIap.xcodeproj; path = "../node_modules/react-native-iap/ios/RNIap.xcodeproj"; sourceTree = "<group>"; };
 		8496AF1C22EE1E990013F32B /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "SafeBox/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		8496AF5922EE1E9A0013F32B /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "SafeBox/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
@@ -784,7 +780,6 @@
 				84A195F722FF081200B4808F /* StoreKit.framework in Frameworks */,
 				843DAEA222EEA34B007E1B7D /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				843DAEA122EEA345007E1B7D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
-				844CC1BE25FF105E00AAD61F /* Openpgp.framework in Frameworks */,
 				8422451222E6B3D000904C7B /* libLottie.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -978,7 +973,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				844CBDA125FEF13500AAD61F /* Openpgp.framework */,
 				84A195F622FF081200B4808F /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
